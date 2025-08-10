@@ -3,8 +3,11 @@
     {{label}}
   </div>
   <div class="roll-result">
-    <div class="roll-formula">
+    <div class="roll-formula-result">
       <span>{{dicePoolRoll.result}}</span>
+    </div>
+    <div class="roll-formula">
+      <span>{{dicePoolRoll.formula}}</span>
     </div>
     <div class="roll-row">
       <div class="roll-difficulty">
@@ -20,9 +23,11 @@
     <div class="roll-damage">
       <span>Schaden {{range}}: {{damage}}</span>
     </div>
+    <div class="roll-formula">
+      <span>{{damageRollFormula}}</span>
+    </div>
     <div class="roll-damage">
       <span>Formel: {{damageFormula}}</span>
     </div>
-    
   </div>
 </form>

@@ -448,9 +448,14 @@
   text-align: center;
 }
 
-.roll-formula {
+.roll-formula-result {
   font-size: 1.2em;
   font-weight: bold;
+  text-align: center;
+}
+
+.roll-formula {
+  font-size: 0.75em;
   text-align: center;
 }
 

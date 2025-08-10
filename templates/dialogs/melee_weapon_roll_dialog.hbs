@@ -7,8 +7,32 @@
     </div>
     <div class="form-group">
         <label class="resource-label">Moduswürfel:</label>
-        <input type="text" name="modDice" value="{{modDice}}" data-dtype="String" />
-        
+        <div class="grid grid-6col">
+            <div class="flex-col">
+                <input type="radio" value="0" name="modDice" {{#if (eq modDice 0)}}checked{{/if}} data-dtype="Number"/>
+                <span class="">-</span>
+            </div>
+            <div class="flex-col">
+                <input type="radio" value="4" name="modDice" {{#if (eq modDice 4)}}checked{{/if}} data-dtype="Number"/>
+                <span class="dicier-icon" title="D4">4_ON_D4</span>
+            </div>
+            <div class="flex-col">
+                <input type="radio" value="6" name="modDice" {{#if (eq modDice 6)}}checked{{/if}} data-dtype="Number"/>
+                <span class="dicier-icon" title="D6">6_ON_D6</span>
+            </div>
+            <div class="flex-col">
+                <input type="radio" value="8" name="modDice" {{#if (eq modDice 8)}}checked{{/if}} data-dtype="Number"/>
+                <span class="dicier-icon" title="D8">8_ON_D8</span>
+            </div>
+            <div class="flex-col">
+                <input type="radio" value="10" name="modDice" {{#if (eq modDice 10)}}checked{{/if}} data-dtype="Number"/>
+                <span class="dicier-icon" title="D10">10_ON_D10</span>
+            </div>
+            <div class="flex-col">
+                <input type="radio" value="12" name="modDice" {{#if (eq modDice 12)}}checked{{/if}} data-dtype="Number"/>
+                <span class="dicier-icon" title="D12">12_ON_D12</span>
+            </div>
+        </div>
     </div>
     <div class="form-group">
         <label class="resource-label">Schwierigkeit:</label>

@@ -11,6 +11,7 @@ export async function rollDialogMeleeWeaponV1(actor,itemId,label){
     let diceFormula = "";
     let weaponTypeLabel = ""
     let recoil = 0;
+    let modDice=0;
 
     console.log("ability: ", item.system.ability);
     if (item.system.ability === "brawl") {
@@ -32,7 +33,8 @@ export async function rollDialogMeleeWeaponV1(actor,itemId,label){
         cardTitle,
         diceFormula,
         label,
-        itemId
+        itemId,
+        modDice
       };
 
       const html = await foundry.applications.handlebars.renderTemplate(
@@ -63,6 +65,7 @@ export async function rollDialogRangedWeaponV1(actor,itemId,label){
     let diceFormula = "";
     let weaponTypeLabel = ""
     let recoil = 0;
+    let modDice = 0;
     
     if (item.system.weaponType === "pistol") {
       diceFormula = `1d${actor.system.attributes.skill} + 1d${actor.system.abilities.pistols}`;
@@ -82,7 +85,8 @@ export async function rollDialogRangedWeaponV1(actor,itemId,label){
         diceFormula,
         label,
         recoil,
-        itemId
+        itemId,
+        modDice
       };
 
       const html = await foundry.applications.handlebars.renderTemplate(
@@ -111,7 +115,7 @@ export async function rollDialogSkillV1(actor,formula,label){
     let rollDiceFaceSuccess = 5;
     const actorRollData = actor.getRollData();
     let diceFormula = formula;
-    let modDice = ""
+    let modDice = 0
 
     const cardTitle = "RollDialog";
     const rollResult = {
@@ -157,7 +161,7 @@ async function rollDialogV1Callback(actor, html) {
     const dicePromises = [];
 
     if(modDice && modDice !== "") {
-      rollFormula = rollFormula + `+ ${modDice}`;
+      rollFormula = rollFormula + `+ d${modDice}`;
     }
     const dicePoolRoll = new Roll(rollFormula, actorRollData);
     await dicePoolRoll.evaluate();
@@ -213,7 +217,7 @@ async function rollDialogV1RangedWeaponCallback(actor, html) {
 
     rollFormula = rollFormula + `- ${recoil}`;
     if(modDice && modDice !== "") {
-      rollFormula = rollFormula + `+ ${modDice}`;
+      rollFormula = rollFormula + `+ d${modDice}`;
     }
     
     const dicePoolRoll = new Roll(rollFormula, actorRollData);
@@ -234,7 +238,8 @@ async function rollDialogV1RangedWeaponCallback(actor, html) {
         damage: damageValue,
         range: game.i18n.localize(`DIESELDRACHEN.Ranges.${range}`),
         difficulty: difficulty,
-        isSuccess: isSuccess
+        isSuccess: isSuccess,
+        rollFormula: rollFormula
     }
     renderRangedWeaponRollResult(actor,rollDialogVars);
 }
@@ -255,7 +260,7 @@ async function rollDialogV1MeleeWeaponCallback(actor, html) {
     const dicePromises = [];
 
     if(modDice && modDice !== "") {
-      rollFormula = rollFormula + `+ ${modDice}`;
+      rollFormula = rollFormula + `+ d${modDice}`;
     }
     
     const dicePoolRoll = new Roll(rollFormula, actorRollData);
@@ -300,6 +305,7 @@ async function rollDialogV1MeleeWeaponCallback(actor, html) {
       }
 
       damageResult = dicePoolRollDamage.total;
+      rollFormulaDamage = dicePoolRollDamage.formula;
     }else{
       damageResult = item.system.damage
     }
@@ -310,6 +316,7 @@ async function rollDialogV1MeleeWeaponCallback(actor, html) {
         label: label,
         damage: damageResult,
         damageFormula: item.system.damage,
+        damageRollFormula: rollFormulaDamage,
         range: game.i18n.localize(`DIESELDRACHEN.Ranges.${item.system.range}`),
         difficulty: difficulty,
         isSuccess: isSuccess
