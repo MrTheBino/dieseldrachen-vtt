@@ -52,11 +52,11 @@
     </div>
   </header>
 
-  <section class="grid grid-3col">
+  <section class="grid grid-2col">
     <div class="resource flex-group-center">
-      <label for="system.splean" class="resource-label">Splean</label>
+      <label for="system.spleen" class="resource-label">Spleen</label>
       <div class="resource-content flexrow flex-center flex-between">
-        <input type="text" name="system.splean" value="{{system.splean}}" data-dtype="String" />
+        <input type="text" name="system.spleen" value="{{system.spleen}}" data-dtype="String" />
       </div>
     </div>
   <div class="resource flex-group-center">
@@ -65,17 +65,10 @@
         <input type="text" name="system.condition" value="{{system.condition}}" data-dtype="String" />
       </div>
     </div>
-    <div class="resource flex-group-center">
-      <label for="system.luck" class="resource-label">Glück</label>
-      <div class="resource-content flexrow flex-center flex-between">
-        <input type="text" name="system.luck" value="{{system.luck}}" data-dtype="Number" />
-        <span> / </span>
-        <input type="text" name="system.luck.max" value="3" disabled />
-      </div>
-    </div>
+    
   </section>
 
-  <section class="grid grid-5col">
+  <section class="grid grid-6col">
     <div class="resource flex-group-center">
       <label for="system.health.value" class="resource-label">Health</label>
       <div class="resource-content flexrow flex-center flex-between">
@@ -112,6 +105,15 @@
       <label for="system.money" class="resource-label">Bargeld</label>
       <div class="resource-content flexrow flex-center flex-between">
         <input type="text" id="system.money" value="{{system.money}}" />
+      </div>
+    </div>
+
+    <div class="resource flex-group-center">
+      <label for="system.luck" class="resource-label">Glück</label>
+      <div class="resource-content flexrow flex-center flex-between">
+        <input type="text" name="system.luck" value="{{system.luck}}" data-dtype="Number" />
+        <span> / </span>
+        <input type="text" name="system.luck.max" value="3" disabled />
       </div>
     </div>
   </section>

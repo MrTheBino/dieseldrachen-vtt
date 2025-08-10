@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.1.3
+  - character sheet fixes
+  
 ## 0.1.2
   - sheet fixes
   - 
