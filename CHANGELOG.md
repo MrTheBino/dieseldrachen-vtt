@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.1.2
+  - sheet fixes
+  - 
 ## 0.1.1
 
  - added basic npc sheet
