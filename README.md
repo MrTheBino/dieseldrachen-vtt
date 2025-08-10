@@ -7,6 +7,10 @@ Unofficial system implementation of the Dieseldrachen TTRPG by [Dragon Pulp Game
 
 **WARNING: This system is not finished yet and still in alpha**
 
+## Manifest-URL for mahual install the system
+
+    https://github.com/MrTheBino/dieseldrachen-vtt/releases/latest/download/system.json
+
 ## Features:
 
 * character sheet
