@@ -6,7 +6,7 @@ export default class DieseldrachenClothing extends DieseldrachenItemBase {
     const fields = foundry.data.fields;
     const schema = super.defineSchema();
 
-    schema.weight = new fields.NumberField({ required: true, nullable: false, integer: true, initial: 0, min: 0, max: 100 });
+    schema.weight = new fields.NumberField({ required: true, nullable: false, integer: true, initial: 1, min: 0, max: 100 });
     schema.weaponType = new fields.StringField({ required: true, blank: true, initial: "pistol" });
     schema.precision_near = new fields.NumberField({ required: true, nullable: false, integer: true, initial: 0, min: 0, max: 100 });
     schema.precision_close = new fields.NumberField({ required: true, nullable: false, integer: true, initial: 0, min: 0, max: 100 });

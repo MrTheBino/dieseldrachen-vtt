@@ -11,12 +11,13 @@ export async function rollDialogMeleeWeaponV1(actor,itemId,label){
     let diceFormula = "";
     let weaponTypeLabel = ""
     let recoil = 0;
-    
+
+    console.log("ability: ", item.system.ability);
     if (item.system.ability === "brawl") {
       diceFormula = `1d${actor.system.attributes.reaction} + 1d${actor.system.abilities.brawl}`;
       weaponTypeLabel = "Prügeln";
       label = "Reaktion + Prügeln";
-    }if (item.system.ability === "fencing") {
+    }else if (item.system.ability === "fencing") {
       diceFormula = `1d${actor.system.attributes.skill} + 1d${actor.system.abilities.fencing}`;
       weaponTypeLabel = "Fechten";
       label = "Geschick + Fechten";
@@ -274,6 +275,7 @@ async function rollDialogV1MeleeWeaponCallback(actor, html) {
 
     let rollFormulaDamage = "";
     dmgTokens.forEach((token) => {
+      token  = token.replace("k", "K");
       token = token.trim();
       if (token.includes("K")) {
         let t = token.replace("K", "");
@@ -285,19 +287,28 @@ async function rollDialogV1MeleeWeaponCallback(actor, html) {
       }
     })
 
-    const dicePoolRollDamage = new Roll(rollFormulaDamage, actor.getRollData());
-    await dicePoolRollDamage.evaluate();
+    console.log("rollFormulaDamage: ", rollFormulaDamage);
+    let damageResult = 0;
+    if(rollFormulaDamage.length > 0){
+      
+      const dicePoolRollDamage = new Roll(rollFormulaDamage, actor.getRollData());
+      await dicePoolRollDamage.evaluate();
 
-    if (game.dice3d) {
-      // we pass synchronize=true so DSN dice appear on all players' screens
-      game.dice3d.showForRoll(dicePoolRollDamage, game.user, true, null, false);
+      if (game.dice3d) {
+        // we pass synchronize=true so DSN dice appear on all players' screens
+        game.dice3d.showForRoll(dicePoolRollDamage, game.user, true, null, false);
+      }
+
+      damageResult = dicePoolRollDamage.total;
+    }else{
+      damageResult = item.system.damage
     }
-    
+
     const rollDialogVars = {
         dicePoolRoll: dicePoolRoll,
         total: dicePoolRoll.total,
         label: label,
-        damage: dicePoolRollDamage,
+        damage: damageResult,
         damageFormula: item.system.damage,
         range: game.i18n.localize(`DIESELDRACHEN.Ranges.${item.system.range}`),
         difficulty: difficulty,

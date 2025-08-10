@@ -145,7 +145,9 @@ export class DieseldrachenActorSheet extends ActorSheet {
         if (i.system.mounted) {
           mobilityValue = mobilityValue - i.system.armor;
         } else {
-          mobilityValue = mobilityValue - 1;
+          if(i.system.weight != undefined){
+            mobilityValue = mobilityValue - i.system.weight;
+          }
         }
       }
       else if (i.type === 'meleeWeapon') {

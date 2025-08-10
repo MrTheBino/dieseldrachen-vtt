@@ -18,7 +18,13 @@
         </div>
         <div class='resource'>
           <label class='resource-label'>Waffengewicht</label>
-          <input type='text' name='system.weaponWeight' value='{{system.weaponWeight}}' data-dtype='String' />
+          <select name="system.weaponWeight">
+            <option value="4" {{#if (eq system.weaponWeight 4)}}selected{{/if}}>D4</option>
+            <option value="6" {{#if (eq system.weaponWeight 6)}}selected{{/if}}>D6</option>
+            <option value="8" {{#if (eq system.weaponWeight 8)}}selected{{/if}}>D8</option>
+            <option value="10" {{#if (eq system.weaponWeight 10)}}selected{{/if}}>D10</option>
+            <option value="12" {{#if (eq system.weaponWeight 12)}}selected{{/if}}>D12</option>
+          </select>
         </div>
         <div class='resource'>
           <label class='resource-label'>Gewicht</label>
