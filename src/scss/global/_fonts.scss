@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Play:wght@400;700&family=Voltaire&display=swap');
+
+@font-face {
+  font-family: Dicier;
+  src: url("../assets/fonts/Dicier-Flat-Heavy.woff2") format("woff2");
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: Dicier-Heavy;
+  src: url("../assets/fonts/Dicier-Flat-Dark.woff2") format("woff2");
+  font-weight: normal;
+}
+
+
+.dicier-icon{
+ font-family: Dicier, sans-serif;
+ font-feature-settings: "liga" 1, "kern" 1, "calt" 1;
+}
+
+.dicier-icon-bold{
+ font-family: Dicier-Heavy, sans-serif;
+ font-feature-settings: "liga" 1, "kern" 1, "calt" 1;
+ font-weight: bold;
+}
+
+.voltaire-regular {
+  font-family: "Voltaire", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}

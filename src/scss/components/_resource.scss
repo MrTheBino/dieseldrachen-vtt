@@ -1,0 +1,39 @@
+.resource-label {
+  font-family: "Voltaire", sans-serif;
+  font-weight: 400;
+  font-weight: bold;
+}
+
+.attribute-group{
+  
+}
+
+.attribute-label {
+  font-family: "Voltaire", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1.4em;
+  color: #333;
+  border-bottom: 1px solid black;
+  background-color: $c-stripe;
+}
+
+.ability-label {
+  font-family: "Voltaire", sans-serif;
+  font-size: 1.2em;
+  color: #333;
+  font-weight: normal;
+}
+
+.quick-label {
+  font-family: "Voltaire", sans-serif;
+  color: #333;
+  font-weight: normal;
+  background-color: $c-stripe;
+  padding: 1px;
+}
+
+.social-container{
+ background-color: $c-stripe;
+ margin-bottom: 10px; 
+}

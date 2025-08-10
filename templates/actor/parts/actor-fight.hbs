@@ -1,0 +1,52 @@
+<!-- Aktionen -->
+<div class="">
+    <button class="rollable" data-roll-type="skill"
+        data-roll="d{{system.attributes.athletics}}+d{{system.abilities.agility}}+d{{mobilityDice}}"
+        data-label="Ausweichen / Schnell Bewegen">Ausweichen / Schnell Bewegen</button>
+</div>
+<!-- Nahkampfwaffen -->
+<ol class='items-list'>
+    <li class='item flexrow items-header'>
+        <div class='item-name'>{{localize 'Name'}}</div>
+    </li>
+    {{#each meleeWeapons as |item id|}}
+    {{#if (eq item.system.mounted true)}}
+    <li class='item flexrow' data-item-id='{{item._id}}'>
+        <div class='item-name'>
+            <div class='item-image'>
+                <a class='rollable' data-roll-type='meleeWeapon'>
+                    <img src='{{item.img}}' title='{{item.name}}' width='24' height='24' />
+                </a>
+            </div>
+            <h4>{{item.name}}</h4>
+        </div>
+        <div class="small_description">
+            Reichweite: {{ localize (concat "DIESELDRACHEN.Ranges." item.system.range)}} |
+            Schaden: {{item.system.damage}} |
+        </div>
+    </li>
+    {{/if}}
+    {{/each}}
+    {{#each rangedWeapons as |item id|}}
+    {{#if (eq item.system.mounted true)}}
+    <li class='item flexrow' data-item-id='{{item._id}}'>
+        <div class='item-name'>
+            <div class='item-image'>
+                <a class='rollable' data-roll-type='rangedWeapon'>
+                    <img src='{{item.img}}' title='{{item.name}}' width='24' height='24' />
+                </a>
+            </div>
+            <h4>{{item.name}}</h4>
+
+        </div>
+        <div class="small_description">
+            Präzision: {{item.system.precision_near}}/{{item.system.precision_close}}/{{item.system.precision_far}} |
+            Schaden: {{item.system.damage_near}}/{{item.system.damage_close}}/{{item.system.damage_far}} |
+            Rate: {{item.system.rate}} |
+            Kap: {{item.system.capacity}} |
+            Munition: {{item.system.bullets}}
+        </div>
+    </li>
+    {{/if}}
+    {{/each}}
+</ol>

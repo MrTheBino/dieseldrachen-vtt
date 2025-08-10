@@ -1,0 +1,52 @@
+.roll-success{
+    color: green;
+}
+
+.roll-failure{
+    color: red;
+}
+
+.card-title{
+    font-family: "Voltaire", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.4em;
+    border-bottom: 1px solid black;
+    text-align: center;
+}
+
+.roll-formula{
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+}
+
+.roll-difficulty{
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+}
+
+.roll-success{
+    font-size: 1.4em;
+    font-weight: bold;
+    text-align: center;
+    color: green;
+}
+
+.roll-failure{
+    font-size: 1.4em;
+    font-weight: bold;
+    text-align: center;
+    color: red;
+}
+
+.roll-damage{
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+}
+
+.roll-melee-damage-formula{
+    font-size: 0.75em;
+}

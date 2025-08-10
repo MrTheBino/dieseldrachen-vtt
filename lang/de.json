@@ -1,0 +1,118 @@
+{
+  "DIESELDRACHEN": {
+    "Keys":{
+      "system":{
+        "social":{
+          "group":{
+            "value_neg": "Gruppe Negativ",
+            "value_pos": "Gruppe Positiv"
+          },
+          "contacts":{
+            "value_neg": "Kontakte Negativ",
+            "value_pos": "Kontakte Positiv"
+          },
+          "reputation":{
+            "value_neg": "Ruf Negativ",
+            "value_pos": "Ruf Positiv"
+          },
+           "standing":{
+            "value_neg": "Stand Negativ",
+            "value_pos": "Stand Positiv"
+          },
+           "wealth":{
+            "value_neg": "Vermögen Negativ",
+            "value_pos": "Vermögen Positiv"
+          }
+        },
+        "attributes": {
+          "skill": "Geschick",
+          "athletics": "Athletik",
+          "reaction": "Reaktion",
+          "charisma": "Charisma",
+          "intuition": "Intuition",
+          "reason": "Verstand",
+          "magic": "Magie"
+        },
+        "abilities": {
+          "strength": "Kraft",
+          "agility": "Gewandheit",
+          "condition": "Kondition",
+          "pistols": "Pistolen",
+          "rifles": "Gewehre",
+          "sleight_of_hand": "Fingerfertigkeit",
+          "brawl": "Prügeln",
+          "fencing": "Fechten",
+          "steering": "Lenken",
+          "persuade": "Überreden",
+          "drama": "Schauspiel",
+          "society": "Gesellschaft",
+          "orientation": "Orientierung",
+          "stealth": "Verstohlenheit",
+          "alertness": "Wachsamkeit",
+          "knowledge": "Wissen",
+          "willpower": "Willensstärke",
+          "searching": "Suchen",
+          "magic_body": "Körper / Sinne",
+          "magic_fate": "Schicksal / Geister",
+          "magic_elemental": "Elemente / Energie"
+        }
+      }
+    },
+    "Messages":{
+      "ChangedDice": "{key} wurde von D{old_value} zu D{value} geändert."
+    },
+    "Labels": {
+      "RollResult": "Ergebnis",
+      "RollResultDetails": "Details",
+      "RollSuccess": "Erfolg",
+      "RollFailure": "Misserfolg",
+      "Roll": "Würfeln"
+    },
+    "SheetLabels": {
+      "Actor": "Dieseldrachen Actor Sheet",
+      "Item": "Dieseldrachen Item Sheet"
+    },
+    "Item": {
+      "Spell": {
+        "SpellLVL": "Level {level} Spells",
+        "AddLVL": "Add LVL {level}"
+      }
+    },
+    "Effect": {
+      "Source": "Source",
+      "Toggle": "Toggle Effect",
+      "Temporary": "Temporary Effects",
+      "Passive": "Passive Effects",
+      "Inactive": "Inactive Effects"
+    },
+    "Ranges": {
+      "near": "Nah",
+      "close": "Mittel",
+      "far": "Fern",
+      "1": "Nah",
+      "2": "Mittel",
+      "3": "Fern",
+      "short": "Nah",
+      "medium": "Mittel",
+      "long": "Lang"
+    }
+  },
+  "TYPES": {
+    "Actor": {
+      "character": "Character",
+      "npc": "NPC"
+    },
+    "Item": {
+      "item": "Item",
+      "feature": "Feature",
+      "spell": "Spell",
+      "clothing": "Kleidung",
+      "meleeWeapon": "Nahkampfwaffe",
+      "rangedWeapon": "Fernkampfwaffe",
+      "trick": "Trick",
+      "knowledge": "Wissensbereich",
+      "artefact": "Artefakt",
+      "technicManeuver": "Technik / Manöver"
+    }
+  }
+}

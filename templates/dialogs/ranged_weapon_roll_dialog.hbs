@@ -1,0 +1,28 @@
+<form class="custom-dialog">
+    <input type="hidden" name="itemId" value="{{itemId}}" data-dtype="String" />
+    <div class="form-group">
+        <label class="resource-label">{{label}}:</label>
+        <input type="hidden" name="label" value="{{label}}" data-dtype="String" />
+        <input type="text" name="diceFormula" value="{{diceFormula}}" data-dtype="String" />
+    </div>
+    <div class="form-group">
+        <label class="resource-label">Moduswürfel:</label>
+        <input type="text" name="modDice" value="{{modDice}}" data-dtype="String" />
+    </div>
+    <div class="form-group">
+        <label class="resource-label">Reichweite:</label>
+        <div class="grid grid-3col">
+            <div><input type="radio" name="range" value="near" data-dtype="String" checked/> Nah</div>
+            <div> <input type="radio" name="range" value="close" data-dtype="String" /> Mittel</div>
+            <div><input type="radio" name="range" value="far" data-dtype="String" /> Fern</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="resource-label">Rückstoss:</label>
+        <input type="text" name="recoil" value="{{recoil}}" data-dtype="String" />
+    </div>
+    <div class="form-group">
+        <label class="resource-label">Schwierigkeit:</label>
+        <input type="number" name="difficulty" value="10" data-dtype="Number" />
+    </div>
+</form>
