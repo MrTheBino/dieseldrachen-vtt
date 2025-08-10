@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 0.1.4
+  - fix xp and money
+  - fixed melee weapons rolling, added weight params
+  - better dice visuals, dice mod selection via dice symbols, etc
+
 ## 0.1.3
   - character sheet fixes
   
