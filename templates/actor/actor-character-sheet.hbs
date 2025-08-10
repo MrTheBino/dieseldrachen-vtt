@@ -97,14 +97,14 @@
     <div class="resource flex-group-center">
       <label for="system.xp" class="resource-label">XP</label>
       <div class="resource-content flexrow flex-center flex-between">
-        <input type="text" id="system.xp" value="{{system.xp}}" />
+        <input type="text" name="system.xp" value="{{system.xp}}" data-dtype="Number" />
       </div>
     </div>
 
     <div class="resource flex-group-center">
       <label for="system.money" class="resource-label">Bargeld</label>
       <div class="resource-content flexrow flex-center flex-between">
-        <input type="text" id="system.money" value="{{system.money}}" />
+        <input type="text" name="system.money" value="{{system.money}}" data-dtype="Number"/>
       </div>
     </div>
 
@@ -113,7 +113,7 @@
       <div class="resource-content flexrow flex-center flex-between">
         <input type="text" name="system.luck" value="{{system.luck}}" data-dtype="Number" />
         <span> / </span>
-        <input type="text" name="system.luck.max" value="3" disabled />
+        <input type="text" value="3" disabled />
       </div>
     </div>
   </section>
