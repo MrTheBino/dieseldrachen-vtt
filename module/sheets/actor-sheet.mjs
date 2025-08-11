@@ -3,7 +3,7 @@ import {
   prepareActiveEffectCategories,
 } from '../helpers/effects.mjs';
 
-import { rollDialogSkillV1, rollDialogRangedWeaponV1,rollDialogMeleeWeaponV1 } from '../roll_dialog.mjs';
+import { rollDialogSkillV1, rollDialogRangedWeaponV1, rollDialogMeleeWeaponV1 } from '../roll_dialog.mjs';
 
 /**
  * Extend the basic ActorSheet with some very simple modifications
@@ -145,20 +145,20 @@ export class DieseldrachenActorSheet extends ActorSheet {
         if (i.system.mounted) {
           mobilityValue = mobilityValue - i.system.armor;
         } else {
-          if(i.system.weight != undefined){
+          if (i.system.weight != undefined) {
             mobilityValue = mobilityValue - i.system.weight;
           }
         }
       }
       else if (i.type === 'meleeWeapon') {
         meleeWeapons.push(i);
-        if(i.system.weight != undefined){
+        if (i.system.weight != undefined) {
           mobilityValue = mobilityValue - i.system.weight;
         }
       }
       else if (i.type === 'rangedWeapon') {
         rangedWeapons.push(i);
-        if(i.system.weight != undefined){
+        if (i.system.weight != undefined) {
           mobilityValue = mobilityValue - i.system.weight;
         }
       }
@@ -173,10 +173,10 @@ export class DieseldrachenActorSheet extends ActorSheet {
       }
       else if (i.type === 'artefact') {
         artefacts.push(i);
-        if(i.system.weight != undefined){
+        if (i.system.weight != undefined) {
           mobilityValue = mobilityValue - i.system.weight;
         }
-        
+
       }
       // Append to spells.
       else if (i.type === 'spell') {
@@ -220,6 +220,24 @@ export class DieseldrachenActorSheet extends ActorSheet {
     context.knowledge = knowledge;
     context.artefacts = artefacts;
     context.technicManeuvers = technicManeuvers;
+
+    let numSegments = 33;
+    if(this.object.type == "npc"){
+      numSegments = this.object.system.health.max+1;
+    }
+
+    context.healthbar_segments = new Array(numSegments);
+    
+    let json_data = JSON.parse(this.object.system.healthbar || "[]");
+    for (let i = 0; i < numSegments; i++) {
+      context.healthbar_segments[i] = { sign: json_data[i], value: i, index: i, css_class: "" };
+
+      if (this.object.system.health.max >= i) {
+        context.healthbar_segments[i].css_class = 'green';
+      } else {
+        context.healthbar_segments[i].css_class = 'unused';
+      }
+    }
   }
 
   /* -------------------------------------------- */
@@ -255,14 +273,14 @@ export class DieseldrachenActorSheet extends ActorSheet {
       }
 
       let i18n_k = game.i18n.localize(`DIESELDRACHEN.Keys.${name}`);
-      let msg = game.i18n.format("DIESELDRACHEN.Messages.ChangedDice", { key: i18n_k, value: value , old_value: t });
+      let msg = game.i18n.format("DIESELDRACHEN.Messages.ChangedDice", { key: i18n_k, value: value, old_value: t });
 
 
       ChatMessage.create({
-       user: game.user.id,
-       speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-       content: msg
-     });
+        user: game.user.id,
+        speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+        content: msg
+      });
     });
 
     // Add Inventory Item
@@ -301,6 +319,34 @@ export class DieseldrachenActorSheet extends ActorSheet {
     // Rollable abilities.
     html.on('click', '.rollable', this._onRoll.bind(this));
 
+    html.on('click', '.healthbar-segment', (ev) => {
+      const segment = ev.currentTarget;
+      let json_data = JSON.parse(this.actor.system.healthbar || "[]");
+      if (json_data[segment.dataset.healthvalue] == 'X') {
+        json_data[segment.dataset.healthvalue] = '';
+      } else {
+        json_data[segment.dataset.healthvalue] = 'X';
+      }
+
+      this.actor.update({ ['system.healthbar']: JSON.stringify(json_data) });
+    });
+
+
+    html.on('click', '.healthbar-reset', (ev) => {
+      this._resetHealthBar(); 
+    });
+
+    html.on('contextmenu', '.healthbar-segment', (ev) => {
+      const segment = ev.currentTarget;
+      let json_data = JSON.parse(this.actor.system.healthbar || "[]");
+      if (json_data[segment.dataset.healthvalue] == '/') {
+        json_data[segment.dataset.healthvalue] = '';
+      } else {
+        json_data[segment.dataset.healthvalue] = '/';
+      }
+
+      this.actor.update({ ['system.healthbar']: JSON.stringify(json_data) });
+    });
 
     // Drag events for macros.
     if (this.actor.isOwner) {
@@ -313,6 +359,23 @@ export class DieseldrachenActorSheet extends ActorSheet {
     }
   }
 
+  async _resetHealthBar() {
+    const proceed = await foundry.applications.api.DialogV2.confirm({
+      content: "Die Lebensleiste zurücksetzen?",
+      rejectClose: false,
+      modal: true
+    });
+    if (proceed) {
+      let json_data = [];
+      this.actor.update({ ['system.healthbar']: JSON.stringify(json_data) });
+      ChatMessage.create({
+        user: game.user.id,
+        speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+        content: "Lebensleiste wurde zurückgesetzt."
+      });
+    }
+
+  }
   /**
    * Handle creating a new Owned Item for the actor using initial data defined in the HTML dataset
    * @param {Event} event   The originating click event

@@ -70,20 +70,9 @@
 
   <section class="grid grid-6col">
     <div class="resource flex-group-center">
-      <label for="system.health.value" class="resource-label">Health</label>
+      <label for="system.health.value" class="resource-label">Gesundheit</label>
       <div class="resource-content flexrow flex-center flex-between">
-        <input type="text" name="system.health.value" value="{{system.health.value}}" data-dtype="Number" />
-        <span> / </span>
         <input type="text" name="system.health.max" value="{{system.health.max}}" data-dtype="Number" />
-      </div>
-    </div>
-
-    <div class="resource flex-group-center">
-      <label for="system.exhaustion.value" class="resource-label">Erschöpfung</label>
-      <div class="resource-content flexrow flex-center flex-between">
-        <input type="text" name="system.exhaustion.value" value="{{system.exhaustion.value}}" data-dtype="Number" />
-        <span> / </span>
-        <input type="text" name="system.exhaustion.max" value="{{system.exhaustion.max}}" data-dtype="Number" />
       </div>
     </div>
 
@@ -117,6 +106,11 @@
       </div>
     </div>
   </section>
+
+  <!-- Healthbar -->
+  <div class="healthbar">
+    {{> "systems/dieseldrachen-vtt/templates/actor/parts/healthbar-partial.hbs" health_value=system.health.value}}
+  </div>
   {{!-- Sheet Tab Navigation --}}
   <nav class="sheet-tabs tabs" data-group="primary">
     {{!-- Default tab is specified in actor-sheet.mjs --}}

@@ -19,10 +19,15 @@
   @import 'components/resource';
   @import 'components/items';
   @import 'components/effects';
+  @import 'components/healthbar';
 }
 
   @import 'components/rolls';
 
   .tiny_input{
     width: 25px;
+  }
+
+  .medium_input{
+    width: 75px;
   }

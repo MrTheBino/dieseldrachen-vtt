@@ -3,7 +3,7 @@
     <img class='profile-img' src='{{item.img}}' data-edit='img' title='{{item.name}}' />
     <div class='header-fields'>
       <h1 class='charname'><input name='name' type='text' value='{{item.name}}' placeholder='Name' /></h1>
-      <div class='grid grid-3col'>
+      <div class='grid grid-2col'>
         <div class='resource'>
           <label class='resource-label'>Preis</label>
           <input type='text' name='system.purchasePrice' value='{{system.purchasePrice}}' data-dtype='Number' />
@@ -11,46 +11,61 @@
         <div class='resource'>
           <label class='resource-label'>Typ</label>
           <select name='system.weaponType' data-dtype='String'>
-            <option value='pistol' {{#if (eq system.weaponType 'pistol')}}selected{{/if}}>Pistole</option>
-            <option value='rifle' {{#if (eq system.weaponType 'rifle')}}selected{{/if}}>Gewehr</option>
+            <option value='pistol' {{#if (eq system.weaponType 'pistol' )}}selected{{/if}}>Pistole</option>
+            <option value='rifle' {{#if (eq system.weaponType 'rifle' )}}selected{{/if}}>Gewehr</option>
           </select>
-        </div>
-        <div class='resource'>
-          <label class='resource-label'>Präzision</label>
-          <input type='text' name='system.precision_near' value='{{system.precision_near}}' data-dtype='Number' />
-          <input type='text' name='system.precision_close' value='{{system.precision_close}}' data-dtype='Number' />
-            <input type='text' name='system.precision_far' value='{{system.precision_far}}' data-dtype='Number' />
-        </div>
-        <div class='resource'>
-          <label class='resource-label'>Schaden</label>
-          <input type='text' name='system.damage_near' value='{{system.damage_near}}' data-dtype='Number' />
-            <input type='text' name='system.damage_close' value='{{system.damage_close}}' data-dtype='Number' />
-            <input type='text' name='system.damage_far' value='{{system.damage_far}}' data-dtype='Number' />
-        </div>
-        
-        <div class='resource'>
-          <label class='resource-label'>Rate</label>
-          <input type='text' name='system.rate' value='{{system.rate}}' data-dtype='String' />
-        </div>
-
-        <div class='resource'>
-          <label class='resource-label'>Kapazität</label>
-          <input type='text' name='system.capacity' value='{{system.capacity}}' data-dtype='String' />
-        </div>
-
-        <div class='resource'>
-          <label class='resource-label'>Schuss</label>
-          <input type='text' name='system.bullets' value='{{system.bullets}}' data-dtype='Number' />
-        </div>
-
-        <div class='resource'>
-          <label class='resource-label'>Gewicht</label>
-          <input type='text' name='system.weight' value='{{system.weight}}' data-dtype='String' />
         </div>
       </div>
     </div>
   </header>
 
+  <div class="item-statistics grid grid-3col">
+    <div class='resource'>
+      <label class='resource-label'>Präzision</label>
+      <div class="grid grid-3col">
+        <input type='text' name='system.precision_near' value='{{system.precision_near}}' data-dtype='Number' />
+        <input type='text' name='system.precision_close' value='{{system.precision_close}}' data-dtype='Number' />
+        <input type='text' name='system.precision_far' value='{{system.precision_far}}' data-dtype='Number' />
+      </div>
+    </div>
+    <div class='resource'>
+      <label class='resource-label'>Schaden</label>
+      <div class="grid grid-3col">
+        <input type='text' name='system.damage_near' value='{{system.damage_near}}' data-dtype='Number' />
+        <input type='text' name='system.damage_close' value='{{system.damage_close}}' data-dtype='Number' />
+        <input type='text' name='system.damage_far' value='{{system.damage_far}}' data-dtype='Number' />
+      </div>
+    </div>
+
+    <div class='resource'>
+      <label class='resource-label'>Rate</label>
+      <div class="grid grid-1col">
+        <input type='text' name='system.rate' value='{{system.rate}}' data-dtype='String' class="medium_input" />
+      </div>
+    </div>
+
+    <div class='resource'>
+      <label class='resource-label'>Kapazität</label>
+      <div class="grid grid-1col">
+        <input type='text' name='system.capacity' value='{{system.capacity}}' data-dtype='String'
+          class="medium_input" />
+      </div>
+    </div>
+
+    <div class='resource'>
+      <label class='resource-label'>Schuss</label>
+      <div class="grid grid-1col">
+        <input type='text' name='system.bullets' value='{{system.bullets}}' data-dtype='Number' class="medium_input" />
+      </div>
+    </div>
+
+    <div class='resource'>
+      <label class='resource-label'>Bewegungsabzug</label>
+      <div class="grid grid-1col">
+        <input type='text' name='system.weight' value='{{system.weight}}' data-dtype='Number' class="medium_input" />
+      </div>
+    </div>
+  </div>
   {{! Sheet Tab Navigation }}
   <nav class='sheet-tabs tabs' data-group='primary'>
     <a class='item' data-tab='description'>Description</a>
@@ -71,6 +86,6 @@
       }}
     </div>
 
-    
+
   </section>
 </form>

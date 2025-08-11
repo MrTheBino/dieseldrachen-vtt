@@ -1,0 +1,39 @@
+.healthbar{
+    display: flex;
+    flex-direction: row;
+}
+
+.healthbar-segment{
+    border: 1px solid black;
+    width: 25px;
+    height: 25px;
+    margin-right: 2px;
+}
+
+.health-marker{
+    background-image: url("../assets/images/cross.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+}
+
+.exhaustion-marker{
+    background-image: url("../assets/images/slash.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+}
+
+.unused{
+    background-color: $c-stripe;
+}
+
+.green{
+    background-color: green;
+}
+
+.red{
+    background-color: red;
+}

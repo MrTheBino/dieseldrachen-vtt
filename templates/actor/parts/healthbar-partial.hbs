@@ -1,0 +1,20 @@
+{{#each healthbar_segments}}
+<div class="healthbar-segment {{this.css_class}}" data-healthvalue="{{this.index}}" title="Gesundheit: {{this.index}} - Links Klick: X | Rechts Klick: /">
+
+    {{#if (eq this.sign  '/')}}
+            <div class="exhaustion-marker">
+            </div>
+    {{else}}
+        {{#if (eq this.sign 'X')}}
+            <div class="health-marker">
+            </div>
+        {{else}}
+            {{this.value}}
+        {{/if}}
+    {{/if}}
+
+</div>
+{{/each}}
+<div class="healthbar-reset">
+    <i class="fa-solid fa-ban" inert></i>
+</div>

@@ -89,6 +89,22 @@ Handlebars.registerHelper('toLowerCase', function (str) {
   return str.toLowerCase();
 });
 
+Handlebars.registerHelper('isHealthMarker', function (str,value) {
+  console.log("str:" + str)
+  console.log("value:" + value)
+  if(parseInt(str) + 1 == value){
+    return true;
+  }
+  return false;
+});
+
+Handlebars.registerHelper('times', function(n, block) {
+    var accum = '';
+    for(var i = 0; i < n; ++i)
+        accum += block.fn(i);
+    return accum;
+});
+
 /* -------------------------------------------- */
 /*  Ready Hook                                  */
 /* -------------------------------------------- */

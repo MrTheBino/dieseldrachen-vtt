@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.1.5
+  - healthbar for PCs & NPCs
+  - enemies can use weapons
+  - correct melee damage calculations
+  - slightly improved styling
+  
 ## 0.1.4
   - fix xp and money
   - fixed melee weapons rolling, added weight params

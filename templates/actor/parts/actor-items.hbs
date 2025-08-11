@@ -84,7 +84,7 @@
         <h4>{{item.name}}</h4>
       </div>
       <div class='item-prop'>{{ localize (concat "DIESELDRACHEN.Ranges." item.system.range)}}</div>
-      <div class='item-prop'><i class="fas fa-dice-d6"></i> {{item.system.damage}}</div>
+      <div class='item-prop'>{{item.system.damage}}</div>
       <div class='item-prop'><input type="checkbox" {{#if item.system.mounted}} checked{{/if}} data-item-stat="system.mounted" class="item-editable-stat"></div>
       <div class='item-controls'>
         <a
@@ -169,7 +169,7 @@
 <ol class='items-list'>
   <li class='item flexrow items-header'>
     <div class='item-name'>{{localize 'Name'}}</div>
-    <div class='item-prop'>Gewicht</div>
+    <div class='item-prop'>Bewegungsabzug</div>
     <div class='item-prop'>Typ</div>
     <div class='item-prop'>Ladungen</div>
     <div class='item-controls'>
@@ -224,7 +224,7 @@
   <li class='item flexrow items-header'>
     <div class='item-name'>{{localize 'Name'}}</div>
     <div class='item-prop'>Anzahl</div>
-    <div class='item-prop'>Gewicht</div>
+    <div class='item-prop'>Bewegungsabzug</div>
     <div class='item-controls'>
       <a
         class='item-control item-create'
