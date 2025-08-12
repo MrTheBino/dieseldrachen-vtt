@@ -62,6 +62,10 @@ export class DieseldrachenActorSheet extends ActorSheet {
       this._prepareItems(context);
     }
 
+    if (actorData.type == 'vehicle') {
+      this._prepareItems(context);
+    }
+
     // Enrich biography info for display
     // Enrichment turns text like `[[/r 1d20]]` into buttons
     context.enrichedBiography = await TextEditor.enrichHTML(

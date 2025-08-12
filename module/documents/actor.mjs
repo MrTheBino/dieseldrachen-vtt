@@ -17,7 +17,7 @@ export class DieseldrachenActor extends Actor {
     data.prototypeToken = data.prototypeToken || {};
       
     let defaults = {};
-    if (data.type === "character" ) {
+    if (data.type === "character" || data.type === "vehicle") {
         defaults = {
           actorLink: true,
           disposition: CONST.TOKEN_DISPOSITIONS.FRIENDLY,

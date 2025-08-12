@@ -193,7 +193,8 @@ async function rollDialogV1Callback(actor, html) {
     dicePoolRoll: dicePoolRoll,
     total: dicePoolRoll.total,
     label: label,
-    isSuccess: isSuccess
+    isSuccess: isSuccess,
+    difficulty: difficulty
   }
   renderSkillRollResult(actor, rollDialogVars);
 }

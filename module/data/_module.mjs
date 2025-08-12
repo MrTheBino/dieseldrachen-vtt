@@ -2,6 +2,7 @@
 export {default as DieseldrachenActorBase} from "./base-actor.mjs";
 export {default as DieseldrachenCharacter} from "./actor-character.mjs";
 export {default as DieseldrachenNPC} from "./actor-npc.mjs";
+export {default as DieseldrachenVehicle} from "./actor-vehicle.mjs";
 
 // Export Items
 export {default as DieseldrachenItemBase} from "./base-item.mjs";

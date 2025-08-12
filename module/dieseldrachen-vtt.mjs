@@ -43,8 +43,10 @@ Hooks.once('init', function () {
   // with the Character/NPC as part of super.defineSchema()
   CONFIG.Actor.dataModels = {
     character: models.DieseldrachenCharacter,
-    npc: models.DieseldrachenNPC
+    npc: models.DieseldrachenNPC,
+    vehicle: models.DieseldrachenVehicle
   }
+  
   CONFIG.Item.documentClass = DieseldrachenItem;
   CONFIG.Item.dataModels = {
     item: models.DieseldrachenItem,
