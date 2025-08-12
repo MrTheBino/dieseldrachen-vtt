@@ -16,6 +16,7 @@ export default class DieseldrachenVehicle extends DieseldrachenActorBase {
     schema.acceleration = new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 });
     schema.mass = new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 });
     schema.armor = new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 });
+    schema.seats = new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 });
 
     schema.agility = new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 });
 

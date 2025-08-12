@@ -59,7 +59,8 @@ Hooks.once('init', function () {
     knowledge: models.DieseldrachenKnowledge,
     artefact: models.DieseldrachenArtefact,
     technicManeuver: models.DieseldrachenTechnicManeuver,
-    vehicleUpgrade: models.DieseldrachenVehicleUpgrade
+    vehicleUpgrade: models.DieseldrachenVehicleUpgrade,
+    vehicleWeapon: models.DieseldrachenVehicleWeapon
   }
 
   // Active Effects are never copied to the Actor,

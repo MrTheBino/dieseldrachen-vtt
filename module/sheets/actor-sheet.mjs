@@ -119,6 +119,7 @@ export class DieseldrachenActorSheet extends ActorSheet {
     const artefacts = [];
     const technicManeuvers = [];
     const vehicleUpgrades = [];
+    const vehicleWeapons = [];
     const spells = {
       0: [],
       1: [],
@@ -179,6 +180,9 @@ export class DieseldrachenActorSheet extends ActorSheet {
       else if (i.type === 'vehicleUpgrade') {
         vehicleUpgrades.push(i);
       }
+      else if (i.type === 'vehicleWeapon') {
+        vehicleWeapons.push(i);
+      }
       else if (i.type === 'artefact') {
         artefacts.push(i);
         if (i.system.weight != undefined) {
@@ -229,6 +233,7 @@ export class DieseldrachenActorSheet extends ActorSheet {
     context.artefacts = artefacts;
     context.technicManeuvers = technicManeuvers;
     context.vehicleUpgrades = vehicleUpgrades;
+    context.vehicleWeapons = vehicleWeapons;
 
     let numSegments = 33;
     if(this.object.type == "npc"){

@@ -121,7 +121,8 @@
       "knowledge": "Wissensbereich",
       "artefact": "Artefakt",
       "technicManeuver": "Technik / Manöver",
-      "vehicleUpgrade": "Fahrzeugumbau"
+      "vehicleUpgrade": "Fahrzeugumbau",
+      "vehicleWeapon": "Geschütz"
     }
   }
 }
