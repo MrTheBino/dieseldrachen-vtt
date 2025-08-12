@@ -66,7 +66,8 @@
       "RollResultDetails": "Details",
       "RollSuccess": "Erfolg",
       "RollFailure": "Misserfolg",
-      "Roll": "Würfeln"
+      "Roll": "Würfeln",
+      "RollCriticalMiss": "Kritischer Misserfolg"
     },
     "SheetLabels": {
       "Actor": "Dieseldrachen Actor Sheet",

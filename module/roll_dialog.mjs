@@ -5,6 +5,32 @@ export function addShowDicePromise(promises, roll) {
   }
 }
 
+function isCriticalMiss(diceRoll){
+  let t = diceRoll.result
+  
+  t = t.replace(" ","").split("+")
+
+  let miss_counter_1 = 0;
+  let miss_counter_2 = 0;
+  t.forEach((roll) => {
+    if (roll.includes("1")) {
+      miss_counter_1++;
+    }
+    if (roll.includes("2")) {
+      miss_counter_2++;
+    }
+  });
+
+  if(miss_counter_1 >= 3){
+    return true;
+  }
+  if(miss_counter_2 == 1 && miss_counter_1 >= 2){
+    return true;
+  }
+
+  return false;
+}
+
 export async function rollDialogMeleeWeaponV1(actor, itemId, label) {
   const item = actor.items.get(itemId);
   const actorRollData = actor.getRollData();
@@ -185,6 +211,8 @@ async function rollDialogV1Callback(actor, html) {
   addShowDicePromise(dicePromises, dicePoolRoll);
   await Promise.all(dicePromises);
 
+  let criticalMiss = isCriticalMiss(dicePoolRoll);
+
   if (difficulty && dicePoolRoll.total >= difficulty) {
     isSuccess = true;
   }
@@ -194,7 +222,8 @@ async function rollDialogV1Callback(actor, html) {
     total: dicePoolRoll.total,
     label: label,
     isSuccess: isSuccess,
-    difficulty: difficulty
+    difficulty: difficulty,
+    isCriticalMiss: criticalMiss
   }
   renderSkillRollResult(actor, rollDialogVars);
 }
@@ -240,6 +269,8 @@ async function rollDialogV1RangedWeaponCallback(actor, html) {
   await dicePoolRoll.evaluate();
 
 
+  let criticalMiss = isCriticalMiss(dicePoolRoll);
+
   addShowDicePromise(dicePromises, dicePoolRoll);
   await Promise.all(dicePromises);
 
@@ -255,7 +286,8 @@ async function rollDialogV1RangedWeaponCallback(actor, html) {
     range: game.i18n.localize(`DIESELDRACHEN.Ranges.${range}`),
     difficulty: difficulty,
     isSuccess: isSuccess,
-    rollFormula: rollFormula
+    rollFormula: rollFormula,
+    isCriticalMiss: criticalMiss
   }
   renderRangedWeaponRollResult(actor, rollDialogVars);
 }
@@ -281,7 +313,7 @@ async function rollDialogV1MeleeWeaponCallback(actor, html) {
 
   const dicePoolRoll = new Roll(rollFormula, actorRollData);
   await dicePoolRoll.evaluate();
-
+  let criticalMiss = isCriticalMiss(dicePoolRoll);
 
   addShowDicePromise(dicePromises, dicePoolRoll);
   await Promise.all(dicePromises);
@@ -340,7 +372,8 @@ async function rollDialogV1MeleeWeaponCallback(actor, html) {
     damageRollFormula: rollFormulaDamage,
     range: game.i18n.localize(`DIESELDRACHEN.Ranges.${item.system.range}`),
     difficulty: difficulty,
-    isSuccess: isSuccess
+    isSuccess: isSuccess,
+    isCriticalMiss: criticalMiss
   }
   renderMeleeWeaponRollResult(actor, rollDialogVars);
 }
