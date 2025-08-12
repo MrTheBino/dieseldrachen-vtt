@@ -120,7 +120,8 @@
       "trick": "Trick",
       "knowledge": "Wissensbereich",
       "artefact": "Artefakt",
-      "technicManeuver": "Technik / Manöver"
+      "technicManeuver": "Technik / Manöver",
+      "vehicleUpgrade": "Fahrzeugumbau"
     }
   }
 }

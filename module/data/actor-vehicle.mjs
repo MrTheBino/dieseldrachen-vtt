@@ -37,6 +37,13 @@ export default class DieseldrachenVehicle extends DieseldrachenActorBase {
       max: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
     })
 
+     schema.motors = new fields.SchemaField({
+      damage: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
+      max: new fields.NumberField({ ...requiredInteger, initial: 4, min: 1 , max: 4}),
+    })
+
+    schema.tireWing = new fields.NumberField({ ...requiredInteger, initial: 0, mmax: 4 })
+
     return schema
   }
 

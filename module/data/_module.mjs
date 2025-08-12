@@ -16,3 +16,4 @@ export {default as DieseldrachenTrick} from "./item-trick.mjs";
 export {default as DieseldrachenKnowledge} from "./item-knowledge.mjs";
 export {default as DieseldrachenArtefact} from "./item-artefact.mjs";
 export {default as DieseldrachenTechnicManeuver} from "./item-technic-maneuver.mjs";
+export {default as DieseldrachenVehicleUpgrade} from "./item-vehicle-upgrade.mjs";

@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 0.2
+  - many usability improvements
+  - critial miss handling
+  - beginning of vehicle actor sheet
+  
 ## 0.1.5
   - healthbar for PCs & NPCs
   - enemies can use weapons

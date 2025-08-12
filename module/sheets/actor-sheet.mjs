@@ -118,6 +118,7 @@ export class DieseldrachenActorSheet extends ActorSheet {
     const knowledge = [];
     const artefacts = [];
     const technicManeuvers = [];
+    const vehicleUpgrades = [];
     const spells = {
       0: [],
       1: [],
@@ -175,6 +176,9 @@ export class DieseldrachenActorSheet extends ActorSheet {
       else if (i.type === 'technicManeuver') {
         technicManeuvers.push(i);
       }
+      else if (i.type === 'vehicleUpgrade') {
+        vehicleUpgrades.push(i);
+      }
       else if (i.type === 'artefact') {
         artefacts.push(i);
         if (i.system.weight != undefined) {
@@ -224,6 +228,7 @@ export class DieseldrachenActorSheet extends ActorSheet {
     context.knowledge = knowledge;
     context.artefacts = artefacts;
     context.technicManeuvers = technicManeuvers;
+    context.vehicleUpgrades = vehicleUpgrades;
 
     let numSegments = 33;
     if(this.object.type == "npc"){
@@ -294,10 +299,42 @@ export class DieseldrachenActorSheet extends ActorSheet {
     // Add Inventory Item
     html.on('click', '.item-create', this._onItemCreate.bind(this));
 
+    html.on('click','.vehicle_motor_damage', (ev) => {
+      const value = parseInt(ev.currentTarget.dataset.value);
+      const unused = parseInt(ev.currentTarget.dataset.unused);
+      const name = 'system.motors.damage';
+
+      if(unused == 1){
+        return;
+      }
+
+      let t = parseInt(foundry.utils.getProperty(this.actor, name));
+      if(t === 1 && value === 1){
+        this.actor.update({ [name]: 0 });  
+      }else{
+        this.actor.update({ [name]: value });
+      }
+      
+      
+    });
+
+    html.on('click','.tire_wing_damage', (ev) => {
+      const value = parseInt(ev.currentTarget.dataset.value);
+      const unused = parseInt(ev.currentTarget.dataset.unused);
+      const name = 'system.tireWing';
+
+      let t = parseInt(foundry.utils.getProperty(this.actor, name));
+      if(t === 1 && value === 1){
+        this.actor.update({ [name]: 0 });  
+      }else{
+        this.actor.update({ [name]: value });
+      }
+    });
+    
+
     html.on('change', '.item-editable-stat', (ev) => {
       const li = $(ev.currentTarget).parents('.item');
       const item = this.actor.items.get(li.data('itemId'));
-      console.log(`Updating item ${item.name} (${item.id}) with ${ev.target.dataset.itemStat}=${ev.target.value}`);
 
       if (ev.target.type === 'checkbox') {
         item.update({ [ev.target.dataset.itemStat]: ev.target.checked });

@@ -18,6 +18,8 @@ export const preloadHandlebarsTemplates = async function () {
     'systems/dieseldrachen-vtt/templates/actor/parts/actor-technic-maneuvers.hbs',
     'systems/dieseldrachen-vtt/templates/actor/parts/actor-fight.hbs',
     'systems/dieseldrachen-vtt/templates/actor/parts/healthbar-partial.hbs',
+    'systems/dieseldrachen-vtt/templates/actor/parts/motor-damage-partial.hbs',
+    'systems/dieseldrachen-vtt/templates/actor/parts/tire-wing-partial.hbs',
     // Item partials
     'systems/dieseldrachen-vtt/templates/item/parts/item-effects.hbs',
   ]);

@@ -506,6 +506,18 @@ form > nav > a.item.active {
 .dieseldrachen-vtt .red {
   background-color: red;
 }
+.dieseldrachen-vtt .vehicle_motor_damage .vmd_grey {
+  color: grey;
+}
+.dieseldrachen-vtt .vehicle_motor_damage .vmd_red {
+  color: red;
+}
+.dieseldrachen-vtt .tire_wing_damage .vmd_grey {
+  color: grey;
+}
+.dieseldrachen-vtt .tire_wing_damage .vmd_red {
+  color: red;
+}
 
 .card-title {
   font-family: "Voltaire", sans-serif;
