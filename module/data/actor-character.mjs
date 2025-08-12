@@ -7,6 +7,7 @@ export default class DieseldrachenCharacter extends DieseldrachenActorBase {
     const requiredInteger = { required: true, nullable: false, integer: true };
     const schema = super.defineSchema();
 
+    schema.locked = new fields.BooleanField({ required: true, initial: false });
     schema.luck =  new fields.NumberField({ ...requiredInteger, initial: 0, max: 3 });
     schema.xp =  new fields.NumberField({ ...requiredInteger, initial: 0 });
     schema.money =  new fields.NumberField({ ...requiredInteger, initial: 0 });

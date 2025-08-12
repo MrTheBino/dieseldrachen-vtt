@@ -263,6 +263,10 @@ export class DieseldrachenActorSheet extends ActorSheet {
       let value = parseInt(input.dataset.value);
       const name = input.dataset.name;
 
+      if(this.actor.system.locked == true){
+        return;
+      }
+
       let t = foundry.utils.getProperty(this.actor, name);
       if (t == value) {
         // resetting

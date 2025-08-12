@@ -236,9 +236,43 @@
   font-style: normal;
 }
 
+.color-d4 {
+  color: #00B1B9;
+}
+
+.color-d6 {
+  color: #2B9C45;
+}
+
+.color-d8 {
+  color: #F29207;
+}
+
+.color-d10 {
+  color: #E15E02;
+}
+
+.color-d12 {
+  color: #B52215;
+}
+
+.small {
+  font-size: 0.75em;
+}
+
+form > nav > a.item {
+  font-family: "Voltaire", sans-serif;
+}
+form > nav > a.item.active {
+  font-weight: bold;
+}
+
 /* Styles limited to dieseldrachen-vtt sheets */
 .dieseldrachen-vtt .item-form {
   font-family: "Roboto", sans-serif;
+}
+.dieseldrachen-vtt .flex-fix {
+  flex-grow: 0;
 }
 .dieseldrachen-vtt .sheet-header {
   flex: 0 auto;
@@ -313,6 +347,11 @@
   background-color: rgba(0, 0, 0, 0.15);
   margin-bottom: 10px;
 }
+.dieseldrachen-vtt .healthbar-reset {
+  width: 30px;
+  height: 30px;
+  padding: 0;
+}
 .dieseldrachen-vtt .items-header {
   height: 28px;
   margin: 2px 0;
@@ -353,6 +392,7 @@
   text-align: left;
   align-items: center;
   display: flex;
+  width: 100%;
 }
 .dieseldrachen-vtt .items-list .item-name h3,
 .dieseldrachen-vtt .items-list .item-name h4 {
@@ -397,6 +437,9 @@
   border-left: 1px solid #c9c7b8;
   border-right: 1px solid #c9c7b8;
   font-size: 12px;
+}
+.dieseldrachen-vtt .items-list .item-align-left {
+  align-items: flex-start;
 }
 .dieseldrachen-vtt .items-list .items-header {
   height: 28px;

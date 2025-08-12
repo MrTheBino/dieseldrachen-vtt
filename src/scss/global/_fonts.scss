@@ -29,3 +29,35 @@
   font-weight: 400;
   font-style: normal;
 }
+
+.color-d4{
+  color: #00B1B9
+}
+
+.color-d6{
+  color: #2B9C45;
+}
+
+.color-d8{
+  color: #F29207;
+}
+
+.color-d10{
+  color: #E15E02;
+}
+
+.color-d12{
+  color: #B52215;
+}
+
+.small{
+  font-size: 0.75em;
+}
+
+
+form > nav > a.item{
+  font-family: "Voltaire", sans-serif;
+  &.active{
+    font-weight: bold;
+  }
+}

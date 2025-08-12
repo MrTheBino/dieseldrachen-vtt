@@ -95,6 +95,12 @@
       "short": "Nah",
       "medium": "Mittel",
       "long": "Lang"
+    },
+    "technicManeuvers":{
+      "types":{
+        "maneuver": "Manöver",
+        "technic": "Technik"
+      }
     }
   },
   "TYPES": {

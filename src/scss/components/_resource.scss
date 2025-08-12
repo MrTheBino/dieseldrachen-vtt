@@ -4,9 +4,7 @@
   font-weight: bold;
 }
 
-.attribute-group{
-  
-}
+.attribute-group {}
 
 .attribute-label {
   font-family: "Voltaire", sans-serif;
@@ -33,7 +31,13 @@
   padding: 1px;
 }
 
-.social-container{
- background-color: $c-stripe;
- margin-bottom: 10px; 
+.social-container {
+  background-color: $c-stripe;
+  margin-bottom: 10px;
+}
+
+.healthbar-reset {
+  width: 30px;
+  height: 30px;
+  padding: 0;
 }

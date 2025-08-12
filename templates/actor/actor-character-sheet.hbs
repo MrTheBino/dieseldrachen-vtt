@@ -1,4 +1,4 @@
-<form class="{{cssClass}} {{actor.type}} flexcol" autocomplete="off">
+<form class="{{cssClass}} {{actor.type}} flexcol flex-fix" autocomplete="off">
 
   {{!-- Sheet Header --}}
   <header class="sheet-header">
@@ -77,7 +77,7 @@
     </div>
 
     <div class="resource flex-group-center">
-      <label for="mobilityValue" class="resource-label">Beweglichkeit</label>
+      <label for="mobilityValue" class="resource-label" title="Beweglichkeit = 12 - Schutz - 1 Je Gepäckstück (Auf Würfelstufe abgerundet)">Beweglichkeit</label>
       <div class="resource-content flexrow flex-center flex-between">
         <input type="text" id="mobilityValue" value="D{{mobilityDice}} | {{mobilityValue}}" disabled />
       </div>
@@ -103,6 +103,12 @@
         <input type="text" name="system.luck" value="{{system.luck}}" data-dtype="Number" />
         <span> / </span>
         <input type="text" value="3" disabled />
+      </div>
+    </div>
+    <div class="resource flex-group-center">
+      <label for="system.luck" class="resource-label">Gesperrt <i class="fa-solid fa-lock"></i></label>
+      <div class="resource-content flex-center">
+        <input type="checkbox" name="system.locked" {{#if system.locked}}checked{{/if}} data-dtype="Boolean"/>
       </div>
     </div>
   </section>
@@ -398,6 +404,9 @@
             </div>
             <div class="features">
               <h3 class="quick-label">Technik &amp; Manöver</h3>
+              <div class="small">
+                4xD6, 3xD8, 2xD10, 1xD12
+              </div>
               {{> "systems/dieseldrachen-vtt/templates/actor/parts/actor-technic-maneuvers.hbs"}}
             </div>
             <div class="features">

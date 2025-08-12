@@ -11,7 +11,7 @@
     </li>
     {{#each meleeWeapons as |item id|}}
     {{#if (eq item.system.mounted true)}}
-    <li class='item flexrow' data-item-id='{{item._id}}'>
+    <li class='item flexcol item-align-left' data-item-id='{{item._id}}'>
         <div class='item-name'>
             <div class='item-image'>
                 <a class='rollable' data-roll-type='meleeWeapon'>
@@ -29,7 +29,7 @@
     {{/each}}
     {{#each rangedWeapons as |item id|}}
     {{#if (eq item.system.mounted true)}}
-    <li class='item flexrow' data-item-id='{{item._id}}'>
+    <li class='item flexcol item-align-left' data-item-id='{{item._id}}'>
         <div class='item-name'>
             <div class='item-image'>
                 <a class='rollable' data-roll-type='rangedWeapon'>
