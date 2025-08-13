@@ -56,14 +56,13 @@
 
   <div class="npc-items">
     <!-- Nahkampfwaffen -->
-    <h3>Nahkampfwaffen</h3>
+    <h3 class="quick-label">Nahkampfwaffen</h3>
     <ol class='items-list'>
       <li class='item flexrow items-header'>
         <div class='item-name'>{{localize 'Name'}}</div>
         <div class='item-prop'>Reichweite</div>
         <div class='item-prop'>Schaden</div>
         <div class='item-prop'>Waffengewicht</div>
-        <div class='item-prop'>Ausgerüstet</div>
         <div class='item-controls'>
           <a class='item-control item-create' title='{{localize "DOCUMENT.Create" type=' Item'}}'
             data-type='meleeWeapon'>
@@ -84,8 +83,6 @@
         <div class='item-prop'>{{ localize (concat "DIESELDRACHEN.Ranges." item.system.range)}}</div>
         <div class='item-prop'>{{item.system.damage}}</div>
         <div class='item-prop'>D{{item.system.weaponWeight}}</div>
-        <div class='item-prop'><input type="checkbox" {{#if item.system.mounted}} checked{{/if}}
-            data-item-stat="system.mounted" class="item-editable-stat"></div>
         <div class='item-controls'>
           <a class='item-control item-edit' title='{{localize "DOCUMENT.Update" type=' Item'}}'>
             <i class='fas fa-edit'></i>
@@ -99,7 +96,7 @@
     </ol>
 
     <!-- Fernkampfwaffen -->
-    <h3>Fernkampfwaffen</h3>
+    <h3 class="quick-label">Fernkampfwaffen</h3>
     <ol class='items-list'>
       <li class='item flexrow items-header'>
         <div class='item-name'>{{localize 'Name'}}</div>
@@ -108,7 +105,6 @@
         <div class='item-prop'>Rate</div>
         <div class='item-prop'>Kap.</div>
         <div class='item-prop'>Schuss</div>
-        <div class='item-prop'>Ausgerüstet</div>
         <div class='item-controls'>
           <a class='item-control item-create' title='{{localize "DOCUMENT.Create" type=' Item'}}'
             data-type='rangedWeapon'>
@@ -132,8 +128,6 @@
         <div class='item-prop'>{{item.system.rate}}</div>
         <div class='item-prop'>{{item.system.capacity}}</div>
         <div class='item-prop'>{{item.system.bullets}}</div>
-        <div class='item-prop'><input type="checkbox" {{#if item.system.mounted}} checked{{/if}}
-            data-item-stat="system.mounted" class="item-editable-stat"></div>
         <div class='item-controls'>
           <a class='item-control item-edit' title='{{localize "DOCUMENT.Update" type=' Item'}}'>
             <i class='fas fa-edit'></i>

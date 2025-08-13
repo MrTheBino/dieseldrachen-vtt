@@ -2,6 +2,10 @@
   "DIESELDRACHEN": {
     "Keys":{
       "system":{
+        "acceleration": "Beschleunigung",
+        "mass": "Masse",
+        "agility": "Wendigkeit",
+        "agilityDice": "Wendigkeit",
         "social":{
           "group":{
             "value_neg": "Gruppe Negativ",
@@ -111,7 +115,7 @@
       "vehicle": "Fahrzeug"
     },
     "Item": {
-      "item": "Item",
+      "item": "Gegenstand",
       "feature": "Feature",
       "spell": "Spell",
       "clothing": "Kleidung",

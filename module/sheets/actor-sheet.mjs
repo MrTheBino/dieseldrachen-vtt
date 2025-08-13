@@ -2,7 +2,7 @@ import {
   onManageActiveEffect,
   prepareActiveEffectCategories,
 } from '../helpers/effects.mjs';
-
+import { DieseldrachenItem } from '../documents/item.mjs';
 import { rollDialogSkillV1, rollDialogRangedWeaponV1, rollDialogMeleeWeaponV1 } from '../roll_dialog.mjs';
 
 /**
@@ -14,7 +14,7 @@ export class DieseldrachenActorSheet extends ActorSheet {
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
       classes: ['dieseldrachen-vtt', 'sheet', 'actor'],
-      width: 700,
+      width: 780,
       height: 800,
       tabs: [
         {
@@ -164,7 +164,7 @@ export class DieseldrachenActorSheet extends ActorSheet {
       }
       else if (i.type === 'rangedWeapon') {
         rangedWeapons.push(i);
-        if (i.system.weight != undefined) {
+        if (i.system.mounted && i.system.weight != undefined) {
           mobilityValue = mobilityValue - i.system.weight;
         }
       }
@@ -236,12 +236,12 @@ export class DieseldrachenActorSheet extends ActorSheet {
     context.vehicleWeapons = vehicleWeapons;
 
     let numSegments = 33;
-    if(this.object.type == "npc"){
-      numSegments = this.object.system.health.max+1;
+    if (this.object.type == "npc") {
+      numSegments = this.object.system.health.max + 1;
     }
 
     context.healthbar_segments = new Array(numSegments);
-    
+
     let json_data = JSON.parse(this.object.system.healthbar || "[]");
     for (let i = 0; i < numSegments; i++) {
       context.healthbar_segments[i] = { sign: json_data[i], value: i, index: i, css_class: "" };
@@ -277,7 +277,7 @@ export class DieseldrachenActorSheet extends ActorSheet {
       let value = parseInt(input.dataset.value);
       const name = input.dataset.name;
 
-      if(this.actor.system.locked == true){
+      if (this.actor.system.locked == true) {
         return;
       }
 
@@ -304,38 +304,57 @@ export class DieseldrachenActorSheet extends ActorSheet {
     // Add Inventory Item
     html.on('click', '.item-create', this._onItemCreate.bind(this));
 
-    html.on('click','.vehicle_motor_damage', (ev) => {
+    html.on('click', '.vehicle_motor_damage', (ev) => {
       const value = parseInt(ev.currentTarget.dataset.value);
       const unused = parseInt(ev.currentTarget.dataset.unused);
       const name = 'system.motors.damage';
 
-      if(unused == 1){
+      if (unused == 1) {
         return;
       }
 
       let t = parseInt(foundry.utils.getProperty(this.actor, name));
-      if(t === 1 && value === 1){
-        this.actor.update({ [name]: 0 });  
-      }else{
+      if (t === 1 && value === 1) {
+        this.actor.update({ [name]: 0 });
+      } else {
         this.actor.update({ [name]: value });
       }
-      
-      
+
+
     });
 
-    html.on('click','.tire_wing_damage', (ev) => {
+    html.on('click', '.vehicle_speed', (ev) => {
+      const value = parseInt(ev.currentTarget.dataset.value);
+      const unused = parseInt(ev.currentTarget.dataset.unused);
+      const name = 'system.speed.value';
+
+      
+      if (unused == 1) {
+        return;
+      }
+
+      
+      let t = parseInt(foundry.utils.getProperty(this.actor, name));
+      if (t === 1 && value === 1) {
+        this.actor.update({ [name]: 0 });
+      } else {
+        this.actor.update({ [name]: value });
+      }
+    });
+
+    html.on('click', '.tire_wing_damage', (ev) => {
       const value = parseInt(ev.currentTarget.dataset.value);
       const unused = parseInt(ev.currentTarget.dataset.unused);
       const name = 'system.tireWing';
 
       let t = parseInt(foundry.utils.getProperty(this.actor, name));
-      if(t === 1 && value === 1){
-        this.actor.update({ [name]: 0 });  
-      }else{
+      if (t === 1 && value === 1) {
+        this.actor.update({ [name]: 0 });
+      } else {
         this.actor.update({ [name]: value });
       }
     });
-    
+
 
     html.on('change', '.item-editable-stat', (ev) => {
       const li = $(ev.currentTarget).parents('.item');
@@ -383,7 +402,7 @@ export class DieseldrachenActorSheet extends ActorSheet {
 
 
     html.on('click', '.healthbar-reset', (ev) => {
-      this._resetHealthBar(); 
+      this._resetHealthBar();
     });
 
     html.on('contextmenu', '.healthbar-segment', (ev) => {
@@ -441,16 +460,17 @@ export class DieseldrachenActorSheet extends ActorSheet {
     // Initialize a default name.
     const name = `New ${type.capitalize()}`;
     // Prepare the item object.
+
     const itemData = {
       name: name,
       type: type,
-      system: data,
+      system: data
     };
     // Remove the type from the dataset since it's in the itemData.type prop.
     delete itemData.system['type'];
 
     // Finally, create the item!
-    return await Item.create(itemData, { parent: this.actor });
+    return await DieseldrachenItem.create(itemData, { parent: this.actor });
   }
 
 

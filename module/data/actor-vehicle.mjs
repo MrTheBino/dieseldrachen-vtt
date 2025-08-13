@@ -19,6 +19,7 @@ export default class DieseldrachenVehicle extends DieseldrachenActorBase {
     schema.seats = new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 });
 
     schema.agility = new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 });
+    schema.agilityDice = new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 });
 
     schema.size = new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 });
     
@@ -29,7 +30,7 @@ export default class DieseldrachenVehicle extends DieseldrachenActorBase {
 
 
      schema.speed = new fields.SchemaField({
-      value: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
+      value: new fields.NumberField({ ...requiredInteger, initial: 1, min: 0 }),
       max: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
     })
 

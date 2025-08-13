@@ -12,25 +12,25 @@ export class DieseldrachenActor extends Actor {
     super.prepareData();
   }
 
-   static async create(data, options={}) {
+  static async create(data, options = {}) {
     //make default Friendly and Linked on Creation
     data.prototypeToken = data.prototypeToken || {};
-      
+
     let defaults = {};
     if (data.type === "character" || data.type === "vehicle") {
-        defaults = {
-          actorLink: true,
-          disposition: CONST.TOKEN_DISPOSITIONS.FRIENDLY,
-        };
+      defaults = {
+        actorLink: true,
+        disposition: CONST.TOKEN_DISPOSITIONS.FRIENDLY,
+      };
     }
 
-    
+
     foundry.utils.mergeObject(data.prototypeToken, defaults, { overwrite: false });
-    
+
     const actor = await super.create(data, options);
     return actor;
   }
-  
+
   /** @override */
   prepareBaseData() {
     // Data modifications in this step occur before processing embedded
@@ -71,7 +71,7 @@ export class DieseldrachenActor extends Actor {
    * @returns {object} Plain object either via deepClone or the spread operator.
    */
   toPlainObject() {
-    const result = {...this};
+    const result = { ...this };
 
     // Simplify system data.
     result.system = this.system.toPlainObject();

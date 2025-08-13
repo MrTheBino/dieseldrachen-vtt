@@ -1,18 +1,38 @@
-.vehicle_motor_damage{
-    .vmd_grey{
+.vehicle_motor_damage {
+    .vmd_grey {
         color: grey;
     }
-    .vmd_red{
+
+    .vmd_red {
         color: red;
     }
+
+    font-size: 1.2em;
+    padding-top: 5px;
 }
 
-
-.tire_wing_damage{
-    .vmd_grey{
+.vehicle_speed {
+    .vmd_grey {
         color: grey;
     }
-    .vmd_red{
+
+    .vmd_red {
         color: red;
     }
+
+    font-size: 1.2em;
+    padding-top: 5px;
+}
+
+.tire_wing_damage {
+    .vmd_grey {
+        color: grey;
+    }
+
+    .vmd_red {
+        color: red;
+    }
+
+    font-size: 1.2em;
+    padding-top: 5px;
 }

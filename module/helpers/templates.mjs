@@ -20,6 +20,7 @@ export const preloadHandlebarsTemplates = async function () {
     'systems/dieseldrachen-vtt/templates/actor/parts/healthbar-partial.hbs',
     'systems/dieseldrachen-vtt/templates/actor/parts/motor-damage-partial.hbs',
     'systems/dieseldrachen-vtt/templates/actor/parts/tire-wing-partial.hbs',
+    'systems/dieseldrachen-vtt/templates/actor/parts/speed-partial.hbs',
     // Item partials
     'systems/dieseldrachen-vtt/templates/item/parts/item-effects.hbs',
   ]);

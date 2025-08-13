@@ -50,8 +50,6 @@ Hooks.once('init', function () {
   CONFIG.Item.documentClass = DieseldrachenItem;
   CONFIG.Item.dataModels = {
     item: models.DieseldrachenItem,
-    feature: models.DieseldrachenFeature,
-    spell: models.DieseldrachenSpell,
     clothing: models.DieseldrachenClothing,
     meleeWeapon: models.DieseldrachenMeleeWeapon,
     rangedWeapon: models.DieseldrachenRangedWeapon,

@@ -1,19 +1,34 @@
+.resource-group{
+  background-color:#f5f5dc73;
+  padding: 5px;
+  border: 1px solid black;
+  border-radius: 3px;
+}
+
 .resource-label {
   font-family: "Voltaire", sans-serif;
   font-weight: 400;
   font-weight: bold;
 }
 
-.attribute-group {}
+.attribute-group {
+  background-color:#f5f5dc73;
+  padding: 5px;
+  padding-left: 0px;
+  border: 1px solid black;
+  border-radius: 3px;
+  margin-bottom: 5px;
+}
 
 .attribute-label {
   font-family: "Voltaire", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 1.4em;
   color: #333;
-  border-bottom: 1px solid black;
+  font-weight: bold;
   background-color: $c-stripe;
+  padding: 5px;
+  text-transform:uppercase;
+  margin-top: 5px;
+  font-size: 1.4em;
 }
 
 .ability-label {
@@ -21,23 +36,58 @@
   font-size: 1.2em;
   color: #333;
   font-weight: normal;
+  //border-bottom: 2px solid black;
+  text-align: right;
+  padding-right: 9px;
 }
 
+.resource-label-social{
+  font-family: "Voltaire", sans-serif;
+  font-size: 1.2em;
+  color: #333;
+  font-weight: bold;
+  //border-bottom: 2px solid black;
+}
 .quick-label {
   font-family: "Voltaire", sans-serif;
   color: #333;
-  font-weight: normal;
+  font-weight: bold;
   background-color: $c-stripe;
-  padding: 1px;
+  padding: 5px;
+  text-transform:uppercase;
+  margin-top: 5px;
 }
 
 .social-container {
   background-color: $c-stripe;
   margin-bottom: 10px;
+  padding: 5px;
 }
 
 .healthbar-reset {
   width: 30px;
   height: 30px;
   padding: 0;
+}
+
+.tiny-text{
+  font-size: 0.5em;
+  font-weight: bold;
+}
+
+.tiny-dice-label{
+  font-size: 0.5em;
+  font-weight: bold;
+}
+
+.vehicle-condition-marker{
+     background-color: yellow;
+    border-radius: 60px;
+    color: black;
+    width: 20px;
+    display: inline-block;
+}
+
+.resource-help-text{
+  font-size: 0.75em;
 }

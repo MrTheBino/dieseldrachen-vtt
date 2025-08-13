@@ -1,0 +1,5 @@
+{{#if (gt value max)}}
+    <span class="vehicle_speed " data-unused="1" data-value="{{value}}"><i class="fa-solid fa-user-pilot vmd_grey"></i></span>
+{{else}}
+    <span class="vehicle_speed " data-unused="0" data-value="{{value}}"><i class="fa-solid fa-user-pilot {{#if (gte system.speed.value value)}}vmd_red{{/if}}"></i></span>
+{{/if}}

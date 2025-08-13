@@ -12,6 +12,65 @@ export class DieseldrachenItem extends Item {
     super.prepareData();
   }
 
+  static async create(data, options = {}) {
+    //make default Friendly and Linked on Creation
+    data.prototypeToken = data.prototypeToken || {};
+
+    let defaults = {};
+    let image = null;
+    
+        
+
+    console.log(data.type);
+    switch(data.type){
+      default:
+        image = "systems/dieseldrachen-vtt/assets/icons/item-default.svg";
+        break;
+      case "knowledge":
+        image = "systems/dieseldrachen-vtt/assets/icons/item-knowledge.svg";
+        break
+      case "clothing":
+        image = "systems/dieseldrachen-vtt/assets/icons/item-clothing.svg";
+        break
+      case "meleeWeapon":
+        image = "systems/dieseldrachen-vtt/assets/icons/item-melee-weapon.svg";
+        break
+      case "rangedWeapon":
+        image = "systems/dieseldrachen-vtt/assets/icons/item-ranged-weapon.svg";
+        break
+      case "trick":
+        image = "systems/dieseldrachen-vtt/assets/icons/item-trick.svg";
+        break
+      case "knowledge":
+        image = "systems/dieseldrachen-vtt/assets/icons/item-knowledge.svg";
+        break
+      case "artefact":
+        image = "systems/dieseldrachen-vtt/assets/icons/item-artefact.svg";
+        break
+      case "technicManeuver":
+        image = "systems/dieseldrachen-vtt/assets/icons/item-technic-maneuver.svg";
+        break
+      case "vehicleUpgrade":
+        image = "systems/dieseldrachen-vtt/assets/icons/item-vehicle-upgrade.svg";
+        break
+      case "vehicleWeapon":
+        image = "systems/dieseldrachen-vtt/assets/icons/item-vehicle-weapon.svg";
+        break
+    }
+
+    if (image != null) {
+      data.img = image
+    }
+
+
+    //foundry.utils.mergeObject(data.prototypeToken, defaults, { overwrite: false });
+
+    console.log(data);
+    const actor = await super.create(data, options);
+    return actor;
+  }
+
+
   /**
    * Prepare a data object which defines the data schema used by dice roll commands against this Item
    * @override

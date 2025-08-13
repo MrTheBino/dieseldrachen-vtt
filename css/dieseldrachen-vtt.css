@@ -222,12 +222,14 @@
 .dicier-icon {
   font-family: Dicier, sans-serif;
   font-feature-settings: "liga" 1, "kern" 1, "calt" 1;
+  font-size: 1.2em;
 }
 
 .dicier-icon-bold {
   font-family: Dicier-Heavy, sans-serif;
   font-feature-settings: "liga" 1, "kern" 1, "calt" 1;
   font-weight: bold;
+  font-size: 1.2em;
 }
 
 .voltaire-regular {
@@ -260,8 +262,13 @@
   font-size: 0.75em;
 }
 
+.social-dice {
+  font-size: 1.85em;
+}
+
 form > nav > a.item {
   font-family: "Voltaire", sans-serif;
+  font-size: 1.2em;
 }
 form > nav > a.item.active {
   font-weight: bold;
@@ -316,41 +323,88 @@ form > nav > a.item.active {
 .dieseldrachen-vtt .tox .tox-edit-area {
   padding: 0 8px;
 }
+.dieseldrachen-vtt .editor-content {
+  min-height: 100px;
+}
+.dieseldrachen-vtt .resource-group {
+  background-color: rgba(245, 245, 220, 0.4509803922);
+  padding: 5px;
+  border: 1px solid black;
+  border-radius: 3px;
+}
 .dieseldrachen-vtt .resource-label {
   font-family: "Voltaire", sans-serif;
   font-weight: 400;
   font-weight: bold;
 }
+.dieseldrachen-vtt .attribute-group {
+  background-color: rgba(245, 245, 220, 0.4509803922);
+  padding: 5px;
+  padding-left: 0px;
+  border: 1px solid black;
+  border-radius: 3px;
+  margin-bottom: 5px;
+}
 .dieseldrachen-vtt .attribute-label {
   font-family: "Voltaire", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 1.4em;
   color: #333;
-  border-bottom: 1px solid black;
+  font-weight: bold;
   background-color: rgba(0, 0, 0, 0.15);
+  padding: 5px;
+  text-transform: uppercase;
+  margin-top: 5px;
+  font-size: 1.4em;
 }
 .dieseldrachen-vtt .ability-label {
   font-family: "Voltaire", sans-serif;
   font-size: 1.2em;
   color: #333;
   font-weight: normal;
+  text-align: right;
+  padding-right: 9px;
+}
+.dieseldrachen-vtt .resource-label-social {
+  font-family: "Voltaire", sans-serif;
+  font-size: 1.2em;
+  color: #333;
+  font-weight: bold;
 }
 .dieseldrachen-vtt .quick-label {
   font-family: "Voltaire", sans-serif;
   color: #333;
-  font-weight: normal;
+  font-weight: bold;
   background-color: rgba(0, 0, 0, 0.15);
-  padding: 1px;
+  padding: 5px;
+  text-transform: uppercase;
+  margin-top: 5px;
 }
 .dieseldrachen-vtt .social-container {
   background-color: rgba(0, 0, 0, 0.15);
   margin-bottom: 10px;
+  padding: 5px;
 }
 .dieseldrachen-vtt .healthbar-reset {
   width: 30px;
   height: 30px;
   padding: 0;
+}
+.dieseldrachen-vtt .tiny-text {
+  font-size: 0.5em;
+  font-weight: bold;
+}
+.dieseldrachen-vtt .tiny-dice-label {
+  font-size: 0.5em;
+  font-weight: bold;
+}
+.dieseldrachen-vtt .vehicle-condition-marker {
+  background-color: yellow;
+  border-radius: 60px;
+  color: black;
+  width: 20px;
+  display: inline-block;
+}
+.dieseldrachen-vtt .resource-help-text {
+  font-size: 0.75em;
 }
 .dieseldrachen-vtt .items-header {
   height: 28px;
@@ -428,6 +482,10 @@ form > nav > a.item.active {
   border: none;
   margin-right: 5px;
 }
+.dieseldrachen-vtt .items-list .item .item-name .item-image img {
+  border: 1px solid grey;
+  border-radius: 3px;
+}
 .dieseldrachen-vtt .items-list .item .small_description {
   font-size: 0.75em;
   display: block;
@@ -476,41 +534,71 @@ form > nav > a.item.active {
 .dieseldrachen-vtt .healthbar {
   display: flex;
   flex-direction: row;
+  vertical-align: middle;
 }
 .dieseldrachen-vtt .healthbar-segment {
   border: 1px solid black;
-  width: 25px;
-  height: 25px;
+  width: 20px;
+  height: 20px;
   margin-right: 2px;
+  align-items: center;
+  border-radius: 5px;
 }
 .dieseldrachen-vtt .health-marker {
   background-image: url("../assets/images/cross.svg");
   background-size: contain;
   background-repeat: no-repeat;
-  width: 100%;
-  height: 100%;
+  width: 20px;
+  height: 20px;
+  color: white;
+}
+.dieseldrachen-vtt .health-counter {
+  width: 20px;
+  height: 20px;
+  text-align: center;
 }
 .dieseldrachen-vtt .exhaustion-marker {
   background-image: url("../assets/images/slash.svg");
   background-size: contain;
   background-repeat: no-repeat;
-  width: 100%;
-  height: 100%;
+  width: 20px;
+  height: 20px;
+  color: white;
 }
 .dieseldrachen-vtt .unused {
-  background-color: rgba(0, 0, 0, 0.15);
+  background-color: black;
+  color: rgb(86, 86, 86);
 }
 .dieseldrachen-vtt .green {
-  background-color: green;
+  background-color: rgb(65, 122, 65);
+  color: white;
 }
 .dieseldrachen-vtt .red {
   background-color: red;
+}
+.dieseldrachen-vtt .vehicle_motor_damage {
+  font-size: 1.2em;
+  padding-top: 5px;
 }
 .dieseldrachen-vtt .vehicle_motor_damage .vmd_grey {
   color: grey;
 }
 .dieseldrachen-vtt .vehicle_motor_damage .vmd_red {
   color: red;
+}
+.dieseldrachen-vtt .vehicle_speed {
+  font-size: 1.2em;
+  padding-top: 5px;
+}
+.dieseldrachen-vtt .vehicle_speed .vmd_grey {
+  color: grey;
+}
+.dieseldrachen-vtt .vehicle_speed .vmd_red {
+  color: red;
+}
+.dieseldrachen-vtt .tire_wing_damage {
+  font-size: 1.2em;
+  padding-top: 5px;
 }
 .dieseldrachen-vtt .tire_wing_damage .vmd_grey {
   color: grey;

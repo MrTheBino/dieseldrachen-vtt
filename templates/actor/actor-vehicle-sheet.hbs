@@ -46,26 +46,22 @@
         </div>
     </header>
 
-    <div class="grid grid-2col">
+    <div class="grid grid-3col resource-group">
         <div class="resource flex-group-center">
             <label for="system.condition" class="resource-label">Zustand</label>
-            <div class="resource-content flexrow flex-center flex-between">
+            <div class="resource-content flexcol flex-center flex-between">
                 <div class="resource-content flexrow flex-center flex-between">
-                    <select name="system.condition">
-                        <option value="4" {{#if (eq system.condition 4)}}selected{{/if}}>D4 - Schrott</option>
-                        <option value="6" {{#if (eq system.condition 6)}}selected{{/if}}>D6 - Schlecht</option>
-                        <option value="8" {{#if (eq system.condition 8)}}selected{{/if}}>D8 - O.K</option>
-                        <option value="10" {{#if (eq system.condition 10)}}selected{{/if}}>D10 - Gut</option>
-                        <option value="12" {{#if (eq system.condition 12)}}selected{{/if}}>D12 - Tipp Topp</option>
-                    </select>
-                    <!--<button class="vehicle_safing_throw rollable" data-roll-type="skill"
-                        data-roll="d{{system.condition}}" data-label="{{actor.name}} - Rettungswurf">
-                        Rettungswurf</button>-->
-
+                    {{> "systems/dieseldrachen-vtt/templates/actor/parts/actor-dice-select.hbs"
+                    group_name="radio_attr_condition" name="system.condition" value=system.condition}}
                 </div>
+                <span class="tiny-text">D4 - Schrott |
+                    D6 - Schlecht |
+                    D8 - O.K |
+                    D10 - Gut |
+                    D12 - Tipp Topp </span>
             </div>
         </div>
-        <div class="resource flex-group-center">
+        <div class="resource flex-group-center grid-span-2">
             <div class="resource-content flexrow flex-center flex-between">
                 <div class="resource-content flexrow flex-center flex-between">
                     <textarea name="system.conditionText">{{system.conditionText}}</textarea>
@@ -74,51 +70,52 @@
         </div>
     </div>
 
-    <div class="grid grid-2col">
-        <div class="resource flex-group-center">
+    <div class="grid grid-3col">
+        <div class="resource flex-group-center resource-group">
             <label for="system.acceleration" class="resource-label">Beschleunigung</label>
             <div class="resource-content flexrow flex-center flex-between">
-                <select name="system.acceleration">
-                    <option value="4" {{#if (eq system.acceleration 4)}}selected{{/if}}>D4</option>
-                    <option value="6" {{#if (eq system.acceleration 6)}}selected{{/if}}>D6</option>
-                    <option value="8" {{#if (eq system.acceleration 8)}}selected{{/if}}>D8</option>
-                    <option value="10" {{#if (eq system.acceleration 10)}}selected{{/if}}>D10</option>
-                    <option value="12" {{#if (eq system.acceleration 12)}}selected{{/if}}>D12</option>
-                </select>
+                {{> "systems/dieseldrachen-vtt/templates/actor/parts/actor-dice-select.hbs"
+                group_name="radio_attr_acceleration" name="system.acceleration" value=system.acceleration}}
             </div>
         </div>
 
-        <div class="resource flex-group-center">
-            <label for="system.speed.value" class="resource-label">Geschwindigkeit / Höhe</label>
+        <div class="resource flex-group-center resource-group">
+            <label for="system.speed.max" class="resource-label">Geschwindigkeit / Höhe</label>
+            <input type="text" name="system.speed.max" value="{{system.speed.max}}" data-dtype="Number"
+                class="tiny_input" />
             <div class="resource-content flexrow flex-center flex-between">
-                <input type="text" name="system.speed.value" value="{{system.speed.value}}" data-dtype="Number" />
-                <span> / </span>
-                <input type="text" name="system.speed.max" value="{{system.speed.max}}" data-dtype="Number" />
+                {{> "systems/dieseldrachen-vtt/templates/actor/parts/speed-partial.hbs" value=1
+                max=system.speed.max}}
+                {{> "systems/dieseldrachen-vtt/templates/actor/parts/speed-partial.hbs" value=2
+                max=system.speed.max}}
+                {{> "systems/dieseldrachen-vtt/templates/actor/parts/speed-partial.hbs" value=3
+                max=system.speed.max}}
+                {{> "systems/dieseldrachen-vtt/templates/actor/parts/speed-partial.hbs" value=4
+                max=system.speed.max}}
+                {{> "systems/dieseldrachen-vtt/templates/actor/parts/speed-partial.hbs" value=5
+                max=system.speed.max}}
+                {{> "systems/dieseldrachen-vtt/templates/actor/parts/speed-partial.hbs" value=6
+                max=system.speed.max}}
             </div>
         </div>
     </div>
     <div class="grid grid-3col">
-        <div class="resource flex-group-center">
+        <div class="resource flex-group-center resource-group">
             <label for="system.mass" class="resource-label">Masse</label>
             <div class="resource-content flexrow flex-center flex-between">
-                <select name="system.mass">
-                    <option value="4" {{#if (eq system.mass 4)}}selected{{/if}}>D4</option>
-                    <option value="6" {{#if (eq system.mass 6)}}selected{{/if}}>D6</option>
-                    <option value="8" {{#if (eq system.mass 8)}}selected{{/if}}>D8</option>
-                    <option value="10" {{#if (eq system.mass 10)}}selected{{/if}}>D10</option>
-                    <option value="12" {{#if (eq system.mass 12)}}selected{{/if}}>D12</option>
-                </select>
+                {{> "systems/dieseldrachen-vtt/templates/actor/parts/actor-dice-select.hbs"
+                group_name="radio_attr_mass" name="system.mass" value=system.mass}}
             </div>
         </div>
 
-        <div class="resource flex-group-center">
+        <div class="resource flex-group-center resource-group">
             <label for="system.armor" class="resource-label">Schutz</label>
             <div class="resource-content flexrow flex-center flex-between">
                 <input type="text" name="system.armor" value="{{system.armor}}" data-dtype="Number" />
             </div>
         </div>
 
-        <div class="resource flex-group-center">
+        <div class="resource flex-group-center resource-group">
             <label for="system.stability.value" class="resource-label">Stabilität</label>
             <div class="resource-content flexrow flex-center flex-between">
                 <input type="text" name="system.stability.value" value="{{system.stability.value}}"
@@ -127,23 +124,21 @@
                 <input type="text" name="system.stability.max" value="{{system.stability.max}}" data-dtype="Number" />
             </div>
         </div>
+    </div>
+    <div class="grid grid-3col">
 
 
-
-        <div class="resource flex-group-center">
-            <label for="system.agility" class="resource-label">Wendigkeit</label>
+        <div class="resource flex-group-center resource-group">
+            <label for="system.agilityDice" class="resource-label">Wendigkeit</label>
+            <input type="text" name="system.agility" value="{{system.agility}}" data-dtype="Number"
+                class="tiny_input" />
             <div class="resource-content flexrow flex-center flex-between">
-                <select name="system.agility">
-                    <option value="4" {{#if (eq system.agility 4)}}selected{{/if}}>D4</option>
-                    <option value="6" {{#if (eq system.agility 6)}}selected{{/if}}>D6</option>
-                    <option value="8" {{#if (eq system.agility 8)}}selected{{/if}}>D8</option>
-                    <option value="10" {{#if (eq system.agility 10)}}selected{{/if}}>D10</option>
-                    <option value="12" {{#if (eq system.agility 12)}}selected{{/if}}>D12</option>
-                </select>
+                {{> "systems/dieseldrachen-vtt/templates/actor/parts/actor-dice-select.hbs"
+                group_name="radio_attr_agility" name="system.agilityDice" value=system.agilityDice}}
             </div>
         </div>
 
-        <div class="resource flex-group-center">
+        <div class="resource flex-group-center resource-group">
             <label for="system.size" class="resource-label">Fahrzeuggröße</label>
             <div class="resource-content flexrow flex-center flex-between">
                 <select name="system.size">
@@ -153,10 +148,22 @@
                 </select>
             </div>
         </div>
+        <div class="resource flex-group-center resource-group resource-help-text">
+            <div>
+                <strong>Schwachstelle:</strong>
+                <p>SW+3 RW <span class="vehicle-condition-marker">X</span> Zustand</p>
+            </div>
+            <div>
+                <strong>Trefferqualität:</strong>
+                <p>6+ RW Zustand
+                    10+ RW Zustand oder zuf. Insasse</p>
+            </div>
+        </div>
     </div>
     <div class="grid grid-3col">
-        <div class="resource flex-group-center">
-            <label for="system.motors.max" class="resource-label">Motoren (RW1)</label>
+        <div class="resource flex-group-center resource-group">
+            <label for="system.motors.max" class="resource-label">Motoren <span
+                    class="vehicle-condition-marker">1</span></label>
             <input type="text" name="system.motors.max" value="{{system.motors.max}}" data-dtype="Number"
                 class="tiny_input" />
             <div class="resource-content flexrow flex-center flex-between">
@@ -172,8 +179,9 @@
             </div>
         </div>
 
-        <div class="resource flex-group-center">
-            <label for="system.motors.max" class="resource-label">Reifen / Tragfläche (RW2)</label>
+        <div class="resource flex-group-center resource-group">
+            <label for="system.motors.max" class="resource-label">Reifen / Tragfläche <span
+                    class="vehicle-condition-marker">2</span></label>
             <div class="resource-content flexrow flex-center flex-between">
                 {{> "systems/dieseldrachen-vtt/templates/actor/parts/tire-wing-partial.hbs" value=1 max=4}}
                 {{> "systems/dieseldrachen-vtt/templates/actor/parts/tire-wing-partial.hbs" value=2 max=4}}
@@ -182,9 +190,10 @@
             </div>
         </div>
 
-        <div class="resource flex-group-center">
-            <label for="system.fireSmoke" class="resource-label">Feuer/Rauch (RW3) <input type="checkbox"
-                    name="system.fireSmoke" {{#if system.fireSmoke}}checked{{/if}} /></label>
+        <div class="resource flex-group-center resource-group">
+            <label for="system.fireSmoke" class="resource-label">Feuer/Rauch <span
+                    class="vehicle-condition-marker">3</span> <input type="checkbox" name="system.fireSmoke" {{#if
+                    system.fireSmoke}}checked{{/if}} /></label>
             <div class="resource-content flexrow flex-between small_text item-align-left">
                 <ul>
                     <li>1. Runde: 1E für Alle</li>
@@ -199,7 +208,7 @@
 
     <div class="npc-items">
         <!-- Fernkampfwaffen -->
-        <h3>Geschütze</h3>
+        <h3 class="quick-label">Geschütze</h3>
         <ol class='items-list'>
             <li class='item flexrow items-header'>
                 <div class='item-name'>{{localize 'Name'}}</div>
@@ -246,7 +255,7 @@
 
     <div class="npc-items">
         <!-- Umbauten -->
-        <h3>Umbauten</h3>
+        <h3 class="quick-label">Umbauten</h3>
         <ol class='items-list'>
             <li class='item flexrow items-header'>
                 <div class='item-name'>{{localize 'Name'}}</div>
@@ -289,7 +298,7 @@
 
     <div class="npc-items">
         <!-- Fracht -->
-        <h3>Fracht</h3>
+        <h3 class="quick-label">Fracht</h3>
         <ol class='items-list'>
             <li class='item flexrow items-header'>
                 <div class='item-name'>{{localize 'Name'}}</div>

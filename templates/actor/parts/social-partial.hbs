@@ -3,17 +3,17 @@
         <div class="flex-group-center">Negativ</div>
         <div class="grid grid-2col flex-group-center">
             <div class="flex-col">
-                <span class="dicier-icon{{#if (eq value_neg 4)}}-bold{{/if}} char-dice-select color-d4"
+                <span class="dicier-icon{{#if (eq value_neg 4)}}-bold{{/if}} char-dice-select color-d4 social-dice"
                     data-name="system.social.{{key}}.value_neg" data-value="4" title="D4">4_ON_D4</span>
             </div>
             <div class="flex-col">
-                <span class="dicier-icon{{#if (eq value_neg 6)}}-bold{{/if}} char-dice-select color-d6"
+                <span class="dicier-icon{{#if (eq value_neg 6)}}-bold{{/if}} char-dice-select color-d6 social-dice"
                     data-name="system.social.{{key}}.value_neg" data-value="6" title="D6">D6</span>
             </div>
         </div>
     </div>
     <div class="resource flex-group-center">
-        <label for="system.social.{{key}}.name" class="resource-label">{{name}}</label>
+        <label for="system.social.{{key}}.name" class="resource-label-social">{{name}}</label>
         <div class="resource-content flexrow flex-center flex-between">
             <input type="text" name="system.social.{{key}}.name" value="{{value_name}}"
                 data-dtype="String" />
@@ -23,15 +23,15 @@
         <div class="flex-group-center">Positiv</div>
         <div class="grid grid-3col flex-group-center">
             <div class="flex-col">
-                <span class="dicier-icon{{#if (eq value_pos 8)}}-bold{{/if}} char-dice-select color-d8"
+                <span class="dicier-icon{{#if (eq value_pos 8)}}-bold{{/if}} char-dice-select color-d8 social-dice"
                     data-name="system.social.{{key}}.value_pos" data-value="8" title="D8">8_ON_D8</span>
             </div>
             <div class="flex-col">
-                <span class="dicier-icon{{#if (eq value_pos 10)}}-bold{{/if}} char-dice-select color-d10"
+                <span class="dicier-icon{{#if (eq value_pos 10)}}-bold{{/if}} char-dice-select color-d10 social-dice"
                     data-name="system.social.{{key}}.value_pos" data-value="10" title="D10">10_ON_D10</span>
             </div>
             <div class="flex-col">
-                <span class="dicier-icon{{#if (eq value_pos 12)}}-bold{{/if}} char-dice-select color-d12"
+                <span class="dicier-icon{{#if (eq value_pos 12)}}-bold{{/if}} char-dice-select color-d12 social-dice"
                     data-name="system.social.{{key}}.value_pos" data-value="12" title="D12">12_ON_D12</span>
             </div>
         </div>
