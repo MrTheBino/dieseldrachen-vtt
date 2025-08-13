@@ -5,7 +5,11 @@
 Unofficial system implementation of the Dieseldrachen TTRPG by [Dragon Pulp Games](https://shop.dragonpulpgames.com/).
 
 
-**WARNING: This system is not finished yet and still in alpha**
+**WARNING: This is a BETA version of the system**
+
+## Preview:
+
+![DIESELDRACHEN](screenshot.jpg "Title")
 
 ## Manifest-URL for manual installation of the system
 
@@ -22,5 +26,7 @@ Unofficial system implementation of the Dieseldrachen TTRPG by [Dragon Pulp Game
  * some more automations
  * some styling
  * bug fixing
- * 
-This system is using the font [Dicier](https://speakthesky.itch.io/typeface-dicier), by Speak the Sky, licensed under CC BY 4.0.
+
+## 3rd Party
+* This system is using the font [Dicier](https://speakthesky.itch.io/typeface-dicier), by Speak the Sky, licensed under CC BY 4.0.
+* This system is using icons from [Game Icons.net](https://game-icons.net/) licensed under CC BY 4.0
