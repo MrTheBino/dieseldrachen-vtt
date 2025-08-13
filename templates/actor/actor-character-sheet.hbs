@@ -59,16 +59,16 @@
         <input type="text" name="system.spleen" value="{{system.spleen}}" data-dtype="String" />
       </div>
     </div>
-  <div class="resource flex-group-center">
+    <div class="resource flex-group-center">
       <label for="system.condition" class="resource-label">Zustand</label>
       <div class="resource-content flexrow flex-center flex-between">
         <input type="text" name="system.condition" value="{{system.condition}}" data-dtype="String" />
       </div>
     </div>
-    
+
   </section>
 
-  <section class="grid grid-6col">
+  <section class="grid grid-7col">
     <div class="resource flex-group-center">
       <label for="system.health.value" class="resource-label">Gesundheit</label>
       <div class="resource-content flexrow flex-center flex-between">
@@ -77,11 +77,21 @@
     </div>
 
     <div class="resource flex-group-center">
-      <label for="mobilityValue" class="resource-label" title="Beweglichkeit = 12 - Schutz - 1 Je Gepäckstück (Auf Würfelstufe abgerundet)">Beweglichkeit</label>
+      <label for="mobilityValue" class="resource-label"
+        title="Beweglichkeit = 12 - Schutz - 1 Je Gepäckstück (Auf Würfelstufe abgerundet)">Beweglichkeit</label>
       <div class="resource-content flexrow flex-center flex-between">
         <input type="text" id="mobilityValue" value="D{{mobilityDice}} | {{mobilityValue}}" disabled />
       </div>
     </div>
+
+    <div class="resource flex-group-center">
+      <label for="mobilityValue" class="resource-label"
+        title="Aktueller Schutz berchnet durch ausgerüstete Kleidung">Schutz</label>
+      <div class="resource-content flexrow flex-center flex-between">
+        <input type="text" id="mobilityValue" value="{{currentArmor}}" disabled />
+      </div>
+    </div>
+
 
     <div class="resource flex-group-center">
       <label for="system.xp" class="resource-label">XP</label>
@@ -93,7 +103,7 @@
     <div class="resource flex-group-center">
       <label for="system.money" class="resource-label">Bargeld</label>
       <div class="resource-content flexrow flex-center flex-between">
-        <input type="text" name="system.money" value="{{system.money}}" data-dtype="Number"/>
+        <input type="text" name="system.money" value="{{system.money}}" data-dtype="Number" />
       </div>
     </div>
 
@@ -108,7 +118,7 @@
     <div class="resource flex-group-center">
       <label for="system.luck" class="resource-label">Gesperrt <i class="fa-solid fa-lock"></i></label>
       <div class="resource-content flex-center">
-        <input type="checkbox" name="system.locked" {{#if system.locked}}checked{{/if}} data-dtype="Boolean"/>
+        <input type="checkbox" name="system.locked" {{#if system.locked}}checked{{/if}} data-dtype="Boolean" />
       </div>
     </div>
   </section>
@@ -358,8 +368,7 @@
 
             <div class="attribute-group">
               <div class="ability flexrow flex-group-center">
-                <label for="system.attributes.magic"
-                  class="resource-label align-left attribute-label">Magie</label>
+                <label for="system.attributes.magic" class="resource-label align-left attribute-label">Magie</label>
                 {{> "systems/dieseldrachen-vtt/templates/actor/parts/actor-dice-select.hbs"
                 group_name="radio_attr_magic" name="system.attributes.magic" value=system.attributes.magic}}
               </div>

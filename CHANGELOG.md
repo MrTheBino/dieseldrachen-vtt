@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 0.2.2
+  - first beta release
+  - styling
+  - lots of small changes
+  
 ## 0.2
   - many usability improvements
   - critial miss handling

@@ -14,13 +14,13 @@ Unofficial system implementation of the Dieseldrachen TTRPG by [Dragon Pulp Game
 ## Features:
 
 * character sheet
+* NPC (enemy / bosses)
+* vehicles
 
 ## ToDo:
 
- * NPCs / Boss Enemies etc
- * Vehicle sheets
- * some automations
- * styling, this has to look better ;)
- * lots of fixes and changes
-
+ * some more automations
+ * some styling
+ * bug fixing
+ * 
 This system is using the font [Dicier](https://speakthesky.itch.io/typeface-dicier), by Speak the Sky, licensed under CC BY 4.0.

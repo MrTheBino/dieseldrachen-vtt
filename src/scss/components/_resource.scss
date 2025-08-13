@@ -91,3 +91,10 @@
 .resource-help-text{
   font-size: 0.75em;
 }
+
+.help-text{
+  text-align: left;
+  ul{
+    list-style-type: none;
+  }
+}

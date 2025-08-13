@@ -406,6 +406,12 @@ form > nav > a.item.active {
 .dieseldrachen-vtt .resource-help-text {
   font-size: 0.75em;
 }
+.dieseldrachen-vtt .help-text {
+  text-align: left;
+}
+.dieseldrachen-vtt .help-text ul {
+  list-style-type: none;
+}
 .dieseldrachen-vtt .items-header {
   height: 28px;
   margin: 2px 0;

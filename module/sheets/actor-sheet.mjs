@@ -120,6 +120,7 @@ export class DieseldrachenActorSheet extends ActorSheet {
     const technicManeuvers = [];
     const vehicleUpgrades = [];
     const vehicleWeapons = [];
+    let currentArmor = 0;
     const spells = {
       0: [],
       1: [],
@@ -150,6 +151,7 @@ export class DieseldrachenActorSheet extends ActorSheet {
         clothing.push(i);
         if (i.system.mounted) {
           mobilityValue = mobilityValue - i.system.armor;
+          currentArmor += i.system.armor;
         } else {
           if (i.system.weight != undefined) {
             mobilityValue = mobilityValue - i.system.weight;
@@ -234,6 +236,7 @@ export class DieseldrachenActorSheet extends ActorSheet {
     context.technicManeuvers = technicManeuvers;
     context.vehicleUpgrades = vehicleUpgrades;
     context.vehicleWeapons = vehicleWeapons;
+    context.currentArmor = currentArmor;
 
     let numSegments = 33;
     if (this.object.type == "npc") {
