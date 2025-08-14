@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.2.4
+  - compatibility improvments for future foundry version
+  
 ## 0.2.3
   - styling
   - added prices to normal items
