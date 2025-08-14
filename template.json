@@ -3,6 +3,6 @@
     "types": ["character", "npc","vehicle"]
   },
   "Item": {
-    "types": ["item", "clothing","meleeWeapon","rangedWeapon","trick","knowledge","artefact","technicManeuver","vehicleUpgrade","vehicleWeapon"]
+    "types": ["item", "clothing","meleeWeapon","rangedWeapon","trick","knowledge","artefact","technicManeuver","vehicleUpgrade","vehicleWeapon","npcSpecialDice"]
   }
 }

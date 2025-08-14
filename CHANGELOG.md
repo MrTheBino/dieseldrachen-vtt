@@ -4,6 +4,7 @@
   - styling
   - added prices to normal items
   - improved damage calculation for melee weapons
+  - added abilties for basic npcs
   
 ## 0.2.2
   - first beta release

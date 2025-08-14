@@ -56,6 +56,9 @@ export class DieseldrachenItem extends Item {
       case "vehicleWeapon":
         image = "systems/dieseldrachen-vtt/assets/icons/item-vehicle-weapon.svg";
         break
+      case 'npcSpecialDice':
+        image = "systems/dieseldrachen-vtt/assets/icons/item-npc-special-dice.svg";
+        break;
     }
 
     if (image != null) {

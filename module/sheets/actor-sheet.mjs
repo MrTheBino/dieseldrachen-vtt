@@ -14,7 +14,7 @@ export class DieseldrachenActorSheet extends ActorSheet {
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
       classes: ['dieseldrachen-vtt', 'sheet', 'actor'],
-      width: 780,
+      width: 800,
       height: 800,
       tabs: [
         {
@@ -120,6 +120,7 @@ export class DieseldrachenActorSheet extends ActorSheet {
     const technicManeuvers = [];
     const vehicleUpgrades = [];
     const vehicleWeapons = [];
+    const npcSpecialDice = [];
     let currentArmor = 0;
     const spells = {
       0: [],
@@ -185,6 +186,9 @@ export class DieseldrachenActorSheet extends ActorSheet {
       else if (i.type === 'vehicleWeapon') {
         vehicleWeapons.push(i);
       }
+      else if(i.type === 'npcSpecialDice') {
+        npcSpecialDice.push(i);
+      }
       else if (i.type === 'artefact') {
         artefacts.push(i);
         if (i.system.weight != undefined) {
@@ -237,6 +241,7 @@ export class DieseldrachenActorSheet extends ActorSheet {
     context.vehicleUpgrades = vehicleUpgrades;
     context.vehicleWeapons = vehicleWeapons;
     context.currentArmor = currentArmor;
+    context.npcSpecialDice = npcSpecialDice;
 
     let numSegments = 33;
     if (this.object.type == "npc") {

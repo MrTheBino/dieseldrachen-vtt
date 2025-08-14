@@ -541,12 +541,14 @@ form > nav > a.item.active {
   display: flex;
   flex-direction: row;
   vertical-align: middle;
+  flex-wrap: wrap;
 }
 .dieseldrachen-vtt .healthbar-segment {
   border: 1px solid black;
   width: 20px;
   height: 20px;
   margin-right: 2px;
+  margin-bottom: 5px;
   align-items: center;
   border-radius: 5px;
 }

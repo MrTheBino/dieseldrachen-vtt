@@ -126,7 +126,8 @@
       "artefact": "Artefakt",
       "technicManeuver": "Technik / Manöver",
       "vehicleUpgrade": "Fahrzeugumbau",
-      "vehicleWeapon": "Geschütz"
+      "vehicleWeapon": "Geschütz",
+      "npcSpecialDice": "NPC-Fähigkeit"
     }
   }
 }

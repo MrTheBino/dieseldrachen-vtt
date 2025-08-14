@@ -18,3 +18,4 @@ export {default as DieseldrachenArtefact} from "./item-artefact.mjs";
 export {default as DieseldrachenTechnicManeuver} from "./item-technic-maneuver.mjs";
 export {default as DieseldrachenVehicleUpgrade} from "./item-vehicle-upgrade.mjs";
 export {default as DieseldrachenVehicleWeapon} from "./item-vehicle-weapon.mjs";
+export {default as DieseldrachenNPCSpecialDice} from "./item-npc-special-dice.mjs";
