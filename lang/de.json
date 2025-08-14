@@ -71,7 +71,8 @@
       "RollSuccess": "Erfolg",
       "RollFailure": "Misserfolg",
       "Roll": "Würfeln",
-      "RollCriticalMiss": "Kritischer Misserfolg"
+      "RollCriticalMiss": "Kritischer Misserfolg",
+      "RollCriticalHit": "Kritischer Erfolg"
     },
     "SheetLabels": {
       "Actor": "Dieseldrachen Actor Sheet",

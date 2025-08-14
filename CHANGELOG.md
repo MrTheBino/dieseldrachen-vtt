@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 13.0.1
+  - better handling of critical misses and successes
+  - usability of tricks improved
+  - changed version schema: 13.X X are Foundry 13 versions
+  
 ## 0.2.4
   - compatibility improvments for future foundry version
   
