@@ -59,7 +59,8 @@ Hooks.once('init', function () {
     technicManeuver: models.DieseldrachenTechnicManeuver,
     vehicleUpgrade: models.DieseldrachenVehicleUpgrade,
     vehicleWeapon: models.DieseldrachenVehicleWeapon,
-    npcSpecialDice: models.DieseldrachenNPCSpecialDice
+    npcSpecialDice: models.DieseldrachenNPCSpecialDice,
+    spleen: models.DieseldrachenSpleen
   }
 
   // Active Effects are never copied to the Actor,

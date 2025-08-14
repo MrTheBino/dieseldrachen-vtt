@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 13.0.2
+  - added spleen item
+  
 ## 13.0.1
   - better handling of critical misses and successes
   - usability of tricks improved

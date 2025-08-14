@@ -58,6 +58,8 @@ export class DieseldrachenItem extends Item {
         break
       case 'npcSpecialDice':
         image = "systems/dieseldrachen-vtt/assets/icons/item-npc-special-dice.svg";
+      case 'spleen':
+        image = "systems/dieseldrachen-vtt/assets/icons/item-spleen.svg";
         break;
     }
 

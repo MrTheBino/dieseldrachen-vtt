@@ -128,7 +128,8 @@
       "technicManeuver": "Technik / Manöver",
       "vehicleUpgrade": "Fahrzeugumbau",
       "vehicleWeapon": "Geschütz",
-      "npcSpecialDice": "NPC-Fähigkeit"
+      "npcSpecialDice": "NPC-Fähigkeit",
+      "spleen": "Spleen"
     }
   }
 }
