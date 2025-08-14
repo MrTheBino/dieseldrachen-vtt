@@ -328,7 +328,7 @@ async function rollDialogV1MeleeWeaponCallback(actor, html) {
 
   let rollFormulaDamage = "";
   dmgTokens.forEach((token) => {
-    token = token.replace("k", "K");
+    token = token.toUpperCase();
     token = token.trim();
     if (token.includes("K")) {
       let t = token.replace("K", "");
@@ -337,11 +337,13 @@ async function rollDialogV1MeleeWeaponCallback(actor, html) {
         num = parseInt(t);
       }
       if (actor.type == "npc") {
-        rollFormulaDamage += `${num}`;
+        rollFormulaDamage += `+${num}`;
       } else {
-        rollFormulaDamage += `${num}*${actor.system.abilities.strength}`;
+        rollFormulaDamage += `+(${num}*${actor.system.abilities.strength})`;
       }
-
+    }
+    else if(token.includes("E") == false){
+      rollFormulaDamage += `+${token}`;
     }
   })
 

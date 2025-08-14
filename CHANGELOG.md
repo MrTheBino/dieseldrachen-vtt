@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 0.2.3
+  - styling
+  - added prices to normal items
+  - improved damage calculation for melee weapons
+  
 ## 0.2.2
   - first beta release
   - styling
