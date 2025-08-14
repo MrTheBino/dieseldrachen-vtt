@@ -10,6 +10,7 @@ export const preloadHandlebarsTemplates = async function () {
     'systems/dieseldrachen-vtt/templates/actor/parts/actor-dice-select.hbs',
     'systems/dieseldrachen-vtt/templates/actor/parts/actor-items.hbs',
     'systems/dieseldrachen-vtt/templates/actor/parts/actor-spells.hbs',
+    'systems/dieseldrachen-vtt/templates/actor/parts/actor-magic.hbs',
     'systems/dieseldrachen-vtt/templates/actor/parts/actor-effects.hbs',
     'systems/dieseldrachen-vtt/templates/actor/parts/actor-social.hbs',
     'systems/dieseldrachen-vtt/templates/actor/parts/actor-tricks.hbs',

@@ -13,13 +13,22 @@
           value='{{item.name}}'
           placeholder='Name'
         /></h1>
+        <div class='grid grid-2col'>
+        <div class='resource'>
+          <label class='resource-label'>Typ</label>
+          <select name='system.spellType' data-dtype='Number'>
+            <option value='0' {{#if (eq item.system.spellType 0 )}}selected{{/if}}>Körper / Sinne</option>
+            <option value='1' {{#if (eq item.system.spellType 1 )}}selected{{/if}}>Schicksal / Geister</option>
+            <option value='2' {{#if (eq item.system.spellType 2 )}}selected{{/if}}>Elemente / Energie</option>
+          </select>
+        </div>
+      </div>
     </div>
   </header>
 
   {{! Sheet Tab Navigation }}
   <nav class='sheet-tabs tabs' data-group='primary'>
     <a class='item' data-tab='description'>Beschreibung</a>
-    <a class='item' data-tab='attributes'>Attributes</a>
   </nav>
 
   {{! Sheet Body }}
@@ -35,20 +44,6 @@
         button=true
         editable=editable
       }}
-    </div>
-
-    {{! Attributes Tab }}
-    <div class='tab attributes' data-group='primary' data-tab='attributes'>
-      {{! As you add new fields, add them in here! }}
-      <div class='resource'>
-        <label class='resource-label'>Spell Level</label>
-        <input
-          type='text'
-          name='system.spellLevel'
-          value='{{system.spellLevel}}'
-          data-dtype='Number'
-        />
-      </div>
     </div>
   </section>
 </form>

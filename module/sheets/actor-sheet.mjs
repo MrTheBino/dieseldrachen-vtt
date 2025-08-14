@@ -121,19 +121,9 @@ export class DieseldrachenActorSheet extends foundry.appv1.sheets.ActorSheet {
     const vehicleUpgrades = [];
     const vehicleWeapons = [];
     const npcSpecialDice = [];
+    let characterSpleen = null;
     let currentArmor = 0;
-    const spells = {
-      0: [],
-      1: [],
-      2: [],
-      3: [],
-      4: [],
-      5: [],
-      6: [],
-      7: [],
-      8: [],
-      9: [],
-    };
+    const spells = [];
 
     let mobilityValue = 12;
     // Iterate through items, allocating to containers
@@ -189,18 +179,18 @@ export class DieseldrachenActorSheet extends foundry.appv1.sheets.ActorSheet {
       else if(i.type === 'npcSpecialDice') {
         npcSpecialDice.push(i);
       }
+      else if(i.type == "spleen") {
+        characterSpleen = i;
+      }
       else if (i.type === 'artefact') {
         artefacts.push(i);
         if (i.system.weight != undefined) {
           mobilityValue = mobilityValue - i.system.weight;
         }
-
       }
       // Append to spells.
       else if (i.type === 'spell') {
-        if (i.system.spellLevel != undefined) {
-          spells[i.system.spellLevel].push(i);
-        }
+          spells.push(i);
       }
     }
 
@@ -242,6 +232,7 @@ export class DieseldrachenActorSheet extends foundry.appv1.sheets.ActorSheet {
     context.vehicleWeapons = vehicleWeapons;
     context.currentArmor = currentArmor;
     context.npcSpecialDice = npcSpecialDice;
+    context.characterSpleen = characterSpleen;
 
     let numSegments = 33;
     if (this.object.type == "npc") {
@@ -273,6 +264,19 @@ export class DieseldrachenActorSheet extends foundry.appv1.sheets.ActorSheet {
       const li = $(ev.currentTarget).parents('.item');
       const item = this.actor.items.get(li.data('itemId'));
       item.sheet.render(true);
+    });
+
+    html.on('click', '.spleen-edit', (ev) => {
+      const item = this.actor.items.get(ev.currentTarget.dataset.itemId);
+      item.sheet.render(true);
+    });
+    
+
+    html.on('click','.expandable-trigger', (ev) => {
+      const li = $(ev.currentTarget).parents('.item');
+      let t = li.find('.expandable')[0];
+      t.classList.toggle('closed');
+      
     });
 
     // -------------------------------------------------------------

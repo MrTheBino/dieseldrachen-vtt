@@ -16,7 +16,7 @@ export default class DieseldrachenCharacter extends DieseldrachenActorBase {
     schema.nation = new fields.StringField({ required: true, blank: true, initial: "" });
     schema.profession = new fields.StringField({ required: true, blank: true, initial: "" });
     schema.look = new fields.StringField({ required: true, blank: true, initial: "" });
-    schema.spleen = new fields.StringField({ required: true, blank: true, initial: "" });
+    //schema.spleen = new fields.StringField({ required: true, blank: true, initial: "" });
 
     schema.healthbar = new fields.StringField({ required: true, blank: true, initial: "[]" });
 

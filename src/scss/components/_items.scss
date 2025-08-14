@@ -101,11 +101,9 @@
       
     }
 
-    .small_description {
-        font-size: 0.75em;
-        display: block;
-      }
   }
+
+  
 
   .item-prop {
     text-align: center;
@@ -147,3 +145,8 @@
   flex: 0 0 200px;
   padding: 0 8px;
 }
+
+.small_description {
+        font-size: 0.75em;
+        display: block;
+      }

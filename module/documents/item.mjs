@@ -60,6 +60,8 @@ export class DieseldrachenItem extends Item {
         image = "systems/dieseldrachen-vtt/assets/icons/item-npc-special-dice.svg";
       case 'spleen':
         image = "systems/dieseldrachen-vtt/assets/icons/item-spleen.svg";
+      case 'spell':
+        image = "systems/dieseldrachen-vtt/assets/icons/item-spell.svg";
         break;
     }
 
@@ -67,10 +69,6 @@ export class DieseldrachenItem extends Item {
       data.img = image
     }
 
-
-    //foundry.utils.mergeObject(data.prototypeToken, defaults, { overwrite: false });
-
-    console.log(data);
     const actor = await super.create(data, options);
     return actor;
   }
@@ -107,9 +105,6 @@ export class DieseldrachenItem extends Item {
 
     // Simplify system data.
     result.system = this.system.toPlainObject();
-
-    // Add effects.
-    result.effects = this.effects?.size > 0 ? this.effects.contents : [];
 
     return result;
   }

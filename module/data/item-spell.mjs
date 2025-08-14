@@ -7,6 +7,7 @@ export default class DieseldrachenSpell extends DieseldrachenItemBase {
     const schema = super.defineSchema();
 
     schema.spellLevel = new fields.NumberField({ required: true, nullable: false, integer: true, initial: 1, min: 1, max: 9 });
+    schema.spellType = new fields.NumberField({ required: true, nullable: false, integer: true, initial: 0, min: 0, max: 2 });
 
     return schema;
   }

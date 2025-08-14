@@ -1,6 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
-/* Global styles */
 @import url("https://fonts.googleapis.com/css2?family=Play:wght@400;700&family=Voltaire&display=swap");
+.expandable.closed {
+  display: none !important;
+}
+
+/* Global styles */
 .window-app {
   font-family: "Roboto", sans-serif;
 }
@@ -492,10 +496,6 @@ form > nav > a.item.active {
   border: 1px solid grey;
   border-radius: 3px;
 }
-.dieseldrachen-vtt .items-list .item .small_description {
-  font-size: 0.75em;
-  display: block;
-}
 .dieseldrachen-vtt .items-list .item-prop {
   text-align: center;
   border-left: 1px solid #c9c7b8;
@@ -525,6 +525,10 @@ form > nav > a.item.active {
 .dieseldrachen-vtt .item-formula {
   flex: 0 0 200px;
   padding: 0 8px;
+}
+.dieseldrachen-vtt .small_description {
+  font-size: 0.75em;
+  display: block;
 }
 .dieseldrachen-vtt .effects .item .effect-source,
 .dieseldrachen-vtt .effects .item .effect-duration,

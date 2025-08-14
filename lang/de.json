@@ -60,7 +60,12 @@
           "magic_fate": "Schicksal / Geister",
           "magic_elemental": "Elemente / Energie"
         }
-      }
+      },
+      "spellTypes": {
+          "0": "Körper / Sinne",
+          "1": "Schicksal / Geister",
+          "2": "Elemente / Energie"
+        }
     },
     "Messages":{
       "ChangedDice": "{key} wurde von D{old_value} zu D{value} geändert."
@@ -118,7 +123,7 @@
     "Item": {
       "item": "Gegenstand",
       "feature": "Feature",
-      "spell": "Spell",
+      "spell": "Zauber",
       "clothing": "Kleidung",
       "meleeWeapon": "Nahkampfwaffe",
       "rangedWeapon": "Fernkampfwaffe",
