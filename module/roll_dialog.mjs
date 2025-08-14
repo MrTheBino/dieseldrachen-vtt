@@ -78,16 +78,17 @@ export async function rollDialogMeleeWeaponV1(actor, itemId, label) {
   );
 
   return new Promise((resolve) => {
-    new Dialog({
-      title: cardTitle,
+    new foundry.applications.api.DialogV2({
+      window: {title: cardTitle},
       content: html,
-      buttons: {
-        roll: {
+      buttons: [
+        {
+          action: 'roll',
           icon: '<i class="fas fa-dice-d6"></i>',
           label: game.i18n.localize("DIESELDRACHEN.Labels.Roll"),
-          callback: (html) => rollDialogV1MeleeWeaponCallback(actor, html),
+          callback: (event, button, dialog) => rollDialogV1MeleeWeaponCallback(event, button, dialog, actor),
         },
-      },
+      ],
       default: "roll",
       close: () => resolve(null),
     }).render(true);
@@ -136,19 +137,20 @@ export async function rollDialogRangedWeaponV1(actor, itemId, label) {
   );
 
   return new Promise((resolve) => {
-    new Dialog({
-      title: cardTitle,
+    new foundry.applications.api.DialogV2({
+      window: {title: cardTitle},
       content: html,
-      buttons: {
-        roll: {
+      buttons: [
+        {
+          action: 'roll',
           icon: '<i class="fas fa-dice-d6"></i>',
           label: game.i18n.localize("DIESELDRACHEN.Labels.Roll"),
-          callback: (html) => rollDialogV1RangedWeaponCallback(actor, html),
+          callback: (event, button, dialog) => rollDialogV1RangedWeaponCallback(event, button, dialog, actor),
         },
-      },
+      ],
       default: "roll",
       close: () => resolve(null),
-    }).render(true);
+    }).render({force: true});
   });
 }
 
@@ -173,24 +175,26 @@ export async function rollDialogSkillV1(actor, formula, label) {
   );
 
   return new Promise((resolve) => {
-    new Dialog({
-      title: "Roll Dialog",
+    new foundry.applications.api.DialogV2({
+      window: {title: "Würfeldialog"},
       content: html,
-      buttons: {
-        roll: {
+      buttons: [
+        {
+          action: 'roll',
           icon: '<i class="fas fa-dice-d6"></i>',
           label: game.i18n.localize("DIESELDRACHEN.Labels.Roll"),
-          callback: (html) => rollDialogV1Callback(actor, html),
+          callback: (event, button, dialog) => rollDialogV1Callback(event, button, dialog,actor),
         },
-      },
+      ],
       default: "roll",
       close: () => resolve(null),
-    }).render(true);
+    }).render({force: true});
   });
 }
 
-async function rollDialogV1Callback(actor, html) {
-  const form = html[0].querySelector("form");
+async function rollDialogV1Callback(event, button, dialog,actor) {
+
+  const form = button.form;
   const actorRollData = actor.getRollData();
 
   const label = form.label.value;
@@ -228,8 +232,8 @@ async function rollDialogV1Callback(actor, html) {
   renderSkillRollResult(actor, rollDialogVars);
 }
 
-async function rollDialogV1RangedWeaponCallback(actor, html) {
-  const form = html[0].querySelector("form");
+async function rollDialogV1RangedWeaponCallback(event, button, dialog,actor) {
+  const form = button.form;
   const actorRollData = actor.getRollData();
 
   const item = actor.items.get(form.itemId.value);
@@ -292,8 +296,8 @@ async function rollDialogV1RangedWeaponCallback(actor, html) {
   renderRangedWeaponRollResult(actor, rollDialogVars);
 }
 
-async function rollDialogV1MeleeWeaponCallback(actor, html) {
-  const form = html[0].querySelector("form");
+async function rollDialogV1MeleeWeaponCallback(event, button, dialog,actor) {
+  const form = button.form;
   const actorRollData = actor.getRollData();
 
   const item = actor.items.get(form.itemId.value);
@@ -342,7 +346,7 @@ async function rollDialogV1MeleeWeaponCallback(actor, html) {
         rollFormulaDamage += `+(${num}*${actor.system.abilities.strength})`;
       }
     }
-    else if(token.includes("E") == false){
+    else if(token.includes("E") == false && token.length > 0){
       rollFormulaDamage += `+${token}`;
     }
   })
@@ -381,7 +385,7 @@ async function rollDialogV1MeleeWeaponCallback(actor, html) {
 }
 
 export async function renderSkillRollResult(actor, rollResult) {
-  const html = await renderTemplate(
+  const html = await foundry.applications.handlebars.renderTemplate(
     "systems/dieseldrachen-vtt/templates/chat/skill-roll-result.hbs",
     rollResult
   );
@@ -392,7 +396,7 @@ export async function renderSkillRollResult(actor, rollResult) {
 }
 
 export async function renderRangedWeaponRollResult(actor, rollResult) {
-  const html = await renderTemplate(
+  const html = await foundry.applications.handlebars.renderTemplate(
     "systems/dieseldrachen-vtt/templates/chat/ranged-weapon-roll-result.hbs",
     rollResult
   );
@@ -403,7 +407,7 @@ export async function renderRangedWeaponRollResult(actor, rollResult) {
 }
 
 export async function renderMeleeWeaponRollResult(actor, rollResult) {
-  const html = await renderTemplate(
+  const html = await foundry.applications.handlebars.renderTemplate(
     "systems/dieseldrachen-vtt/templates/chat/melee-weapon-roll-result.hbs",
     rollResult
   );

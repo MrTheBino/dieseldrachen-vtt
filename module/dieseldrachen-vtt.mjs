@@ -68,13 +68,13 @@ Hooks.once('init', function () {
   CONFIG.ActiveEffect.legacyTransferral = false;
 
   // Register sheet application classes
-  Actors.unregisterSheet('core', ActorSheet);
-  Actors.registerSheet('dieseldrachen-vtt', DieseldrachenActorSheet, {
+  foundry.documents.collections.Actors.unregisterSheet('core', foundry.appv1.sheets.ActorSheet);
+  foundry.documents.collections.Actors.registerSheet('dieseldrachen-vtt', DieseldrachenActorSheet, {
     makeDefault: true,
     label: 'DIESELDRACHEN.SheetLabels.Actor',
   });
-  Items.unregisterSheet('core', ItemSheet);
-  Items.registerSheet('dieseldrachen-vtt', DieseldrachenItemSheet, {
+  foundry.documents.collections.Items.unregisterSheet('core', foundry.appv1.sheets.ItemSheet);
+  foundry.documents.collections.Items.registerSheet('dieseldrachen-vtt', DieseldrachenItemSheet, {
     makeDefault: true,
     label: 'DIESELDRACHEN.SheetLabels.Item',
   });
