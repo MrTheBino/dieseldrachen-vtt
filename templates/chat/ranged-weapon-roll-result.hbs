@@ -3,29 +3,32 @@
     {{label}}
   </div>
   <div class="roll-result">
-    <div class="roll-formula-result">
-      <span>{{dicePoolRoll.result}}</span>
-    </div>
-    <div class="roll-formula">
-      <span>{{dicePoolRoll.formula}}</span>
-    </div>
-    <div class="roll-row">
-      <div class="roll-difficulty">
-        <span>Schwierigkeit: </span>
-        <span>{{difficulty}}</span>
+    {{{dicePoolRollHTML}}}
+    <div class="roll-group">
+      <div class="roll-row">
+        <div class="roll-prop">
+          <span>Schwierigkeit: </span>
+          <span>{{difficulty}}</span>
+        </div>
+      </div>
+      <div class="roll-row">
+        <div class="roll-prop">
+          <span>Rückstoß: </span>
+          <span>{{recoil}}</span>
+        </div>
+      </div>
+      <div class="roll-row">
+        <div class="roll-prop">
+          <span>Rate: </span>
+          <span>{{rate}}</span>
+        </div>
       </div>
     </div>
-    {{#if isCriticalMiss}}
-      <div class="roll-row roll-critical-miss">{{localize 'DIESELDRACHEN.Labels.RollCriticalMiss'}}:{{dicePoolRoll.result}}</div>
-    {{else}}
-      {{#if isSuccess}}
-      <div class="roll-row roll-success">{{localize 'DIESELDRACHEN.Labels.RollSuccess'}}: {{total}}</div>
-      {{else}}
-      <div class="roll-row roll-failure">{{localize 'DIESELDRACHEN.Labels.RollFailure'}}: {{total}}</div>
-      {{/if}}
-    {{/if}}
-    <div class="roll-ranged-damage-formula">
-      <span>Schaden {{range}}: {{damage}}</span>
+    {{> "systems/dieseldrachen-vtt/templates/chat/success-partial.hbs"}}
+    <div class="dice-roll">
+      <h4 class="dice-total">
+        <span>Schaden {{range}}: {{damage}}</span>
+      </h4>
     </div>
   </div>
 </form>

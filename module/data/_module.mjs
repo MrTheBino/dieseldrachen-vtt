@@ -20,3 +20,4 @@ export {default as DieseldrachenVehicleUpgrade} from "./item-vehicle-upgrade.mjs
 export {default as DieseldrachenVehicleWeapon} from "./item-vehicle-weapon.mjs";
 export {default as DieseldrachenNPCSpecialDice} from "./item-npc-special-dice.mjs";
 export {default as DieseldrachenSpleen} from "./item-spleen.mjs";
+export {default as DieseldrachenHandGrenade} from "./item-handgrenade.mjs";

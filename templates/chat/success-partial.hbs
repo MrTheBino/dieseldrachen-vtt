@@ -1,0 +1,19 @@
+<div class="roll-group">
+    {{#if isCriticalMiss}}
+        <div class="roll-row roll-critical-miss">{{localize 'DIESELDRACHEN.Labels.RollCriticalMiss'}}</div>
+        <div class="roll-row roll-critical-miss">{{dicePoolRoll.result}}</div>
+    {{else}}
+        {{#if isCriticalHit}}
+            <div class="roll-row roll-critical-hit">{{localize 'DIESELDRACHEN.Labels.RollCriticalHit'}}</div>
+            <div class="roll-row roll-critical-hit">{{dicePoolRoll.total}}</div>
+        {{else}}
+            {{#if isSuccess}}
+                <div class="roll-row roll-success">{{localize 'DIESELDRACHEN.Labels.RollSuccess'}}</div>
+                <div class="roll-row roll-success">{{total}}</div>
+            {{else}}
+                <div class="roll-row roll-failure">{{localize 'DIESELDRACHEN.Labels.RollFailure'}}</div>
+                <div class="roll-row roll-failure">{{total}}</div>
+            {{/if}}
+        {{/if}}
+    {{/if}}
+</div>

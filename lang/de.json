@@ -134,7 +134,8 @@
       "vehicleUpgrade": "Fahrzeugumbau",
       "vehicleWeapon": "Geschütz",
       "npcSpecialDice": "NPC-Fähigkeit",
-      "spleen": "Spleen"
+      "spleen": "Spleen",
+      "handgrenade": "Handgranate"
     }
   }
 }

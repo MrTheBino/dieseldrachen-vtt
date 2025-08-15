@@ -5,18 +5,43 @@ export function addShowDicePromise(promises, roll) {
   }
 }
 
-function isCriticalMiss(diceRoll){
-  let t = diceRoll.total
-  
-  if(t == 3 || t == 4){
+function isCriticalMiss(diceRoll) {
+
+  let diceValues = [];
+  let criticMissSum1 = 0;
+  let criticMissSum2 = 0;
+
+  // collect the dice results
+  diceRoll.terms.forEach((term) => {
+    if (term.constructor.name === "Die") {
+      term.results.forEach((result) => {
+        diceValues.push(result.result);
+      });
+    }
+  });
+
+  // count ones and twos
+  diceValues.forEach((value) => {
+    if (value == 1) {
+      criticMissSum1 += 1;
+    }
+    else if (value == 2) {
+      criticMissSum2 += 1;
+    }
+  });
+
+  if (criticMissSum1 == 3) {
     return true;
   }
 
+  if (criticMissSum1 == 2 && criticMissSum2 == 1) {
+    return true;
+  }
   return false;
 }
 
-function isCriticalHit(diceRoll,difficulty){
-  if(diceRoll.total >= (difficulty*2)){
+function isCriticalHit(diceRoll, difficulty) {
+  if (diceRoll.total >= (difficulty * 2)) {
     return true;
   }
   return false;
@@ -70,7 +95,7 @@ export async function rollDialogMeleeWeaponV1(actor, itemId, label) {
 
   return new Promise((resolve) => {
     new foundry.applications.api.DialogV2({
-      window: {title: cardTitle},
+      window: { title: cardTitle },
       content: html,
       buttons: [
         {
@@ -129,7 +154,7 @@ export async function rollDialogRangedWeaponV1(actor, itemId, label) {
 
   return new Promise((resolve) => {
     new foundry.applications.api.DialogV2({
-      window: {title: cardTitle},
+      window: { title: cardTitle },
       content: html,
       buttons: [
         {
@@ -141,7 +166,7 @@ export async function rollDialogRangedWeaponV1(actor, itemId, label) {
       ],
       default: "roll",
       close: () => resolve(null),
-    }).render({force: true});
+    }).render({ force: true });
   });
 }
 
@@ -167,23 +192,23 @@ export async function rollDialogSkillV1(actor, formula, label) {
 
   return new Promise((resolve) => {
     new foundry.applications.api.DialogV2({
-      window: {title: "Würfeldialog"},
+      window: { title: "Würfeldialog" },
       content: html,
       buttons: [
         {
           action: 'roll',
           icon: '<i class="fas fa-dice-d6"></i>',
           label: game.i18n.localize("DIESELDRACHEN.Labels.Roll"),
-          callback: (event, button, dialog) => rollDialogV1Callback(event, button, dialog,actor),
+          callback: (event, button, dialog) => rollDialogV1Callback(event, button, dialog, actor),
         },
       ],
       default: "roll",
       close: () => resolve(null),
-    }).render({force: true});
+    }).render({ force: true });
   });
 }
 
-async function rollDialogV1Callback(event, button, dialog,actor) {
+async function rollDialogV1Callback(event, button, dialog, actor) {
 
   const form = button.form;
   const actorRollData = actor.getRollData();
@@ -206,6 +231,8 @@ async function rollDialogV1Callback(event, button, dialog,actor) {
   addShowDicePromise(dicePromises, dicePoolRoll);
   await Promise.all(dicePromises);
 
+  let dicePoolRollHTML = await dicePoolRoll.render();
+
   let criticalMiss = isCriticalMiss(dicePoolRoll);
   let criticalHit = isCriticalHit(dicePoolRoll, difficulty);
 
@@ -215,17 +242,18 @@ async function rollDialogV1Callback(event, button, dialog,actor) {
 
   const rollDialogVars = {
     dicePoolRoll: dicePoolRoll,
+    dicePoolRollHTML: dicePoolRollHTML,
     total: dicePoolRoll.total,
     label: label,
     isSuccess: isSuccess,
     difficulty: difficulty,
     isCriticalMiss: criticalMiss,
-    isCriticalHit:criticalHit
+    isCriticalHit: criticalHit
   }
   renderSkillRollResult(actor, rollDialogVars);
 }
 
-async function rollDialogV1RangedWeaponCallback(event, button, dialog,actor) {
+async function rollDialogV1RangedWeaponCallback(event, button, dialog, actor) {
   const form = button.form;
   const actorRollData = actor.getRollData();
 
@@ -236,7 +264,7 @@ async function rollDialogV1RangedWeaponCallback(event, button, dialog,actor) {
   const difficulty = parseInt(form.difficulty.value) || 10;
   const range = form.range.value;
   let damageValue = 0;
-  const recoil = form.recoil.value || 0;
+  const recoil = parseInt(form.recoil.value) || 0;
   const modDice = form.modDice.value || "";
 
 
@@ -252,13 +280,18 @@ async function rollDialogV1RangedWeaponCallback(event, button, dialog,actor) {
       damageValue = item.system.damage_close;
       break;
     case "far":
-      rollFormula = rollFormula + `+ ${item.system.precision_far}`;
+      rollFormula = rollFormula + `+ 1d${item.system.precision_far}`;
       damageValue = item.system.damage_far;
       break;
   }
 
-  rollFormula = rollFormula + `- ${recoil}`;
-  if (modDice && modDice !== "") {
+  // Rückstoss
+  if (recoil > 0) {
+    rollFormula = rollFormula + `- ${recoil}`;
+  }
+
+  // Im Fern
+  if (modDice && modDice !== "" && modDice != 0) {
     rollFormula = rollFormula + `+ d${modDice}`;
   }
 
@@ -267,10 +300,12 @@ async function rollDialogV1RangedWeaponCallback(event, button, dialog,actor) {
 
 
   let criticalMiss = isCriticalMiss(dicePoolRoll);
-  let criticalHit = isCriticalHit(dicePoolRoll, difficulty);  
+  let criticalHit = isCriticalHit(dicePoolRoll, difficulty);
 
   addShowDicePromise(dicePromises, dicePoolRoll);
   await Promise.all(dicePromises);
+
+  let dicePoolRollHTML = await dicePoolRoll.render();
 
   if (difficulty && dicePoolRoll.total >= difficulty) {
     isSuccess = true;
@@ -278,6 +313,7 @@ async function rollDialogV1RangedWeaponCallback(event, button, dialog,actor) {
 
   const rollDialogVars = {
     dicePoolRoll: dicePoolRoll,
+    dicePoolRollHTML: dicePoolRollHTML,
     total: dicePoolRoll.total,
     label: label,
     damage: damageValue,
@@ -286,12 +322,14 @@ async function rollDialogV1RangedWeaponCallback(event, button, dialog,actor) {
     isSuccess: isSuccess,
     rollFormula: rollFormula,
     isCriticalMiss: criticalMiss,
-    isCriticalHit: criticalHit
+    isCriticalHit: criticalHit,
+    recoil: recoil,
+    rate: item.system.rate
   }
   renderRangedWeaponRollResult(actor, rollDialogVars);
 }
 
-async function rollDialogV1MeleeWeaponCallback(event, button, dialog,actor) {
+async function rollDialogV1MeleeWeaponCallback(event, button, dialog, actor) {
   const form = button.form;
   const actorRollData = actor.getRollData();
 
@@ -321,6 +359,8 @@ async function rollDialogV1MeleeWeaponCallback(event, button, dialog,actor) {
   if (difficulty && dicePoolRoll.total >= difficulty) {
     isSuccess = true;
   }
+
+  let dicePoolRollHTML = await dicePoolRoll.render();
 
   // damage calulcation
   let dmgStr = item.system.damage || "";
@@ -342,7 +382,7 @@ async function rollDialogV1MeleeWeaponCallback(event, button, dialog,actor) {
         rollFormulaDamage += `+(${num}*${actor.system.abilities.strength})`;
       }
     }
-    else if(token.includes("E") == false && token.length > 0){
+    else if (token.includes("E") == false && token.length > 0) {
       rollFormulaDamage += `+${token}`;
     }
   })
@@ -367,6 +407,7 @@ async function rollDialogV1MeleeWeaponCallback(event, button, dialog,actor) {
 
   const rollDialogVars = {
     dicePoolRoll: dicePoolRoll,
+    dicePoolRollHTML: dicePoolRollHTML,
     total: dicePoolRoll.total,
     label: label,
     damage: damageResult,

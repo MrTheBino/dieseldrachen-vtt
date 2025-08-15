@@ -24,5 +24,7 @@ export const preloadHandlebarsTemplates = async function () {
     'systems/dieseldrachen-vtt/templates/actor/parts/speed-partial.hbs',
     // Item partials
     'systems/dieseldrachen-vtt/templates/item/parts/item-effects.hbs',
+    // Chat partials
+    'systems/dieseldrachen-vtt/templates/chat/success-partial.hbs'
   ]);
 };

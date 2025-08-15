@@ -533,5 +533,30 @@ export class DieseldrachenActorSheet extends foundry.appv1.sheets.ActorSheet {
       const itemId = element.closest('.item').dataset.itemId;
       rollDialogRangedWeaponV1(this.actor, itemId, dataset.label);
     }
+
+    if(dataset.rollType== "spell"){
+      const itemId = element.closest('.item').dataset.itemId;
+      const item = this.actor.items.get(itemId);
+      this._handleRollSpell(item);
+    }
+  }
+
+  _handleRollSpell(item){
+    console.log("_handleRollSpell")
+    let label = "Unbekannt";
+    let roll = "";
+    if(item.system.spellType == 0){
+      label = "Körper / Sinne"
+      roll = `1d${this.actor.system.attributes.magic}+1d${this.actor.system.abilities.magic_body}`
+    }
+    else if(item.system.spellType == 1){
+      label = "Schicksal / Geister"
+      roll = `1d${this.actor.system.attributes.magic}+1d${this.actor.system.abilities.magic_fate}`
+    }
+    else if(item.system.spellType == 2){
+      label = "Elemente / Energie"
+      roll = `1d${this.actor.system.attributes.magic}+1d${this.actor.system.abilities.magic_elemental}`
+    }
+    rollDialogSkillV1(this.actor, roll, label);
   }
 }

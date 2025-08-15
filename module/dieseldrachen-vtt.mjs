@@ -61,7 +61,8 @@ Hooks.once('init', function () {
     vehicleWeapon: models.DieseldrachenVehicleWeapon,
     npcSpecialDice: models.DieseldrachenNPCSpecialDice,
     spleen: models.DieseldrachenSpleen,
-    spell: models.DieseldrachenSpell
+    spell: models.DieseldrachenSpell,
+    handgrenade: models.DieseldrachenHandGrenade
   }
 
   // Active Effects are never copied to the Actor,

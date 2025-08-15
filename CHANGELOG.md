@@ -2,6 +2,11 @@
 
 ## 13.0.2
   - added spleen item
+  - better roll chat messages
+  - item quantity updating direct in item list
+  - fixed critical misses
+  - added magic tab for characters
+  - added handgrenade items (not used in actor sheet yet)
   
 ## 13.0.1
   - better handling of critical misses and successes

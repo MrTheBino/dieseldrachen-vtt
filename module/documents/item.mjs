@@ -63,6 +63,9 @@ export class DieseldrachenItem extends Item {
       case 'spell':
         image = "systems/dieseldrachen-vtt/assets/icons/item-spell.svg";
         break;
+      case 'handgrenade':
+        image = "systems/dieseldrachen-vtt/assets/icons/item-grenade.svg";
+        break;
     }
 
     if (image != null) {

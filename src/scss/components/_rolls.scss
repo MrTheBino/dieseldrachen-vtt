@@ -14,7 +14,10 @@
 }
 
 .roll-formula {
-    font-size: 0.75em;
+    background: gray;
+    padding: 2px;
+    color: white;
+    font-size: 1em;
     text-align: center;
 }
 
@@ -29,6 +32,7 @@
     font-weight: bold;
     text-align: center;
     color: green;
+    text-transform: uppercase;
 }
 
 .roll-ranged-damage-formula {
@@ -42,6 +46,7 @@
     font-weight: bold;
     text-align: center;
     color: orange;
+    text-transform: uppercase;
 }
 
 .roll-critical-miss {
@@ -66,4 +71,10 @@
 
 .roll-melee-damage-formula {
     font-size: 0.75em;
+}
+
+.roll-group{
+    background-color: rgba(205, 204, 204, 0.5);
+    border-radius: 5px;
+    margin: 5px;
 }
