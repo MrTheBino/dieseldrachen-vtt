@@ -228,6 +228,9 @@
   font-feature-settings: "liga" 1, "kern" 1, "calt" 1;
   font-size: 1.2em;
 }
+.dicier-icon.big {
+  font-size: 3.5em;
+}
 
 .dicier-icon-bold {
   font-family: Dicier-Heavy, sans-serif;
@@ -329,6 +332,9 @@ form > nav > a.item.active {
 }
 .dieseldrachen-vtt .editor-content {
   min-height: 100px;
+}
+.dieseldrachen-vtt .full-width-select {
+  width: 100%;
 }
 .dieseldrachen-vtt .resource-group {
   background-color: rgba(245, 245, 220, 0.4509803922);
@@ -618,6 +624,18 @@ form > nav > a.item.active {
 .dieseldrachen-vtt .tire_wing_damage .vmd_red {
   color: red;
 }
+.dieseldrachen-vtt .npc-armor {
+  width: 50px;
+  height: 50px;
+  display: block;
+  text-align: center;
+  font-size: 2em;
+  color: white;
+  align-content: center;
+}
+.dieseldrachen-vtt .icon-armor-bg {
+  background-image: url("../assets/icons/icon-shield.svg");
+}
 
 .card-title {
   font-family: "Voltaire", sans-serif;
@@ -704,6 +722,10 @@ form > nav > a.item.active {
 
 .medium_input {
   width: 75px;
+}
+
+.ranged-weapon-roll-dialog {
+  min-width: 400px;
 }
 
 /*# sourceMappingURL=dieseldrachen-vtt.css.map */

@@ -6,13 +6,8 @@
       <div class='grid grid-3col'>
         <div class='resource'>
           <label class='resource-label'>Würfel</label>
-          <select name="system.dice">
-            <option value="4" {{#if (eq system.dice "4")}}selected{{/if}}>D4</option>
-            <option value="6" {{#if (eq system.dice "6")}}selected{{/if}}>D6</option>
-            <option value="8" {{#if (eq system.dice "8")}}selected{{/if}}>D8</option>
-            <option value="10" {{#if (eq system.dice "10")}}selected{{/if}}>D10</option>
-            <option value="12" {{#if (eq system.dice "12")}}selected{{/if}}>D12</option>
-          </select>
+          {{> "systems/dieseldrachen-vtt/templates/shared/dice-option-select-partial.hbs" key="system.dice"
+          value=system.dice dtype="String"}}
         </div>
         <div class='resource'>
           <label class='resource-label'>Einschränkung</label>
@@ -20,7 +15,7 @@
         </div>
         <div class='resource'>
           <label class='resource-label'>Typ</label>
-          <select name="system.type">
+          <select name="system.type" class="full-width-select">
             <option value="technic" {{#if (eq system.type "technic")}}selected{{/if}}>Technik</option>
             <option value="maneuver" {{#if (eq system.type "maneuver")}}selected{{/if}}>Manöver</option>
           </select>

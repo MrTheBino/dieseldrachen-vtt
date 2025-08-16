@@ -13,17 +13,21 @@
 }
 
 
-.dicier-icon{
- font-family: Dicier, sans-serif;
- font-feature-settings: "liga" 1, "kern" 1, "calt" 1;
- font-size: 1.2em;
+.dicier-icon {
+  font-family: Dicier, sans-serif;
+  font-feature-settings: "liga" 1, "kern" 1, "calt" 1;
+  font-size: 1.2em;
+
+  &.big {
+    font-size: 3.5em;
+  }
 }
 
-.dicier-icon-bold{
- font-family: Dicier-Heavy, sans-serif;
- font-feature-settings: "liga" 1, "kern" 1, "calt" 1;
- font-weight: bold;
- font-size: 1.2em;
+.dicier-icon-bold {
+  font-family: Dicier-Heavy, sans-serif;
+  font-feature-settings: "liga" 1, "kern" 1, "calt" 1;
+  font-weight: bold;
+  font-size: 1.2em;
 }
 
 .voltaire-regular {
@@ -32,38 +36,39 @@
   font-style: normal;
 }
 
-.color-d4{
+.color-d4 {
   color: #00B1B9
 }
 
-.color-d6{
+.color-d6 {
   color: #2B9C45;
 }
 
-.color-d8{
+.color-d8 {
   color: #F29207;
 }
 
-.color-d10{
+.color-d10 {
   color: #E15E02;
 }
 
-.color-d12{
+.color-d12 {
   color: #B52215;
 }
 
-.small{
+.small {
   font-size: 0.75em;
 }
 
-.social-dice{
+.social-dice {
   font-size: 1.85em;
 }
 
-form > nav > a.item{
+form>nav>a.item {
   font-family: "Voltaire", sans-serif;
   font-size: 1.2em;
-  &.active{
+
+  &.active {
     font-weight: bold;
   }
 }

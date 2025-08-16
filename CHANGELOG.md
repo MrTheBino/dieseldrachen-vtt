@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 13.0.3
+  - usability improvements
+  - removed mod-dice from ranged weapon roll dialog, the precision is already the mod dice
+  
 ## 13.0.2
   - added spleen item
   - better roll chat messages

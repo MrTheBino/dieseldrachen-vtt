@@ -12,7 +12,7 @@ export class DieseldrachenItemSheet extends foundry.appv1.sheets.ItemSheet {
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
       classes: ['dieseldrachen-vtt', 'sheet', 'item'],
-      width: 520,
+      width: 600,
       height: 480,
       tabs: [
         {

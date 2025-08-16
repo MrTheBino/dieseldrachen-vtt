@@ -95,6 +95,16 @@ Handlebars.registerHelper('toLowerCase', function (str) {
   return str.toLowerCase();
 });
 
+Handlebars.registerHelper('diceIcon', function (die) {
+  if(parseInt(die) < 4){
+    return "";
+  }
+  
+  let t = `<span class="dicier-icon color-d${die}" title="D${die}">${die}_ON_D${die}</span>`;
+  return t;
+});
+
+
 Handlebars.registerHelper('isHealthMarker', function (str,value) {
   console.log("str:" + str)
   console.log("value:" + value)

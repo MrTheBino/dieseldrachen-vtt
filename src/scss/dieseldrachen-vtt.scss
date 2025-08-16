@@ -22,6 +22,7 @@
   @import 'components/effects';
   @import 'components/healthbar';
   @import 'components/vehicles';
+  @import 'components/icons';
 }
 
   @import 'components/rolls';
@@ -33,3 +34,7 @@
   .medium_input{
     width: 75px;
   }
+
+.ranged-weapon-roll-dialog{
+  min-width: 400px;
+}

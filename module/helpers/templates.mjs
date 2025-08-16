@@ -25,6 +25,8 @@ export const preloadHandlebarsTemplates = async function () {
     // Item partials
     'systems/dieseldrachen-vtt/templates/item/parts/item-effects.hbs',
     // Chat partials
-    'systems/dieseldrachen-vtt/templates/chat/success-partial.hbs'
+    'systems/dieseldrachen-vtt/templates/chat/success-partial.hbs',
+    // Shared partials
+    'systems/dieseldrachen-vtt/templates/shared/dice-option-select-partial.hbs'
   ]);
 };

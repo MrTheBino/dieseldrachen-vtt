@@ -154,8 +154,9 @@ export async function rollDialogRangedWeaponV1(actor, itemId, label) {
 
   return new Promise((resolve) => {
     new foundry.applications.api.DialogV2({
-      window: { title: cardTitle },
+      window: { title: cardTitle, width:400 },
       content: html,
+      classes: ["ranged-weapon-roll-dialog"],
       buttons: [
         {
           action: 'roll',
@@ -265,11 +266,12 @@ async function rollDialogV1RangedWeaponCallback(event, button, dialog, actor) {
   const range = form.range.value;
   let damageValue = 0;
   const recoil = parseInt(form.recoil.value) || 0;
-  const modDice = form.modDice.value || "";
+  //const modDice = form.modDice.value || "";
 
 
   const dicePromises = [];
 
+  // Präzision ist der Moduswürfel
   switch (range) {
     case "near":
       rollFormula = rollFormula + `+ 1d${item.system.precision_near}`;
@@ -288,11 +290,6 @@ async function rollDialogV1RangedWeaponCallback(event, button, dialog, actor) {
   // Rückstoss
   if (recoil > 0) {
     rollFormula = rollFormula + `- ${recoil}`;
-  }
-
-  // Im Fern
-  if (modDice && modDice !== "" && modDice != 0) {
-    rollFormula = rollFormula + `+ d${modDice}`;
   }
 
   const dicePoolRoll = new Roll(rollFormula, actorRollData);

@@ -16,16 +16,19 @@
     </div>
   </header>
 
-  <div class="item-statistics grid grid-3col">
-    <div class='resource'>
+  <div class="item-statistics grid grid-2col">
+    <div class='resource resource-group'>
       <label class='resource-label'>Präzision</label>
       <div class="grid grid-3col">
-        <input type='text' name='system.precision_near' value='{{system.precision_near}}' data-dtype='Number' />
-        <input type='text' name='system.precision_close' value='{{system.precision_close}}' data-dtype='Number' />
-        <input type='text' name='system.precision_far' value='{{system.precision_far}}' data-dtype='Number' />
+        {{> "systems/dieseldrachen-vtt/templates/shared/dice-option-select-partial.hbs" key="system.precision_near"
+          value=system.precision_near dtype="Number"}}
+          {{> "systems/dieseldrachen-vtt/templates/shared/dice-option-select-partial.hbs" key="system.precision_close"
+          value=system.precision_close dtype="Number"}}
+          {{> "systems/dieseldrachen-vtt/templates/shared/dice-option-select-partial.hbs" key="system.precision_far"
+          value=system.precision_far dtype="Number"}}
       </div>
     </div>
-    <div class='resource'>
+    <div class='resource resource-group'>
       <label class='resource-label'>Schaden</label>
       <div class="grid grid-3col">
         <input type='text' name='system.damage_near' value='{{system.damage_near}}' data-dtype='Number' />
@@ -34,7 +37,7 @@
       </div>
     </div>
 
-    <div class='resource'>
+    <div class='resource resource-group'>
       <label class='resource-label'>Rate</label>
       <div class="grid grid-1col">
         <input type='text' name='system.rate' value='{{system.rate}}' data-dtype='String' class="medium_input" />

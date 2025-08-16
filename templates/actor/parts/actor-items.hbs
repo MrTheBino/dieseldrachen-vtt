@@ -57,6 +57,7 @@
     <div class='item-name'>{{localize 'Name'}}</div>
     <div class='item-prop'>Reichweite</div>
     <div class='item-prop'>Schaden</div>
+    <div class='item-prop'>Waffengewicht</div>
     <div class='item-prop'>Ausgerüstet</div>
     <div class='item-controls'>
       <a
@@ -85,6 +86,7 @@
       </div>
       <div class='item-prop'>{{ localize (concat "DIESELDRACHEN.Ranges." item.system.range)}}</div>
       <div class='item-prop'>{{item.system.damage}}</div>
+      <div class='item-prop'>{{{diceIcon item.system.weaponWeight}}}</div>
       <div class='item-prop'><input type="checkbox" {{#if item.system.mounted}} checked{{/if}} data-item-stat="system.mounted" class="item-editable-stat"></div>
       <div class='item-controls'>
         <a
@@ -140,7 +142,7 @@
         </div>
         <h4>{{item.name}}</h4>
       </div>
-      <div class='item-prop'>{{item.system.precision_near}}/{{item.system.precision_close}}/{{item.system.precision_far}}</div>
+      <div class='item-prop'>{{{diceIcon item.system.precision_near}}} / {{{diceIcon item.system.precision_close}}} / {{{diceIcon item.system.precision_far}}}</div>
       <div class='item-prop'>{{item.system.damage_near}}/{{item.system.damage_close}}/{{item.system.damage_far}}</div>
       <div class='item-prop'>{{item.system.rate}}</div>
       <div class='item-prop'>{{item.system.capacity}}</div>
