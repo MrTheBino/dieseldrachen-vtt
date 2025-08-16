@@ -12,7 +12,7 @@ export default class DieseldrachenNPC extends DieseldrachenActorBase {
 
     schema.species = new fields.StringField({ required: true, nullable: false, initial: "" });
     schema.dice = new fields.NumberField({ required: true, nullable: false, integer: true, initial: 6, min: 1, max: 100 });
-    schema.armor = new fields.NumberField({ required: true, nullable: false, integer: true, initial: 1, min: 1, max: 100 });
+    schema.armor = new fields.NumberField({ required: true, nullable: false, integer: true, initial: 1, min: 0, max: 100 });
 
     schema.healthbar = new fields.StringField({ required: true, blank: true, initial: "[]" });
     

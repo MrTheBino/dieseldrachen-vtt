@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 13.0.3.1
+  - NPCs can have zero armor
+  
 ## 13.0.3
   - usability improvements
   - removed mod-dice from ranged weapon roll dialog, the precision is already the mod dice
