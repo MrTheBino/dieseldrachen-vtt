@@ -209,6 +209,78 @@ export async function rollDialogSkillV1(actor, formula, label) {
   });
 }
 
+export async function rollDialogSavingThrow1(actor, formula, label) {
+  let rollDiceFaceSuccess = 5;
+  const actorRollData = actor.getRollData();
+  let diceFormula = formula;
+
+  const cardTitle = "RollDialog";
+  const rollResult = {
+    actor,
+    cardTitle,
+    diceFormula,
+    label,
+    rollDiceFaceSuccess
+  };
+  const html = await foundry.applications.handlebars.renderTemplate(
+    "systems/dieseldrachen-vtt/templates/dialogs/saving_throw_roll_dialog.hbs",
+    rollResult
+  );
+
+  return new Promise((resolve) => {
+    new foundry.applications.api.DialogV2({
+      window: { title: "Rettungswurf" },
+      content: html,
+      buttons: [
+        {
+          action: 'roll',
+          icon: '<i class="fas fa-dice-d6"></i>',
+          label: game.i18n.localize("DIESELDRACHEN.Labels.Roll"),
+          callback: (event, button, dialog) => rollDialogSavingThrowV1Callback(event, button, dialog, actor),
+        },
+      ],
+      default: "roll",
+      close: () => resolve(null),
+    }).render({ force: true });
+  });
+}
+
+async function rollDialogSavingThrowV1Callback(event, button, dialog, actor) {
+
+  const form = button.form;
+  const actorRollData = actor.getRollData();
+
+  const label = `Rettungswurf: ${form.label.value}`;
+  let rollFormula = form.diceFormula.value
+  let isSuccess = false;
+  const difficulty = parseInt(form.difficulty.value) || 10;
+
+  const dicePromises = [];
+
+  const dicePoolRoll = new Roll(rollFormula, actorRollData);
+  await dicePoolRoll.evaluate();
+
+
+  addShowDicePromise(dicePromises, dicePoolRoll);
+  await Promise.all(dicePromises);
+
+  let dicePoolRollHTML = await dicePoolRoll.render();
+
+  if (difficulty && dicePoolRoll.total >= difficulty) {
+    isSuccess = true;
+  }
+
+  const rollDialogVars = {
+    dicePoolRoll: dicePoolRoll,
+    dicePoolRollHTML: dicePoolRollHTML,
+    total: dicePoolRoll.total,
+    label: label,
+    isSuccess: isSuccess,
+    difficulty: difficulty
+  }
+  renderSavingThrowRollResult(actor, rollDialogVars);
+}
+
 async function rollDialogV1Callback(event, button, dialog, actor) {
 
   const form = button.form;
@@ -417,6 +489,17 @@ async function rollDialogV1MeleeWeaponCallback(event, button, dialog, actor) {
     isCriticalHit: criticalHit
   }
   renderMeleeWeaponRollResult(actor, rollDialogVars);
+}
+
+export async function renderSavingThrowRollResult(actor, rollResult) {
+  const html = await foundry.applications.handlebars.renderTemplate(
+    "systems/dieseldrachen-vtt/templates/chat/saving-throw-roll-result.hbs",
+    rollResult
+  );
+  ChatMessage.create({
+    content: html,
+    speaker: ChatMessage.getSpeaker({ actor }),
+  });
 }
 
 export async function renderSkillRollResult(actor, rollResult) {

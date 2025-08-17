@@ -3,7 +3,7 @@ import {
   prepareActiveEffectCategories,
 } from '../helpers/effects.mjs';
 import { DieseldrachenItem } from '../documents/item.mjs';
-import { rollDialogSkillV1, rollDialogRangedWeaponV1, rollDialogMeleeWeaponV1 } from '../roll_dialog.mjs';
+import { rollDialogSkillV1, rollDialogRangedWeaponV1, rollDialogMeleeWeaponV1,rollDialogSavingThrow1 } from '../roll_dialog.mjs';
 
 /**
  * Extend the basic ActorSheet with some very simple modifications
@@ -538,6 +538,10 @@ export class DieseldrachenActorSheet extends foundry.appv1.sheets.ActorSheet {
       const itemId = element.closest('.item').dataset.itemId;
       const item = this.actor.items.get(itemId);
       this._handleRollSpell(item);
+    }
+
+    if(dataset.rollType=="savingThrow"){
+      rollDialogSavingThrow1(this.actor, dataset.roll, dataset.label);
     }
   }
 

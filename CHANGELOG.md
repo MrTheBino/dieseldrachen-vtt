@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 13.0.4
+  - character & npc ranged weapon can have zero precision
+  - added saving throws for character attributes
+  
 ## 13.0.3.1
   - NPCs can have zero armor
   

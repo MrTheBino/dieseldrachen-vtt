@@ -1,12 +1,18 @@
 <div>
     <select name="{{key}}" data-dtype="{{dtype}}">
         {{#if (eq dtype "Number")}}
+            {{#if zeroAllowed}}
+              <option value="0" {{#if (eq value 0)}}selected{{/if}}>-</option>
+            {{/if}}
             <option value="4" {{#if (eq value 4)}}selected{{/if}}>D4</option>
             <option value="6" {{#if (eq value 6)}}selected{{/if}}>D6</option>
             <option value="8" {{#if (eq value 8)}}selected{{/if}}>D8</option>
             <option value="10" {{#if (eq value 10)}}selected{{/if}}>D10</option>
             <option value="12" {{#if (eq value 12)}}selected{{/if}}>D12</option>
         {{else}}
+            {{#if zeroAllowed}}
+              <option value="0" {{#if (eq value "0")}}selected{{/if}}>-</option>
+            {{/if}}
             <option value="4" {{#if (eq value "4")}}selected{{/if}}>D4</option>
             <option value="6" {{#if (eq value "6")}}selected{{/if}}>D6</option>
             <option value="8" {{#if (eq value "8")}}selected{{/if}}>D8</option>

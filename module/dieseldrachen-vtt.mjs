@@ -97,7 +97,7 @@ Handlebars.registerHelper('toLowerCase', function (str) {
 
 Handlebars.registerHelper('diceIcon', function (die) {
   if(parseInt(die) < 4){
-    return "";
+    return "<span>-</span>";
   }
   
   let t = `<span class="dicier-icon color-d${die}" title="D${die}">${die}_ON_D${die}</span>`;

@@ -1,0 +1,15 @@
+<form class="roll-card">
+  <div class="card-title">
+    {{label}}
+  </div>
+  <div class="roll-result">
+    {{{dicePoolRollHTML}}}
+    <div class="roll-row">
+      <div class="roll-difficulty">
+        <span>Schwierigkeit: </span>
+        <span>{{difficulty}}</span>
+      </div>
+    </div>
+   {{> "systems/dieseldrachen-vtt/templates/chat/success-partial.hbs"}}
+  </div>
+</form>

@@ -166,7 +166,8 @@
           <div class="abilities flexcol">
             <div class="attribute-group">
               <div class="ability flexrow flex-group-center">
-                <label for="system.attributes.athletics" class="resource-label align-left attribute-label">
+                <label for="system.attributes.athletics" class="resource-label align-left attribute-label rollable"
+                  data-roll-type="savingThrow" data-roll="1d{{system.attributes.athletics}}" data-label="Athletik">
                   Athletik</label>
                 {{> "systems/dieseldrachen-vtt/templates/actor/parts/actor-dice-select.hbs"
                 group_name="radio_attr_athletics" name="system.attributes.athletics" value=system.attributes.athletics}}
@@ -202,7 +203,8 @@
 
             <div class="attribute-group">
               <div class="ability flexrow flex-group-center">
-                <label for="system.attributes.skill" class="resource-label align-left attribute-label">
+                <label for="system.attributes.skill" class="resource-label align-left attribute-label rollable"
+                  data-roll-type="savingThrow" data-roll="1d{{system.attributes.skill}}" data-label="Geschick">
                   Geschick</label>
                 {{> "systems/dieseldrachen-vtt/templates/actor/parts/actor-dice-select.hbs"
                 group_name="radio_attr_skill" name="system.attributes.skill" value=system.attributes.skill}}
@@ -238,8 +240,9 @@
 
             <div class="attribute-group">
               <div class="ability flexrow flex-group-center">
-                <label for="system.attributes.reaction"
-                  class="resource-label align-left attribute-label">Reaktion</label>
+                <label for="system.attributes.reaction" class="resource-label align-left attribute-label rollable"
+                  data-roll-type="savingThrow" data-roll="1d{{system.attributes.reaction}}"
+                  data-label="Reaktion">Reaktion</label>
                 {{> "systems/dieseldrachen-vtt/templates/actor/parts/actor-dice-select.hbs"
                 group_name="radio_attr_reaction" name="system.attributes.reaction" value=system.attributes.reaction}}
               </div>
@@ -274,8 +277,9 @@
 
             <div class="attribute-group">
               <div class="ability flexrow flex-group-center">
-                <label for="system.attributes.charisma"
-                  class="resource-label align-left attribute-label">Charisma</label>
+                <label for="system.attributes.charisma" class="resource-label align-left attribute-label rollable"
+                  data-roll-type="savingThrow" data-roll="1d{{system.attributes.charisma}}"
+                  data-label="Charisma">Charisma</label>
                 {{> "systems/dieseldrachen-vtt/templates/actor/parts/actor-dice-select.hbs"
                 group_name="radio_attr_charisma" name="system.attributes.charisma" value=system.attributes.charisma}}
               </div>
@@ -309,8 +313,9 @@
 
             <div class="attribute-group">
               <div class="ability flexrow flex-group-center">
-                <label for="system.attributes.intuition"
-                  class="resource-label align-left attribute-label">Intuition</label>
+                <label for="system.attributes.intuition" class="resource-label align-left attribute-label rollable"
+                  data-roll-type="savingThrow" data-roll="1d{{system.attributes.intuition}}"
+                  data-label="Intuition">Intuition</label>
                 {{> "systems/dieseldrachen-vtt/templates/actor/parts/actor-dice-select.hbs"
                 group_name="radio_attr_intuition" name="system.attributes.intuition" value=system.attributes.intuition}}
               </div>
@@ -345,8 +350,9 @@
 
             <div class="attribute-group">
               <div class="ability flexrow flex-group-center">
-                <label for="system.attributes.reason" class="resource-label align-left attribute-label"
-                  data-roll="d20+@abilities.{{key}}.mod">Verstand</label>
+                <label for="system.attributes.reason" class="resource-label align-left attribute-label rollable"
+                  data-roll-type="savingThrow" data-roll="1d{{system.attributes.reason}}"
+                  data-label="Verstand">Verstand</label>
                 {{> "systems/dieseldrachen-vtt/templates/actor/parts/actor-dice-select.hbs"
                 group_name="radio_attr_reason" name="system.attributes.reason" value=system.attributes.reason}}
               </div>
@@ -381,7 +387,9 @@
 
             <div class="attribute-group">
               <div class="ability flexrow flex-group-center">
-                <label for="system.attributes.magic" class="resource-label align-left attribute-label">Magie</label>
+                <label for="system.attributes.magic" class="resource-label align-left attribute-label rollable"
+                  data-roll-type="savingThrow" data-roll="1d{{system.attributes.magic}}"
+                  data-label="Magie">Magie</label>
                 {{> "systems/dieseldrachen-vtt/templates/actor/parts/actor-dice-select.hbs"
                 group_name="radio_attr_magic" name="system.attributes.magic" value=system.attributes.magic}}
               </div>
