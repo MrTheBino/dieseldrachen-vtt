@@ -46,7 +46,7 @@ Hooks.once('init', function () {
     npc: models.DieseldrachenNPC,
     vehicle: models.DieseldrachenVehicle
   }
-  
+
   CONFIG.Item.documentClass = DieseldrachenItem;
   CONFIG.Item.dataModels = {
     item: models.DieseldrachenItem,
@@ -96,29 +96,29 @@ Handlebars.registerHelper('toLowerCase', function (str) {
 });
 
 Handlebars.registerHelper('diceIcon', function (die) {
-  if(parseInt(die) < 4){
+  if (parseInt(die) < 4) {
     return "<span>-</span>";
   }
-  
+
   let t = `<span class="dicier-icon color-d${die}" title="D${die}">${die}_ON_D${die}</span>`;
   return t;
 });
 
 
-Handlebars.registerHelper('isHealthMarker', function (str,value) {
+Handlebars.registerHelper('isHealthMarker', function (str, value) {
   console.log("str:" + str)
   console.log("value:" + value)
-  if(parseInt(str) + 1 == value){
+  if (parseInt(str) + 1 == value) {
     return true;
   }
   return false;
 });
 
-Handlebars.registerHelper('times', function(n, block) {
-    var accum = '';
-    for(var i = 0; i < n; ++i)
-        accum += block.fn(i);
-    return accum;
+Handlebars.registerHelper('times', function (n, block) {
+  var accum = '';
+  for (var i = 0; i < n; ++i)
+    accum += block.fn(i);
+  return accum;
 });
 
 /* -------------------------------------------- */
@@ -128,6 +128,10 @@ Handlebars.registerHelper('times', function(n, block) {
 Hooks.once('ready', function () {
   // Wait to register hotbar drop hook on ready so that modules could register earlier if they want to
   Hooks.on('hotbarDrop', (bar, data, slot) => createItemMacro(data, slot));
+});
+
+Hooks.once("item-piles-ready", async () => {
+  setupItemPiles();
 });
 
 /* -------------------------------------------- */
@@ -194,4 +198,81 @@ function rollItemMacro(itemUuid) {
     // Trigger the item roll
     item.roll();
   });
+}
+
+async function setupItemPiles() {
+  console.log("setting up item piles")
+
+  const data = {
+
+    "VERSION": "1.0",
+
+    // The actor class type is the type of actor that will be used for the default item pile actor that is created on first item drop.
+    "ACTOR_CLASS_TYPE": "character",
+
+    // The item class type is the type of item that will be used for the default loot item
+    "ITEM_CLASS_LOOT_TYPE": "",
+
+    // The item class type is the type of item that will be used for the default weapon item
+    "ITEM_CLASS_WEAPON_TYPE": "",
+
+    // The item class type is the type of item that will be used for the default equipment item
+    "ITEM_CLASS_EQUIPMENT_TYPE": "",
+
+    // The item quantity attribute is the path to the attribute on items that denote how many of that item that exists
+    "ITEM_QUANTITY_ATTRIBUTE": "system.quantity",
+    "ITEM_PRICE_ATTRIBUTE": "system.purchasePrice",
+
+    // Item filters actively remove items from the item pile inventory UI that users cannot loot, such as spells, feats, and classes
+    "ITEM_FILTERS": [
+      {
+        "path": "type",
+        "filters": "trick,knowledge,technicManeuver,vehicleUpgrade,vehicleWeapon,npcSpecialDice,spleen,spell"
+      }
+    ],
+
+    // Item similarities determines how item piles detect similarities and differences in the system
+    "ITEM_SIMILARITIES": [], // ["name", "type", "system.light.remainingSecs"],
+
+    //prevent items from stacking
+    "UNSTACKABLE_ITEM_TYPES": [],
+
+    // Currencies in item piles is a versatile system that can accept actor attributes (a number field on the actor's sheet) or items (actual items in their inventory)
+    // In the case of attributes, the path is relative to the "actor.system"
+    // In the case of items, it is recommended you export the item with `.toObject()` and strip out any module data
+    "CURRENCIES": [
+      {
+        "type": "attribute",
+        "name": "Bargeld",
+        "img": "icons/commodities/currency/coin-embossed-crown-gold.webp",
+        "abbreviation": "{#}$",
+        "data": {
+          "path": "system.money"
+        },
+        "primary": true,
+        "exchangeRate": 1
+      },
+
+    ],
+
+    // This function is an optional system handler that specifically transforms an item's price into a more unified numeric format
+    /*"ITEM_COST_TRANSFORMER": (item, currencies) => {
+        const cost = foundry.utils.getProperty(item, "system.cost") ?? {};
+        let totalCost = 0;
+        for (const costDenomination in cost) {
+            const subCost = Number(foundry.utils.getProperty(cost, costDenomination)) ?? 0;
+            if (subCost === 0) {
+                continue;
+            }
+            const currencyDenomination = currencies.filter((currency) => currency.type === "attribute").find((currency) => {
+                return currency.data.path.toLowerCase().endsWith(costDenomination);
+            });
+            totalCost += subCost * currencyDenomination?.exchangeRate;
+        }
+        return totalCost;
+    }*/
+  }
+
+  await game.itempiles.API.addSystemIntegration(data);
+  console.log("finished setting up item piles")
 }
