@@ -121,6 +121,7 @@ export class DieseldrachenActorSheet extends foundry.appv1.sheets.ActorSheet {
     const vehicleUpgrades = [];
     const vehicleWeapons = [];
     const npcSpecialDice = [];
+    const handgrenades = [];
     let characterSpleen = null;
     let currentArmor = 0;
     const spells = [];
@@ -182,6 +183,9 @@ export class DieseldrachenActorSheet extends foundry.appv1.sheets.ActorSheet {
       else if(i.type == "spleen") {
         characterSpleen = i;
       }
+      else if(i.type == "handgrenade") {
+        handgrenades.push(i);
+      }
       else if (i.type === 'artefact') {
         artefacts.push(i);
         if (i.system.weight != undefined) {
@@ -233,6 +237,7 @@ export class DieseldrachenActorSheet extends foundry.appv1.sheets.ActorSheet {
     context.currentArmor = currentArmor;
     context.npcSpecialDice = npcSpecialDice;
     context.characterSpleen = characterSpleen;
+    context.handgrenades = handgrenades;
 
     let numSegments = 33;
     if (this.object.type == "npc") {

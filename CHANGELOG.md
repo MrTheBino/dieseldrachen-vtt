@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 13.0.5
+  - added native basic support for the item piles module (https://foundryvtt.com/packages/item-piles)
+  - added weapon type to ranged weapon type list in player character sheet
+  - added handgrenades to inventory list of characters
+
 ## 13.0.4
   - character & npc ranged weapon can have zero precision
   - added saving throws for character attributes

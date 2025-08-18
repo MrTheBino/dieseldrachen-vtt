@@ -1,6 +1,10 @@
 {
   "DIESELDRACHEN": {
     "Keys":{
+      "weaponTypes":{
+        "pistol": "Pistole",
+        "rifle": "Gewehr"
+      },
       "system":{
         "acceleration": "Beschleunigung",
         "mass": "Masse",
