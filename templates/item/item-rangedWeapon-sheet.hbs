@@ -12,7 +12,11 @@
           <label class='resource-label'>Typ</label>
           <select name='system.weaponType' data-dtype='String' class="full-width-select">
             <option value='pistol' {{#if (eq system.weaponType 'pistol' )}}selected{{/if}}>Pistole</option>
+            <option value='revolver' {{#if (eq system.weaponType 'revolver' )}}selected{{/if}}>Revolver</option>
             <option value='rifle' {{#if (eq system.weaponType 'rifle' )}}selected{{/if}}>Gewehr</option>
+            <option value='shotgun' {{#if (eq system.weaponType 'shotgun' )}}selected{{/if}}>Schrotflinte</option>
+            <option value='precision_rifle' {{#if (eq system.weaponType 'precision_rifle' )}}selected{{/if}}>Präzisionsgewehr</option>
+            <option value='assault_rifle' {{#if (eq system.weaponType 'assault_rifle' )}}selected{{/if}}>Sturm &amp; Maschinengewehre</option>
           </select>
         </div>
       </div>

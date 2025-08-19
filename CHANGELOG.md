@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 13.0.6
+  - fixed default values for NPCs and ranged weapons
+  - added more ranged weapon types (just labeling, internally they are the same)
+  - roll dialogs with mod dice selected now always have a D4 as default value, removed the no-mod dice option because you always roll with 3 dices
+  
 ## 13.0.5
   - added native basic support for the item piles module (https://foundryvtt.com/packages/item-piles)
   - added weapon type to ranged weapon type list in player character sheet

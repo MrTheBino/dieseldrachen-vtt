@@ -13,6 +13,7 @@
 @import 'global/grid';
 @import 'global/flex';
 @import 'global/fonts';
+@import 'global/journal';
 
 /* Styles limited to dieseldrachen-vtt sheets */
 .dieseldrachen-vtt {
@@ -23,6 +24,7 @@
   @import 'components/healthbar';
   @import 'components/vehicles';
   @import 'components/icons';
+
 }
 
   @import 'components/rolls';

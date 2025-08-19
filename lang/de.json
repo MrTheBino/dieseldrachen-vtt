@@ -3,7 +3,11 @@
     "Keys":{
       "weaponTypes":{
         "pistol": "Pistole",
-        "rifle": "Gewehr"
+        "rifle": "Gewehr",
+        "revolver": "Revolver",
+        "shotgun": "Schrotflinte",
+        "precision_rifle": "Präzisionsgewehr",
+        "assault_rifle": "Sturm & Maschinengewehre"
       },
       "system":{
         "acceleration": "Beschleunigung",

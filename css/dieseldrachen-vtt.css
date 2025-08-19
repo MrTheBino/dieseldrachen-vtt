@@ -281,6 +281,16 @@ form > nav > a.item.active {
   font-weight: bold;
 }
 
+header.journal-page-header h1 {
+  font-family: "Voltaire", sans-serif;
+  text-transform: uppercase;
+}
+
+section.journal-page-content h2 {
+  font-family: "Voltaire", sans-serif;
+  text-transform: uppercase;
+}
+
 /* Styles limited to dieseldrachen-vtt sheets */
 .dieseldrachen-vtt .item-form {
   font-family: "Roboto", sans-serif;

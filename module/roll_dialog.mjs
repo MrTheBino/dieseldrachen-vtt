@@ -53,7 +53,7 @@ export async function rollDialogMeleeWeaponV1(actor, itemId, label) {
   let diceFormula = "";
   let weaponTypeLabel = ""
   let recoil = 0;
-  let modDice = 0;
+  let modDice = 4;
 
   if (actor.type == "npc") {
     // NPCs
@@ -124,11 +124,11 @@ export async function rollDialogRangedWeaponV1(actor, itemId, label) {
     weaponTypeLabel = item.name;
     label = item.name;
   } else {
-    if (item.system.weaponType === "pistol") {
+    if (item.system.weaponType === "pistol" || item.system.weaponType === "revolver") {
       diceFormula = `1d${actor.system.attributes.skill} + 1d${actor.system.abilities.pistols}`;
       weaponTypeLabel = "Pistole";
       label = "Geschick + Pistole";
-    } if (item.system.weaponType === "rifle") {
+    } else {
       diceFormula = `1d${actor.system.attributes.skill} + 1d${actor.system.abilities.rifles}`;
       weaponTypeLabel = "Gewehr";
       label = "Geschick + Gewehr";
@@ -175,7 +175,7 @@ export async function rollDialogSkillV1(actor, formula, label) {
   let rollDiceFaceSuccess = 5;
   const actorRollData = actor.getRollData();
   let diceFormula = formula;
-  let modDice = 0
+  let modDice = 4
 
   const cardTitle = "RollDialog";
   const rollResult = {
