@@ -15,6 +15,12 @@
   cursor: pointer;
 }
 
+.expandable-trigger:hover, .expandable-trigger:focus {
+  color: #000;
+  text-shadow: 0 0 10px green;
+  cursor: pointer;
+}
+
 .grid,
 .grid-2col {
   display: grid;
@@ -345,6 +351,9 @@ section.journal-page-content h2 {
 }
 .dieseldrachen-vtt .full-width-select {
   width: 100%;
+}
+.dieseldrachen-vtt .profile-img {
+  border-radius: 3px;
 }
 .dieseldrachen-vtt .resource-group {
   background-color: rgba(245, 245, 220, 0.4509803922);

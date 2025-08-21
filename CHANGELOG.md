@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 13.0.7
+  - usability improvements
+  
 ## 13.0.6
   - fixed default values for NPCs and ranged weapons
   - added more ranged weapon types (just labeling, internally they are the same)

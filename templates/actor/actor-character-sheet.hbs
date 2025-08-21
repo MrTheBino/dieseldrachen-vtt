@@ -55,12 +55,16 @@
   <section class="grid grid-2col resource-group">
     <div class="resource flex-group-center">
       {{#if characterSpleen}}
-      <label for="system.spleen" class="resource-label">{{characterSpleen.name}} <a class='spleen-edit'
-          data-item-id='{{characterSpleen._id}}'>
+      <label for="system.spleen" class="resource-label"><span class="expandable-trigger"
+          data-expandable-target="spleen_{{actor.id}}">{{characterSpleen.name}}</span>
+        <a class='item-control item-expand expandable-trigger' data-expandable-target="spleen_{{actor.id}}">
+          <i class=" fa-solid fa-caret-down"></i>
+        </a>
+        <a class='spleen-edit' data-item-id='{{characterSpleen._id}}'>
           <i class='fas fa-edit'></i>
         </a></label>
       <div class="resource-content flexcol flex-center flex-between">
-        <div class="small_description">
+        <div class="small_description expandable closed spleen_{{actor.id}}">
           {{{characterSpleen.system.description}}}
         </div>
       </div>

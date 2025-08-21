@@ -278,10 +278,14 @@ export class DieseldrachenActorSheet extends foundry.appv1.sheets.ActorSheet {
     
 
     html.on('click','.expandable-trigger', (ev) => {
-      const li = $(ev.currentTarget).parents('.item');
-      let t = li.find('.expandable')[0];
-      t.classList.toggle('closed');
-      
+      if(ev.currentTarget.dataset.expandableTarget){
+        const target = document.querySelector(`.${ev.currentTarget.dataset.expandableTarget}`);
+        target.classList.toggle('closed');
+      }else{
+        const li = $(ev.currentTarget).parents('.item');
+        let t = li.find('.expandable')[0];
+        t.classList.toggle('closed');
+      }
     });
 
     // -------------------------------------------------------------
