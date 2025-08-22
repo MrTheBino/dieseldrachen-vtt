@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 13.0.8.2
+  - fix for npc ranged weapons
+  
 ## 13.0.8.1
   - fix for creating manually ranged weapons
   
