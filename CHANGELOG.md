@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 13.0.8
+  - usability improvements
+  - ammunition counting and reloading for ranged weapons, loadout gets calculated on the rate of a ranged weapon
+  - added bullet count to shooting chat message, assault rifles shoot 3 bullets like described in the rule book
+
 ## 13.0.7
   - usability improvements
   
