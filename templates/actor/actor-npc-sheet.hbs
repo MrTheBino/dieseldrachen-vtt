@@ -9,8 +9,9 @@
           <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Name" /></h1>
         </div>
         <div>
-          <span class="dicier-icon big color-d{{system.dice}} rollable" data-roll-type="skill" data-roll="2d{{system.dice}}"
-            data-label="{{actor.name}}" title="D{{system.dice}}">{{system.dice}}_ON_D{{system.dice}}</span>
+          <span class="dicier-icon big color-d{{system.dice}} rollable" data-roll-type="skill"
+            data-roll="2d{{system.dice}}" data-label="{{actor.name}}"
+            title="D{{system.dice}}">{{system.dice}}_ON_D{{system.dice}}</span>
         </div>
         <div>
           <span class="npc-armor icon-armor-bg">{{system.armor}}</span>
@@ -28,7 +29,7 @@
             <input type="text" name="system.species" value="{{system.species}}" data-dtype="String" />
           </div>
         </div>
-        
+
         {{!-- "flex-group-center" is also defined in the _grid.scss file
         and it will add a small amount of padding, a border, and will
         center all of its child elements content and text. --}}
@@ -186,11 +187,23 @@
           </div>
           <h4>{{item.name}}</h4>
         </div>
-        <div class='item-prop'>{{{diceIcon item.system.precision_near}}} / {{{diceIcon item.system.precision_close}}} / {{{diceIcon item.system.precision_far}}}</div>
+        <div class='item-prop'>{{{diceIcon item.system.precision_near}}} / {{{diceIcon item.system.precision_close}}} /
+          {{{diceIcon item.system.precision_far}}}</div>
         <div class='item-prop'>{{item.system.damage_near}}/{{item.system.damage_close}}/{{item.system.damage_far}}</div>
         <div class='item-prop'>{{item.system.rate}}</div>
         <div class='item-prop'>{{item.system.capacity}}</div>
-        <div class='item-prop'>{{item.system.bullets}}</div>
+        <div class='item-prop'>
+          <div class="ammunition-container">
+            <input type="text" value="{{item.system.bullets.value}}" data-item-stat="system.bullets.value"
+              class="item-editable-stat tiny_input">
+            /
+            <input type='text' name='system.bullets.max' value='{{system.bullets.max}}' data-dtype='Number'
+              class="tiny_input" disabled />
+            <span class="weapon-reload-icon" data-item-id='{{item._id}}'
+              title="{{system.bullets.perReload}} Kugeln pro Ladevorgang"><i
+                class="fa-solid fa-rotate clickable"></i></span>
+          </div>
+        </div>
         <div class='item-controls'>
           <a class='item-control item-edit' title='{{localize "DOCUMENT.Update" type=' Item'}}'>
             <i class='fas fa-edit'></i>

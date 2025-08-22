@@ -2,7 +2,7 @@
 
 ![Foundry v13](https://img.shields.io/badge/foundry-v13-green)
 
-Unofficial system implementation of the Dieseldrachen TTRPG by [Dragon Pulp Games](https://shop.dragonpulpgames.com/).
+Official system implementation of the Dieseldrachen TTRPG by [Dragon Pulp Games](https://shop.dragonpulpgames.com/).
 
 
 ## Preview:
