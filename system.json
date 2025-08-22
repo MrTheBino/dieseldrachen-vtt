@@ -12,7 +12,7 @@
   "license": "LICENSE.txt",
   "readme": "README.md",
   "bugs": "https://github.com/MrTheBino/dieseldrachen-vtt/issues",
-  "changelog": "CHANGELOG.md",
+  "changelog": "https://github.com/MrTheBino/dieseldrachen-vtt/blob/main/CHANGELOG.md",
   "media": [
     {
       "type": "setup",
