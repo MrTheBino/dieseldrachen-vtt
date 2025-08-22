@@ -39,7 +39,44 @@
       "path": "lang/en.json"
     }
   ],
-  "packs": [],
+  "packs": [
+    {
+      "name": "macros",
+      "label": "Macros",
+      "path": "packs/macros",
+      "type": "Macro",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "system": "dieseldrachen-vtt",
+      "flags": {}
+    },
+    {
+      "name": "characters",
+      "label": "Charaktere",
+      "path": "packs/characters",
+      "type": "Actor",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "system": "dieseldrachen-vtt",
+      "flags": {}
+    },
+    {
+      "name": "scenes",
+      "label": "Szenen",
+      "path": "packs/scenes",
+      "type": "Scene",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "system": "dieseldrachen-vtt",
+      "flags": {}
+    }
+  ],
   "packFolders": [],
   "socket": false,
   "manifest": "https://github.com/MrTheBino/dieseldrachen-vtt/releases/latest/download/system.json",
