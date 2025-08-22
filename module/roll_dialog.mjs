@@ -340,6 +340,26 @@ async function rollDialogV1RangedWeaponCallback(event, button, dialog, actor) {
   const recoil = parseInt(form.recoil.value) || 0;
   //const modDice = form.modDice.value || "";
 
+  let numShots = 1;
+  let bulletsLeft = parseInt(item.system.bullets.value) || 0;
+  if(item.system.weaponType == "assault_rifle"){
+    if(bulletsLeft - 3 < 0){
+      numShots = bulletsLeft;
+      bulletsLeft = 0;
+    }else{
+      bulletsLeft -= 3;
+      numShots = 3;
+    }
+  }else{
+    bulletsLeft -= 1; // item.system.bullets.perShot;
+    if(bulletsLeft < 0){
+      bulletsLeft = 0;
+    }
+  }
+  
+  
+  item.update({ ['system.bullets.value']: bulletsLeft });
+
 
   const dicePromises = [];
 
@@ -393,7 +413,9 @@ async function rollDialogV1RangedWeaponCallback(event, button, dialog, actor) {
     isCriticalMiss: criticalMiss,
     isCriticalHit: criticalHit,
     recoil: recoil,
-    rate: item.system.rate
+    rate: item.system.rate,
+    numShots: numShots,
+    item: item
   }
   renderRangedWeaponRollResult(actor, rollDialogVars);
 }

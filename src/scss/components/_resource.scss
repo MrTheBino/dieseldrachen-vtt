@@ -59,9 +59,11 @@
 }
 
 .social-container {
-  background-color: $c-stripe;
+  background-color:#f5f5dc73;
   margin-bottom: 10px;
   padding: 5px;
+  border: 1px solid black;
+  border-radius: 3px;
 }
 
 .healthbar-reset {

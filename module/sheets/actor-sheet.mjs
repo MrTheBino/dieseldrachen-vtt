@@ -3,7 +3,7 @@ import {
   prepareActiveEffectCategories,
 } from '../helpers/effects.mjs';
 import { DieseldrachenItem } from '../documents/item.mjs';
-import { rollDialogSkillV1, rollDialogRangedWeaponV1, rollDialogMeleeWeaponV1,rollDialogSavingThrow1 } from '../roll_dialog.mjs';
+import { rollDialogSkillV1, rollDialogRangedWeaponV1, rollDialogMeleeWeaponV1, rollDialogSavingThrow1 } from '../roll_dialog.mjs';
 
 /**
  * Extend the basic ActorSheet with some very simple modifications
@@ -177,13 +177,13 @@ export class DieseldrachenActorSheet extends foundry.appv1.sheets.ActorSheet {
       else if (i.type === 'vehicleWeapon') {
         vehicleWeapons.push(i);
       }
-      else if(i.type === 'npcSpecialDice') {
+      else if (i.type === 'npcSpecialDice') {
         npcSpecialDice.push(i);
       }
-      else if(i.type == "spleen") {
+      else if (i.type == "spleen") {
         characterSpleen = i;
       }
-      else if(i.type == "handgrenade") {
+      else if (i.type == "handgrenade") {
         handgrenades.push(i);
       }
       else if (i.type === 'artefact') {
@@ -194,7 +194,7 @@ export class DieseldrachenActorSheet extends foundry.appv1.sheets.ActorSheet {
       }
       // Append to spells.
       else if (i.type === 'spell') {
-          spells.push(i);
+        spells.push(i);
       }
     }
 
@@ -275,13 +275,13 @@ export class DieseldrachenActorSheet extends foundry.appv1.sheets.ActorSheet {
       const item = this.actor.items.get(ev.currentTarget.dataset.itemId);
       item.sheet.render(true);
     });
-    
 
-    html.on('click','.expandable-trigger', (ev) => {
-      if(ev.currentTarget.dataset.expandableTarget){
+
+    html.on('click', '.expandable-trigger', (ev) => {
+      if (ev.currentTarget.dataset.expandableTarget) {
         const target = document.querySelector(`.${ev.currentTarget.dataset.expandableTarget}`);
         target.classList.toggle('closed');
-      }else{
+      } else {
         const li = $(ev.currentTarget).parents('.item');
         let t = li.find('.expandable')[0];
         t.classList.toggle('closed');
@@ -349,12 +349,12 @@ export class DieseldrachenActorSheet extends foundry.appv1.sheets.ActorSheet {
       const unused = parseInt(ev.currentTarget.dataset.unused);
       const name = 'system.speed.value';
 
-      
+
       if (unused == 1) {
         return;
       }
 
-      
+
       let t = parseInt(foundry.utils.getProperty(this.actor, name));
       if (t === 1 && value === 1) {
         this.actor.update({ [name]: 0 });
@@ -386,6 +386,11 @@ export class DieseldrachenActorSheet extends foundry.appv1.sheets.ActorSheet {
       } else {
         item.update({ [ev.target.dataset.itemStat]: ev.target.value });
       }
+    });
+
+    html.on('click', '.weapon-reload-icon', (ev) => {
+      const item = this.actor.items.get($(ev.currentTarget).data('itemId'));
+      this._handleReloadWeapon(item);
     });
 
     // Delete Inventory Item
@@ -445,6 +450,31 @@ export class DieseldrachenActorSheet extends foundry.appv1.sheets.ActorSheet {
         if (li.classList.contains('inventory-header')) return;
         li.setAttribute('draggable', true);
         li.addEventListener('dragstart', handler, false);
+      });
+    }
+  }
+
+  async _handleReloadWeapon(item) {
+    if(item.system.bullets.value == item.system.bullets.max) {
+      return;
+    }
+
+    const proceed = await foundry.applications.api.DialogV2.confirm({
+      content: `${item.name} nachladen?`,
+      rejectClose: false,
+      modal: true
+    });
+    if (proceed) {
+      let t = parseInt(item.system.bullets.value) + parseInt(item.system.bullets.perReload);
+      if (t > item.system.bullets.max) {
+        t = item.system.bullets.max;
+      }
+      item.update({ ['system.bullets.value']: t });
+
+      ChatMessage.create({
+        user: game.user.id,
+        speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+        content: `Waffe ${item.name} wurde für ${item.system.bullets.perReload} Kugel(n) nachgeladen. Aktuelle Schusszahl: ${t}`
       });
     }
   }
@@ -540,33 +570,46 @@ export class DieseldrachenActorSheet extends foundry.appv1.sheets.ActorSheet {
 
     if (dataset.rollType == "rangedWeapon") {
       const itemId = element.closest('.item').dataset.itemId;
-      rollDialogRangedWeaponV1(this.actor, itemId, dataset.label);
+      const item = this.actor.items.get(itemId);
+
+      if (item.system.bullets.value == 0) {
+        ChatMessage.create({
+          user: game.user.id,
+          speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+          content: `Waffe ${item.name} hat keine Munition mehr. Kugeln: ${item.system.bullets.value}`
+        });
+      } else {
+        rollDialogRangedWeaponV1(this.actor, itemId, dataset.label);
+      }
+
+
+
     }
 
-    if(dataset.rollType== "spell"){
+    if (dataset.rollType == "spell") {
       const itemId = element.closest('.item').dataset.itemId;
       const item = this.actor.items.get(itemId);
       this._handleRollSpell(item);
     }
 
-    if(dataset.rollType=="savingThrow"){
+    if (dataset.rollType == "savingThrow") {
       rollDialogSavingThrow1(this.actor, dataset.roll, dataset.label);
     }
   }
 
-  _handleRollSpell(item){
+  _handleRollSpell(item) {
     console.log("_handleRollSpell")
     let label = "Unbekannt";
     let roll = "";
-    if(item.system.spellType == 0){
+    if (item.system.spellType == 0) {
       label = "Körper / Sinne"
       roll = `1d${this.actor.system.attributes.magic}+1d${this.actor.system.abilities.magic_body}`
     }
-    else if(item.system.spellType == 1){
+    else if (item.system.spellType == 1) {
       label = "Schicksal / Geister"
       roll = `1d${this.actor.system.attributes.magic}+1d${this.actor.system.abilities.magic_fate}`
     }
-    else if(item.system.spellType == 2){
+    else if (item.system.spellType == 2) {
       label = "Elemente / Energie"
       roll = `1d${this.actor.system.attributes.magic}+1d${this.actor.system.abilities.magic_elemental}`
     }

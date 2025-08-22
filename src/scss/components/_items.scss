@@ -51,6 +51,9 @@
     align-items: center;
     display: flex;
     width: 100%;
+    &.rangedWeapon{
+      flex-direction: row;
+    }
 
     h3,
     h4 {
@@ -63,7 +66,7 @@
   // Control Buttons
   .item-controls {
     display: flex;
-    flex: 0 0 100px;
+    flex: 0 0 60px;
     justify-content: flex-end;
 
     a {
@@ -78,6 +81,13 @@
     align-items: center;
     padding: 0 2px; // to align with the header border
     border-bottom: 1px solid $c-faint;
+
+    .ammunition-container{
+      padding-left: 20px;
+      width: 100px;
+      margin-left: auto;
+      margin-right: 0;
+    }
 
     &:last-child {
       border-bottom: none;
@@ -110,6 +120,22 @@
     border-left: 1px solid #c9c7b8;
     border-right: 1px solid #c9c7b8;
     font-size: 12px;
+  }
+
+  .item-prop-small {
+    text-align: center;
+    border-left: 1px solid #c9c7b8;
+    border-right: 1px solid #c9c7b8;
+    font-size: 12px;
+    flex-grow: 0.5;
+  }
+
+  .item-prop-stats {
+    text-align: center;
+    border-left: 1px solid #c9c7b8;
+    border-right: 1px solid #c9c7b8;
+    font-size: 12px;
+    flex-grow: 0.6;
   }
 
   .item-align-left{

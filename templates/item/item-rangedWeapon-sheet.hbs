@@ -15,8 +15,10 @@
             <option value='revolver' {{#if (eq system.weaponType 'revolver' )}}selected{{/if}}>Revolver</option>
             <option value='rifle' {{#if (eq system.weaponType 'rifle' )}}selected{{/if}}>Gewehr</option>
             <option value='shotgun' {{#if (eq system.weaponType 'shotgun' )}}selected{{/if}}>Schrotflinte</option>
-            <option value='precision_rifle' {{#if (eq system.weaponType 'precision_rifle' )}}selected{{/if}}>Präzisionsgewehr</option>
-            <option value='assault_rifle' {{#if (eq system.weaponType 'assault_rifle' )}}selected{{/if}}>Sturm &amp; Maschinengewehre</option>
+            <option value='precision_rifle' {{#if (eq system.weaponType 'precision_rifle' )}}selected{{/if}}>
+              Präzisionsgewehr</option>
+            <option value='assault_rifle' {{#if (eq system.weaponType 'assault_rifle' )}}selected{{/if}}>Sturm &amp;
+              Maschinengewehre</option>
           </select>
         </div>
       </div>
@@ -66,9 +68,12 @@
 
       <div class='resource'>
         <label class='resource-label'>Schuss</label>
-        <div class="grid grid-1col">
-          <input type='text' name='system.bullets' value='{{system.bullets}}' data-dtype='Number'
-            class="medium_input" />
+        <div class="grid grid-3col">
+          <input type='text' name='system.bullets.value' value='{{system.bullets.value}}' data-dtype='Number'
+            class="" />
+          <span> / </span>
+          <input type='text' name='system.bullets.max' value='{{system.bullets.max}}' data-dtype='Number'
+            class="" disabled />
         </div>
       </div>
 

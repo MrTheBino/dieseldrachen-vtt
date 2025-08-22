@@ -15,6 +15,12 @@
   cursor: pointer;
 }
 
+.clickable:hover, .clickable:focus {
+  color: #000;
+  text-shadow: 0 0 10px red;
+  cursor: pointer;
+}
+
 .expandable-trigger:hover, .expandable-trigger:focus {
   color: #000;
   text-shadow: 0 0 10px green;
@@ -408,9 +414,11 @@ section.journal-page-content h2 {
   margin-top: 5px;
 }
 .dieseldrachen-vtt .social-container {
-  background-color: rgba(0, 0, 0, 0.15);
+  background-color: rgba(245, 245, 220, 0.4509803922);
   margin-bottom: 10px;
   padding: 5px;
+  border: 1px solid black;
+  border-radius: 3px;
 }
 .dieseldrachen-vtt .healthbar-reset {
   width: 30px;
@@ -483,6 +491,9 @@ section.journal-page-content h2 {
   display: flex;
   width: 100%;
 }
+.dieseldrachen-vtt .items-list .item-name.rangedWeapon {
+  flex-direction: row;
+}
 .dieseldrachen-vtt .items-list .item-name h3,
 .dieseldrachen-vtt .items-list .item-name h4 {
   margin: 0;
@@ -491,7 +502,7 @@ section.journal-page-content h2 {
 }
 .dieseldrachen-vtt .items-list .item-controls {
   display: flex;
-  flex: 0 0 100px;
+  flex: 0 0 60px;
   justify-content: flex-end;
 }
 .dieseldrachen-vtt .items-list .item-controls a {
@@ -503,6 +514,12 @@ section.journal-page-content h2 {
   align-items: center;
   padding: 0 2px;
   border-bottom: 1px solid #c9c7b8;
+}
+.dieseldrachen-vtt .items-list .item .ammunition-container {
+  padding-left: 20px;
+  width: 100px;
+  margin-left: auto;
+  margin-right: 0;
 }
 .dieseldrachen-vtt .items-list .item:last-child {
   border-bottom: none;
@@ -526,6 +543,20 @@ section.journal-page-content h2 {
   border-left: 1px solid #c9c7b8;
   border-right: 1px solid #c9c7b8;
   font-size: 12px;
+}
+.dieseldrachen-vtt .items-list .item-prop-small {
+  text-align: center;
+  border-left: 1px solid #c9c7b8;
+  border-right: 1px solid #c9c7b8;
+  font-size: 12px;
+  flex-grow: 0.5;
+}
+.dieseldrachen-vtt .items-list .item-prop-stats {
+  text-align: center;
+  border-left: 1px solid #c9c7b8;
+  border-right: 1px solid #c9c7b8;
+  font-size: 12px;
+  flex-grow: 0.6;
 }
 .dieseldrachen-vtt .items-list .item-align-left {
   align-items: flex-start;

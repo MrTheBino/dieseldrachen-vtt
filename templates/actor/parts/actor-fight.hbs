@@ -30,21 +30,28 @@
     {{#each rangedWeapons as |item id|}}
     {{#if (eq item.system.mounted true)}}
     <li class='item flexcol item-align-left' data-item-id='{{item._id}}'>
-        <div class='item-name'>
+        <div class='item-name rangedWeapon'>
             <div class='item-image'>
                 <a class='rollable' data-roll-type='rangedWeapon'>
                     <img src='{{item.img}}' title='{{item.name}}' width='24' height='24' />
                 </a>
             </div>
             <h4>{{item.name}}</h4>
-
+            <div class='ammunition-container'>
+                <input type="text" value="{{item.system.bullets.value}}" data-item-stat="system.bullets.value"
+                    class="item-editable-stat tiny_input">
+                /
+                <input type='text' name='system.bullets.max' value='{{system.bullets.max}}' data-dtype='Number'
+                    class="tiny_input" disabled />
+                <span class="weapon-reload-icon" data-item-id='{{item._id}}'
+                    title="{{system.bullets.perReload}} Kugeln pro Ladevorgang"><i class="fa-solid fa-rotate clickable"></i></span>
+            </div>
         </div>
         <div class="small_description">
             Präzision: {{item.system.precision_near}}/{{item.system.precision_close}}/{{item.system.precision_far}} |
             Schaden: {{item.system.damage_near}}/{{item.system.damage_close}}/{{item.system.damage_far}} |
             Rate: {{item.system.rate}} |
-            Kap: {{item.system.capacity}} |
-            Munition: {{item.system.bullets}}
+            Kap: {{item.system.capacity}}
         </div>
     </li>
     {{/if}}
