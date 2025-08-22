@@ -20,7 +20,7 @@ export default class DieseldrachenRangedWeapon extends DieseldrachenItemBase {
     schema.bullets = new fields.SchemaField({
       value: new fields.NumberField({ ...requiredInteger, initial: 1, min: 0 }),
       max: new fields.NumberField({ ...requiredInteger, initial: 1, min: 0 }),
-      perReload: new fields.NumberField({ required: true, nullable: false, integer: true, initial: 0, min: 1, max: 100 })
+      perReload: new fields.NumberField({ required: true, nullable: false, integer: true, initial: 1, min: 1, max: 100 })
     })
     
     schema.rate = new fields.StringField({ required: true, blank: true, initial: "" });

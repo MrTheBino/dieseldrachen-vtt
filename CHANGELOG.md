@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 13.0.8.1
+  - fix for creating manually ranged weapons
+  
 ## 13.0.8
   - usability improvements
   - ammunition counting and reloading for ranged weapons, loadout gets calculated on the rate of a ranged weapon
