@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 13.0.9
+  - added all pre-generated characters and vehicles from Dragon Pulp Games for Dieseldrachen: https://shop.dragonpulpgames.com/pages/downloads
+  - added world (including the politic one) as scenes
+  - added default system screen for Foundry VTT
+  - changed dice icons for better readability
+  - fixed some smaller issues
+  
 ## 13.0.8.2
   - fix for npc ranged weapons
   

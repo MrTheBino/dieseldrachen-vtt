@@ -11,3 +11,32 @@
 .icon-armor-bg{
     background-image: url('../assets/icons/icon-shield.svg');
 }
+
+.icon-dodge-bg{
+    
+}
+
+.action-button{
+    line-height: 1.0;
+}
+
+.icon-dodge{
+    width: 24px;
+    height: 24px;
+    background-image: url('../assets/icons/icon-dodge.svg');
+    display: inline-block
+}
+
+.icon-heal{
+    width: 24px;
+    height: 24px;
+    background-image: url('../assets/icons/icon-healing.svg');
+    display: inline-block
+}
+
+.icon-rest{
+    width: 24px;
+    height: 24px;
+    background-image: url('../assets/icons/icon-rocking-chair.svg');
+    display: inline-block
+}

@@ -390,6 +390,9 @@ section.journal-page-content h2 {
   margin-top: 5px;
   font-size: 1.4em;
 }
+.dieseldrachen-vtt .ability {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+}
 .dieseldrachen-vtt .ability-label {
   font-family: "Voltaire", sans-serif;
   font-size: 1.2em;
@@ -685,6 +688,27 @@ section.journal-page-content h2 {
 }
 .dieseldrachen-vtt .icon-armor-bg {
   background-image: url("../assets/icons/icon-shield.svg");
+}
+.dieseldrachen-vtt .action-button {
+  line-height: 1;
+}
+.dieseldrachen-vtt .icon-dodge {
+  width: 24px;
+  height: 24px;
+  background-image: url("../assets/icons/icon-dodge.svg");
+  display: inline-block;
+}
+.dieseldrachen-vtt .icon-heal {
+  width: 24px;
+  height: 24px;
+  background-image: url("../assets/icons/icon-healing.svg");
+  display: inline-block;
+}
+.dieseldrachen-vtt .icon-rest {
+  width: 24px;
+  height: 24px;
+  background-image: url("../assets/icons/icon-rocking-chair.svg");
+  display: inline-block;
 }
 
 .diesel-dice-icon {
