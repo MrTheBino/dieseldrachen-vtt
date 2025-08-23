@@ -27,16 +27,17 @@
 
 }
 
-  @import 'components/rolls';
+@import 'components/dice';
+@import 'components/rolls';
 
-  .tiny_input{
-    width: 25px;
-  }
+.tiny_input {
+  width: 25px;
+}
 
-  .medium_input{
-    width: 75px;
-  }
+.medium_input {
+  width: 75px;
+}
 
-.ranged-weapon-roll-dialog{
+.ranged-weapon-roll-dialog {
   min-width: 400px;
 }

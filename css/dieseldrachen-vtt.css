@@ -687,6 +687,39 @@ section.journal-page-content h2 {
   background-image: url("../assets/icons/icon-shield.svg");
 }
 
+.diesel-dice-icon {
+  width: 28px;
+  height: 28px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: block;
+  opacity: 0.25;
+}
+.diesel-dice-icon.single-small-visible {
+  opacity: 1;
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+}
+.diesel-dice-icon.d4 {
+  background-image: url("../assets/images/dice/4.png");
+}
+.diesel-dice-icon.d6 {
+  background-image: url("../assets/images/dice/6.png");
+}
+.diesel-dice-icon.d8 {
+  background-image: url("../assets/images/dice/8.png");
+}
+.diesel-dice-icon.d10 {
+  background-image: url("../assets/images/dice/10.png");
+}
+.diesel-dice-icon.d12 {
+  background-image: url("../assets/images/dice/12.png");
+}
+.diesel-dice-icon.ddi-selected {
+  opacity: 1;
+}
+
 .card-title {
   font-family: "Voltaire", sans-serif;
   font-weight: 400;

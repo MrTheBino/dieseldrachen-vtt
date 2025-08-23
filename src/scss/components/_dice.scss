@@ -1,0 +1,39 @@
+.diesel-dice-icon {
+    width: 28px;
+    height: 28px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: block;
+    opacity: 0.25;
+
+    &.single-small-visible {
+        opacity: 1;
+        width: 16px;
+        height: 16px;
+        display: inline-block;
+    }
+
+    &.d4 {
+        background-image: url('../assets/images/dice/4.png');
+    }
+
+    &.d6 {
+        background-image: url('../assets/images/dice/6.png');
+    }
+
+    &.d8 {
+        background-image: url('../assets/images/dice/8.png');
+    }
+
+    &.d10 {
+        background-image: url('../assets/images/dice/10.png');
+    }
+
+    &.d12 {
+        background-image: url('../assets/images/dice/12.png');
+    }
+
+    &.ddi-selected {
+        opacity: 1.0;
+    }
+}

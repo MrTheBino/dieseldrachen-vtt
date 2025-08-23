@@ -100,7 +100,7 @@ Handlebars.registerHelper('diceIcon', function (die) {
     return "<span>-</span>";
   }
 
-  let t = `<span class="dicier-icon color-d${die}" title="D${die}">${die}_ON_D${die}</span>`;
+  let t = `<span class="diesel-dice-icon single-small-visible d${die}" title="D${die}"></span>`;
   return t;
 });
 
