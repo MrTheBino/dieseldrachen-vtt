@@ -1,3 +1,5 @@
-2025/08/22-16:12:03.319 78a4 Recovering log #8
-2025/08/22-16:12:03.322 78a4 Delete type=0 #8
-2025/08/22-16:12:03.322 78a4 Delete type=3 #6
+2025/08/23-07:11:55.261 4bd8 Recovering log #12
+2025/08/23-07:11:55.261 4bd8 Level-0 table #14: started
+2025/08/23-07:11:55.263 4bd8 Level-0 table #14: 4386 bytes OK
+2025/08/23-07:11:55.267 4bd8 Delete type=0 #12
+2025/08/23-07:11:55.267 4bd8 Delete type=3 #11

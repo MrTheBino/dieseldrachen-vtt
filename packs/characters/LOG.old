@@ -1,3 +1,5 @@
-2025/08/22-16:12:03.307 89a4 Recovering log #8
-2025/08/22-16:12:03.309 89a4 Delete type=0 #8
-2025/08/22-16:12:03.310 89a4 Delete type=3 #6
+2025/08/23-07:11:55.226 4bfc Recovering log #13
+2025/08/23-07:11:55.227 4bfc Level-0 table #15: started
+2025/08/23-07:11:55.229 4bfc Level-0 table #15: 25511 bytes OK
+2025/08/23-07:11:55.232 4bfc Delete type=0 #13
+2025/08/23-07:11:55.232 4bfc Delete type=3 #11
