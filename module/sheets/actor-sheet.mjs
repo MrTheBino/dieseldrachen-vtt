@@ -3,7 +3,8 @@ import {
   prepareActiveEffectCategories,
 } from '../helpers/effects.mjs';
 import { DieseldrachenItem } from '../documents/item.mjs';
-import { rollDialogSkillV1, rollDialogRangedWeaponV1, rollDialogMeleeWeaponV1, rollDialogSavingThrow1 } from '../roll_dialog.mjs';
+import { rollDialogSkillV1, rollDialogRangedWeaponV1, rollDialogMeleeWeaponV1, rollDialogSavingThrow1, rollV1Resting } from '../roll_dialog.mjs';
+import { doCharacterHealing } from "../helpers/character.mjs";
 
 /**
  * Extend the basic ActorSheet with some very simple modifications
@@ -427,6 +428,14 @@ export class DieseldrachenActorSheet extends foundry.appv1.sheets.ActorSheet {
     });
 
 
+    html.on('click', '.button-rest', (ev) => {
+      this._handleActionRest();
+    });
+
+    html.on('click', '.button-heal', (ev) => {
+      this._handleActionHeal();
+    });
+
     html.on('click', '.healthbar-reset', (ev) => {
       this._resetHealthBar();
     });
@@ -455,7 +464,7 @@ export class DieseldrachenActorSheet extends foundry.appv1.sheets.ActorSheet {
   }
 
   async _handleReloadWeapon(item) {
-    if(item.system.bullets.value == item.system.bullets.max) {
+    if (item.system.bullets.value == item.system.bullets.max) {
       return;
     }
 
@@ -595,6 +604,73 @@ export class DieseldrachenActorSheet extends foundry.appv1.sheets.ActorSheet {
     if (dataset.rollType == "savingThrow") {
       rollDialogSavingThrow1(this.actor, dataset.roll, dataset.label);
     }
+  }
+
+  async _handleActionRest() {
+    if (this._checkCharacterCanHealOrRest(this.actor) == false) {
+      return;
+    }
+
+    const html = await foundry.applications.handlebars.renderTemplate(
+      "systems/dieseldrachen-vtt/templates/dialogs/rest-dialog.hbs",
+      { hasCondition: this.actor.system.condition.length > 0, condition: this.actor.system.condition }
+    );
+
+    const proceed = await foundry.applications.api.DialogV2.confirm({
+      content: html,
+      rejectClose: false,
+      modal: true
+    });
+    if (proceed) {
+      rollV1Resting(this.actor);
+    }
+  }
+
+  async _handleActionHeal() {
+    if (this._checkCharacterCanHealOrRest(this.actor) == false) {
+      return;
+    }
+
+    const dialogHtml = await foundry.applications.handlebars.renderTemplate(
+      "systems/dieseldrachen-vtt/templates/dialogs/heal-dialog.hbs",
+      { hasCondition: this.actor.system.condition.length > 0, condition: this.actor.system.condition }
+    );
+
+    const proceed = await foundry.applications.api.DialogV2.confirm({
+      content: dialogHtml,
+      rejectClose: false,
+      modal: true
+    });
+    if (proceed) {
+
+      let totalHealed = await doCharacterHealing(this.actor);
+
+      const chatVars = {
+        label: 'Lange Ruhepause',
+        actorCondition: this.actor.system.condition,
+        totalHealed: totalHealed
+      };
+
+      const html = await foundry.applications.handlebars.renderTemplate(
+        "systems/dieseldrachen-vtt/templates/chat/character-healing-result.hbs",
+        chatVars
+      );
+      ChatMessage.create({
+        content: html,
+        speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+      });
+    }
+  }
+
+  _checkCharacterCanHealOrRest(actor) {
+    if (actor.system.heavyInjuries > 0) {
+      ChatMessage.create({
+        content: `Der Charakter hat ${actor.system.heavyInjuries} schwere Verletzungen und kann sich nicht ausruhen oder heilen.`,
+        speaker: ChatMessage.getSpeaker({ actor: actor }),
+      });
+      return false;
+    }
+    return true;
   }
 
   _handleRollSpell(item) {

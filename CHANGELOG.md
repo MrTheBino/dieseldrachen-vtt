@@ -6,6 +6,8 @@
   - added default system screen for Foundry VTT
   - changed dice icons for better readability
   - fixed some smaller issues
+  - added injuries to the character sheet
+  - added healing to the characters sheet
   
 ## 13.0.8.2
   - fix for npc ranged weapons

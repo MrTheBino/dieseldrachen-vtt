@@ -1,3 +1,5 @@
+import {doCharacterResting} from "./helpers/character.mjs";
+
 export function addShowDicePromise(promises, roll) {
   if (game.dice3d) {
     // we pass synchronize=true so DSN dice appear on all players' screens
@@ -154,7 +156,7 @@ export async function rollDialogRangedWeaponV1(actor, itemId, label) {
 
   return new Promise((resolve) => {
     new foundry.applications.api.DialogV2({
-      window: { title: cardTitle, width:400 },
+      window: { title: cardTitle, width: 400 },
       content: html,
       classes: ["ranged-weapon-roll-dialog"],
       buttons: [
@@ -342,22 +344,22 @@ async function rollDialogV1RangedWeaponCallback(event, button, dialog, actor) {
 
   let numShots = 1;
   let bulletsLeft = parseInt(item.system.bullets.value) || 0;
-  if(item.system.weaponType == "assault_rifle"){
-    if(bulletsLeft - 3 < 0){
+  if (item.system.weaponType == "assault_rifle") {
+    if (bulletsLeft - 3 < 0) {
       numShots = bulletsLeft;
       bulletsLeft = 0;
-    }else{
+    } else {
       bulletsLeft -= 3;
       numShots = 3;
     }
-  }else{
+  } else {
     bulletsLeft -= 1; // item.system.bullets.perShot;
-    if(bulletsLeft < 0){
+    if (bulletsLeft < 0) {
       bulletsLeft = 0;
     }
   }
-  
-  
+
+
   item.update({ ['system.bullets.value']: bulletsLeft });
 
 
@@ -418,6 +420,39 @@ async function rollDialogV1RangedWeaponCallback(event, button, dialog, actor) {
     item: item
   }
   renderRangedWeaponRollResult(actor, rollDialogVars);
+}
+
+export async function rollV1Resting(actor) {
+  const dicePromises = [];
+
+  let rollFormula = `1d${actor.system.abilities.condition}`;
+  const dicePoolRoll = new Roll(rollFormula, actor.getRollData());
+  await dicePoolRoll.evaluate();
+
+  addShowDicePromise(dicePromises, dicePoolRoll);
+  await Promise.all(dicePromises);
+
+  let dicePoolRollHTML = await dicePoolRoll.render();
+
+  let totalRested = await doCharacterResting(actor, dicePoolRoll.total);
+
+
+  const chatVars = {
+    dicePoolRoll: dicePoolRoll,
+    label: 'Kurze Ruhepause',
+    actorCondition: actor.system.condition,
+    dicePoolRollHTML: dicePoolRollHTML,
+    totalRested: totalRested
+  };
+
+  const html = await foundry.applications.handlebars.renderTemplate(
+    "systems/dieseldrachen-vtt/templates/chat/character-resting-result.hbs",
+    chatVars
+  );
+  ChatMessage.create({
+    content: html,
+    speaker: ChatMessage.getSpeaker({ actor }),
+  });
 }
 
 async function rollDialogV1MeleeWeaponCallback(event, button, dialog, actor) {

@@ -293,6 +293,12 @@ form > nav > a.item.active {
   font-weight: bold;
 }
 
+.confirm-question-title {
+  font-family: "Voltaire", sans-serif;
+  font-weight: 700;
+  font-size: 1.5em;
+}
+
 header.journal-page-header h1 {
   font-family: "Voltaire", sans-serif;
   text-transform: uppercase;
@@ -708,6 +714,18 @@ section.journal-page-content h2 {
   width: 24px;
   height: 24px;
   background-image: url("../assets/icons/icon-rocking-chair.svg");
+  display: inline-block;
+}
+.dieseldrachen-vtt .icon-light-injury {
+  width: 24px;
+  height: 24px;
+  background-image: url("../assets/icons/icon-light-injury.svg");
+  display: inline-block;
+}
+.dieseldrachen-vtt .icon-heavy-injury {
+  width: 24px;
+  height: 24px;
+  background-image: url("../assets/icons/icon-heavy-injury.svg");
   display: inline-block;
 }
 

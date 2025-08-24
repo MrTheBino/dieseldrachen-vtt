@@ -19,6 +19,8 @@ export default class DieseldrachenCharacter extends DieseldrachenActorBase {
     //schema.spleen = new fields.StringField({ required: true, blank: true, initial: "" });
 
     schema.healthbar = new fields.StringField({ required: true, blank: true, initial: "[]" });
+    schema.lightInjuries =  new fields.NumberField({ ...requiredInteger, initial: 0 });
+    schema.heavyInjuries =  new fields.NumberField({ ...requiredInteger, initial: 0 });
 
     schema.attributes = new fields.SchemaField({
         athletics: new fields.NumberField({ ...requiredInteger, initial: 4 }),

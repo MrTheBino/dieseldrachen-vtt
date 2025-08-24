@@ -52,8 +52,8 @@
     </div>
   </header>
 
-  <section class="grid grid-2col resource-group">
-    <div class="resource flex-group-center">
+  <section class="grid grid-4col resource-group">
+    <div class="resource flex-group-center grid-span-2">
       {{#if characterSpleen}}
       <label for="system.spleen" class="resource-label"><span class="expandable-trigger"
           data-expandable-target="spleen_{{actor.id}}">{{characterSpleen.name}}</span>
@@ -75,10 +75,25 @@
       </div>
       {{/if}}
     </div>
-    <div class="resource flex-group-center">
+    <div class="resource flex-group-center flexcol">
       <label for="system.condition" class="resource-label">Zustand</label>
-      <div class="resource-content flexrow flex-center flex-between">
-        <input type="text" name="system.condition" value="{{system.condition}}" data-dtype="String" />
+      <div class="resource-content flex-center flex-between">
+        <textarea name="system.condition" data-dtype="String">{{system.condition}}</textarea>
+      </div>
+    </div>
+    <div class="resource flex-group-center flexcol">
+      <label for="" class="resource-label">Verletzungen</label>
+      <div class="grid grid-2col">
+        <div class="flex-col">
+          <span class="icon-light-injury" title="Leichte Verletzungen"></span>
+          <input type="text" name="system.lightInjuries" value="{{system.lightInjuries}}" data-dtype="Number"
+            class="tiny_input" />
+        </div>
+        <div class="flex-col">
+          <span class="icon-heavy-injury" title="Schwere Verletzungen"></span>
+          <input type="text" name="system.heavyInjuries" value="{{system.heavyInjuries}}" data-dtype="Number"
+            class="tiny_input" />
+        </div>
       </div>
     </div>
 
