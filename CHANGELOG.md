@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 13.0.9.2
+  - vehicle image fix
+
 ## 13.0.9.1
   - fix for initial speed value of vehicles
   - fixed agility calcution for a protection value of 1
