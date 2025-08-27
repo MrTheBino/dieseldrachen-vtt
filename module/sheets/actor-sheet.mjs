@@ -213,7 +213,7 @@ export class DieseldrachenActorSheet extends foundry.appv1.sheets.ActorSheet {
       8: 8,
       9: 8,
       10: 10,
-      11: 11,
+      11: 10,
       12: 12
     }
 

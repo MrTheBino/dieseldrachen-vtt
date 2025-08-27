@@ -309,6 +309,12 @@ section.journal-page-content h2 {
   text-transform: uppercase;
 }
 
+.dieseldrachen-logo-small {
+  border: none;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /* Styles limited to dieseldrachen-vtt sheets */
 .dieseldrachen-vtt .item-form {
   font-family: "Roboto", sans-serif;
@@ -366,6 +372,7 @@ section.journal-page-content h2 {
 }
 .dieseldrachen-vtt .profile-img {
   border-radius: 3px;
+  margin-bottom: auto;
 }
 .dieseldrachen-vtt .resource-group {
   background-color: rgba(245, 245, 220, 0.4509803922);
@@ -760,6 +767,10 @@ section.journal-page-content h2 {
 }
 .diesel-dice-icon.ddi-selected {
   opacity: 1;
+}
+.diesel-dice-icon.enemy-dice {
+  width: 54px;
+  height: 54px;
 }
 
 .card-title {

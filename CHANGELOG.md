@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 13.0.9.1
+  - fix for initial speed value of vehicles
+  - fixed agility calcution for a protection value of 1
+  - usability improvements 
+  
 ## 13.0.9
   - added all pre-generated characters and vehicles from Dragon Pulp Games for Dieseldrachen: https://shop.dragonpulpgames.com/pages/downloads
   - added world (including the politic one) as scenes

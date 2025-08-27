@@ -2,7 +2,11 @@
 
   {{!-- Sheet Header --}}
   <header class="sheet-header">
-    <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100" />
+    <div class="flexcol">
+      <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100" />
+      <img src="systems/dieseldrachen-vtt/assets/images/dieseldrachen_logo_small.webp" height="75px"
+        class="dieseldrachen-logo-small">
+    </div>
     <div class="header-fields">
       <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Name" /></h1>
       {{!-- The grid classes are defined in scss/global/_grid.scss. To use,
