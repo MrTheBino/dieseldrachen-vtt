@@ -239,10 +239,14 @@ export class DieseldrachenActorSheet extends foundry.appv1.sheets.ActorSheet {
     context.npcSpecialDice = npcSpecialDice;
     context.characterSpleen = characterSpleen;
     context.handgrenades = handgrenades;
+    
 
     let numSegments = 33;
     if (this.object.type == "npc") {
       numSegments = this.object.system.health.max + 1;
+    }
+    if(this.object.type == "character"){
+      context.sheetIsLocked = this.object.system.locked;
     }
 
     context.healthbar_segments = new Array(numSegments);

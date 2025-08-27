@@ -327,6 +327,13 @@ section.journal-page-content h3 {
   padding: 5px;
 }
 
+.dieseldrachen-journal-image {
+  margin-left: auto;
+  margin-right: auto;
+  border: 4px solid white;
+  border-radius: 5px;
+}
+
 .dieseldrachen-logo-small {
   border: none;
   margin-left: auto;

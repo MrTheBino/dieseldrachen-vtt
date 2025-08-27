@@ -2,6 +2,7 @@
 
 ## 13.0.9.3
   - dodging mod dice fix
+  - added saving throws to social dice (in locked modus)
 
 ## 13.0.9.2
   - vehicle image fix
