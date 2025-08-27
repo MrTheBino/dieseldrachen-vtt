@@ -173,11 +173,11 @@ export async function rollDialogRangedWeaponV1(actor, itemId, label) {
   });
 }
 
-export async function rollDialogSkillV1(actor, formula, label) {
+export async function rollDialogSkillV1(actor, formula, label,selectedModDice = 4) {
   let rollDiceFaceSuccess = 5;
   const actorRollData = actor.getRollData();
   let diceFormula = formula;
-  let modDice = 4
+  let modDice = parseInt(selectedModDice);
 
   const cardTitle = "RollDialog";
   const rollResult = {

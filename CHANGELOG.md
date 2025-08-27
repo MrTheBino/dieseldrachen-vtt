@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 13.0.9.3
+  - dodging mod dice fix
+
 ## 13.0.9.2
   - vehicle image fix
 

@@ -568,7 +568,7 @@ export class DieseldrachenActorSheet extends foundry.appv1.sheets.ActorSheet {
     }*/
 
     if (dataset.roll && dataset.rollType == "skill") {
-      rollDialogSkillV1(this.actor, dataset.roll, dataset.label);
+      rollDialogSkillV1(this.actor, dataset.roll, dataset.label,dataset.rollModDice);
     }
 
 

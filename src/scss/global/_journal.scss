@@ -1,11 +1,29 @@
 header.journal-page-header h1{
     font-family: "Voltaire", sans-serif;
     text-transform: uppercase;
+    color: black;
 }
 
 section.journal-page-content h2{
     font-family: "Voltaire", sans-serif;
     text-transform: uppercase;
+    background-color: rgba(0,0,0,0.15);
+    padding: 2px;
+    color: black;
+}
+
+section.journal-page-content h3{
+    font-family: "Voltaire", sans-serif;
+    text-transform: uppercase;
+    background-color: rgba(0,0,0,0.15);
+    padding: 2px;
+    color: black;
+}
+
+.journal-entry-page{
+    background-image: url("../assets/textures/journal_texture.png");
+    color: black; // Textcolor
+    padding: 5px;
 }
 
 //*[@id="JournalEntryPageProseMirrorSheet-Compendium-world-journale-JournalEntry-xg8ftXVRpAhXaftk-JournalEntryPage-ojhAobjxajwNhAmd-view"]/section/h2[1]
