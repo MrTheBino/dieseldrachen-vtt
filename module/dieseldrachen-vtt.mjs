@@ -8,6 +8,7 @@ import { DieseldrachenItemSheet } from './sheets/item-sheet.mjs';
 import { preloadHandlebarsTemplates } from './helpers/templates.mjs';
 import { DIESELDRACHEN } from './helpers/config.mjs';
 import {DieseldrachenCombat} from './combat.mjs'
+import {showLuckReRollDialog} from './luck.mjs';
 
 // Import DataModel classes
 import * as models from './data/_module.mjs';
@@ -123,6 +124,21 @@ Handlebars.registerHelper('times', function (n, block) {
 Hooks.once('ready', function () {
   // Wait to register hotbar drop hook on ready so that modules could register earlier if they want to
   Hooks.on('hotbarDrop', (bar, data, slot) => createItemMacro(data, slot));
+
+  Hooks.on('renderChatMessage', (message, html, context) => {
+    // Find the luck roll button and add a click listener
+    let button = html[0].querySelector('.luck-roll-button');
+    if (button) {
+      button.addEventListener('click', (event) => {
+        event.preventDefault();
+        const originalFaces = button.dataset.originalFaces;
+        const originalValues = button.dataset.originalValues;
+        const difficulty = button.dataset.difficulty;
+        showLuckReRollDialog(originalFaces, originalValues,difficulty);
+      });
+    }
+  });
+
 });
 
 Hooks.once("item-piles-ready", async () => {

@@ -1,5 +1,16 @@
 import {doCharacterResting} from "./helpers/character.mjs";
 
+function luckRollCrunch(diceRoll,difficulty=10) {
+  let diceValues = diceRoll.result.split("+");
+  let diceFace = [];
+  let splitted = diceRoll.formula.split("+");
+  diceFace[0] = parseInt(splitted[0].replace("1D","").replace("1d",""));
+  diceFace[1] = parseInt(splitted[1].replace("1D","").replace("1d",""));
+  diceFace[2] = parseInt(splitted[2].replace("1D","").replace("1d",""));
+
+  return {values: JSON.stringify(diceValues), formula: diceRoll.formula, faces: JSON.stringify(diceFace), result: diceRoll.result, difficulty: 10};
+}
+
 export function addShowDicePromise(promises, roll) {
   if (game.dice3d) {
     // we pass synchronize=true so DSN dice appear on all players' screens
@@ -7,22 +18,10 @@ export function addShowDicePromise(promises, roll) {
   }
 }
 
-function isCriticalMiss(diceRoll) {
-
-  let diceValues = [];
+export function isCriticalMissOnArray(diceValues) {
   let criticMissSum1 = 0;
   let criticMissSum2 = 0;
 
-  // collect the dice results
-  diceRoll.terms.forEach((term) => {
-    if (term.constructor.name === "Die") {
-      term.results.forEach((result) => {
-        diceValues.push(result.result);
-      });
-    }
-  });
-
-  // count ones and twos
   diceValues.forEach((value) => {
     if (value == 1) {
       criticMissSum1 += 1;
@@ -42,8 +41,24 @@ function isCriticalMiss(diceRoll) {
   return false;
 }
 
-function isCriticalHit(diceRoll, difficulty) {
-  if (diceRoll.total >= (difficulty * 2)) {
+function isCriticalMiss(diceRoll) {
+
+  let diceValues = [];
+
+  // collect the dice results
+  diceRoll.terms.forEach((term) => {
+    if (term.constructor.name === "Die") {
+      term.results.forEach((result) => {
+        diceValues.push(result.result);
+      });
+    }
+  });
+
+  return isCriticalMissOnArray(diceValues);
+}
+
+export function isCriticalHit(diceRollTotal, difficulty) {
+  if (diceRollTotal >= (difficulty * 2)) {
     return true;
   }
   return false;
@@ -309,7 +324,7 @@ async function rollDialogV1Callback(event, button, dialog, actor) {
   let dicePoolRollHTML = await dicePoolRoll.render();
 
   let criticalMiss = isCriticalMiss(dicePoolRoll);
-  let criticalHit = isCriticalHit(dicePoolRoll, difficulty);
+  let criticalHit = isCriticalHit(dicePoolRoll.total, difficulty);
 
   if (difficulty && dicePoolRoll.total >= difficulty) {
     isSuccess = true;
@@ -391,7 +406,7 @@ async function rollDialogV1RangedWeaponCallback(event, button, dialog, actor) {
 
 
   let criticalMiss = isCriticalMiss(dicePoolRoll);
-  let criticalHit = isCriticalHit(dicePoolRoll, difficulty);
+  let criticalHit = isCriticalHit(dicePoolRoll.total, difficulty);
 
   addShowDicePromise(dicePromises, dicePoolRoll);
   await Promise.all(dicePromises);
@@ -466,7 +481,7 @@ export async function rollDialogV1ThrowingWeaponCallback(event, button, dialog, 
   const dicePoolRoll = new Roll(finalRollFormula, actorRollData);
   await dicePoolRoll.evaluate();
   let criticalMiss = isCriticalMiss(dicePoolRoll);
-  let criticalHit = isCriticalHit(dicePoolRoll, difficulty);
+  let criticalHit = isCriticalHit(dicePoolRoll.total, difficulty);
 
   let orgItemQuantity = item.system.quantity || 0;
   let itemQuantity = orgItemQuantity - 1;
@@ -524,8 +539,10 @@ async function rollDialogV1MeleeWeaponCallback(event, button, dialog, actor) {
 
   const dicePoolRoll = new Roll(rollFormula, actorRollData);
   await dicePoolRoll.evaluate();
+  let luckRollData = luckRollCrunch(dicePoolRoll,difficulty);
+
   let criticalMiss = isCriticalMiss(dicePoolRoll);
-  let criticalHit = isCriticalHit(dicePoolRoll, difficulty);
+  let criticalHit = isCriticalHit(dicePoolRoll.total, difficulty);
 
   addShowDicePromise(dicePromises, dicePoolRoll);
   await Promise.all(dicePromises);
@@ -591,7 +608,8 @@ async function rollDialogV1MeleeWeaponCallback(event, button, dialog, actor) {
     difficulty: difficulty,
     isSuccess: isSuccess,
     isCriticalMiss: criticalMiss,
-    isCriticalHit: criticalHit
+    isCriticalHit: criticalHit,
+    luckRollData: luckRollData
   }
   renderMeleeWeaponRollResult(actor, rollDialogVars);
 }

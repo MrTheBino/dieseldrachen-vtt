@@ -1,5 +1,8 @@
 {
   "DIESELDRACHEN": {
+    "Buttons":{
+      "RollLuck": "Mit Glück neu würfeln"
+    },
     "Keys":{
       "weaponTypes":{
         "pistol": "Pistole",

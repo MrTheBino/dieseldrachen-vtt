@@ -889,4 +889,12 @@ section.journal-page-content h3 {
   min-width: 400px;
 }
 
+.luck-roll-button {
+  border: 1px solid black;
+  padding: 4px;
+  text-align: center;
+  width: 100%;
+  background-color: green;
+}
+
 /*# sourceMappingURL=dieseldrachen-vtt.css.map */

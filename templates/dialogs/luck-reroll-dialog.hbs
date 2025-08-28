@@ -1,0 +1,24 @@
+<form class="custom-dialog">
+    <input type="hidden" name="difficulty" value="{{difficulty}}">
+    <div class="grid grid-6col">
+        <div class="grid-span-2">
+            <input type="hidden" name="orgDiceValueOne" value="{{orgDiceValueOne}}">
+            <input type="hidden" name="orgDiceFaceOne" value="{{selectDiceOne}}">
+            <input type="checkbox" name="rerollDiceOne" value="1">
+            {{{diceIcon selectDiceOne}}}
+        </div>
+        <div class="grid-span-2">
+            <input type="hidden" name="orgDiceValueTwo" value="{{orgDiceValueTwo}}">
+            <input type="hidden" name="orgDiceFaceTwo" value="{{selectDiceTwo}}">
+            <input type="checkbox" name="rerollDiceTwo" value="1">
+            {{{diceIcon selectDiceTwo}}}
+          
+        </div>
+        <div class="grid-span-2">
+            <input type="hidden" name="orgDiceValueThree" value="{{orgDiceValueThree}}">
+            <input type="hidden" name="orgDiceFaceThree" value="{{selectDiceThree}}">
+            <input type="checkbox" name="rerollDiceThree" value="1">
+            {{{diceIcon selectDiceThree}}}
+        </div>
+    </div>
+</form>

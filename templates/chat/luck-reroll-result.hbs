@@ -1,0 +1,44 @@
+<form class="roll-card">
+    <div class="card-title">
+        Glückswurf
+    </div>
+
+    <div class="dice-roll">
+        <div class="dice-result">
+            <div class="dice-formula">
+                <span>Würfel neu gewürfelt : {{numRerolls}}</span>
+            </div>
+            <div class="dice-formula">
+                <span>{{{diceIcon finalResults.0.die}}}:
+                    {{#if finalResults.0.reroll}}
+                    vorher {{finalResults.0.value}} nachher {{finalResults.0.finalValue}}
+                    {{else}}
+                    {{finalResults.0.value}}
+                    {{/if}}
+                </span>
+            </div>
+            <div class="dice-formula">
+                <span>{{{diceIcon finalResults.1.die}}}:
+                    {{#if finalResults.1.reroll}}
+                    vorher {{finalResults.1.value}} nachher {{finalResults.1.finalValue}}
+                    {{else}}
+                    {{finalResults.1.value}}
+                    {{/if}}
+                </span>
+            </div>
+            <div class="dice-formula">
+                <span>{{{diceIcon finalResults.2.die}}}:
+                    {{#if finalResults.2.reroll}}
+                    vorher {{finalResults.2.value}} nachher {{finalResults.2.finalValue}}
+                    {{else}}
+                    {{finalResults.2.value}}
+                    {{/if}}
+                </span>
+            </div>
+            <div class="dice-formula">
+                <span>{{total}}</span>
+            </div>
+        </div>
+    </div>
+    {{> "systems/dieseldrachen-vtt/templates/chat/success-partial.hbs"}}
+</form>
