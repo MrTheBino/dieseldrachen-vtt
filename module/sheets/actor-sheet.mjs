@@ -3,7 +3,7 @@ import {
   prepareActiveEffectCategories,
 } from '../helpers/effects.mjs';
 import { DieseldrachenItem } from '../documents/item.mjs';
-import { rollDialogSkillV1, rollDialogRangedWeaponV1, rollDialogMeleeWeaponV1, rollDialogSavingThrow1, rollV1Resting } from '../roll_dialog.mjs';
+import { rollDialogSkillV1, rollDialogRangedWeaponV1, rollDialogMeleeWeaponV1, rollDialogSavingThrow1, rollV1Resting, rollDialogV1ThrowingWeaponCallback } from '../roll_dialog.mjs';
 import { doCharacterHealing } from "../helpers/character.mjs";
 
 /**
@@ -239,13 +239,13 @@ export class DieseldrachenActorSheet extends foundry.appv1.sheets.ActorSheet {
     context.npcSpecialDice = npcSpecialDice;
     context.characterSpleen = characterSpleen;
     context.handgrenades = handgrenades;
-    
+
 
     let numSegments = 33;
     if (this.object.type == "npc") {
       numSegments = this.object.system.health.max + 1;
     }
-    if(this.object.type == "character"){
+    if (this.object.type == "character") {
       context.sheetIsLocked = this.object.system.locked;
     }
 
@@ -572,9 +572,13 @@ export class DieseldrachenActorSheet extends foundry.appv1.sheets.ActorSheet {
     }*/
 
     if (dataset.roll && dataset.rollType == "skill") {
-      rollDialogSkillV1(this.actor, dataset.roll, dataset.label,dataset.rollModDice);
+      rollDialogSkillV1(this.actor, dataset.roll, dataset.label, dataset.rollModDice);
     }
 
+    if (dataset.rollType == "throwingWeapon") {
+      const itemId = element.closest('.item').dataset.itemId;
+      this._handleThrowingWeapon(this.actor.items.get(itemId));
+    }
 
     if (dataset.rollType == "meleeWeapon") {
       const itemId = element.closest('.item').dataset.itemId;
@@ -694,5 +698,44 @@ export class DieseldrachenActorSheet extends foundry.appv1.sheets.ActorSheet {
       roll = `1d${this.actor.system.attributes.magic}+1d${this.actor.system.abilities.magic_elemental}`
     }
     rollDialogSkillV1(this.actor, roll, label);
+  }
+
+  async _handleThrowingWeapon(item) {
+    let rollFormulaKraft = `d${this.actor.system.attributes.athletics}+d${this.actor.system.abilities.strength}`;
+    let rollFormulaFingerfertigkeit = `d${this.actor.system.attributes.skill}+d${this.actor.system.abilities.sleight_of_hand}`;
+
+    const html = await foundry.applications.handlebars.renderTemplate(
+      "systems/dieseldrachen-vtt/templates/dialogs/throwing_weapon_roll_dialog.hbs",
+      {}
+    );
+
+    return new Promise((resolve) => {
+      new foundry.applications.api.DialogV2({
+        window: { title: item.name },
+        content: html,
+        buttons: [
+          {
+            action: 'roll_fingerfertigkeit',
+            icon: '<i class="fas fa-dice-d6"></i>',
+            label: 'Geschick + Fingerfertigkeit',
+            callback: (event, button, dialog) => rollDialogV1ThrowingWeaponCallback(event, button, dialog, this.actor, item, rollFormulaFingerfertigkeit, "Fingerfertigkeit"),
+          },
+          {
+            action: 'roll_kraft',
+            icon: '<i class="fas fa-dice-d6"></i>',
+            label: 'Geschick + Kraft',
+            callback: (event, button, dialog) => rollDialogV1ThrowingWeaponCallback(event, button, dialog, this.actor, item, rollFormulaKraft, "Kraft"),
+          },
+          {
+            action: 'cancel',
+            icon: '<i class="fas fa-dice-d6"></i>',
+            label: 'Abbrechen',
+            callback: (event, button, dialog) => resolve(null),
+          },
+        ],
+        default: "roll_fingerfertigkeit",
+        close: () => resolve(null),
+      }).render(true);
+    });
   }
 }

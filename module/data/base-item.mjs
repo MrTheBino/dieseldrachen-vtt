@@ -10,7 +10,7 @@ export default class DieseldrachenItemBase extends DieseldrachenDataModel {
     schema.mounted = new fields.BooleanField({ required: true, initial: false });
     schema.description = new fields.StringField({ required: true, blank: true });
     schema.purchasePrice = new fields.NumberField({ required: true, nullable: false, integer: true, initial: 1, min: 0});
-    schema.quantity = new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 });
+    schema.quantity = new fields.NumberField({ ...requiredInteger, initial: 1, min: 0 });
 
     return schema;
   }

@@ -7,6 +7,15 @@
     <div class="roll-group">
       <div class="roll-row">
         <div class="roll-prop">
+          <span>Fertigkeit: </span>
+          <span>{{usedAbility}}</span>
+        </div>
+        <div class="roll-prop">
+          <span>Anzahl vor Verwendung: </span>
+          <span>{{itemQuantity}}</span>
+        </div>
+        
+        <div class="roll-prop">
           <span>Schwierigkeit: </span>
           <span>{{difficulty}}</span>
         </div>
@@ -15,17 +24,13 @@
     {{> "systems/dieseldrachen-vtt/templates/chat/success-partial.hbs"}}
     <div class="dice-roll">
       <div class="dice-result">
-        <h4 class="dice-total">
-          Schaden {{range}}: {{damage}}
-        </h4>
         <div class="dice-formula">
           <span>{{damageRollFormula}}</span>
         </div>
         <div class="dice-formula">
-          <span>Formel: {{damageFormula}}</span>
+          <span>Schaden: {{damageFormula}}</span>
         </div>
       </div>
-
     </div>
   </div>
 </form>

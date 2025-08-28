@@ -7,6 +7,8 @@ import { DieseldrachenItemSheet } from './sheets/item-sheet.mjs';
 // Import helper/utility classes and constants.
 import { preloadHandlebarsTemplates } from './helpers/templates.mjs';
 import { DIESELDRACHEN } from './helpers/config.mjs';
+import {DieseldrachenCombat} from './combat.mjs'
+
 // Import DataModel classes
 import * as models from './data/_module.mjs';
 
@@ -26,14 +28,7 @@ Hooks.once('init', function () {
   // Add custom constants for configuration.
   CONFIG.DIESELDRACHEN = DIESELDRACHEN;
 
-  /**
-   * Set an initiative formula for the system
-   * @type {String}
-   */
-  CONFIG.Combat.initiative = {
-    formula: '1d20 + @abilities.dex.mod',
-    decimals: 2,
-  };
+  CONFIG.Combat.documentClass = DieseldrachenCombat;
 
   // Define custom Document and DataModel classes
   CONFIG.Actor.documentClass = DieseldrachenActor;

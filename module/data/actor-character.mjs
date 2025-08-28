@@ -10,6 +10,8 @@ export default class DieseldrachenCharacter extends DieseldrachenActorBase {
     schema.locked = new fields.BooleanField({ required: true, initial: false });
     schema.luck =  new fields.NumberField({ ...requiredInteger, initial: 0, max: 3 });
     schema.xp =  new fields.NumberField({ ...requiredInteger, initial: 0 });
+    schema.xpUsed =  new fields.NumberField({ ...requiredInteger, initial: 0 });
+    schema.xpLeft =  new fields.NumberField({ ...requiredInteger, initial: 0 });
     schema.money =  new fields.NumberField({ ...requiredInteger, initial: 0 });
     schema.age =  new fields.NumberField({ ...requiredInteger, initial: 0 });
     schema.species = new fields.StringField({ required: true, blank: true, initial: "" });
@@ -101,6 +103,8 @@ export default class DieseldrachenCharacter extends DieseldrachenActorBase {
   }
 
   prepareDerivedData() {
+
+    this.xpLeft = this.xp - this.xpUsed;
     /*
     // Loop through ability scores, and add their modifiers to our sheet output.
     for (const key in this.abilities) {

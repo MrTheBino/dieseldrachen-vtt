@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 13.0.10
+  - added xp used and left to the character sheet
+  - added basic initiative handling (characters come first)
+  - fixed magic roll dialog for spells
+  - added first implementation for throwing weapons (handgrenades)
+  
 ## 13.0.9.3
   - dodging mod dice fix
   - added saving throws to social dice (in locked modus)

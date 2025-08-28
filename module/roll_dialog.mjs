@@ -455,6 +455,54 @@ export async function rollV1Resting(actor) {
   });
 }
 
+export async function rollDialogV1ThrowingWeaponCallback(event, button, dialog, actor,item,rollFormula,usedAbility) {
+  const form = button.form;
+  const actorRollData = actor.getRollData();
+  const difficulty = parseInt(form.difficulty.value) || 10;
+  let isSuccess = false;
+  let finalRollFormula = `${rollFormula}+1d${item.system.handling}`;
+  const dicePromises = [];
+
+  const dicePoolRoll = new Roll(finalRollFormula, actorRollData);
+  await dicePoolRoll.evaluate();
+  let criticalMiss = isCriticalMiss(dicePoolRoll);
+  let criticalHit = isCriticalHit(dicePoolRoll, difficulty);
+
+  let orgItemQuantity = item.system.quantity || 0;
+  let itemQuantity = orgItemQuantity - 1;
+
+  if(itemQuantity<0){
+    itemQuantity=0;
+  }
+
+  item.update({ ['system.quantity']: itemQuantity });
+
+  addShowDicePromise(dicePromises, dicePoolRoll);
+  await Promise.all(dicePromises);
+
+  if (difficulty && dicePoolRoll.total >= difficulty) {
+    isSuccess = true;
+  }
+
+  let dicePoolRollHTML = await dicePoolRoll.render();
+
+  const rollDialogVars = {
+    dicePoolRoll: dicePoolRoll,
+    dicePoolRollHTML: dicePoolRollHTML,
+    total: dicePoolRoll.total,
+    label: item.name,
+    usedAbility: usedAbility,
+    itemQuantity: orgItemQuantity,
+    damage: item.system.damage,
+    damageFormula: item.system.damage,
+    difficulty: difficulty,
+    isSuccess: isSuccess,
+    isCriticalMiss: criticalMiss,
+    isCriticalHit: criticalHit
+  }
+  renderThrowingWeaponRollResult(actor, rollDialogVars);
+}
+
 async function rollDialogV1MeleeWeaponCallback(event, button, dialog, actor) {
   const form = button.form;
   const actorRollData = actor.getRollData();
@@ -584,6 +632,17 @@ export async function renderRangedWeaponRollResult(actor, rollResult) {
 export async function renderMeleeWeaponRollResult(actor, rollResult) {
   const html = await foundry.applications.handlebars.renderTemplate(
     "systems/dieseldrachen-vtt/templates/chat/melee-weapon-roll-result.hbs",
+    rollResult
+  );
+  ChatMessage.create({
+    content: html,
+    speaker: ChatMessage.getSpeaker({ actor }),
+  });
+}
+
+export async function renderThrowingWeaponRollResult(actor, rollResult) {
+  const html = await foundry.applications.handlebars.renderTemplate(
+    "systems/dieseldrachen-vtt/templates/chat/throwing-weapon-roll-result.hbs",
     rollResult
   );
   ChatMessage.create({

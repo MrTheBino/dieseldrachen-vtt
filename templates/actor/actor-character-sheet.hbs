@@ -103,7 +103,7 @@
 
   </section>
 
-  <section class="grid grid-7col resource-group">
+  <section class="grid grid-8col resource-group">
     <div class="resource flex-group-center">
       <label for="system.health.value" class="resource-label">Gesundheit</label>
       <div class="resource-content flexrow flex-center flex-between">
@@ -128,10 +128,14 @@
     </div>
 
 
-    <div class="resource flex-group-center">
+    <div class="resource flex-group-center grid-span-2">
       <label for="system.xp" class="resource-label">XP</label>
       <div class="resource-content flexrow flex-center flex-between">
-        <input type="text" name="system.xp" value="{{system.xp}}" data-dtype="Number" />
+        <input type="text" class="xp-input" name="system.xp" value="{{system.xp}}" data-dtype="Number" title="XP erhalten"/>
+        <span>-</span>
+        <input type="text" class="xp-input" name="system.xpUsed" value="{{system.xpUsed}}" data-dtype="Number" title="XP verwendet"/>
+        <span>=</span>
+        <input type="text" class="xp-input" name="system.xpLeft" value="{{system.xpLeft}}" data-dtype="Number" disabled title="Verbleibende XP"/>
       </div>
     </div>
 
