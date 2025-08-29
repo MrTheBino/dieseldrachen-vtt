@@ -316,7 +316,7 @@ async function rollDialogV1Callback(event, button, dialog, actor) {
   }
   const dicePoolRoll = new Roll(rollFormula, actorRollData);
   await dicePoolRoll.evaluate();
-
+  let luckRollData = luckRollCrunch(dicePoolRoll,difficulty);
 
   addShowDicePromise(dicePromises, dicePoolRoll);
   await Promise.all(dicePromises);
@@ -338,7 +338,8 @@ async function rollDialogV1Callback(event, button, dialog, actor) {
     isSuccess: isSuccess,
     difficulty: difficulty,
     isCriticalMiss: criticalMiss,
-    isCriticalHit: criticalHit
+    isCriticalHit: criticalHit,
+    luckRollData: luckRollData
   }
   renderSkillRollResult(actor, rollDialogVars);
 }
@@ -403,7 +404,7 @@ async function rollDialogV1RangedWeaponCallback(event, button, dialog, actor) {
 
   const dicePoolRoll = new Roll(rollFormula, actorRollData);
   await dicePoolRoll.evaluate();
-
+  let luckRollData = luckRollCrunch(dicePoolRoll,difficulty);
 
   let criticalMiss = isCriticalMiss(dicePoolRoll);
   let criticalHit = isCriticalHit(dicePoolRoll.total, difficulty);
@@ -432,7 +433,8 @@ async function rollDialogV1RangedWeaponCallback(event, button, dialog, actor) {
     recoil: recoil,
     rate: item.system.rate,
     numShots: numShots,
-    item: item
+    item: item,
+    luckRollData: luckRollData
   }
   renderRangedWeaponRollResult(actor, rollDialogVars);
 }
@@ -482,6 +484,7 @@ export async function rollDialogV1ThrowingWeaponCallback(event, button, dialog, 
   await dicePoolRoll.evaluate();
   let criticalMiss = isCriticalMiss(dicePoolRoll);
   let criticalHit = isCriticalHit(dicePoolRoll.total, difficulty);
+  let luckRollData = luckRollCrunch(dicePoolRoll,difficulty);
 
   let orgItemQuantity = item.system.quantity || 0;
   let itemQuantity = orgItemQuantity - 1;
@@ -513,7 +516,8 @@ export async function rollDialogV1ThrowingWeaponCallback(event, button, dialog, 
     difficulty: difficulty,
     isSuccess: isSuccess,
     isCriticalMiss: criticalMiss,
-    isCriticalHit: criticalHit
+    isCriticalHit: criticalHit,
+    luckRollData: luckRollData
   }
   renderThrowingWeaponRollResult(actor, rollDialogVars);
 }

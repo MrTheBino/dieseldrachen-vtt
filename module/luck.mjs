@@ -1,6 +1,18 @@
 import { addShowDicePromise,isCriticalMissOnArray,isCriticalHit } from "./roll_dialog.mjs"
 
 export async function showLuckReRollDialog(diceFaceJson, valueJson, difficulty) {
+
+    const actor = game.user.character;
+
+    if(actor.system.luck <= 0) {
+        ChatMessage.create({
+            user: game.user.id,
+            speaker: ChatMessage.getSpeaker({ actor: actor }),
+            content: `Der Charakter hat keine Glückspunkte mehr.`
+        });
+        return;
+    }
+
     diceFaceJson = JSON.parse(diceFaceJson)
     valueJson = JSON.parse(valueJson)
 
@@ -47,7 +59,6 @@ async function luckReRollCallback(event, button, dialog) {
     const actor = game.user.character;
     const form = button.form;
     const difficulty = form.difficulty.value;
-    console.log(form.rerollDiceOne);
 
     let selectDiceOne = form.rerollDiceOne.checked;
     let selectDiceTwo = form.rerollDiceTwo.checked;
@@ -60,10 +71,6 @@ async function luckReRollCallback(event, button, dialog) {
     let orgDiceFaceOne = parseInt(form.orgDiceFaceOne.value);
     let orgDiceFaceTwo = parseInt(form.orgDiceFaceTwo.value);
     let orgDiceFaceThree = parseInt(form.orgDiceFaceThree.value);
-
-    console.log("selectDiceOne", selectDiceOne);
-    console.log("selectDiceTwo", selectDiceTwo);
-    console.log("selectDiceThree", selectDiceThree);
 
     const dicePromises = [];
     let finalResults = [];
@@ -114,6 +121,11 @@ async function luckReRollCallback(event, button, dialog) {
     await Promise.all(dicePromises);
 
     total = finalResults[0].finalValue + finalResults[1].finalValue + finalResults[2].finalValue;
+
+    // luck aktualisieren
+    let actorLeftLuck = actor.system.luck;
+    actorLeftLuck -= 1;
+    await actor.update({ "system.luck": actorLeftLuck });
 
     const html = await foundry.applications.handlebars.renderTemplate(
         "systems/dieseldrachen-vtt/templates/chat/luck-reroll-result.hbs",

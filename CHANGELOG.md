@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 13.1.0
+  - fixed pregen character image tokens
+  - added macro for giving luck points at the beginning of a session
+  - added first implementation for luck rerolls (ranged, melee, skills and throwing rolls)
+  
 ## 13.0.10
   - added xp used and left to the character sheet
   - added basic initiative handling (characters come first)
