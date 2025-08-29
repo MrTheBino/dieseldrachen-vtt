@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 13.1.2
+  - usability improvements, for luck rolls, you don't need a character to be assigned (only important for GMs!)
+
 ## 13.1.1
   - small usability fix, you need to own (assigned) a character to use the luck button in the chat log
 

@@ -1,6 +1,6 @@
 import {doCharacterResting} from "./helpers/character.mjs";
 
-function luckRollCrunch(diceRoll,difficulty=10) {
+function luckRollCrunch(actor,diceRoll,difficulty=10) {
   let diceValues = diceRoll.result.split("+");
   let diceFace = [];
   let splitted = diceRoll.formula.split("+");
@@ -8,7 +8,7 @@ function luckRollCrunch(diceRoll,difficulty=10) {
   diceFace[1] = parseInt(splitted[1].replace("1D","").replace("1d",""));
   diceFace[2] = parseInt(splitted[2].replace("1D","").replace("1d",""));
 
-  return {values: JSON.stringify(diceValues), formula: diceRoll.formula, faces: JSON.stringify(diceFace), result: diceRoll.result, difficulty: 10};
+  return {values: JSON.stringify(diceValues), formula: diceRoll.formula, faces: JSON.stringify(diceFace), result: diceRoll.result, difficulty: 10,actorId: actor.id};
 }
 
 export function addShowDicePromise(promises, roll) {
@@ -80,7 +80,6 @@ export async function rollDialogMeleeWeaponV1(actor, itemId, label) {
   }
   else {
     // Charaktere
-    console.log("ability: ", item.system.ability);
     if (item.system.ability === "brawl") {
       diceFormula = `1d${actor.system.attributes.reaction} + 1d${actor.system.abilities.brawl}`;
       weaponTypeLabel = "Prügeln";
@@ -316,7 +315,7 @@ async function rollDialogV1Callback(event, button, dialog, actor) {
   }
   const dicePoolRoll = new Roll(rollFormula, actorRollData);
   await dicePoolRoll.evaluate();
-  let luckRollData = luckRollCrunch(dicePoolRoll,difficulty);
+  let luckRollData = luckRollCrunch(actor,dicePoolRoll,difficulty);
 
   addShowDicePromise(dicePromises, dicePoolRoll);
   await Promise.all(dicePromises);
@@ -404,7 +403,7 @@ async function rollDialogV1RangedWeaponCallback(event, button, dialog, actor) {
 
   const dicePoolRoll = new Roll(rollFormula, actorRollData);
   await dicePoolRoll.evaluate();
-  let luckRollData = luckRollCrunch(dicePoolRoll,difficulty);
+  let luckRollData = luckRollCrunch(actor,dicePoolRoll,difficulty);
 
   let criticalMiss = isCriticalMiss(dicePoolRoll);
   let criticalHit = isCriticalHit(dicePoolRoll.total, difficulty);
@@ -484,7 +483,7 @@ export async function rollDialogV1ThrowingWeaponCallback(event, button, dialog, 
   await dicePoolRoll.evaluate();
   let criticalMiss = isCriticalMiss(dicePoolRoll);
   let criticalHit = isCriticalHit(dicePoolRoll.total, difficulty);
-  let luckRollData = luckRollCrunch(dicePoolRoll,difficulty);
+  let luckRollData = luckRollCrunch(actor,dicePoolRoll,difficulty);
 
   let orgItemQuantity = item.system.quantity || 0;
   let itemQuantity = orgItemQuantity - 1;
@@ -543,7 +542,7 @@ async function rollDialogV1MeleeWeaponCallback(event, button, dialog, actor) {
 
   const dicePoolRoll = new Roll(rollFormula, actorRollData);
   await dicePoolRoll.evaluate();
-  let luckRollData = luckRollCrunch(dicePoolRoll,difficulty);
+  let luckRollData = luckRollCrunch(actor,dicePoolRoll,difficulty);
 
   let criticalMiss = isCriticalMiss(dicePoolRoll);
   let criticalHit = isCriticalHit(dicePoolRoll.total, difficulty);
@@ -582,7 +581,6 @@ async function rollDialogV1MeleeWeaponCallback(event, button, dialog, actor) {
     }
   })
 
-  console.log("rollFormulaDamage: ", rollFormulaDamage);
   let damageResult = 0;
   if (rollFormulaDamage.length > 0) {
 

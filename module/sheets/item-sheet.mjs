@@ -36,7 +36,7 @@ export class DieseldrachenItemSheet extends foundry.appv1.sheets.ItemSheet {
   }
 
   prepareAmmunition(itemData){
-    console.log(this.type);
+    
   }
   /* -------------------------------------------- */
 

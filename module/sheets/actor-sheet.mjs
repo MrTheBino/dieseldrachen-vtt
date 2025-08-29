@@ -682,7 +682,7 @@ export class DieseldrachenActorSheet extends foundry.appv1.sheets.ActorSheet {
   }
 
   _handleRollSpell(item) {
-    console.log("_handleRollSpell")
+    
     let label = "Unbekannt";
     let roll = "";
     if (item.system.spellType == 0) {

@@ -102,8 +102,6 @@ Handlebars.registerHelper('diceIcon', function (die) {
 
 
 Handlebars.registerHelper('isHealthMarker', function (str, value) {
-  console.log("str:" + str)
-  console.log("value:" + value)
   if (parseInt(str) + 1 == value) {
     return true;
   }
@@ -134,7 +132,8 @@ Hooks.once('ready', function () {
         const originalFaces = button.dataset.originalFaces;
         const originalValues = button.dataset.originalValues;
         const difficulty = button.dataset.difficulty;
-        showLuckReRollDialog(originalFaces, originalValues,difficulty);
+        const actorId = button.dataset.actorId;
+        showLuckReRollDialog(actorId, originalFaces, originalValues,difficulty);
       });
     }
   });
@@ -212,7 +211,6 @@ function rollItemMacro(itemUuid) {
 }
 
 async function setupItemPiles() {
-  console.log("setting up item piles")
 
   const data = {
 
@@ -285,5 +283,4 @@ async function setupItemPiles() {
   }
 
   await game.itempiles.API.addSystemIntegration(data);
-  console.log("finished setting up item piles")
 }

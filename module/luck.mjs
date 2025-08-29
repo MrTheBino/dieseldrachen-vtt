@@ -1,8 +1,8 @@
 import { addShowDicePromise,isCriticalMissOnArray,isCriticalHit } from "./roll_dialog.mjs"
 
-export async function showLuckReRollDialog(diceFaceJson, valueJson, difficulty) {
+export async function showLuckReRollDialog(actorId,diceFaceJson, valueJson, difficulty) {
 
-    const actor = game.user.character;
+    const actor = game.actors.get(actorId);
 
     if(!actor){
         return;
@@ -50,7 +50,7 @@ export async function showLuckReRollDialog(diceFaceJson, valueJson, difficulty) 
                     action: 'roll',
                     icon: '<i class="fas fa-dice-d6"></i>',
                     label: game.i18n.localize("DIESELDRACHEN.Labels.Roll"),
-                    callback: (event, button, dialog) => luckReRollCallback(event, button, dialog),
+                    callback: (event, button, dialog) => luckReRollCallback(event, button, dialog,actor),
                 },
             ],
             default: "roll",
@@ -59,8 +59,7 @@ export async function showLuckReRollDialog(diceFaceJson, valueJson, difficulty) 
     });
 }
 
-async function luckReRollCallback(event, button, dialog) {
-    const actor = game.user.character;
+async function luckReRollCallback(event, button, dialog,actor) {
     const form = button.form;
     const difficulty = form.difficulty.value;
 

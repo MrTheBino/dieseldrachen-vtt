@@ -19,9 +19,6 @@ export class DieseldrachenItem extends Item {
     let defaults = {};
     let image = null;
     
-        
-
-    console.log(data.type);
     switch(data.type){
       default:
         image = "systems/dieseldrachen-vtt/assets/icons/item-default.svg";
