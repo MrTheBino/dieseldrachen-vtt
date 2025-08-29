@@ -4,6 +4,10 @@ export async function showLuckReRollDialog(diceFaceJson, valueJson, difficulty) 
 
     const actor = game.user.character;
 
+    if(!actor){
+        return;
+    }
+    
     if(actor.system.luck <= 0) {
         ChatMessage.create({
             user: game.user.id,

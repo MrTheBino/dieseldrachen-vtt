@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 13.1.1
+  - small usability fix, you need to own (assigned) a character to use the luck button in the chat log
+
 ## 13.1.0
   - fixed pregen character image tokens
   - added macro for giving luck points at the beginning of a session
