@@ -1,6 +1,8 @@
+{{#if luckRollData.showLuckButton}}
 <div class="dice-roll">
     <span class="luck-roll-button" data-original-values="{{luckRollData.values}}" data-actor-id="{{luckRollData.actorId}}" data-original-faces="{{luckRollData.faces}}" data-difficulty="{{luckRollData.difficulty}}">
         <i class="fa-solid fa-clover"></i>
         {{localize "DIESELDRACHEN.Buttons.RollLuck"}}
     </span>
 </div>
+{{/if}}

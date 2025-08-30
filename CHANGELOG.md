@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 13.1.3
+  - NPCs won't use the luck mechanic
+  
 ## 13.1.2
   - usability improvements, for luck rolls, you don't need a character to be assigned (only important for GMs!)
 

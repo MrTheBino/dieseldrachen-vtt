@@ -1,6 +1,13 @@
 import {doCharacterResting} from "./helpers/character.mjs";
 
 function luckRollCrunch(actor,diceRoll,difficulty=10) {
+
+  const buttonEnabled = actor.type === "character";
+
+  if(buttonEnabled == false){
+    return {showLuckButton: false}
+  }
+
   let diceValues = diceRoll.result.split("+");
   let diceFace = [];
   let splitted = diceRoll.formula.split("+");
@@ -8,7 +15,9 @@ function luckRollCrunch(actor,diceRoll,difficulty=10) {
   diceFace[1] = parseInt(splitted[1].replace("1D","").replace("1d",""));
   diceFace[2] = parseInt(splitted[2].replace("1D","").replace("1d",""));
 
-  return {values: JSON.stringify(diceValues), formula: diceRoll.formula, faces: JSON.stringify(diceFace), result: diceRoll.result, difficulty: 10,actorId: actor.id};
+  
+
+  return {showLuckButton: buttonEnabled,values: JSON.stringify(diceValues), formula: diceRoll.formula, faces: JSON.stringify(diceFace), result: diceRoll.result, difficulty: 10,actorId: actor.id};
 }
 
 export function addShowDicePromise(promises, roll) {
