@@ -29,6 +29,13 @@ export const preloadHandlebarsTemplates = async function () {
     'systems/dieseldrachen-vtt/templates/chat/luck-roll-button-partial.hbs',
 
     // Shared partials
-    'systems/dieseldrachen-vtt/templates/shared/dice-option-select-partial.hbs'
+    'systems/dieseldrachen-vtt/templates/shared/dice-option-select-partial.hbs',
+
+    // V2
+    'systems/dieseldrachen-vtt/templates/v2/actor/actor-partial-npc-common.html',
+    'systems/dieseldrachen-vtt/templates/v2/actor/actor-partial-tabs.html',
+    'systems/dieseldrachen-vtt/templates/v2/actor/actor-partial-npc.html',
+    'systems/dieseldrachen-vtt/templates/v2/partial-biography.html'
+
   ]);
 };

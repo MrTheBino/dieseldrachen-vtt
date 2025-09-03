@@ -1,5 +1,5 @@
 <!-- Zauber -->
-<h3 class="quick-label">Zauber</h3>
+<h5 class="quick-label">Zauber</h5>
 <ol class='items-list'>
   <li class='item flexrow items-header'>
     <div class='item-name'>{{localize 'Name'}}</div>
@@ -19,7 +19,7 @@
             <img src='{{item.img}}' title='{{item.name}}' width='24' height='24' />
           </a>
         </div>
-        <h4 class="expandable-trigger">{{item.name}}</h4>
+        <span class="expandable-trigger">{{item.name}}</span>
       </div>
       <div class="item-prop">{{ localize (concat "DIESELDRACHEN.Keys.spellTypes." item.system.spellType)}}</div>
       <div class='item-controls'>
@@ -41,7 +41,7 @@
   {{/each}}
 </ol>
 <!-- Artefakte -->
-<h3 class="quick-label">Artefakte</h3>
+<h5 class="quick-label">Artefakte</h5>
 <ol class='items-list'>
   <li class='item flexrow items-header'>
     <div class='item-name'>{{localize 'Name'}}</div>
@@ -62,7 +62,7 @@
           <img src='{{item.img}}' title='{{item.name}}' width='24' height='24' />
         </a>
       </div>
-      <h4>{{item.name}}</h4>
+      <span>{{item.name}}</span>
     </div>
     <div class='item-prop'>{{item.system.weight}}</div>
     <div class='item-prop'>{{item.system.magicType}}</div>

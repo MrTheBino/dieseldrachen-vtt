@@ -1,0 +1,27 @@
+<section class="tab {{tabs.social.id}} {{tabs.social.cssClass}} scrollable" id="social" data-tab="{{tabs.social.id}}" data-group="{{tabs.social.group}}">
+    <!-- Gruppe -->
+    {{> "systems/dieseldrachen-vtt/templates/actor/parts/social-partial.hbs"
+    name="Gruppe" key="group" value_pos=system.social.group.value_pos
+    value_neg=system.social.group.value_neg value_name=system.social.group.name}}
+
+    <!-- Kontakte -->
+    {{> "systems/dieseldrachen-vtt/templates/actor/parts/social-partial.hbs"
+    name="Kontakte" key="contacts" value_pos=system.social.contacts.value_pos
+    value_neg=system.social.contacts.value_neg value_name=system.social.contacts.name}}
+
+    <!-- Ruf -->
+    {{> "systems/dieseldrachen-vtt/templates/actor/parts/social-partial.hbs"
+    name="Ruf" key="reputation" value_pos=system.social.reputation.value_pos
+    value_neg=system.social.reputation.value_neg value_name=system.social.reputation.name}}
+
+
+    <!-- Stand -->
+    {{> "systems/dieseldrachen-vtt/templates/actor/parts/social-partial.hbs"
+    name="Stand" key="standing" value_pos=system.social.standing.value_pos
+    value_neg=system.social.standing.value_neg value_name=system.social.standing.name}}
+
+    <!-- Vermögen -->
+    {{> "systems/dieseldrachen-vtt/templates/actor/parts/social-partial.hbs"
+    name="Vermögen" key="wealth" value_pos=system.social.wealth.value_pos
+    value_neg=system.social.wealth.value_neg value_name=system.social.wealth.name}}
+</section>

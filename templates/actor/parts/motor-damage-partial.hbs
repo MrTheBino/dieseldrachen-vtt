@@ -1,5 +1,5 @@
 {{#if (gt value max)}}
-    <span class="vehicle_motor_damage " data-unused="1" data-value="{{value}}"><i class="fa-solid fa-engine vmd_grey"></i></span>
+    <span class="vehicle_motor_damage " data-unused="1" data-value="{{value}}" data-action="setMotorDamage"><i class="fa-solid fa-engine vmd_grey"></i></span>
 {{else}}
-    <span class="vehicle_motor_damage " data-unused="0" data-value="{{value}}"><i class="fa-solid fa-engine {{#if (gte system.motors.damage value)}}vmd_red{{/if}}"></i></span>
+    <span class="vehicle_motor_damage " data-unused="0" data-value="{{value}}" data-action="setMotorDamage"><i class="fa-solid fa-engine {{#if (gte system.motors.damage value)}}vmd_red{{/if}}"></i></span>
 {{/if}}

@@ -7,8 +7,12 @@ import { DieseldrachenItemSheet } from './sheets/item-sheet.mjs';
 // Import helper/utility classes and constants.
 import { preloadHandlebarsTemplates } from './helpers/templates.mjs';
 import { DIESELDRACHEN } from './helpers/config.mjs';
-import {DieseldrachenCombat} from './combat.mjs'
-import {showLuckReRollDialog} from './luck.mjs';
+import { DieseldrachenCombat } from './combat.mjs'
+import { showLuckReRollDialog } from './luck.mjs';
+
+import { DieselDrachenNpcActorSheetV2 } from './sheets/npc-sheet-v2.mjs';
+import { DieselDrachenVehicleActorSheetV2 } from './sheets/vehicle-sheet-v2.mjs';
+import {DieselDrachenCharacterActorSheetV2} from "./sheets/character-sheet-v2.mjs"
 
 // Import DataModel classes
 import * as models from './data/_module.mjs';
@@ -68,10 +72,22 @@ Hooks.once('init', function () {
 
   // Register sheet application classes
   foundry.documents.collections.Actors.unregisterSheet('core', foundry.appv1.sheets.ActorSheet);
-  foundry.documents.collections.Actors.registerSheet('dieseldrachen-vtt', DieseldrachenActorSheet, {
-    makeDefault: true,
+  foundry.documents.collections.Actors.registerSheet('dieseldrachen-vtt', DieselDrachenNpcActorSheetV2, {
+    types: ['npc'],
+    label: 'DIESELDRACHEN.SheetLabels.NPC',
+    makeDefault: true
+  })
+
+  foundry.documents.collections.Actors.registerSheet('dieseldrachen-vtt', DieselDrachenVehicleActorSheetV2, {
+    types: ['vehicle'],
+    label: 'DIESELDRACHEN.SheetLabels.Vehicle',
+  })
+  
+  foundry.documents.collections.Actors.registerSheet('dieseldrachen-vtt', DieselDrachenCharacterActorSheetV2, {
+    types: ['character'],
     label: 'DIESELDRACHEN.SheetLabels.Actor',
-  });
+  })
+  
   foundry.documents.collections.Items.unregisterSheet('core', foundry.appv1.sheets.ItemSheet);
   foundry.documents.collections.Items.registerSheet('dieseldrachen-vtt', DieseldrachenItemSheet, {
     makeDefault: true,
@@ -133,7 +149,7 @@ Hooks.once('ready', function () {
         const originalValues = button.dataset.originalValues;
         const difficulty = button.dataset.difficulty;
         const actorId = button.dataset.actorId;
-        showLuckReRollDialog(actorId, originalFaces, originalValues,difficulty);
+        showLuckReRollDialog(actorId, originalFaces, originalValues, difficulty);
       });
     }
   });

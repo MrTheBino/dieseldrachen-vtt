@@ -1,3 +1,7 @@
+.resource{
+  margin-left: 2px;
+}
+
 .resource-group{
   background-color:#f5f5dc73;
   padding: 5px;
@@ -38,7 +42,7 @@
 .ability-label {
   font-family: "Voltaire", sans-serif;
   font-size: 1.2em;
-  color: #333;
+  color: $c-label-text;
   font-weight: normal;
   //border-bottom: 2px solid black;
   text-align: right;
@@ -54,12 +58,13 @@
 }
 .quick-label {
   font-family: "Voltaire", sans-serif;
-  color: #333;
+  color: #e1e1e1;
   font-weight: bold;
   background-color: $c-stripe;
   padding: 5px;
   text-transform:uppercase;
   margin-top: 5px;
+  font-size: 1.25em;
 }
 
 .social-container {

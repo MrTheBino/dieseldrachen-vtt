@@ -1,0 +1,13 @@
+<div class="grid-col-span-12 resource-group">
+    <h5 class="quick-label">Beschreibung</h5>
+    <div class="description">
+        {{#if editable}}
+        <prose-mirror name="system.biography" button="true" editable="{{editable}}" toggled="false"
+            value="{{system.biography}}">
+            {{{biographyHTML}}}
+        </prose-mirror>
+        {{else}}
+            {{{biographyHTML}}}
+        {{/if}}
+    </div>
+</div>

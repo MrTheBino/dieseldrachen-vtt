@@ -1,11 +1,39 @@
+<section class="grid grid-2col">
+
+    <div class="resource flex-group-center flexcol">
+        <label for="system.condition" class="resource-label">Zustand</label>
+        <div class="resource-content flex-center flex-between">
+            <textarea name="system.condition" data-dtype="String" class="mt-left-2">{{system.condition}}</textarea>
+        </div>
+    </div>
+    <div class="resource flex-group-center flexcol">
+        <label for="" class="resource-label">Verletzungen</label>
+        <div class="grid grid-2col">
+            <div class="flex-col">
+                <span class="icon-light-injury" title="Leichte Verletzungen"></span>
+                <input type="text" name="system.lightInjuries" value="{{system.lightInjuries}}" data-dtype="Number"
+                    class="tiny_input" />
+            </div>
+            <div class="flex-col">
+                <span class="icon-heavy-injury" title="Schwere Verletzungen"></span>
+                <input type="text" name="system.heavyInjuries" value="{{system.heavyInjuries}}" data-dtype="Number"
+                    class="tiny_input" />
+            </div>
+        </div>
+    </div>
+
+</section>
 <!-- Aktionen -->
 <div class="grid grid-3col">
     <button class="rollable action-button" data-roll-type="skill"
         data-roll="d{{system.attributes.athletics}}+d{{system.abilities.agility}}" data-roll-mod-dice="{{mobilityDice}}"
-        data-label="Ausweichen / Schnell Bewegen" title="Ausweichen / Schnell Bewegen"><span class="icon-dodge"></span></button>
+        data-label="Ausweichen / Schnell Bewegen" title="Ausweichen / Schnell Bewegen"><span
+            class="icon-dodge"></span></button>
 
-    <button class="rollable action-button button-rest" title="Kurze Ruhepause (Rast, Nickerchen)"><span class="icon-rest"></span></button>
-    <button class="rollable action-button button-heal" title="Lange Ruhepause (eine Nacht schlafen, einen Tag faulenzen)"><span class="icon-heal"></span></button>
+    <button class="rollable action-button button-rest" title="Kurze Ruhepause (Rast, Nickerchen)"><span
+            class="icon-rest"></span></button>
+    <button class="rollable action-button button-heal"
+        title="Lange Ruhepause (eine Nacht schlafen, einen Tag faulenzen)"><span class="icon-heal"></span></button>
 </div>
 <!-- Nahkampfwaffen -->
 <ol class='items-list'>
@@ -17,11 +45,11 @@
     <li class='item flexcol item-align-left' data-item-id='{{item._id}}'>
         <div class='item-name'>
             <div class='item-image'>
-                <a class='rollable' data-roll-type='meleeWeapon'>
+                <a class='rollable' data-roll-type='meleeWeapon' data-action="meleeWeaponRoll">
                     <img src='{{item.img}}' title='{{item.name}}' width='24' height='24' />
                 </a>
             </div>
-            <h4>{{item.name}}</h4>
+            <span>{{item.name}}</span>
         </div>
         <div class="small_description">
             Reichweite: {{ localize (concat "DIESELDRACHEN.Ranges." item.system.range)}} |
@@ -35,19 +63,20 @@
     <li class='item flexcol item-align-left' data-item-id='{{item._id}}'>
         <div class='item-name rangedWeapon'>
             <div class='item-image'>
-                <a class='rollable' data-roll-type='rangedWeapon'>
+                <a class='rollable' data-action="rangedWeaponRoll" data-roll-type='rangedWeapon'>
                     <img src='{{item.img}}' title='{{item.name}}' width='24' height='24' />
                 </a>
             </div>
-            <h4>{{item.name}}</h4>
+            <span>{{item.name}}</span>
             <div class='ammunition-container'>
                 <input type="text" value="{{item.system.bullets.value}}" data-item-stat="system.bullets.value"
                     class="item-editable-stat tiny_input">
                 /
                 <input type='text' name='system.bullets.max' value='{{system.bullets.max}}' data-dtype='Number'
                     class="tiny_input" disabled />
-                <span class="weapon-reload-icon" data-item-id='{{item._id}}'
-                    title="{{system.bullets.perReload}} Kugeln pro Ladevorgang"><i class="fa-solid fa-rotate clickable"></i></span>
+                <span class="weapon-reload-icon" data-item-id='{{item._id}}' data-action="clickWeaponReload"
+                    title="{{system.bullets.perReload}} Kugeln pro Ladevorgang"><i
+                        class="fa-solid fa-rotate clickable"></i></span>
             </div>
         </div>
         <div class="small_description">
