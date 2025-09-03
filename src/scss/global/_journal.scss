@@ -1,35 +1,54 @@
-header.journal-page-header h1{
+header.journal-page-header h1 {
     font-family: "Voltaire", sans-serif;
     text-transform: uppercase;
     color: black;
 }
 
-section.journal-page-content h2{
+section.journal-page-content h2 {
     font-family: "Voltaire", sans-serif;
     text-transform: uppercase;
-    background-color: rgba(0,0,0,0.15);
+    background-color: rgba(0, 0, 0, 0.15);
     padding: 2px;
     color: black;
 }
 
-section.journal-page-content h3{
+section.journal-page-content h3 {
     font-family: "Voltaire", sans-serif;
     text-transform: uppercase;
-    background-color: rgba(0,0,0,0.15);
+    background-color: rgba(0, 0, 0, 0.15);
     padding: 2px;
     color: black;
 }
 
-.journal-entry-page{
+//*[@id="JournalEntryPageProseMirrorSheet-Compendium-dieseldrachen-kompendium-pack-quick-rules-JournalEntry-UqOT46Qnfnbizx1n-JournalEntryPage-9ooFMXpbaQVEykpg-view"]/section/table
+.journal-entry-page {
     background-image: url("../assets/textures/journal_texture.png");
     color: black; // Textcolor
     padding: 5px;
 }
 
-.dieseldrachen-journal-image{
+.journal-page-content > table {
+    background: none;
+}
+
+.journal-page-content > table > thead > tr > th {
+font-family: "Voltaire", sans-serif;
+  color: white;
+}
+
+.journal-page-content > table > tbody > tr:nth-child(even) {
+    background-color: rgba(0, 0, 0, 0.1)
+}
+
+.journal-page-content > table > tbody > tr:nth-child(odd) {
+    background-color:none;
+}
+
+.dieseldrachen-journal-image {
     margin-left: auto;
     margin-right: auto;
     border: 4px solid white;
     border-radius: 5px
 }
+
 //*[@id="JournalEntryPageProseMirrorSheet-Compendium-world-journale-JournalEntry-xg8ftXVRpAhXaftk-JournalEntryPage-ojhAobjxajwNhAmd-view"]/section/h2[1]

@@ -327,6 +327,23 @@ section.journal-page-content h3 {
   padding: 5px;
 }
 
+.journal-page-content > table {
+  background: none;
+}
+
+.journal-page-content > table > thead > tr > th {
+  font-family: "Voltaire", sans-serif;
+  color: white;
+}
+
+.journal-page-content > table > tbody > tr:nth-child(even) {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.journal-page-content > table > tbody > tr:nth-child(odd) {
+  background-color: none;
+}
+
 .dieseldrachen-journal-image {
   margin-left: auto;
   margin-right: auto;
