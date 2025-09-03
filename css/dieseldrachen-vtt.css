@@ -1335,6 +1335,10 @@ section.journal-page-content h3 {
   width: 25px;
 }
 
+.small_input {
+  width: 50px;
+}
+
 .medium_input {
   width: 75px;
 }

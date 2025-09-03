@@ -1,4 +1,6 @@
 import { DieseldrachenActorSheetV2 } from "./actor-sheet-v2.mjs"
+import { rollDialogSavingThrow1, rollV1Resting } from "../roll_dialog.mjs"
+import { doCharacterHealing } from "../helpers/character.mjs";
 
 export class DieselDrachenCharacterActorSheetV2 extends DieseldrachenActorSheetV2 {
     /** @inheritDoc */
@@ -9,7 +11,9 @@ export class DieselDrachenCharacterActorSheetV2 extends DieseldrachenActorSheetV
         },
         classes: [""],
         actions: {
-            skillRoll: this.#skillRoll,
+            savingThrowRoll: this.#handleSavingThrowRoll,
+            clickActionRest: this.#handleActionRest,
+            clickActionHeal: this.#handleActionHeal
         }
     }
 
@@ -42,6 +46,11 @@ export class DieselDrachenCharacterActorSheetV2 extends DieseldrachenActorSheetV
             id: 'magic',
             template: 'systems/dieseldrachen-vtt/templates/v2/actor/character/tab-magic.html',
             scrollable: [''],
+        },
+        biography: {
+            id: 'biography',
+            template: 'systems/dieseldrachen-vtt/templates/v2/actor/character/tab-biography.html',
+            scrollable: [''],
         }
     }
 
@@ -57,6 +66,7 @@ export class DieselDrachenCharacterActorSheetV2 extends DieseldrachenActorSheetV
                     { id: 'social', group: 'sheet', label: 'Sozial' },
                     { id: 'items', group: 'sheet', label: 'Gegenstände' },
                     { id: 'magic', group: 'sheet', label: 'Magie' },
+                    { id: 'biography', group: 'sheet', label: 'Biografie' },
                 ],
             initial: 'general'
         }
@@ -203,8 +213,78 @@ export class DieselDrachenCharacterActorSheetV2 extends DieseldrachenActorSheetV
         }
     }
 
-    static async #skillRoll(event, target) {
-        DieselDrachenNpcActorSheetV2.handleSkillRoll(event, target, this.actor);
+    static async #handleSavingThrowRoll(event, target) {
+        rollDialogSavingThrow1(this.actor, target.dataset.roll, target.dataset.label);
+    }
+
+    static async #handleActionHeal(event, target) {
+        event.preventDefault();
+        if (this._checkCharacterCanHealOrRest(this.actor) == false) {
+            return;
+        }
+
+        const dialogHtml = await foundry.applications.handlebars.renderTemplate(
+            "systems/dieseldrachen-vtt/templates/dialogs/heal-dialog.hbs",
+            { hasCondition: this.actor.system.condition.length > 0, condition: this.actor.system.condition }
+        );
+
+        const proceed = await foundry.applications.api.DialogV2.confirm({
+            content: dialogHtml,
+            rejectClose: false,
+            modal: true
+        });
+        if (proceed) {
+
+            let totalHealed = await doCharacterHealing(this.actor);
+
+            const chatVars = {
+                label: 'Lange Ruhepause',
+                actorCondition: this.actor.system.condition,
+                totalHealed: totalHealed
+            };
+
+            const html = await foundry.applications.handlebars.renderTemplate(
+                "systems/dieseldrachen-vtt/templates/chat/character-healing-result.hbs",
+                chatVars
+            );
+            ChatMessage.create({
+                content: html,
+                speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+            });
+        }
+    }
+
+    static async #handleActionRest(event, target) {
+        event.preventDefault();
+
+        if (this._checkCharacterCanHealOrRest(this.actor) == false) {
+            return;
+        }
+
+        const html = await foundry.applications.handlebars.renderTemplate(
+            "systems/dieseldrachen-vtt/templates/dialogs/rest-dialog.hbs",
+            { hasCondition: this.actor.system.condition.length > 0, condition: this.actor.system.condition }
+        );
+
+        const proceed = await foundry.applications.api.DialogV2.confirm({
+            content: html,
+            rejectClose: false,
+            modal: true
+        });
+        if (proceed) {
+            rollV1Resting(this.actor);
+        }
+    }
+
+    _checkCharacterCanHealOrRest(actor) {
+        if (actor.system.heavyInjuries > 0) {
+            ChatMessage.create({
+                content: `Der Charakter hat ${actor.system.heavyInjuries} schwere Verletzungen und kann sich nicht ausruhen oder heilen.`,
+                speaker: ChatMessage.getSpeaker({ actor: actor }),
+            });
+            return false;
+        }
+        return true;
     }
 }
 

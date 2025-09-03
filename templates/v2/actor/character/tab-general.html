@@ -1,4 +1,5 @@
-<section class="tab {{tabs.general.id}} {{tabs.general.cssClass}} scrollable" id="general" data-tab="{{tabs.general.id}}" data-group="{{tabs.general.group}}">
+<section class="tab {{tabs.general.id}} {{tabs.general.cssClass}} scrollable" id="general"
+    data-tab="{{tabs.general.id}}" data-group="{{tabs.general.group}}">
     <div class="grid grid-2col">
         <!--<aside class="sidebar"> -->
 
@@ -10,39 +11,39 @@
                 <div class="flexrow flex-group-center">
                     <label for="system.attributes.athletics" class="resource-label align-left attribute-label rollable"
                         data-roll-type="savingThrow" data-roll="1d{{system.attributes.athletics}}"
-                        data-label="Athletik">
+                        data-action="savingThrowRoll" data-label="Athletik">
                         Athletik</label>
-                    {{> "systems/dieseldrachen-vtt/templates/actor/parts/actor-dice-select.hbs"
+                    {{> "systems/dieseldrachen-vtt/templates/shared/actor-dice-select.hbs"
                     group_name="radio_attr_athletics" name="system.attributes.athletics"
                     value=system.attributes.athletics}}
                 </div>
 
                 <div class="ability flexrow flex-group-center">
                     <label for="system.abilities.strength" class="resource-label rollable ability-label "
-                        data-roll-type="skill"
+                        data-roll-type="skill" data-action="skillRoll"
                         data-roll="d{{system.attributes.athletics}}+d{{system.abilities.strength}}"
                         data-label="Kraft">Kraft</label>
-                    {{> "systems/dieseldrachen-vtt/templates/actor/parts/actor-dice-select.hbs"
+                    {{> "systems/dieseldrachen-vtt/templates/shared/actor-dice-select.hbs"
                     group_name="radio_abi_strength"
                     name="system.abilities.strength" value=system.abilities.strength}}
                 </div>
 
                 <div class="ability flexrow flex-group-center">
                     <label for="system.abilities.agility" class="resource-label rollable align-left ability-label "
-                        data-roll-type="skill"
+                        data-roll-type="skill" data-action="skillRoll"
                         data-roll="d{{system.attributes.athletics}}+d{{system.abilities.agility}}"
                         data-label="Gewandheit">Gewandheit</label>
-                    {{> "systems/dieseldrachen-vtt/templates/actor/parts/actor-dice-select.hbs"
+                    {{> "systems/dieseldrachen-vtt/templates/shared/actor-dice-select.hbs"
                     group_name="radio_abi_agility"
                     name="system.abilities.agility" value=system.abilities.agility}}
                 </div>
 
                 <div class="ability flexrow flex-group-center">
                     <label for="system.abilities.condition" class="resource-label rollable align-left ability-label "
-                        data-roll-type="skill"
+                        data-roll-type="skill" data-action="skillRoll"
                         data-roll="d{{system.attributes.athletics}}+d{{system.abilities.condition}}"
                         data-label="Kondition">Kondition</label>
-                    {{> "systems/dieseldrachen-vtt/templates/actor/parts/actor-dice-select.hbs"
+                    {{> "systems/dieseldrachen-vtt/templates/shared/actor-dice-select.hbs"
                     group_name="radio_abi_condition"
                     name="system.abilities.condition" value=system.abilities.condition}}
                 </div>
@@ -51,26 +52,29 @@
             <div class="attribute-group">
                 <div class="flexrow flex-group-center">
                     <label for="system.attributes.skill" class="resource-label align-left attribute-label rollable"
-                        data-roll-type="savingThrow" data-roll="1d{{system.attributes.skill}}" data-label="Geschick">
+                        data-roll-type="savingThrow" data-roll="1d{{system.attributes.skill}}"
+                        data-action="savingThrowRoll" data-label="Geschick">
                         Geschick</label>
-                    {{> "systems/dieseldrachen-vtt/templates/actor/parts/actor-dice-select.hbs"
+                    {{> "systems/dieseldrachen-vtt/templates/shared/actor-dice-select.hbs"
                     group_name="radio_attr_skill" name="system.attributes.skill" value=system.attributes.skill}}
                 </div>
 
                 <div class="ability flexrow flex-group-center">
                     <label for="system.abilities.pistols" class="resource-label rollable align-left ability-label "
-                        data-roll-type="skill" data-roll="d{{system.attributes.skill}}+d{{system.abilities.pistols}}"
+                        data-roll-type="skill" data-action="skillRoll"
+                        data-roll="d{{system.attributes.skill}}+d{{system.abilities.pistols}}"
                         data-label="Pistolen">Pistolen</label>
-                    {{> "systems/dieseldrachen-vtt/templates/actor/parts/actor-dice-select.hbs"
+                    {{> "systems/dieseldrachen-vtt/templates/shared/actor-dice-select.hbs"
                     group_name="radio_abi_pistols"
                     name="system.abilities.pistols" value=system.abilities.pistols}}
                 </div>
 
                 <div class="ability flexrow flex-group-center">
                     <label for="system.abilities.rifles" class="resource-label rollable align-left ability-label "
-                        data-roll-type="skill" data-roll="d{{system.attributes.skill}}+d{{system.abilities.rifles}}"
+                        data-roll-type="skill" data-action="skillRoll"
+                        data-roll="d{{system.attributes.skill}}+d{{system.abilities.rifles}}"
                         data-label="Gewehre">Gewehre</label>
-                    {{> "systems/dieseldrachen-vtt/templates/actor/parts/actor-dice-select.hbs"
+                    {{> "systems/dieseldrachen-vtt/templates/shared/actor-dice-select.hbs"
                     group_name="radio_abi_rifles"
                     name="system.abilities.rifles" value=system.abilities.rifles}}
                 </div>
@@ -78,9 +82,10 @@
                 <div class="ability flexrow flex-group-center">
                     <label for="system.abilities.sleight_of_hand"
                         class="resource-label rollable align-left ability-label " data-roll-type="skill"
+                        data-action="skillRoll"
                         data-roll="d{{system.attributes.skill}}+d{{system.abilities.sleight_of_hand}}"
                         data-label="Fingerfertigkeit">Fingerfertigkeit</label>
-                    {{> "systems/dieseldrachen-vtt/templates/actor/parts/actor-dice-select.hbs"
+                    {{> "systems/dieseldrachen-vtt/templates/shared/actor-dice-select.hbs"
                     group_name="radio_abi_sleight_of_hand"
                     name="system.abilities.sleight_of_hand" value=system.abilities.sleight_of_hand}}
                 </div>
@@ -89,37 +94,39 @@
             <div class="attribute-group">
                 <div class="flexrow flex-group-center">
                     <label for="system.attributes.reaction" class="resource-label align-left attribute-label rollable"
-                        data-roll-type="savingThrow" data-roll="1d{{system.attributes.reaction}}"
-                        data-label="Reaktion">Reaktion</label>
-                    {{> "systems/dieseldrachen-vtt/templates/actor/parts/actor-dice-select.hbs"
+                        data-roll-type="savingThrow" data-action="savingThrowRoll"
+                        data-roll="1d{{system.attributes.reaction}}" data-label="Reaktion">Reaktion</label>
+                    {{> "systems/dieseldrachen-vtt/templates/shared/actor-dice-select.hbs"
                     group_name="radio_attr_reaction" name="system.attributes.reaction"
                     value=system.attributes.reaction}}
                 </div>
 
                 <div class="ability flexrow flex-group-center">
                     <label for="system.abilities.pistols" class="resource-label rollable align-left ability-label "
-                        data-roll-type="skill" data-roll="d{{system.attributes.reaction}}+d{{system.abilities.brawl}}"
+                        data-roll-type="skill" data-action="skillRoll"
+                        data-roll="d{{system.attributes.reaction}}+d{{system.abilities.brawl}}"
                         data-label="Prügeln">Prügeln</label>
-                    {{> "systems/dieseldrachen-vtt/templates/actor/parts/actor-dice-select.hbs"
+                    {{> "systems/dieseldrachen-vtt/templates/shared/actor-dice-select.hbs"
                     group_name="radio_abi_brawl"
                     name="system.abilities.brawl" value=system.abilities.brawl}}
                 </div>
 
                 <div class="ability flexrow flex-group-center">
                     <label for="system.abilities.fencing" class="resource-label rollable align-left ability-label "
-                        data-roll-type="skill" data-roll="d{{system.attributes.reaction}}+d{{system.abilities.fencing}}"
+                        data-roll-type="skill" data-action="skillRoll"
+                        data-roll="d{{system.attributes.reaction}}+d{{system.abilities.fencing}}"
                         data-label="Fechten">Fechten</label>
-                    {{> "systems/dieseldrachen-vtt/templates/actor/parts/actor-dice-select.hbs"
+                    {{> "systems/dieseldrachen-vtt/templates/shared/actor-dice-select.hbs"
                     group_name="radio_abi_fencing"
                     name="system.abilities.fencing" value=system.abilities.fencing}}
                 </div>
 
                 <div class="ability flexrow flex-group-center">
                     <label for="system.abilities.steering" class="resource-label rollable align-left ability-label "
-                        data-roll-type="skill"
+                        data-roll-type="skill" data-action="skillRoll"
                         data-roll="d{{system.attributes.reaction}}+d{{system.abilities.steering}}"
                         data-label="Lenken">Lenken</label>
-                    {{> "systems/dieseldrachen-vtt/templates/actor/parts/actor-dice-select.hbs"
+                    {{> "systems/dieseldrachen-vtt/templates/shared/actor-dice-select.hbs"
                     group_name="radio_abi_steering"
                     name="system.abilities.steering" value=system.abilities.steering}}
                 </div>
@@ -128,37 +135,39 @@
             <div class="attribute-group">
                 <div class="ability flexrow flex-group-center">
                     <label for="system.attributes.charisma" class="resource-label align-left attribute-label rollable"
-                        data-roll-type="savingThrow" data-roll="1d{{system.attributes.charisma}}"
-                        data-label="Charisma">Charisma</label>
-                    {{> "systems/dieseldrachen-vtt/templates/actor/parts/actor-dice-select.hbs"
+                        data-roll-type="savingThrow" data-action="skillRoll"
+                        data-roll="1d{{system.attributes.charisma}}" data-label="Charisma">Charisma</label>
+                    {{> "systems/dieseldrachen-vtt/templates/shared/actor-dice-select.hbs"
                     group_name="radio_attr_charisma" name="system.attributes.charisma"
                     value=system.attributes.charisma}}
                 </div>
 
                 <div class="ability flexrow flex-group-center">
                     <label for="system.abilities.persuade" class="resource-label rollable align-left ability-label "
-                        data-roll-type="skill"
+                        data-roll-type="skill" data-action="skillRoll"
                         data-roll="d{{system.attributes.charisma}}+d{{system.abilities.persuade}}"
                         data-label="Überreden">Überreden</label>
-                    {{> "systems/dieseldrachen-vtt/templates/actor/parts/actor-dice-select.hbs"
+                    {{> "systems/dieseldrachen-vtt/templates/shared/actor-dice-select.hbs"
                     group_name="radio_abi_persuade"
                     name="system.abilities.persuade" value=system.abilities.persuade}}
                 </div>
 
                 <div class="ability flexrow flex-group-center">
                     <label for="system.abilities.drama" class="resource-label rollable align-left ability-label "
-                        data-roll-type="skill" data-roll="d{{system.attributes.charisma}}+d{{system.abilities.drama}}"
+                        data-roll-type="skill" data-action="skillRoll"
+                        data-roll="d{{system.attributes.charisma}}+d{{system.abilities.drama}}"
                         data-label="Schauspiel">Schauspiel</label>
-                    {{> "systems/dieseldrachen-vtt/templates/actor/parts/actor-dice-select.hbs"
+                    {{> "systems/dieseldrachen-vtt/templates/shared/actor-dice-select.hbs"
                     group_name="radio_abi_drama"
                     name="system.abilities.drama" value=system.abilities.drama}}
                 </div>
 
                 <div class="ability flexrow flex-group-center">
                     <label for="system.abilities.society" class="resource-label rollable  align-left ability-label "
-                        data-roll-type="skill" data-roll="d{{system.attributes.charisma}}+d{{system.abilities.society}}"
+                        data-roll-type="skill" data-action="skillRoll"
+                        data-roll="d{{system.attributes.charisma}}+d{{system.abilities.society}}"
                         data-label="Gesellschaft">Gesellschaft</label>
-                    {{> "systems/dieseldrachen-vtt/templates/actor/parts/actor-dice-select.hbs"
+                    {{> "systems/dieseldrachen-vtt/templates/shared/actor-dice-select.hbs"
                     group_name="radio_abi_society"
                     name="system.abilities.society" value=system.abilities.society}}
                 </div>
@@ -167,39 +176,39 @@
             <div class="attribute-group">
                 <div class="flexrow flex-group-center">
                     <label for="system.attributes.intuition" class="resource-label align-left attribute-label rollable"
-                        data-roll-type="savingThrow" data-roll="1d{{system.attributes.intuition}}"
-                        data-label="Intuition">Intuition</label>
-                    {{> "systems/dieseldrachen-vtt/templates/actor/parts/actor-dice-select.hbs"
+                        data-roll-type="savingThrow" data-action="savingThrowRoll"
+                        data-roll="1d{{system.attributes.intuition}}" data-label="Intuition">Intuition</label>
+                    {{> "systems/dieseldrachen-vtt/templates/shared/actor-dice-select.hbs"
                     group_name="radio_attr_intuition" name="system.attributes.intuition"
                     value=system.attributes.intuition}}
                 </div>
 
                 <div class="ability flexrow flex-group-center">
                     <label for="system.abilities.persuade" class="resource-label rollable align-left ability-label "
-                        data-roll-type="skill"
+                        data-roll-type="skill" data-action="skillRoll"
                         data-roll="d{{system.attributes.intuition}}+d{{system.abilities.orientation}}"
                         data-label="Orientierung">Orientierung</label>
-                    {{> "systems/dieseldrachen-vtt/templates/actor/parts/actor-dice-select.hbs"
+                    {{> "systems/dieseldrachen-vtt/templates/shared/actor-dice-select.hbs"
                     group_name="radio_abi_orientation"
                     name="system.abilities.orientation" value=system.abilities.orientation}}
                 </div>
 
                 <div class="ability flexrow flex-group-center">
                     <label for="system.abilities.stealth" class="resource-label rollable align-left ability-label "
-                        data-roll-type="skill"
+                        data-roll-type="skill" data-action="skillRoll"
                         data-roll="d{{system.attributes.intuition}}+d{{system.abilities.stealth}}"
                         data-label="Verstohlenheit">Verstohlenheit</label>
-                    {{> "systems/dieseldrachen-vtt/templates/actor/parts/actor-dice-select.hbs"
+                    {{> "systems/dieseldrachen-vtt/templates/shared/actor-dice-select.hbs"
                     group_name="radio_abi_stealth"
                     name="system.abilities.stealth" value=system.abilities.stealth}}
                 </div>
 
                 <div class="ability flexrow flex-group-center">
                     <label for="system.abilities.alertness" class="resource-label rollable align-left ability-label "
-                        data-roll-type="skill"
+                        data-roll-type="skill" data-action="skillRoll"
                         data-roll="d{{system.attributes.intuition}}+d{{system.abilities.alertness}}"
                         data-label="Wachsamkeit">Wachsamkeit</label>
-                    {{> "systems/dieseldrachen-vtt/templates/actor/parts/actor-dice-select.hbs"
+                    {{> "systems/dieseldrachen-vtt/templates/shared/actor-dice-select.hbs"
                     group_name="radio_abi_alertness"
                     name="system.abilities.alertness" value=system.abilities.alertness}}
                 </div>
@@ -208,35 +217,38 @@
             <div class="attribute-group">
                 <div class="flexrow flex-group-center">
                     <label for="system.attributes.reason" class="resource-label align-left attribute-label rollable"
-                        data-roll-type="savingThrow" data-roll="1d{{system.attributes.reason}}"
-                        data-label="Verstand">Verstand</label>
-                    {{> "systems/dieseldrachen-vtt/templates/actor/parts/actor-dice-select.hbs"
+                        data-roll-type="savingThrow" data-action="savingThrowRoll"
+                        data-roll="1d{{system.attributes.reason}}" data-label="Verstand">Verstand</label>
+                    {{> "systems/dieseldrachen-vtt/templates/shared/actor-dice-select.hbs"
                     group_name="radio_attr_reason" name="system.attributes.reason" value=system.attributes.reason}}
                 </div>
 
                 <div class="ability flexrow flex-group-center">
                     <label for="system.abilities.knowledge" class="resource-label rollable align-left ability-label "
-                        data-roll-type="skill" data-roll="d{{system.attributes.reason}}+d{{system.abilities.knowledge}}"
+                        data-roll-type="skill" data-action="skillRoll"
+                        data-roll="d{{system.attributes.reason}}+d{{system.abilities.knowledge}}"
                         data-label="Wissen">Wissen</label>
-                    {{> "systems/dieseldrachen-vtt/templates/actor/parts/actor-dice-select.hbs"
+                    {{> "systems/dieseldrachen-vtt/templates/shared/actor-dice-select.hbs"
                     group_name="radio_abi_knowledge"
                     name="system.abilities.knowledge" value=system.abilities.knowledge}}
                 </div>
 
                 <div class="ability flexrow flex-group-center">
                     <label for="system.abilities.willpower" class="resource-label rollable align-left ability-label "
-                        data-roll-type="skill" data-roll="d{{system.attributes.reason}}+d{{system.abilities.willpower}}"
+                        data-roll-type="skill" data-action="skillRoll"
+                        data-roll="d{{system.attributes.reason}}+d{{system.abilities.willpower}}"
                         data-label="Willenstärke">Willenstärke</label>
-                    {{> "systems/dieseldrachen-vtt/templates/actor/parts/actor-dice-select.hbs"
+                    {{> "systems/dieseldrachen-vtt/templates/shared/actor-dice-select.hbs"
                     group_name="radio_abi_willpower"
                     name="system.abilities.willpower" value=system.abilities.willpower}}
                 </div>
 
                 <div class="ability flexrow flex-group-center">
                     <label for="system.abilities.searching" class="resource-label rollable align-left ability-label "
-                        data-roll-type="skill" data-roll="d{{system.attributes.reason}}+d{{system.abilities.searching}}"
+                        data-roll-type="skill" data-action="skillRoll"
+                        data-roll="d{{system.attributes.reason}}+d{{system.abilities.searching}}"
                         data-label="Suchen">Suchen</label>
-                    {{> "systems/dieseldrachen-vtt/templates/actor/parts/actor-dice-select.hbs"
+                    {{> "systems/dieseldrachen-vtt/templates/shared/actor-dice-select.hbs"
                     group_name="radio_abi_searching"
                     name="system.abilities.searching" value=system.abilities.searching}}
                 </div>
@@ -246,25 +258,27 @@
                 <div class="flexrow flex-group-center">
                     <label for="system.attributes.magic" class="resource-label align-left attribute-label rollable"
                         data-roll-type="savingThrow" data-roll="1d{{system.attributes.magic}}"
-                        data-label="Magie">Magie</label>
-                    {{> "systems/dieseldrachen-vtt/templates/actor/parts/actor-dice-select.hbs"
+                        data-action="savingThrowRoll" data-label="Magie">Magie</label>
+                    {{> "systems/dieseldrachen-vtt/templates/shared/actor-dice-select.hbs"
                     group_name="radio_attr_magic" name="system.attributes.magic" value=system.attributes.magic}}
                 </div>
 
                 <div class="ability flexrow flex-group-center">
                     <label for="system.abilities.magic_body" class="resource-label rollable align-left ability-label "
-                        data-roll-type="skill" data-roll="d{{system.attributes.magic}}+d{{system.abilities.magic_body}}"
+                        data-roll-type="skill" data-action="skillRoll"
+                        data-roll="d{{system.attributes.magic}}+d{{system.abilities.magic_body}}"
                         data-label="Körper/Sinne">Körper/Sinne</label>
-                    {{> "systems/dieseldrachen-vtt/templates/actor/parts/actor-dice-select.hbs"
+                    {{> "systems/dieseldrachen-vtt/templates/shared/actor-dice-select.hbs"
                     group_name="radio_abi_magic_body"
                     name="system.abilities.magic_body" value=system.abilities.magic_body}}
                 </div>
 
                 <div class="ability flexrow flex-group-center">
                     <label for="system.abilities.magic_fate" class="resource-label rollable align-left ability-label "
-                        data-roll-type="skill" data-roll="d{{system.attributes.magic}}+d{{system.abilities.magic_fate}}"
+                        data-roll-type="skill" data-action="skillRoll"
+                        data-roll="d{{system.attributes.magic}}+d{{system.abilities.magic_fate}}"
                         data-label="Schicksal/Geister">Schicksal/Geister</label>
-                    {{> "systems/dieseldrachen-vtt/templates/actor/parts/actor-dice-select.hbs"
+                    {{> "systems/dieseldrachen-vtt/templates/shared/actor-dice-select.hbs"
                     group_name="radio_abi_magic_fate"
                     name="system.abilities.magic_fate" value=system.abilities.magic_fate}}
                 </div>
@@ -272,9 +286,10 @@
                 <div class="ability flexrow flex-group-center">
                     <label for="system.abilities.magic_elemental"
                         class="resource-label rollable align-left ability-label " data-roll-type="skill"
+                        data-action="skillRoll"
                         data-roll="d{{system.attributes.magic}}+d{{system.abilities.magic_elemental}}"
                         data-label="Elemente/Energie">Elemente/Energie</label>
-                    {{> "systems/dieseldrachen-vtt/templates/actor/parts/actor-dice-select.hbs"
+                    {{> "systems/dieseldrachen-vtt/templates/shared/actor-dice-select.hbs"
                     group_name="radio_abi_magic_elemental"
                     name="system.abilities.magic_elemental" value=system.abilities.magic_elemental}}
                 </div>
@@ -284,30 +299,24 @@
         <div>
             <div class="features resource-group">
                 <h5 class="quick-label">Tricks</h5>
-                {{> "systems/dieseldrachen-vtt/templates/actor/parts/actor-tricks.hbs"}}
+                {{> "systems/dieseldrachen-vtt/templates/v2/actor/character/partials/actor-tricks.hbs"}}
             </div>
             <div class="features resource-group">
                 <h5 class="quick-label">Kampf</h5>
-                {{> "systems/dieseldrachen-vtt/templates/actor/parts/actor-fight.hbs"}}
+                {{> "systems/dieseldrachen-vtt/templates/v2/actor/character/partials/actor-fight.hbs"}}
             </div>
             <div class="features resource-group">
                 <h5 class="quick-label">Technik &amp; Manöver</h5>
                 <div class="small">
                     4xD6, 3xD8, 2xD10, 1xD12
                 </div>
-                {{> "systems/dieseldrachen-vtt/templates/actor/parts/actor-technic-maneuvers.hbs"}}
+                {{> "systems/dieseldrachen-vtt/templates/v2/actor/character/partials/actor-technic-maneuvers.hbs"}}
             </div>
             <div class="features resource-group">
                 <h5 class="quick-label">Wissensbereiche</h5>
-                {{> "systems/dieseldrachen-vtt/templates/actor/parts/actor-knowledge.hbs"}}
+                {{> "systems/dieseldrachen-vtt/templates/v2/actor/character/partials/actor-knowledge.hbs"}}
             </div>
         </div>
     </div>
-    <!--
-        {{!-- For the main features list, span the right two columns --}}
-        <section class="main grid-span-2">
-          {{!-- This is a Handlebars partial. They're stored in the `/parts` folder next to this sheet, and defined in module/helpers/templates.mjs --}}
-          {{> "systems/dieseldrachen-vtt/templates/actor/parts/actor-features.hbs"}}
-        </section>-->
 
 </section>

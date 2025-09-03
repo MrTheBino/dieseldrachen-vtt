@@ -31,13 +31,14 @@ export class DieselDrachenVehicleActorSheetV2 extends DieseldrachenActorSheetV2 
         });
 
         let items = this._prepareItems();
-        foundry.utils.mergeObject(context, { vehicleUpgrades: items.vehicleUpgrades, vehicleWeapons: items.vehicleWeapons });
+        foundry.utils.mergeObject(context, { vehicleUpgrades: items.vehicleUpgrades, vehicleWeapons: items.vehicleWeapons, gear: items.gear });
         return context;
     }
 
     _prepareItems() {
         const vehicleUpgrades = [];
         const vehicleWeapons = [];
+        const gear = [];
 
         let inventory = this.options.document.items;
         for (let i of inventory) {
@@ -48,9 +49,12 @@ export class DieselDrachenVehicleActorSheetV2 extends DieseldrachenActorSheetV2 
             else if (i.type === 'vehicleWeapon') {
                 vehicleWeapons.push(i);
             }
+            else if (i.type === 'item') {
+                gear.push(i);
+            }
         }
 
-        return { vehicleUpgrades: vehicleUpgrades, vehicleWeapons: vehicleWeapons };
+        return { vehicleUpgrades: vehicleUpgrades, vehicleWeapons: vehicleWeapons, gear: gear };
     }
 
     static async #handleVehicleSpeed(event, target) {

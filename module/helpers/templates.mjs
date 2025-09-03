@@ -5,37 +5,27 @@
  */
 export const preloadHandlebarsTemplates = async function () {
   return foundry.applications.handlebars.loadTemplates([
-    // Actor partials.
-    'systems/dieseldrachen-vtt/templates/actor/parts/actor-features.hbs',
-    'systems/dieseldrachen-vtt/templates/actor/parts/actor-dice-select.hbs',
-    'systems/dieseldrachen-vtt/templates/actor/parts/actor-items.hbs',
-    'systems/dieseldrachen-vtt/templates/actor/parts/actor-spells.hbs',
-    'systems/dieseldrachen-vtt/templates/actor/parts/actor-magic.hbs',
-    'systems/dieseldrachen-vtt/templates/actor/parts/actor-effects.hbs',
-    'systems/dieseldrachen-vtt/templates/actor/parts/actor-social.hbs',
-    'systems/dieseldrachen-vtt/templates/actor/parts/actor-tricks.hbs',
-    'systems/dieseldrachen-vtt/templates/actor/parts/social-partial.hbs',
-    'systems/dieseldrachen-vtt/templates/actor/parts/actor-knowledge.hbs',
-    'systems/dieseldrachen-vtt/templates/actor/parts/actor-technic-maneuvers.hbs',
-    'systems/dieseldrachen-vtt/templates/actor/parts/actor-fight.hbs',
-    'systems/dieseldrachen-vtt/templates/actor/parts/healthbar-partial.hbs',
-    'systems/dieseldrachen-vtt/templates/actor/parts/motor-damage-partial.hbs',
-    'systems/dieseldrachen-vtt/templates/actor/parts/tire-wing-partial.hbs',
-    'systems/dieseldrachen-vtt/templates/actor/parts/speed-partial.hbs',
-    // Item partials
-    'systems/dieseldrachen-vtt/templates/item/parts/item-effects.hbs',
     // Chat partials
     'systems/dieseldrachen-vtt/templates/chat/success-partial.hbs',
     'systems/dieseldrachen-vtt/templates/chat/luck-roll-button-partial.hbs',
 
     // Shared partials
     'systems/dieseldrachen-vtt/templates/shared/dice-option-select-partial.hbs',
+    'systems/dieseldrachen-vtt/templates/shared/actor-dice-select.hbs',
+    'systems/dieseldrachen-vtt/templates/shared/healthbar-partial.hbs',
 
     // V2
     'systems/dieseldrachen-vtt/templates/v2/actor/actor-partial-npc-common.html',
     'systems/dieseldrachen-vtt/templates/v2/actor/actor-partial-tabs.html',
     'systems/dieseldrachen-vtt/templates/v2/actor/actor-partial-npc.html',
-    'systems/dieseldrachen-vtt/templates/v2/partial-biography.html'
-
+    'systems/dieseldrachen-vtt/templates/v2/partial-biography.html',
+    'systems/dieseldrachen-vtt/templates/v2/actor/character/partials/actor-tricks.hbs',
+    'systems/dieseldrachen-vtt/templates/v2/actor/character/partials/actor-fight.hbs',
+    'systems/dieseldrachen-vtt/templates/v2/actor/character/partials/actor-technic-maneuvers.hbs',
+    'systems/dieseldrachen-vtt/templates/v2/actor/character/partials/actor-knowledge.hbs',
+    'systems/dieseldrachen-vtt/templates/v2/actor/character/partials/social-partial.hbs',
+    'systems/dieseldrachen-vtt/templates/v2/actor/vehicle/speed-partial.hbs',
+    'systems/dieseldrachen-vtt/templates/v2/actor/vehicle/motor-damage-partial.hbs',
+    'systems/dieseldrachen-vtt/templates/v2/actor/vehicle/tire-wing-partial.hbs'
   ]);
 };

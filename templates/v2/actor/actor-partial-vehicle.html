@@ -57,7 +57,7 @@
             <label for="system.condition" class="resource-label">Zustand</label>
             <div class="resource-content flexcol flex-center flex-between">
                 <div class="resource-content flexrow flex-center flex-between">
-                    {{> "systems/dieseldrachen-vtt/templates/actor/parts/actor-dice-select.hbs"
+                    {{> "systems/dieseldrachen-vtt/templates/shared/actor-dice-select.hbs"
                     group_name="radio_attr_condition" name="system.condition" value=system.condition}}
                 </div>
                 <span class="tiny-text">D4 - Schrott |
@@ -80,7 +80,7 @@
         <div class="resource flex-group-center resource-group">
             <label for="system.acceleration" class="resource-label">Beschleunigung</label>
             <div class="resource-content flexrow flex-center flex-between">
-                {{> "systems/dieseldrachen-vtt/templates/actor/parts/actor-dice-select.hbs"
+                {{> "systems/dieseldrachen-vtt/templates/shared/actor-dice-select.hbs"
                 group_name="radio_attr_acceleration" name="system.acceleration" value=system.acceleration}}
             </div>
         </div>
@@ -90,17 +90,17 @@
             <input type="text" name="system.speed.max" value="{{system.speed.max}}" data-dtype="Number"
                 class="tiny_input" />
             <div class="resource-content flexrow flex-center flex-between">
-                {{> "systems/dieseldrachen-vtt/templates/actor/parts/speed-partial.hbs" value=1
+                {{> "systems/dieseldrachen-vtt/templates/v2/actor/vehicle/speed-partial.hbs" value=1
                 max=system.speed.max}}
-                {{> "systems/dieseldrachen-vtt/templates/actor/parts/speed-partial.hbs" value=2
+                {{> "systems/dieseldrachen-vtt/templates/v2/actor/vehicle/speed-partial.hbs" value=2
                 max=system.speed.max}}
-                {{> "systems/dieseldrachen-vtt/templates/actor/parts/speed-partial.hbs" value=3
+                {{> "systems/dieseldrachen-vtt/templates/v2/actor/vehicle/speed-partial.hbs" value=3
                 max=system.speed.max}}
-                {{> "systems/dieseldrachen-vtt/templates/actor/parts/speed-partial.hbs" value=4
+                {{> "systems/dieseldrachen-vtt/templates/v2/actor/vehicle/speed-partial.hbs" value=4
                 max=system.speed.max}}
-                {{> "systems/dieseldrachen-vtt/templates/actor/parts/speed-partial.hbs" value=5
+                {{> "systems/dieseldrachen-vtt/templates/v2/actor/vehicle/speed-partial.hbs" value=5
                 max=system.speed.max}}
-                {{> "systems/dieseldrachen-vtt/templates/actor/parts/speed-partial.hbs" value=6
+                {{> "systems/dieseldrachen-vtt/templates/v2/actor/vehicle/speed-partial.hbs" value=6
                 max=system.speed.max}}
             </div>
         </div>
@@ -113,7 +113,7 @@
         <div class="resource flex-group-center resource-group">
             <label for="system.mass" class="resource-label">Masse</label>
             <div class="resource-content flexrow flex-center flex-between">
-                {{> "systems/dieseldrachen-vtt/templates/actor/parts/actor-dice-select.hbs"
+                {{> "systems/dieseldrachen-vtt/templates/shared/actor-dice-select.hbs"
                 group_name="radio_attr_mass" name="system.mass" value=system.mass}}
             </div>
         </div>
@@ -143,7 +143,7 @@
             <input type="text" name="system.agility" value="{{system.agility}}" data-dtype="Number"
                 class="tiny_input" />
             <div class="resource-content flexrow flex-center flex-between">
-                {{> "systems/dieseldrachen-vtt/templates/actor/parts/actor-dice-select.hbs"
+                {{> "systems/dieseldrachen-vtt/templates/shared/actor-dice-select.hbs"
                 group_name="radio_attr_agility" name="system.agilityDice" value=system.agilityDice}}
             </div>
         </div>
@@ -177,13 +177,13 @@
             <input type="text" name="system.motors.max" value="{{system.motors.max}}" data-dtype="Number"
                 class="tiny_input" />
             <div class="resource-content flexrow flex-center flex-between">
-                {{> "systems/dieseldrachen-vtt/templates/actor/parts/motor-damage-partial.hbs" value=1
+                {{> "systems/dieseldrachen-vtt/templates/v2/actor/vehicle/motor-damage-partial.hbs" value=1
                 max=system.motors.max}}
-                {{> "systems/dieseldrachen-vtt/templates/actor/parts/motor-damage-partial.hbs" value=2
+                {{> "systems/dieseldrachen-vtt/templates/v2/actor/vehicle/motor-damage-partial.hbs" value=2
                 max=system.motors.max}}
-                {{> "systems/dieseldrachen-vtt/templates/actor/parts/motor-damage-partial.hbs" value=3
+                {{> "systems/dieseldrachen-vtt/templates/v2/actor/vehicle/motor-damage-partial.hbs" value=3
                 max=system.motors.max}}
-                {{> "systems/dieseldrachen-vtt/templates/actor/parts/motor-damage-partial.hbs" value=4
+                {{> "systems/dieseldrachen-vtt/templates/v2/actor/vehicle/motor-damage-partial.hbs" value=4
                 max=system.motors.max}}
 
             </div>
@@ -193,10 +193,10 @@
             <label for="system.motors.max" class="resource-label">Reifen / Tragfläche <span
                     class="vehicle-condition-marker">2</span></label>
             <div class="resource-content flexrow flex-center flex-between">
-                {{> "systems/dieseldrachen-vtt/templates/actor/parts/tire-wing-partial.hbs" value=1 max=4}}
-                {{> "systems/dieseldrachen-vtt/templates/actor/parts/tire-wing-partial.hbs" value=2 max=4}}
-                {{> "systems/dieseldrachen-vtt/templates/actor/parts/tire-wing-partial.hbs" value=3 max=4}}
-                {{> "systems/dieseldrachen-vtt/templates/actor/parts/tire-wing-partial.hbs" value=4 max=4}}
+                {{> "systems/dieseldrachen-vtt/templates/v2/actor/vehicle/tire-wing-partial.hbs" value=1 max=4}}
+                {{> "systems/dieseldrachen-vtt/templates/v2/actor/vehicle/tire-wing-partial.hbs" value=2 max=4}}
+                {{> "systems/dieseldrachen-vtt/templates/v2/actor/vehicle/tire-wing-partial.hbs" value=3 max=4}}
+                {{> "systems/dieseldrachen-vtt/templates/v2/actor/vehicle/tire-wing-partial.hbs" value=4 max=4}}
             </div>
         </div>
 
@@ -227,7 +227,7 @@
                 <div class='item-prop'>Schaden</div>
                 <div class='item-prop'>Rate</div>
                 <div class='item-controls'>
-                    <a class='item-control item-create' title='{{localize "DOCUMENT.Create" type=' Item'}}'
+                    <a class='item-control item-create' data-action="createItem" title='{{localize "DOCUMENT.Create" type=' Item'}}'
                         data-type='vehicleWeapon'>
                         <i class='fas fa-plus'></i>
                     </a>
@@ -251,10 +251,10 @@
                 <div class='item-prop'>{{item.system.rate}}</div>
 
                 <div class='item-controls'>
-                    <a class='item-control item-edit' title='{{localize "DOCUMENT.Update" type=' Item'}}'>
+                    <a class='item-control item-edit' data-action="editItem" title='{{localize "DOCUMENT.Update" type=' Item'}}'>
                         <i class='fas fa-edit'></i>
                     </a>
-                    <a class='item-control item-delete' title='{{localize "DOCUMENT.Delete" type=' Item'}}'>
+                    <a class='item-control item-delete' data-action="deleteItem" title='{{localize "DOCUMENT.Delete" type=' Item'}}'>
                         <i class='fas fa-trash'></i>
                     </a>
                 </div>
@@ -270,7 +270,7 @@
             <li class='item flexrow items-header'>
                 <div class='item-name'>{{localize 'Name'}}</div>
                 <div class='item-controls'>
-                    <a class='item-control item-create' title='{{localize "DOCUMENT.Create" type=' Item'}}'
+                    <a class='item-control item-create' data-action="createItem" title='{{localize "DOCUMENT.Create" type=' Item'}}'
                         data-type='vehicleUpgrade'>
                         <i class='fas fa-plus'></i>
                     </a>
@@ -288,10 +288,10 @@
                         <span>{{item.name}}</span>
                     </div>
                     <div class='item-controls'>
-                        <a class='item-control item-edit' title='{{localize "DOCUMENT.Update" type=' Item'}}'>
+                        <a class='item-control item-edit' data-action="editItem" title='{{localize "DOCUMENT.Update" type=' Item'}}'>
                             <i class='fas fa-edit'></i>
                         </a>
-                        <a class='item-control item-delete' title='{{localize "DOCUMENT.Delete" type=' Item'}}'>
+                        <a class='item-control item-delete' data-action="deleteItem" title='{{localize "DOCUMENT.Delete" type=' Item'}}'>
                             <i class='fas fa-trash'></i>
                         </a>
                     </div>
@@ -314,7 +314,7 @@
                 <div class='item-name'>{{localize 'Name'}}</div>
                 <div class='item-prop'>Anzahl</div>
                 <div class='item-controls'>
-                    <a class='item-control item-create' title='{{localize "DOCUMENT.Create" type=' Item'}}'
+                    <a class='item-control item-create' data-action="createItem" title='{{localize "DOCUMENT.Create" type=' Item'}}'
                         data-type='item'>
                         <i class='fas fa-plus'></i>
                     </a>
@@ -328,14 +328,14 @@
                             <img src='{{item.img}}' title='{{item.name}}' width='24' height='24' />
                         </a>
                     </div>
-                    <h4>{{item.name}}</h4>
+                    <span>{{item.name}}</span>
                 </div>
                 <div class='item-prop'>{{item.system.quantity}}</div>
                 <div class='item-controls'>
-                    <a class='item-control item-edit' title='{{localize "DOCUMENT.Update" type=' Item'}}'>
+                    <a class='item-control item-edit' data-action="editItem" title='{{localize "DOCUMENT.Update" type=' Item'}}'>
                         <i class='fas fa-edit'></i>
                     </a>
-                    <a class='item-control item-delete' title='{{localize "DOCUMENT.Delete" type=' Item'}}'>
+                    <a class='item-control item-delete' data-action="deleteItem" title='{{localize "DOCUMENT.Delete" type=' Item'}}'>
                         <i class='fas fa-trash'></i>
                     </a>
                 </div>

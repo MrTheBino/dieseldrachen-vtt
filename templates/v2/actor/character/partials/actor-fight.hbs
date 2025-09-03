@@ -1,13 +1,13 @@
-<section class="grid grid-2col">
+<section class="">
 
-    <div class="resource flex-group-center flexcol">
-        <label for="system.condition" class="resource-label">Zustand</label>
+    <div class="resource flexrow">
+        <label for="system.condition" class="resource-label flex-col-width-03">Zustand</label>
         <div class="resource-content flex-center flex-between">
-            <textarea name="system.condition" data-dtype="String" class="mt-left-2">{{system.condition}}</textarea>
+            <input name="system.condition" data-dtype="String" style="width:100%" value="{{system.condition}}" />
         </div>
     </div>
-    <div class="resource flex-group-center flexcol">
-        <label for="" class="resource-label">Verletzungen</label>
+    <div class="resource flexrow">
+        <label for="" class="resource-label flex-col-width-03">Verletzungen</label>
         <div class="grid grid-2col">
             <div class="flex-col">
                 <span class="icon-light-injury" title="Leichte Verletzungen"></span>
@@ -25,14 +25,14 @@
 </section>
 <!-- Aktionen -->
 <div class="grid grid-3col">
-    <button class="rollable action-button" data-roll-type="skill"
+    <button class="rollable action-button" data-roll-type="skill" data-action="skillRoll"
         data-roll="d{{system.attributes.athletics}}+d{{system.abilities.agility}}" data-roll-mod-dice="{{mobilityDice}}"
         data-label="Ausweichen / Schnell Bewegen" title="Ausweichen / Schnell Bewegen"><span
             class="icon-dodge"></span></button>
 
-    <button class="rollable action-button button-rest" title="Kurze Ruhepause (Rast, Nickerchen)"><span
+    <button class="rollable action-button button-rest" data-action="clickActionRest" title="Kurze Ruhepause (Rast, Nickerchen)"><span
             class="icon-rest"></span></button>
-    <button class="rollable action-button button-heal"
+    <button class="rollable action-button button-heal" data-action="clickActionHeal"
         title="Lange Ruhepause (eine Nacht schlafen, einen Tag faulenzen)"><span class="icon-heal"></span></button>
 </div>
 <!-- Nahkampfwaffen -->

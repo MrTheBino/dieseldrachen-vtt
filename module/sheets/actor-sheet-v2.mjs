@@ -1,7 +1,7 @@
 const { ActorSheetV2 } = foundry.applications.sheets
 const { HandlebarsApplicationMixin } = foundry.applications.api
 const { TextEditor, DragDrop } = foundry.applications.ux
-import { rollDialogSkillV1, rollDialogRangedWeaponV1, rollDialogMeleeWeaponV1 } from "../roll_dialog.mjs"
+import { rollDialogSkillV1, rollDialogRangedWeaponV1, rollDialogMeleeWeaponV1, rollDialogV1ThrowingWeaponCallback } from "../roll_dialog.mjs"
 import { DieseldrachenItem } from '../documents/item.mjs';
 
 export class DieseldrachenActorSheetV2 extends HandlebarsApplicationMixin(ActorSheetV2) {
@@ -21,9 +21,13 @@ export class DieseldrachenActorSheetV2 extends HandlebarsApplicationMixin(ActorS
             deleteItem: this.#handleDeleteItem,
             rangedWeaponRoll: this.#handleRangedWeaponRoll,
             meleeWeaponRoll: this.#handleMeleeWeaponRoll,
+            throwingWeaponRoll: this.#handleThrowingWeaponRoll,
+            spellRoll: this.#handleSpellRoll,
             clickWeaponReload: this.#handleReloadWeapon,
             clickHealthBarReset: this.#handleHealthBarReset,
-            clickedDiceSelection: this.#handleClickDiceSelection
+            clickedDiceSelection: this.#handleClickDiceSelection,
+            skillRoll: this.#handleSkillRoll,
+            clickExpandable: this.#handleClickExpandable
         },
         form: {
             // handler: DCCActorSheet.#onSubmitForm,
@@ -154,10 +158,10 @@ export class DieseldrachenActorSheetV2 extends HandlebarsApplicationMixin(ActorS
    @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
    @returns {Promise<void>}
    **/
-    static async handleSkillRoll(event, target, actor) {
+    static async #handleSkillRoll(event, target) {
         event.preventDefault()
 
-        rollDialogSkillV1(actor, target.dataset.roll, target.dataset.label, target.dataset.rollModDice);
+        rollDialogSkillV1(this.actor, target.dataset.roll, target.dataset.label, target.dataset.rollModDice);
     }
 
     static async #handleClickDiceSelection(event, target) {
@@ -283,9 +287,14 @@ export class DieseldrachenActorSheetV2 extends HandlebarsApplicationMixin(ActorS
 
     static async #handleEditItem(event, target) {
         event.preventDefault();
-        const li = $(target).parents('.item');
-        const item = this.actor.items.get(li.data('itemId'));
-        item.sheet.render(true);
+        if (target.dataset.itemId == undefined) {
+            const li = $(target).parents('.item');
+            const item = this.actor.items.get(li.data('itemId'));
+            item.sheet.render(true);
+        }else{
+            const item = this.actor.items.get(target.dataset.itemId);
+            item.sheet.render(true);
+        }
     }
 
     static async #handleCreateItem(event, target) {
@@ -311,6 +320,84 @@ export class DieseldrachenActorSheetV2 extends HandlebarsApplicationMixin(ActorS
             });
         }
 
+    }
+
+    static async #handleSpellRoll(event, target) {
+        const itemId = target.closest('.item').dataset.itemId;
+        const item = this.actor.items.get(itemId);
+        let label = "Unbekannt";
+        let roll = "";
+        if (item.system.spellType == 0) {
+            label = "Körper / Sinne"
+            roll = `1d${this.actor.system.attributes.magic}+1d${this.actor.system.abilities.magic_body}`
+        }
+        else if (item.system.spellType == 1) {
+            label = "Schicksal / Geister"
+            roll = `1d${this.actor.system.attributes.magic}+1d${this.actor.system.abilities.magic_fate}`
+        }
+        else if (item.system.spellType == 2) {
+            label = "Elemente / Energie"
+            roll = `1d${this.actor.system.attributes.magic}+1d${this.actor.system.abilities.magic_elemental}`
+        }
+        rollDialogSkillV1(this.actor, roll, label);
+    }
+
+    static async #handleThrowingWeaponRoll(event, target) {
+        event.preventDefault();
+        const element = target;
+        const dataset = element.dataset;
+        const itemId = element.closest('.item').dataset.itemId;
+
+        const item = this.actor.items.get(itemId);
+        let rollFormulaKraft = `d${this.actor.system.attributes.athletics}+d${this.actor.system.abilities.strength}`;
+        let rollFormulaFingerfertigkeit = `d${this.actor.system.attributes.skill}+d${this.actor.system.abilities.sleight_of_hand}`;
+
+        const html = await foundry.applications.handlebars.renderTemplate(
+            "systems/dieseldrachen-vtt/templates/dialogs/throwing_weapon_roll_dialog.hbs",
+            {}
+        );
+
+        return new Promise((resolve) => {
+            new foundry.applications.api.DialogV2({
+                window: { title: item.name },
+                content: html,
+                buttons: [
+                    {
+                        action: 'roll_fingerfertigkeit',
+                        icon: '<i class="fas fa-dice-d6"></i>',
+                        label: 'Geschick + Fingerfertigkeit',
+                        callback: (event, button, dialog) => rollDialogV1ThrowingWeaponCallback(event, button, dialog, this.actor, item, rollFormulaFingerfertigkeit, "Fingerfertigkeit"),
+                    },
+                    {
+                        action: 'roll_kraft',
+                        icon: '<i class="fas fa-dice-d6"></i>',
+                        label: 'Geschick + Kraft',
+                        callback: (event, button, dialog) => rollDialogV1ThrowingWeaponCallback(event, button, dialog, this.actor, item, rollFormulaKraft, "Kraft"),
+                    },
+                    {
+                        action: 'cancel',
+                        icon: '<i class="fas fa-dice-d6"></i>',
+                        label: 'Abbrechen',
+                        callback: (event, button, dialog) => resolve(null),
+                    },
+                ],
+                default: "roll_fingerfertigkeit",
+                close: () => resolve(null),
+            }).render(true);
+        });
+    }
+
+    static async #handleClickExpandable(event, target) {
+
+        if (target.dataset.expandableTarget) {
+            let selector = `.${target.dataset.expandableTarget}`;
+            const target_toggle = document.querySelector(selector);
+            target_toggle.classList.toggle('closed');
+        } else {
+            const li = $(target).parents('.item');
+            let t = li.find('.expandable')[0];
+            t.classList.toggle('closed');
+        }
     }
 
     async _onItemCreate(event, target, actor) {

@@ -8,7 +8,6 @@ export class DieselDrachenNpcActorSheetV2 extends DieseldrachenActorSheetV2 {
             width: 700
         },
         actions: {
-            skillRoll: this.#skillRoll,
         }
     }
 
@@ -58,10 +57,6 @@ export class DieselDrachenNpcActorSheetV2 extends DieseldrachenActorSheetV2 {
         }
 
         return { npcSpecialDice: npcSpecialDice, meleeWeapons: meleeWeapons, rangedWeapons: rangedWeapons };
-    }
-
-    static async #skillRoll(event, target) {
-        DieselDrachenNpcActorSheetV2.handleSkillRoll(event, target, this.actor);
     }
 }
 

@@ -8,7 +8,7 @@
                     data-roll-type="savingThrow" data-roll="1d4" data-label="{{name}}" title="D4"></span>
                 {{else}}
                 <span
-                    class="diesel-dice-icon {{#if (eq value_neg 4)}}ddi-selected{{/if}} char-dice-select d4 social-dice"
+                    class="diesel-dice-icon {{#if (eq value_neg 4)}}ddi-selected{{/if}} char-dice-select d4 social-dice" data-action="clickedDiceSelection"
                     data-name="system.social.{{key}}.value_neg" data-value="4" title="D4"></span>
                 {{/if}}
             </div>
@@ -18,7 +18,7 @@
                     data-roll-type="savingThrow" data-roll="1d6" data-label="{{name}}" title="D6"></span>
                 {{else}}
                 <span
-                    class="diesel-dice-icon {{#if (eq value_neg 6)}}ddi-selected{{/if}} char-dice-select d6 social-dice"
+                    class="diesel-dice-icon {{#if (eq value_neg 6)}}ddi-selected{{/if}} char-dice-select d6 social-dice" data-action="clickedDiceSelection"
                     data-name="system.social.{{key}}.value_neg" data-value="6" title="D6"></span>
                 {{/if}}
             </div>
@@ -39,7 +39,7 @@
                     data-roll-type="savingThrow" data-roll="1d8" data-label="{{name}}" title="D8"></span>
                 {{else}}
                 <span
-                    class="diesel-dice-icon {{#if (eq value_pos 8)}}ddi-selected{{/if}} char-dice-select d8 social-dice"
+                    class="diesel-dice-icon {{#if (eq value_pos 8)}}ddi-selected{{/if}} char-dice-select d8 social-dice" data-action="clickedDiceSelection"
                     data-name="system.social.{{key}}.value_pos" data-value="8" title="D8"></span>
                 {{/if}}
             </div>
@@ -49,17 +49,17 @@
                     data-roll-type="savingThrow" data-roll="1d10" data-label="{{name}}" title="D10"></span>
                 {{else}}
                 <span
-                    class="diesel-dice-icon {{#if (eq value_pos 10)}}ddi-selected{{/if}} char-dice-select d10 social-dice"
+                    class="diesel-dice-icon {{#if (eq value_pos 10)}}ddi-selected{{/if}} char-dice-select d10 social-dice" data-action="clickedDiceSelection"
                     data-name="system.social.{{key}}.value_pos" data-value="10" title="D10"></span>
                 {{/if}}
             </div>
             <div class="flex-col">
                 {{#if sheetIsLocked}}
-                <span class="diesel-dice-icon {{#if (eq value_pos 12)}}ddi-selected rollable{{/if}} d12 social-dice"
+                <span class="diesel-dice-icon {{#if (eq value_pos 12)}}ddi-selected rollable{{/if}} d12 social-dice" 
                     data-roll-type="savingThrow" data-roll="1d12" data-label="{{name}}" title="D12"></span>
                 {{else}}
                 <span
-                    class="diesel-dice-icon {{#if (eq value_pos 12)}}ddi-selected{{/if}} char-dice-select d12 social-dice"
+                    class="diesel-dice-icon {{#if (eq value_pos 12)}}ddi-selected{{/if}} char-dice-select d12 social-dice" data-action="clickedDiceSelection"
                     data-name="system.social.{{key}}.value_pos" data-value="12" title="D12"></span>
                 {{/if}}
             </div>
