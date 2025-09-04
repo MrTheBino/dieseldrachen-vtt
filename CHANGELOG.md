@@ -1,7 +1,7 @@
 # CHANGELOG
 
 ## 13.2.0
-  - lifted the complete application to the new ApplicationV2 strcuture of Foundry 13
+  - lifted the complete application to the new ApplicationV2 structure of Foundry 13
   
 ## 13.1.3
   - NPCs won't use the luck mechanic

@@ -8,31 +8,31 @@
     <div class="roll-group">
       <div class="roll-row">
         <div class="roll-prop">
-          <span>Schwierigkeit: </span>
+          <strong>Schwierigkeit: </strong>
           <span>{{difficulty}}</span>
         </div>
       </div>
       <div class="roll-row">
         <div class="roll-prop">
-          <span>Rückstoß: </span>
+          <strong>Rückstoß: </strong>
           <span>{{recoil}}</span>
         </div>
       </div>
       <div class="roll-row">
         <div class="roll-prop">
-          <span>Anzahl Schüsse: </span>
+          <strong>Anzahl Schüsse: </strong>
           <span>{{numShots}}</span>
         </div>
       </div>
       <div class="roll-row">
         <div class="roll-prop">
-          <span>Waffentyp: </span>
+          <strong>Waffentyp: </strong>
           <span>{{ localize (concat "DIESELDRACHEN.Keys.weaponTypes." item.system.weaponType)}}</span>
         </div>
       </div>
       <div class="roll-row">
         <div class="roll-prop">
-          <span>Rate: </span>
+          <strong>Rate: </strong>
           <span>{{rate}}</span>
         </div>
       </div>
@@ -43,5 +43,6 @@
         <span>Schaden {{range}}: {{damage}}</span>
       </h4>
     </div>
+    {{> "systems/dieseldrachen-vtt/templates/chat/hit-quality-result.hbs"}}
   </div>
 </form>

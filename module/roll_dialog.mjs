@@ -1,24 +1,36 @@
-import {doCharacterResting} from "./helpers/character.mjs";
-import {DieseldrachenDialog} from "./dieseldrachen_dialog.mjs";
+import { doCharacterResting } from "./helpers/character.mjs";
+import { DieseldrachenDialog } from "./dieseldrachen_dialog.mjs";
 
-function luckRollCrunch(actor,diceRoll,difficulty=10) {
+function luckRollCrunch(actor, diceRoll, difficulty = 10) {
 
   const buttonEnabled = actor.type === "character";
 
-  if(buttonEnabled == false){
-    return {showLuckButton: false}
+  if (buttonEnabled == false) {
+    return { showLuckButton: false }
   }
 
   let diceValues = diceRoll.result.split("+");
   let diceFace = [];
   let splitted = diceRoll.formula.split("+");
-  diceFace[0] = parseInt(splitted[0].replace("1D","").replace("1d",""));
-  diceFace[1] = parseInt(splitted[1].replace("1D","").replace("1d",""));
-  diceFace[2] = parseInt(splitted[2].replace("1D","").replace("1d",""));
+  diceFace[0] = parseInt(splitted[0].replace("1D", "").replace("1d", ""));
+  diceFace[1] = parseInt(splitted[1].replace("1D", "").replace("1d", ""));
+  diceFace[2] = parseInt(splitted[2].replace("1D", "").replace("1d", ""));
 
-  
 
-  return {showLuckButton: buttonEnabled,values: JSON.stringify(diceValues), formula: diceRoll.formula, faces: JSON.stringify(diceFace), result: diceRoll.result, difficulty: 10,actorId: actor.id};
+
+  return { showLuckButton: buttonEnabled, values: JSON.stringify(diceValues), formula: diceRoll.formula, faces: JSON.stringify(diceFace), result: diceRoll.result, difficulty: 10, actorId: actor.id };
+}
+
+function processHitQuality(total, difficulty) {
+  let res = {}
+  if (total >= difficulty + 6) {
+    res.ignore_armor = true
+  }
+
+  if (total >= difficulty + 10) {
+    res.double_damage = true
+  }
+  return res;
 }
 
 export function addShowDicePromise(promises, roll) {
@@ -197,7 +209,7 @@ export async function rollDialogRangedWeaponV1(actor, itemId, label) {
   });
 }
 
-export async function rollDialogSkillV1(actor, formula, label,selectedModDice = 4) {
+export async function rollDialogSkillV1(actor, formula, label, selectedModDice = 4) {
   let rollDiceFaceSuccess = 5;
   const actorRollData = actor.getRollData();
   let diceFormula = formula;
@@ -325,7 +337,7 @@ async function rollDialogV1Callback(event, button, dialog, actor) {
   }
   const dicePoolRoll = new Roll(rollFormula, actorRollData);
   await dicePoolRoll.evaluate();
-  let luckRollData = luckRollCrunch(actor,dicePoolRoll,difficulty);
+  let luckRollData = luckRollCrunch(actor, dicePoolRoll, difficulty);
 
   addShowDicePromise(dicePromises, dicePoolRoll);
   await Promise.all(dicePromises);
@@ -413,7 +425,7 @@ async function rollDialogV1RangedWeaponCallback(event, button, dialog, actor) {
 
   const dicePoolRoll = new Roll(rollFormula, actorRollData);
   await dicePoolRoll.evaluate();
-  let luckRollData = luckRollCrunch(actor,dicePoolRoll,difficulty);
+  let luckRollData = luckRollCrunch(actor, dicePoolRoll, difficulty);
 
   let criticalMiss = isCriticalMiss(dicePoolRoll);
   let criticalHit = isCriticalHit(dicePoolRoll.total, difficulty);
@@ -443,7 +455,8 @@ async function rollDialogV1RangedWeaponCallback(event, button, dialog, actor) {
     rate: item.system.rate,
     numShots: numShots,
     item: item,
-    luckRollData: luckRollData
+    luckRollData: luckRollData,
+    hitQualityData: processHitQuality(dicePoolRoll.total, difficulty)
   }
   renderRangedWeaponRollResult(actor, rollDialogVars);
 }
@@ -481,7 +494,7 @@ export async function rollV1Resting(actor) {
   });
 }
 
-export async function rollDialogV1ThrowingWeaponCallback(event, button, dialog, actor,item,rollFormula,usedAbility) {
+export async function rollDialogV1ThrowingWeaponCallback(event, button, dialog, actor, item, rollFormula, usedAbility) {
   const form = button.form;
   const actorRollData = actor.getRollData();
   const difficulty = parseInt(form.difficulty.value) || 10;
@@ -493,13 +506,13 @@ export async function rollDialogV1ThrowingWeaponCallback(event, button, dialog, 
   await dicePoolRoll.evaluate();
   let criticalMiss = isCriticalMiss(dicePoolRoll);
   let criticalHit = isCriticalHit(dicePoolRoll.total, difficulty);
-  let luckRollData = luckRollCrunch(actor,dicePoolRoll,difficulty);
+  let luckRollData = luckRollCrunch(actor, dicePoolRoll, difficulty);
 
   let orgItemQuantity = item.system.quantity || 0;
   let itemQuantity = orgItemQuantity - 1;
 
-  if(itemQuantity<0){
-    itemQuantity=0;
+  if (itemQuantity < 0) {
+    itemQuantity = 0;
   }
 
   item.update({ ['system.quantity']: itemQuantity });
@@ -552,7 +565,7 @@ async function rollDialogV1MeleeWeaponCallback(event, button, dialog, actor) {
 
   const dicePoolRoll = new Roll(rollFormula, actorRollData);
   await dicePoolRoll.evaluate();
-  let luckRollData = luckRollCrunch(actor,dicePoolRoll,difficulty);
+  let luckRollData = luckRollCrunch(actor, dicePoolRoll, difficulty);
 
   let criticalMiss = isCriticalMiss(dicePoolRoll);
   let criticalHit = isCriticalHit(dicePoolRoll.total, difficulty);

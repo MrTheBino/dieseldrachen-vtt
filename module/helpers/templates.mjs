@@ -8,6 +8,7 @@ export const preloadHandlebarsTemplates = async function () {
     // Chat partials
     'systems/dieseldrachen-vtt/templates/chat/success-partial.hbs',
     'systems/dieseldrachen-vtt/templates/chat/luck-roll-button-partial.hbs',
+    'systems/dieseldrachen-vtt/templates/chat/hit-quality-result.hbs',
 
     // Shared partials
     'systems/dieseldrachen-vtt/templates/shared/dice-option-select-partial.hbs',
