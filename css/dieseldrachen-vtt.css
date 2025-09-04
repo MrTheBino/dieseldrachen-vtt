@@ -180,6 +180,26 @@
   width: 0;
 }
 
+.flex-col-width-02 {
+  flex-grow: 0.2;
+}
+
+.flex-col-width-03 {
+  flex-grow: 0.3;
+}
+
+.flex-col-width-04 {
+  flex-grow: 0.4;
+}
+
+.flex-col-width-05 {
+  flex-grow: 0.5;
+}
+
+.mt-left-2 {
+  margin-left: 2px;
+}
+
 .flex-group-center,
 .flex-group-left,
 .flex-group-right {
@@ -382,10 +402,11 @@ section.journal-page-content h3 {
   flex: 1;
 }
 .dieseldrachen-vtt .sheet-header h1.charname {
-  height: 50px;
   padding: 0px;
   margin: 5px 0;
   border-bottom: 0;
+  font-family: "Voltaire", sans-serif;
+  font-size: 1.75em;
 }
 .dieseldrachen-vtt .sheet-header h1.charname input {
   width: 100%;
@@ -415,6 +436,9 @@ section.journal-page-content h3 {
 .dieseldrachen-vtt .profile-img {
   border-radius: 3px;
   margin-bottom: auto;
+}
+.dieseldrachen-vtt .resource {
+  margin-left: 2px;
 }
 .dieseldrachen-vtt .resource-group {
   background-color: rgba(245, 245, 220, 0.4509803922);
@@ -451,7 +475,7 @@ section.journal-page-content h3 {
 .dieseldrachen-vtt .ability-label {
   font-family: "Voltaire", sans-serif;
   font-size: 1.2em;
-  color: #333;
+  color: rgb(243, 243, 243);
   font-weight: normal;
   text-align: right;
   padding-right: 9px;
@@ -464,12 +488,13 @@ section.journal-page-content h3 {
 }
 .dieseldrachen-vtt .quick-label {
   font-family: "Voltaire", sans-serif;
-  color: #333;
+  color: #e1e1e1;
   font-weight: bold;
   background-color: rgba(0, 0, 0, 0.15);
   padding: 5px;
   text-transform: uppercase;
   margin-top: 5px;
+  font-size: 1.25em;
 }
 .dieseldrachen-vtt .social-container {
   background-color: rgba(245, 245, 220, 0.4509803922);
@@ -513,7 +538,8 @@ section.journal-page-content h3 {
   padding: 0;
   align-items: center;
   background: rgba(0, 0, 0, 0.05);
-  border: 2px groove #eeede0;
+  color: rgb(243, 243, 243);
+  border-bottom: 1px solid black;
   font-weight: bold;
 }
 .dieseldrachen-vtt .items-header > * {
@@ -525,6 +551,7 @@ section.journal-page-content h3 {
   padding-left: 5px;
   text-align: left;
   display: flex;
+  color: rgb(243, 243, 243);
 }
 .dieseldrachen-vtt .items-list {
   list-style: none;
@@ -548,6 +575,7 @@ section.journal-page-content h3 {
   align-items: center;
   display: flex;
   width: 100%;
+  color: rgb(243, 243, 243);
 }
 .dieseldrachen-vtt .items-list .item-name.rangedWeapon {
   flex-direction: row;
@@ -583,7 +611,7 @@ section.journal-page-content h3 {
   border-bottom: none;
 }
 .dieseldrachen-vtt .items-list .item .item-name {
-  color: #191813;
+  color: rgb(243, 243, 243);
 }
 .dieseldrachen-vtt .items-list .item .item-name .item-image {
   flex: 0 0 30px;
@@ -598,8 +626,6 @@ section.journal-page-content h3 {
 }
 .dieseldrachen-vtt .items-list .item-prop {
   text-align: center;
-  border-left: 1px solid #c9c7b8;
-  border-right: 1px solid #c9c7b8;
   font-size: 12px;
 }
 .dieseldrachen-vtt .items-list .item-prop-small {
@@ -625,14 +651,16 @@ section.journal-page-content h3 {
   padding: 0;
   align-items: center;
   background: rgba(0, 0, 0, 0.05);
-  border: 2px groove #eeede0;
+  border-bottom: 2px groove #eeede0;
   font-weight: bold;
+  font-family: "Voltaire", sans-serif;
 }
 .dieseldrachen-vtt .items-list .items-header > * {
   font-size: 12px;
   text-align: center;
 }
 .dieseldrachen-vtt .items-list .items-header .item-name {
+  color: rgb(243, 243, 243);
   padding-left: 5px;
   text-align: left;
 }
@@ -643,6 +671,7 @@ section.journal-page-content h3 {
 .dieseldrachen-vtt .small_description {
   font-size: 0.75em;
   display: block;
+  color: rgb(243, 243, 243);
 }
 .dieseldrachen-vtt .effects .item .effect-source,
 .dieseldrachen-vtt .effects .item .effect-duration,
@@ -772,6 +801,435 @@ section.journal-page-content h3 {
   display: inline-block;
 }
 .dieseldrachen-vtt .icon-heavy-injury {
+  width: 24px;
+  height: 24px;
+  background-image: url("../assets/icons/icon-heavy-injury.svg");
+  display: inline-block;
+}
+
+.system-dieseldrachen-vtt .item-form {
+  font-family: "Roboto", sans-serif;
+}
+.system-dieseldrachen-vtt .flex-fix {
+  flex-grow: 0;
+}
+.system-dieseldrachen-vtt .sheet-header {
+  flex: 0 auto;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin-bottom: 10px;
+}
+.system-dieseldrachen-vtt .sheet-header .profile-img {
+  flex: 0 0 100px;
+  height: 100px;
+  margin-right: 10px;
+}
+.system-dieseldrachen-vtt .sheet-header .header-fields {
+  flex: 1;
+}
+.system-dieseldrachen-vtt .sheet-header h1.charname {
+  padding: 0px;
+  margin: 5px 0;
+  border-bottom: 0;
+  font-family: "Voltaire", sans-serif;
+  font-size: 1.75em;
+}
+.system-dieseldrachen-vtt .sheet-header h1.charname input {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+.system-dieseldrachen-vtt .sheet-tabs {
+  flex: 0;
+}
+.system-dieseldrachen-vtt .sheet-body,
+.system-dieseldrachen-vtt .sheet-body .tab,
+.system-dieseldrachen-vtt .sheet-body .tab .editor {
+  height: 100%;
+}
+.system-dieseldrachen-vtt .tox .tox-editor-container {
+  background: #fff;
+}
+.system-dieseldrachen-vtt .tox .tox-edit-area {
+  padding: 0 8px;
+}
+.system-dieseldrachen-vtt .editor-content {
+  min-height: 100px;
+}
+.system-dieseldrachen-vtt .full-width-select {
+  width: 100%;
+}
+.system-dieseldrachen-vtt .profile-img {
+  border-radius: 3px;
+  margin-bottom: auto;
+}
+.system-dieseldrachen-vtt .resource {
+  margin-left: 2px;
+}
+.system-dieseldrachen-vtt .resource-group {
+  background-color: rgba(245, 245, 220, 0.4509803922);
+  padding: 5px;
+  border: 1px solid black;
+  border-radius: 3px;
+}
+.system-dieseldrachen-vtt .resource-label {
+  font-family: "Voltaire", sans-serif;
+  font-weight: 400;
+  font-weight: bold;
+}
+.system-dieseldrachen-vtt .attribute-group {
+  background-color: rgba(245, 245, 220, 0.4509803922);
+  padding: 5px;
+  padding-left: 0px;
+  border: 1px solid black;
+  border-radius: 3px;
+  margin-bottom: 5px;
+}
+.system-dieseldrachen-vtt .attribute-label {
+  font-family: "Voltaire", sans-serif;
+  color: #333;
+  font-weight: bold;
+  background-color: rgba(0, 0, 0, 0.15);
+  padding: 5px;
+  text-transform: uppercase;
+  margin-top: 5px;
+  font-size: 1.4em;
+}
+.system-dieseldrachen-vtt .ability {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+}
+.system-dieseldrachen-vtt .ability-label {
+  font-family: "Voltaire", sans-serif;
+  font-size: 1.2em;
+  color: rgb(243, 243, 243);
+  font-weight: normal;
+  text-align: right;
+  padding-right: 9px;
+}
+.system-dieseldrachen-vtt .resource-label-social {
+  font-family: "Voltaire", sans-serif;
+  font-size: 1.2em;
+  color: #333;
+  font-weight: bold;
+}
+.system-dieseldrachen-vtt .quick-label {
+  font-family: "Voltaire", sans-serif;
+  color: #e1e1e1;
+  font-weight: bold;
+  background-color: rgba(0, 0, 0, 0.15);
+  padding: 5px;
+  text-transform: uppercase;
+  margin-top: 5px;
+  font-size: 1.25em;
+}
+.system-dieseldrachen-vtt .social-container {
+  background-color: rgba(245, 245, 220, 0.4509803922);
+  margin-bottom: 10px;
+  padding: 5px;
+  border: 1px solid black;
+  border-radius: 3px;
+}
+.system-dieseldrachen-vtt .healthbar-reset {
+  width: 30px;
+  height: 30px;
+  padding: 0;
+}
+.system-dieseldrachen-vtt .tiny-text {
+  font-size: 0.5em;
+  font-weight: bold;
+}
+.system-dieseldrachen-vtt .tiny-dice-label {
+  font-size: 0.5em;
+  font-weight: bold;
+}
+.system-dieseldrachen-vtt .vehicle-condition-marker {
+  background-color: yellow;
+  border-radius: 60px;
+  color: black;
+  width: 20px;
+  display: inline-block;
+}
+.system-dieseldrachen-vtt .resource-help-text {
+  font-size: 0.75em;
+}
+.system-dieseldrachen-vtt .help-text {
+  text-align: left;
+}
+.system-dieseldrachen-vtt .help-text ul {
+  list-style-type: none;
+}
+.system-dieseldrachen-vtt .items-header {
+  height: 28px;
+  margin: 2px 0;
+  padding: 0;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.05);
+  color: rgb(243, 243, 243);
+  border-bottom: 1px solid black;
+  font-weight: bold;
+}
+.system-dieseldrachen-vtt .items-header > * {
+  font-size: 14px;
+  text-align: center;
+}
+.system-dieseldrachen-vtt .items-header .item-name {
+  font-weight: bold;
+  padding-left: 5px;
+  text-align: left;
+  display: flex;
+  color: rgb(243, 243, 243);
+}
+.system-dieseldrachen-vtt .items-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  color: #444;
+}
+.system-dieseldrachen-vtt .items-list .item-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.system-dieseldrachen-vtt .items-list .item-name {
+  flex: 2;
+  margin: 0;
+  overflow: hidden;
+  font-size: 13px;
+  text-align: left;
+  align-items: center;
+  display: flex;
+  width: 100%;
+  color: rgb(243, 243, 243);
+}
+.system-dieseldrachen-vtt .items-list .item-name.rangedWeapon {
+  flex-direction: row;
+}
+.system-dieseldrachen-vtt .items-list .item-name h3,
+.system-dieseldrachen-vtt .items-list .item-name h4 {
+  margin: 0;
+  white-space: nowrap;
+  overflow-x: hidden;
+}
+.system-dieseldrachen-vtt .items-list .item-controls {
+  display: flex;
+  flex: 0 0 60px;
+  justify-content: flex-end;
+}
+.system-dieseldrachen-vtt .items-list .item-controls a {
+  font-size: 12px;
+  text-align: center;
+  margin: 0 6px;
+}
+.system-dieseldrachen-vtt .items-list .item {
+  align-items: center;
+  padding: 0 2px;
+  border-bottom: 1px solid #c9c7b8;
+}
+.system-dieseldrachen-vtt .items-list .item .ammunition-container {
+  padding-left: 20px;
+  width: 100px;
+  margin-left: auto;
+  margin-right: 0;
+}
+.system-dieseldrachen-vtt .items-list .item:last-child {
+  border-bottom: none;
+}
+.system-dieseldrachen-vtt .items-list .item .item-name {
+  color: rgb(243, 243, 243);
+}
+.system-dieseldrachen-vtt .items-list .item .item-name .item-image {
+  flex: 0 0 30px;
+  height: 30px;
+  background-size: 30px;
+  border: none;
+  margin-right: 5px;
+}
+.system-dieseldrachen-vtt .items-list .item .item-name .item-image img {
+  border: 1px solid grey;
+  border-radius: 3px;
+}
+.system-dieseldrachen-vtt .items-list .item-prop {
+  text-align: center;
+  font-size: 12px;
+}
+.system-dieseldrachen-vtt .items-list .item-prop-small {
+  text-align: center;
+  border-left: 1px solid #c9c7b8;
+  border-right: 1px solid #c9c7b8;
+  font-size: 12px;
+  flex-grow: 0.5;
+}
+.system-dieseldrachen-vtt .items-list .item-prop-stats {
+  text-align: center;
+  border-left: 1px solid #c9c7b8;
+  border-right: 1px solid #c9c7b8;
+  font-size: 12px;
+  flex-grow: 0.6;
+}
+.system-dieseldrachen-vtt .items-list .item-align-left {
+  align-items: flex-start;
+}
+.system-dieseldrachen-vtt .items-list .items-header {
+  height: 28px;
+  margin: 2px 0;
+  padding: 0;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.05);
+  border-bottom: 2px groove #eeede0;
+  font-weight: bold;
+  font-family: "Voltaire", sans-serif;
+}
+.system-dieseldrachen-vtt .items-list .items-header > * {
+  font-size: 12px;
+  text-align: center;
+}
+.system-dieseldrachen-vtt .items-list .items-header .item-name {
+  color: rgb(243, 243, 243);
+  padding-left: 5px;
+  text-align: left;
+}
+.system-dieseldrachen-vtt .item-formula {
+  flex: 0 0 200px;
+  padding: 0 8px;
+}
+.system-dieseldrachen-vtt .small_description {
+  font-size: 0.75em;
+  display: block;
+  color: rgb(243, 243, 243);
+}
+.system-dieseldrachen-vtt .effects .item .effect-source,
+.system-dieseldrachen-vtt .effects .item .effect-duration,
+.system-dieseldrachen-vtt .effects .item .effect-controls {
+  text-align: center;
+  border-left: 1px solid #c9c7b8;
+  border-right: 1px solid #c9c7b8;
+  font-size: 12px;
+}
+.system-dieseldrachen-vtt .effects .item .effect-controls {
+  border: none;
+}
+.system-dieseldrachen-vtt .healthbar {
+  display: flex;
+  flex-direction: row;
+  vertical-align: middle;
+  flex-wrap: wrap;
+}
+.system-dieseldrachen-vtt .healthbar-segment {
+  border: 1px solid black;
+  width: 20px;
+  height: 20px;
+  margin-right: 2px;
+  margin-bottom: 5px;
+  align-items: center;
+  border-radius: 5px;
+}
+.system-dieseldrachen-vtt .health-marker {
+  background-image: url("../assets/images/cross.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 20px;
+  color: white;
+}
+.system-dieseldrachen-vtt .health-counter {
+  width: 20px;
+  height: 20px;
+  text-align: center;
+}
+.system-dieseldrachen-vtt .exhaustion-marker {
+  background-image: url("../assets/images/slash.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 20px;
+  color: white;
+}
+.system-dieseldrachen-vtt .unused {
+  background-color: black;
+  color: rgb(86, 86, 86);
+}
+.system-dieseldrachen-vtt .green {
+  background-color: rgb(65, 122, 65);
+  color: white;
+}
+.system-dieseldrachen-vtt .red {
+  background-color: red;
+}
+.system-dieseldrachen-vtt .vehicle_motor_damage {
+  font-size: 1.2em;
+  padding-top: 5px;
+}
+.system-dieseldrachen-vtt .vehicle_motor_damage .vmd_grey {
+  color: grey;
+}
+.system-dieseldrachen-vtt .vehicle_motor_damage .vmd_red {
+  color: red;
+}
+.system-dieseldrachen-vtt .vehicle_speed {
+  font-size: 1.2em;
+  padding-top: 5px;
+}
+.system-dieseldrachen-vtt .vehicle_speed .vmd_grey {
+  color: grey;
+}
+.system-dieseldrachen-vtt .vehicle_speed .vmd_red {
+  color: red;
+}
+.system-dieseldrachen-vtt .tire_wing_damage {
+  font-size: 1.2em;
+  padding-top: 5px;
+}
+.system-dieseldrachen-vtt .tire_wing_damage .vmd_grey {
+  color: grey;
+}
+.system-dieseldrachen-vtt .tire_wing_damage .vmd_red {
+  color: red;
+}
+.system-dieseldrachen-vtt .npc-armor {
+  width: 50px;
+  height: 50px;
+  display: block;
+  text-align: center;
+  font-size: 2em;
+  color: white;
+  align-content: center;
+}
+.system-dieseldrachen-vtt .icon-armor-bg {
+  background-image: url("../assets/icons/icon-shield.svg");
+}
+.system-dieseldrachen-vtt .action-button {
+  line-height: 1;
+}
+.system-dieseldrachen-vtt .icon-dodge {
+  width: 24px;
+  height: 24px;
+  background-image: url("../assets/icons/icon-dodge.svg");
+  display: inline-block;
+}
+.system-dieseldrachen-vtt .icon-heal {
+  width: 24px;
+  height: 24px;
+  background-image: url("../assets/icons/icon-healing.svg");
+  display: inline-block;
+}
+.system-dieseldrachen-vtt .icon-rest {
+  width: 24px;
+  height: 24px;
+  background-image: url("../assets/icons/icon-rocking-chair.svg");
+  display: inline-block;
+}
+.system-dieseldrachen-vtt .icon-light-injury {
+  width: 24px;
+  height: 24px;
+  background-image: url("../assets/icons/icon-light-injury.svg");
+  display: inline-block;
+}
+.system-dieseldrachen-vtt .icon-heavy-injury {
   width: 24px;
   height: 24px;
   background-image: url("../assets/icons/icon-heavy-injury.svg");

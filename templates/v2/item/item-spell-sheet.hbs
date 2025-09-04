@@ -1,0 +1,28 @@
+<div class='{{cssClass}}' autocomplete='off'>
+  <header class='sheet-header'>
+    <img
+      class='profile-img'
+      src='{{item.img}}'
+      data-edit='img'
+      title='{{item.name}}'
+    />
+    <div class='header-fields'>
+      <h1 class='charname'><input
+          name='name'
+          type='text'
+          value='{{item.name}}'
+          placeholder='Name'
+        /></h1>
+        <div class='grid grid-2col'>
+        <div class='resource'>
+          <label class='resource-label'>Typ</label>
+          <select name='system.spellType' data-dtype='Number'>
+            <option value='0' {{#if (eq item.system.spellType 0 )}}selected{{/if}}>Körper / Sinne</option>
+            <option value='1' {{#if (eq item.system.spellType 1 )}}selected{{/if}}>Schicksal / Geister</option>
+            <option value='2' {{#if (eq item.system.spellType 2 )}}selected{{/if}}>Elemente / Energie</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </header>
+</div>

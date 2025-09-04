@@ -1,4 +1,5 @@
 import {doCharacterResting} from "./helpers/character.mjs";
+import {DieseldrachenDialog} from "./dieseldrachen_dialog.mjs";
 
 function luckRollCrunch(actor,diceRoll,difficulty=10) {
 
@@ -119,7 +120,7 @@ export async function rollDialogMeleeWeaponV1(actor, itemId, label) {
   );
 
   return new Promise((resolve) => {
-    new foundry.applications.api.DialogV2({
+    new DieseldrachenDialog({
       window: { title: cardTitle },
       content: html,
       buttons: [
@@ -178,7 +179,7 @@ export async function rollDialogRangedWeaponV1(actor, itemId, label) {
   );
 
   return new Promise((resolve) => {
-    new foundry.applications.api.DialogV2({
+    new DieseldrachenDialog({
       window: { title: cardTitle, width: 400 },
       content: html,
       classes: ["ranged-weapon-roll-dialog"],
@@ -217,7 +218,7 @@ export async function rollDialogSkillV1(actor, formula, label,selectedModDice = 
   );
 
   return new Promise((resolve) => {
-    new foundry.applications.api.DialogV2({
+    new DieseldrachenDialog({
       window: { title: "Würfeldialog" },
       content: html,
       buttons: [
@@ -253,7 +254,7 @@ export async function rollDialogSavingThrow1(actor, formula, label) {
   );
 
   return new Promise((resolve) => {
-    new foundry.applications.api.DialogV2({
+    new DieseldrachenDialog({
       window: { title: "Rettungswurf" },
       content: html,
       buttons: [

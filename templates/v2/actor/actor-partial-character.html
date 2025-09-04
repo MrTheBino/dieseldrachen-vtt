@@ -1,0 +1,137 @@
+<div class="{{cssClass}} {{actor.type}} flexcol flex-fix" autocomplete="off">
+
+  {{!-- Sheet Header --}}
+  <header class="sheet-header">
+    <div class="flexcol">
+      <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100" />
+      <img src="systems/dieseldrachen-vtt/assets/images/dieseldrachen_logo_small.webp" height="75px"
+        class="dieseldrachen-logo-small">
+    </div>
+    <div class="header-fields">
+      <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Name" /></h1>
+
+      <div class="resources flexrow resource-group">
+
+        <div class="resource flex-group-center flex-col-width-02">
+          <label for="system.power.value" class="resource-label">Alter</label>
+          <div class="resource-content flexrow flex-center flex-between">
+            <input type="text" name="system.age" value="{{system.age}}" data-dtype="Number" />
+          </div>
+        </div>
+
+        <div class="resource flex-group-center flex-col-width-05">
+          <label for="system.species" class="resource-label">Spezies</label>
+          <div class="resource-content flexrow flex-center flex-between">
+            <input type="text" name="system.species" value="{{system.species}}" data-dtype="String" />
+          </div>
+        </div>
+
+        <div class="resource flex-group-center">
+          <label for="system.nation" class="resource-label">Nation</label>
+          <div class="resource-content flexrow flex-center flex-between">
+            <input type="text" name="system.nation" value="{{system.nation}}" data-dtype="String" />
+          </div>
+        </div>
+
+        <div class="resource flex-group-center">
+          <label for="system.profession" class="resource-label">Profession</label>
+          <div class="resource-content flexrow flex-center flex-between">
+            <input type="text" name="system.profession" value="{{system.profession}}" data-dtype="String" />
+          </div>
+        </div>
+      </div>
+      <div class="resources grid grid-3col resource-group">
+        <div class="resource flex-group-center grid-span-2">
+          <label for="system.power.value" class="resource-label">Erscheinung</label>
+          <div class="resource-content flexrow flex-center flex-between">
+            <input type="text" name="system.look" value="{{system.look}}" data-dtype="String" />
+          </div>
+        </div>
+        <div class="resource flex-group-center ">
+          <div class="resource flex-group-center">
+            <label>Spleen</label>
+          </div>
+          {{#if characterSpleen}}
+          <label for="system.spleen" class="resource-label"><span class="tooltip-hover"
+              data-tooltip-html="{{{itemTooltipHTML characterSpleen}}}">{{characterSpleen.name}}</span>
+            <a class='spleen-edit' data-action="editItem" data-item-id='{{characterSpleen._id}}'>
+              <i class='fas fa-edit'></i>
+            </a></label>
+          {{else}}
+          <label for="system.spleen" class="resource-label">Spleen</label>
+          <div class="resource-content flexcol flex-center flex-between">
+            Spleen per Drag'N' Drop reinschieben
+          </div>
+          {{/if}}
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="grid grid-8col resource-group">
+    <div class="resource flex-group-center">
+      <label for="system.health.value" class="resource-label">Gesundheit</label>
+      <div class="resource-content flexrow flex-center flex-between">
+        <input type="text" name="system.health.max" value="{{system.health.max}}" data-dtype="Number" />
+      </div>
+    </div>
+
+    <div class="resource flex-group-center">
+      <label for="mobilityValue" class="resource-label"
+        title="Beweglichkeit = 12 - Schutz - 1 Je Gepäckstück (Auf Würfelstufe abgerundet)">Beweglichkeit</label>
+      <div class="resource-content flexrow flex-center flex-between">
+        <input type="text" id="mobilityValue" value="D{{mobilityDice}} | {{mobilityValue}}" disabled />
+      </div>
+    </div>
+
+    <div class="resource flex-group-center">
+      <label for="mobilityValue" class="resource-label"
+        title="Aktueller Schutz berchnet durch ausgerüstete Kleidung">Schutz</label>
+      <div class="resource-content flexrow flex-center flex-between">
+        <input type="text" id="mobilityValue" value="{{currentArmor}}" disabled />
+      </div>
+    </div>
+
+
+    <div class="resource flex-group-center grid-span-2">
+      <label for="system.xp" class="resource-label">XP</label>
+      <div class="resource-content flexrow flex-center flex-between">
+        <input type="text" class="xp-input" name="system.xp" value="{{system.xp}}" data-dtype="Number"
+          title="XP erhalten" />
+        <span>-</span>
+        <input type="text" class="xp-input" name="system.xpUsed" value="{{system.xpUsed}}" data-dtype="Number"
+          title="XP verwendet" />
+        <span>=</span>
+        <input type="text" class="xp-input" name="system.xpLeft" value="{{system.xpLeft}}" data-dtype="Number" disabled
+          title="Verbleibende XP" />
+      </div>
+    </div>
+
+    <div class="resource flex-group-center">
+      <label for="system.money" class="resource-label">Bargeld</label>
+      <div class="resource-content flexrow flex-center flex-between">
+        <input type="text" name="system.money" value="{{system.money}}" data-dtype="Number" />
+      </div>
+    </div>
+
+    <div class="resource flex-group-center">
+      <label for="system.luck" class="resource-label">Glück</label>
+      <div class="resource-content flexrow flex-center flex-between">
+        <input type="text" name="system.luck" value="{{system.luck}}" data-dtype="Number" />
+        <span> / </span>
+        <input type="text" value="3" disabled />
+      </div>
+    </div>
+    <div class="resource flex-group-center">
+      <label for="system.luck" class="resource-label">Gesperrt <i class="fa-solid fa-lock"></i></label>
+      <div class="resource-content flex-center">
+        <input type="checkbox" name="system.locked" {{#if system.locked}}checked{{/if}} data-dtype="Boolean" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Healthbar -->
+  <div class="healthbar resource-group">
+    {{> "systems/dieseldrachen-vtt/templates/shared/healthbar-partial.hbs" health_value=system.health.value}}
+  </div>
+</div>

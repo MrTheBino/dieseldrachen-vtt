@@ -1,0 +1,5 @@
+{{#if (gt value max)}}
+    <span class="tire_wing_damage " data-value="{{value}}" data-action="setTireWingDamage"><i class="fa-solid fa-tire vmd_grey"></i></span>
+{{else}}
+    <span class="tire_wing_damage " data-value="{{value}}" data-action="setTireWingDamage"><i class="fa-solid fa-tire {{#if (gte system.tireWing value)}}vmd_red{{/if}}"></i></span>
+{{/if}}

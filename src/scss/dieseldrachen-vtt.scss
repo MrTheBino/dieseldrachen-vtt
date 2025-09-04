@@ -28,6 +28,17 @@
 
 }
 
+.system-dieseldrachen-vtt {
+  @import 'components/forms';
+  @import 'components/resource';
+  @import 'components/items';
+  @import 'components/effects';
+  @import 'components/healthbar';
+  @import 'components/vehicles';
+  @import 'components/icons';
+
+}
+
 @import 'components/dice';
 @import 'components/rolls';
 
