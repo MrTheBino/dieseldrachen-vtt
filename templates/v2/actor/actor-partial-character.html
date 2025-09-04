@@ -40,28 +40,23 @@
           </div>
         </div>
       </div>
-      <div class="resources grid grid-2col resource-group">
-        <div class="resource flex-group-center">
+      <div class="resources grid grid-3col resource-group">
+        <div class="resource flex-group-center grid-span-2">
           <label for="system.power.value" class="resource-label">Erscheinung</label>
           <div class="resource-content flexrow flex-center flex-between">
             <input type="text" name="system.look" value="{{system.look}}" data-dtype="String" />
           </div>
         </div>
         <div class="resource flex-group-center ">
+          <div class="resource flex-group-center">
+            <label>Spleen</label>
+          </div>
           {{#if characterSpleen}}
-          <label for="system.spleen" class="resource-label"><span class="expandable-trigger"
-              data-expandable-target="spleen_{{actor.id}}" data-action="clickExpandable">{{characterSpleen.name}}</span>
-            <a class='item-control item-expand expandable-trigger' data-action="clickExpandable" data-expandable-target="spleen_{{actor.id}}">
-              <i class=" fa-solid fa-caret-down"></i>
-            </a>
+          <label for="system.spleen" class="resource-label"><span class="tooltip-hover"
+              data-tooltip-html="{{{itemTooltipHTML characterSpleen}}}">{{characterSpleen.name}}</span>
             <a class='spleen-edit' data-action="editItem" data-item-id='{{characterSpleen._id}}'>
               <i class='fas fa-edit'></i>
             </a></label>
-          <div class="resource-content flexcol flex-center flex-between">
-            <div class="small_description expandable closed spleen_{{actor.id}}">
-              {{{characterSpleen.system.description}}}
-            </div>
-          </div>
           {{else}}
           <label for="system.spleen" class="resource-label">Spleen</label>
           <div class="resource-content flexcol flex-center flex-between">

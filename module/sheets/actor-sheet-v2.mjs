@@ -120,6 +120,12 @@ export class DieseldrachenActorSheetV2 extends HandlebarsApplicationMixin(ActorS
             segment.addEventListener("click", event => this.handleClickHealthbarSegmentNormalDamage(event));
             segment.addEventListener("contextmenu", event => this.handleClickHealthbarSegmentElementDamage(event));
         }
+
+        const tooltipElements = this.element.querySelectorAll('.tooltip-hover');
+        for (const tooltip of tooltipElements) {
+            tooltip.addEventListener("mouseenter", event => this.handleTooltipMouseEnter(event));
+            tooltip.addEventListener("mouseleave", event => this.handleTooltipMouseLeave(event));
+        }
     }
 
     /** @override */
@@ -127,6 +133,17 @@ export class DieseldrachenActorSheetV2 extends HandlebarsApplicationMixin(ActorS
         // Process the actor data normally
         const result = await super._processSubmitData(event, form, formData)
         return result
+    }
+
+    handleTooltipMouseEnter(event) {
+        const element = event.currentTarget;
+        game.tooltip.activate(element, {direction: "LEFT"});
+
+    }
+
+    handleTooltipMouseLeave(event) {
+        const element = event.currentTarget;
+        game.tooltip.deactivate();
     }
 
     _buildHealthBarContext() {
@@ -289,11 +306,11 @@ export class DieseldrachenActorSheetV2 extends HandlebarsApplicationMixin(ActorS
         event.preventDefault();
         if (target.dataset.itemId == undefined) {
             const li = $(target).parents('.item');
-            const item = this.actor.items.get(li.data('itemId'));
-            item.sheet.render(true);
+            const item = this.options.document.items.get(li.data('itemId'))
+            await item.sheet.render({force: true});
         }else{
-            const item = this.actor.items.get(target.dataset.itemId);
-            item.sheet.render(true);
+            const item = this.options.document.items.get(target.dataset.itemId)
+            await item.sheet.render({force: true});
         }
     }
 

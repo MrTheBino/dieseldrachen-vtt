@@ -4,8 +4,8 @@ export class DieselDrachenVehicleActorSheetV2 extends DieseldrachenActorSheetV2 
     /** @inheritDoc */
     static DEFAULT_OPTIONS = {
         position: {
-            height: 900,
-            width: 700
+            height: 1000,
+            width: 800
         },
         actions: {
             setVehicleSpeed: this.#handleVehicleSpeed,
@@ -18,6 +18,48 @@ export class DieselDrachenVehicleActorSheetV2 extends DieseldrachenActorSheetV2 
     static PARTS = {
         form: {
             template: 'systems/dieseldrachen-vtt/templates/v2/actor/actor-partial-vehicle.html'
+        },
+        tabs: {
+            // Foundry-provided generic template
+            template: 'templates/generic/tab-navigation.hbs',
+            // classes: ['sysclass'], // Optionally add extra classes to the part for extra customization
+        },
+        weapons: {
+            id: 'weapons',
+            template: 'systems/dieseldrachen-vtt/templates/v2/actor/vehicle/tab-weapons.hbs',
+            scrollable: ['scrollable'],
+        },
+        upgrades: {
+            id: 'upgrades',
+            template: 'systems/dieseldrachen-vtt/templates/v2/actor/vehicle/tab-upgrades.hbs',
+            scrollable: ['scrollable'],
+        },
+        items: {
+            id: 'items',
+            template: 'systems/dieseldrachen-vtt/templates/v2/actor/vehicle/tab-items.hbs',
+            scrollable: ['scrollable'],
+        },
+        biography: {
+            id: 'biography',
+            template: 'systems/dieseldrachen-vtt/templates/v2/actor/character/tab-biography.html',
+            scrollable: [''],
+        }
+    }
+
+      /**
+  * Define the structure of tabs used by this sheet.
+  * @type {Record<string, ApplicationTabsConfiguration>}
+  */
+    static TABS = {
+        sheet: { // this is the group name
+            tabs:
+                [
+                    { id: 'weapons', group: 'sheet', label: 'Geschütze' },
+                    { id: 'upgrades', group: 'sheet', label: 'Umbauten' },
+                    { id: 'items', group: 'sheet', label: 'Fracht' },
+                    { id: 'biography', group: 'sheet', label: 'Beschreibung' }
+                ],
+            initial: 'weapons'
         }
     }
 

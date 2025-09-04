@@ -1,5 +1,5 @@
-<div>
-    <select name="{{key}}" data-dtype="{{dtype}}">
+<div class="flexrow">
+    <select name="{{key}}" data-dtype="{{dtype}}" style="width: 75px;">
         {{#if (eq dtype "Number")}}
             {{#if zeroAllowed}}
               <option value="0" {{#if (eq value 0)}}selected{{/if}}>-</option>

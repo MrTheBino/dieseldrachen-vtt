@@ -26,6 +26,8 @@ export const preloadHandlebarsTemplates = async function () {
     'systems/dieseldrachen-vtt/templates/v2/actor/character/partials/social-partial.hbs',
     'systems/dieseldrachen-vtt/templates/v2/actor/vehicle/speed-partial.hbs',
     'systems/dieseldrachen-vtt/templates/v2/actor/vehicle/motor-damage-partial.hbs',
-    'systems/dieseldrachen-vtt/templates/v2/actor/vehicle/tire-wing-partial.hbs'
+    'systems/dieseldrachen-vtt/templates/v2/actor/vehicle/tire-wing-partial.hbs',
+    'systems/dieseldrachen-vtt/templates/v2/item/item-meleeWeapon-sheet.hbs',
+    'systems/dieseldrachen-vtt/templates/v2/item/item-item-sheet.hbs'
   ]);
 };

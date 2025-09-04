@@ -375,7 +375,6 @@ section.journal-page-content h3 {
   flex-wrap: wrap;
   justify-content: flex-start;
   margin-bottom: 10px;
-  min-height: 200px;
 }
 .dieseldrachen-vtt .sheet-header .profile-img {
   flex: 0 0 100px;
@@ -386,10 +385,11 @@ section.journal-page-content h3 {
   flex: 1;
 }
 .dieseldrachen-vtt .sheet-header h1.charname {
-  height: 50px;
   padding: 0px;
   margin: 5px 0;
   border-bottom: 0;
+  font-family: "Voltaire", sans-serif;
+  font-size: 1.75em;
 }
 .dieseldrachen-vtt .sheet-header h1.charname input {
   width: 100%;
@@ -594,7 +594,7 @@ section.journal-page-content h3 {
   border-bottom: none;
 }
 .dieseldrachen-vtt .items-list .item .item-name {
-  color: #191813;
+  color: rgb(243, 243, 243);
 }
 .dieseldrachen-vtt .items-list .item .item-name .item-image {
   flex: 0 0 30px;
@@ -643,6 +643,7 @@ section.journal-page-content h3 {
   text-align: center;
 }
 .dieseldrachen-vtt .items-list .items-header .item-name {
+  color: rgb(243, 243, 243);
   padding-left: 5px;
   text-align: left;
 }
@@ -653,6 +654,7 @@ section.journal-page-content h3 {
 .dieseldrachen-vtt .small_description {
   font-size: 0.75em;
   display: block;
+  color: rgb(243, 243, 243);
 }
 .dieseldrachen-vtt .effects .item .effect-source,
 .dieseldrachen-vtt .effects .item .effect-duration,
@@ -802,7 +804,6 @@ section.journal-page-content h3 {
   flex-wrap: wrap;
   justify-content: flex-start;
   margin-bottom: 10px;
-  min-height: 200px;
 }
 .system-dieseldrachen-vtt .sheet-header .profile-img {
   flex: 0 0 100px;
@@ -813,10 +814,11 @@ section.journal-page-content h3 {
   flex: 1;
 }
 .system-dieseldrachen-vtt .sheet-header h1.charname {
-  height: 50px;
   padding: 0px;
   margin: 5px 0;
   border-bottom: 0;
+  font-family: "Voltaire", sans-serif;
+  font-size: 1.75em;
 }
 .system-dieseldrachen-vtt .sheet-header h1.charname input {
   width: 100%;
@@ -1021,7 +1023,7 @@ section.journal-page-content h3 {
   border-bottom: none;
 }
 .system-dieseldrachen-vtt .items-list .item .item-name {
-  color: #191813;
+  color: rgb(243, 243, 243);
 }
 .system-dieseldrachen-vtt .items-list .item .item-name .item-image {
   flex: 0 0 30px;
@@ -1070,6 +1072,7 @@ section.journal-page-content h3 {
   text-align: center;
 }
 .system-dieseldrachen-vtt .items-list .items-header .item-name {
+  color: rgb(243, 243, 243);
   padding-left: 5px;
   text-align: left;
 }
@@ -1080,6 +1083,7 @@ section.journal-page-content h3 {
 .system-dieseldrachen-vtt .small_description {
   font-size: 0.75em;
   display: block;
+  color: rgb(243, 243, 243);
 }
 .system-dieseldrachen-vtt .effects .item .effect-source,
 .system-dieseldrachen-vtt .effects .item .effect-duration,
@@ -1333,10 +1337,6 @@ section.journal-page-content h3 {
 
 .tiny_input {
   width: 25px;
-}
-
-.small_input {
-  width: 50px;
 }
 
 .medium_input {

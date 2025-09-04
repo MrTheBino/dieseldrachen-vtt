@@ -1,0 +1,12 @@
+<div class="grid-col-span-12 resource-group">
+    <div class="description">
+        {{#if editable}}
+        <prose-mirror name="system.description" button="true" editable="{{editable}}" toggled="false"
+            value="{{system.description}}">
+            {{{descriptionHTML}}}
+        </prose-mirror>
+        {{else}}
+            {{{descriptionHTML}}}
+        {{/if}}
+    </div>
+</div>
