@@ -6,6 +6,11 @@
     display: block;
     opacity: 0.25;
 
+    &.visible {
+        opacity: 1;
+        display: inline-block;
+    }
+
     &.single-small-visible {
         opacity: 1;
         width: 16px;

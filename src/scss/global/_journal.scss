@@ -27,21 +27,21 @@ section.journal-page-content h3 {
     padding: 5px;
 }
 
-.journal-page-content > table {
+.journal-page-content>table {
     background: none;
 }
 
-.journal-page-content > table > thead > tr > th {
-font-family: "Voltaire", sans-serif;
-  color: white;
+.journal-page-content>table>thead>tr>th {
+    font-family: "Voltaire", sans-serif;
+    color: white;
 }
 
-.journal-page-content > table > tbody > tr:nth-child(even) {
+.journal-page-content>table>tbody>tr:nth-child(even) {
     background-color: rgba(0, 0, 0, 0.1)
 }
 
-.journal-page-content > table > tbody > tr:nth-child(odd) {
-    background-color:none;
+.journal-page-content>table>tbody>tr:nth-child(odd) {
+    background-color: none;
 }
 
 .dieseldrachen-journal-image {
@@ -51,4 +51,59 @@ font-family: "Voltaire", sans-serif;
     border-radius: 5px
 }
 
-//*[@id="JournalEntryPageProseMirrorSheet-Compendium-world-journale-JournalEntry-xg8ftXVRpAhXaftk-JournalEntryPage-ojhAobjxajwNhAmd-view"]/section/h2[1]
+.journal_tm {
+    border: 3px solid white;
+    border-radius: 5px;
+
+    >.header {
+        >h1 {
+            font-family: "Voltaire", sans-serif;
+            color: black;
+            text-align: center;
+            text-transform: uppercase;
+            margin-top: 5px;
+        }
+
+        
+    }
+    >.sub_header {
+            font-family: "Voltaire", sans-serif;
+            font-size: 0.75em;
+            color: black;
+            background: none;
+            border: none;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+}
+
+.journal-dice {
+    background-position: right;
+    /* Aligns the image to the right */
+    background-repeat: no-repeat;
+    background-size: contain;
+    
+    /* Prevents the image from repeating */
+
+    &.d4 {
+        background-image: url('../assets/images/dice/4.png');
+    }
+
+    &.d6 {
+        background-image: url('../assets/images/dice/6.png');
+    }
+
+    &.d8 {
+        background-image: url('../assets/images/dice/8.png');
+    }
+
+    &.d10 {
+        background-image: url('../assets/images/dice/10.png');
+    }
+
+    &.d12 {
+        background-image: url('../assets/images/dice/12.png');
+    }
+}

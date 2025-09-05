@@ -371,6 +371,51 @@ section.journal-page-content h3 {
   border-radius: 5px;
 }
 
+.journal_tm {
+  border: 3px solid white;
+  border-radius: 5px;
+}
+.journal_tm > .header > h1 {
+  font-family: "Voltaire", sans-serif;
+  color: black;
+  text-align: center;
+  text-transform: uppercase;
+  margin-top: 5px;
+}
+.journal_tm > .sub_header {
+  font-family: "Voltaire", sans-serif;
+  font-size: 0.75em;
+  color: black;
+  background: none;
+  border: none;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.journal-dice {
+  background-position: right;
+  /* Aligns the image to the right */
+  background-repeat: no-repeat;
+  background-size: contain;
+  /* Prevents the image from repeating */
+}
+.journal-dice.d4 {
+  background-image: url("../assets/images/dice/4.png");
+}
+.journal-dice.d6 {
+  background-image: url("../assets/images/dice/6.png");
+}
+.journal-dice.d8 {
+  background-image: url("../assets/images/dice/8.png");
+}
+.journal-dice.d10 {
+  background-image: url("../assets/images/dice/10.png");
+}
+.journal-dice.d12 {
+  background-image: url("../assets/images/dice/12.png");
+}
+
 .dieseldrachen-logo-small {
   border: none;
   margin-left: auto;
@@ -1243,6 +1288,10 @@ section.journal-page-content h3 {
   background-repeat: no-repeat;
   display: block;
   opacity: 0.25;
+}
+.diesel-dice-icon.visible {
+  opacity: 1;
+  display: inline-block;
 }
 .diesel-dice-icon.single-small-visible {
   opacity: 1;
