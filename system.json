@@ -75,6 +75,18 @@
       },
       "system": "dieseldrachen-vtt",
       "flags": {}
+    },
+    {
+      "name": "documentation",
+      "label": "Dokumentation",
+      "path": "packs/documentation",
+      "type": "JournalEntry",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "system": "dieseldrachen-vtt",
+      "flags": {}
     }
   ],
   "packFolders": [],

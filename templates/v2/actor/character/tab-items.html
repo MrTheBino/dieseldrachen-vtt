@@ -128,11 +128,11 @@
                 <div class='item-prop'>
                     <div class="ammunition-container">
                         <input type="text" value="{{item.system.bullets.value}}" data-item-stat="system.bullets.value"
-                            class="item-editable-stat tiny_input">
+                            class="item-editable-stat ammo_input">
                         /
                         <input type='text' name='system.bullets.max' value='{{system.bullets.max}}' data-dtype='Number'
-                            class="tiny_input" disabled />
-                        <span class="weapon-reload-icon" data-item-id='{{item._id}}'
+                            class="ammo_input" disabled />
+                        <span class="weapon-reload-icon" data-item-id='{{item._id}}' data-action="clickWeaponReload"
                             title="{{system.bullets.perReload}} Kugeln pro Ladevorgang"><i
                                 class="fa-solid fa-rotate clickable"></i></span>
                     </div>

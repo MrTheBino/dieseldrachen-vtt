@@ -2,6 +2,9 @@
 
 ## 13.2.0
   - lifted the complete application to the new ApplicationV2 structure of Foundry 13
+  - added basic hit quality support
+  - started adding documentation via journal entries
+  - added css styling for journals for the upcomming compendium
   
 ## 13.1.3
   - NPCs won't use the luck mechanic
