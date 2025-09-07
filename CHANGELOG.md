@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 13.2.1
+  - added item browser to character sheets (lists offical compendium and manually created items)
+  
 ## 13.2.0
   - lifted the complete application to the new ApplicationV2 structure of Foundry 13
   - added basic hit quality support
