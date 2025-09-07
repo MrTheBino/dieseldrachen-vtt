@@ -1278,6 +1278,82 @@ section.journal-page-content h3 {
   background-image: url("../assets/icons/icon-heavy-injury.svg");
   display: inline-block;
 }
+.system-dieseldrachen-vtt .application.dieseldrachen.dialog.compendium-browser > .window-content {
+  display: flex;
+  flex-direction: row;
+  padding: 0px;
+}
+.system-dieseldrachen-vtt .application.dieseldrachen.dialog.compendium-browser > .window-content > .item-list {
+  overflow-y: auto;
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+}
+.system-dieseldrachen-vtt .item-browser-sidebar {
+  position: relative;
+  width: 200px;
+  padding: 16px;
+  border-right: 1px solid white;
+  background-color: rgba(245, 245, 220, 0.4509803922);
+}
+.system-dieseldrachen-vtt .item-browser-sidebar li {
+  list-style: none;
+}
+.system-dieseldrachen-vtt .item-browser-content {
+  width: 100%;
+  padding-left: 10px;
+  background-color: rgba(245, 245, 220, 0.4509803922);
+}
+.system-dieseldrachen-vtt .item-browser-content > .item-list {
+  overflow-y: auto;
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+  height: 100%;
+  width: 100%;
+}
+.system-dieseldrachen-vtt .item-browser-content > .item-list > .item-row {
+  margin-bottom: 2px;
+  padding: 6px;
+}
+.system-dieseldrachen-vtt .item-browser-content > .item-list > .item-row.header {
+  font-weight: bold;
+  background-color: rgba(66, 66, 66, 0.8);
+  z-index: 1;
+  border-bottom: 1px solid white;
+}
+.system-dieseldrachen-vtt .item-browser-content > .item-list > .item-row:hover {
+  text-shadow: 0 0 10px rgb(0, 0, 0);
+}
+.system-dieseldrachen-vtt .item-browser-content > .item-list > .item-row > .item-prop-name {
+  font-weight: bold;
+}
+.system-dieseldrachen-vtt .item-browser-content > .item-list > .item-row > .item-prop-small {
+  flex-grow: 0.25;
+}
+.system-dieseldrachen-vtt .item-browser-content > .item-list > .item-row > .item-prop-middle {
+  flex-grow: 0.5;
+}
+.system-dieseldrachen-vtt .item-browser-content > .item-list > .item-row > .item-prop-add {
+  flex-grow: 0.1;
+}
+.system-dieseldrachen-vtt .item-row:nth-child(even) {
+  background-color: rgba(79, 79, 79, 0.589);
+}
+.system-dieseldrachen-vtt .item-browser-open {
+  text-align: right;
+  margin: 5px;
+  text-transform: uppercase;
+}
+.system-dieseldrachen-vtt .search-bar {
+  padding: 5px;
+}
+.system-dieseldrachen-vtt .search-bar > .icon {
+  align-content: center;
+  height: 32px;
+  position: absolute;
+  right: 20px;
+  font-size: 16px;
+  z-index: 1;
+}
 
 .diesel-dice-icon {
   width: 28px;

@@ -3,6 +3,7 @@ const { HandlebarsApplicationMixin } = foundry.applications.api
 const { TextEditor, DragDrop } = foundry.applications.ux
 import { rollDialogSkillV1, rollDialogRangedWeaponV1, rollDialogMeleeWeaponV1, rollDialogV1ThrowingWeaponCallback } from "../roll_dialog.mjs"
 import { DieseldrachenItem } from '../documents/item.mjs';
+import { DieseldrachenItemBrowser } from '../applications/item-browser.mjs';
 
 export class DieseldrachenActorSheetV2 extends HandlebarsApplicationMixin(ActorSheetV2) {
     #dragDrop // Private field to hold dragDrop handlers
@@ -27,7 +28,8 @@ export class DieseldrachenActorSheetV2 extends HandlebarsApplicationMixin(ActorS
             clickHealthBarReset: this.#handleHealthBarReset,
             clickedDiceSelection: this.#handleClickDiceSelection,
             skillRoll: this.#handleSkillRoll,
-            clickExpandable: this.#handleClickExpandable
+            clickExpandable: this.#handleClickExpandable,
+            openItemBrowser: this.#handleOpenItemBrowser
         },
         form: {
             // handler: DCCActorSheet.#onSubmitForm,
@@ -415,6 +417,11 @@ export class DieseldrachenActorSheetV2 extends HandlebarsApplicationMixin(ActorS
             let t = li.find('.expandable')[0];
             t.classList.toggle('closed');
         }
+    }
+
+    static async #handleOpenItemBrowser(event, target) {
+        const itemBrowser = new DieseldrachenItemBrowser({actor: this.actor});
+        itemBrowser.render(true);
     }
 
     async _onItemCreate(event, target, actor) {

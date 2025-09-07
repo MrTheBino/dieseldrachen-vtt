@@ -1,0 +1,253 @@
+<div class="item-browser-content">
+    <div class="search-bar">
+        <div class="icon">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+        <input type="search" name="search" class="search-input" value="{{searchTerm}}" placeholder="">
+    </div>
+
+    {{#if (eq selectedCategory "rangedWeapon")}}
+    <div class="item-list">
+        <div class="item-row header flexrow">
+            <div class="item-prop-name">Name</div>
+            <div class="item-prop-small">Preis</div>
+            <div class="item-prop">Typ</div>
+            <div class="item-prop-middle">Präsision</div>
+            <div class="item-prop-middle">Schaden</div>
+            <div class="item-prop-small">Rate</div>
+            <div class="item-prop-small">Kap.</div>
+            <div class="item-prop-add"></div>
+        </div>
+        {{#each items as |item id|}}
+        <div class="item-row flexrow">
+            <div class="item-prop-name">{{item.name}}</div>
+            <div class="item-prop-small">{{item.system.purchasePrice}}</div>
+            <div class='item-prop'>{{ localize (concat "DIESELDRACHEN.Keys.weaponTypes." item.system.weaponType)}}</div>
+            <div class='item-prop-middle'>{{{diceIcon item.system.precision_near}}} / {{{diceIcon
+                item.system.precision_close}}} /
+                {{{diceIcon item.system.precision_far}}}</div>
+            <div class='item-prop-middle'>
+                {{item.system.damage_near}}/{{item.system.damage_close}}/{{item.system.damage_far}}</div>
+            <div class='item-prop-small'>{{item.system.rate}}</div>
+            <div class='item-prop-small'>{{item.system.capacity}}</div>
+            <div class='item-prop-add' data-action="addItem" data-item-id="{{item.id}}" data-item-uuid="{{item.uuid}}">
+                <i class="fas fa-plus"></i>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+    {{/if}}
+
+    {{#if (eq selectedCategory "meleeWeapon")}}
+    <div class="item-list">
+        <div class="item-row header flexrow">
+            <div class="item-prop-name">Name</div>
+            <div class="item-prop-small">Preis</div>
+            <div class='item-prop-small'>Reichweite</div>
+            <div class='item-prop-small'>Schaden</div>
+            <div class='item-prop-small'>Waffengewicht</div>
+            <div class="item-prop-add"></div>
+        </div>
+        {{#each items as |item id|}}
+        <div class="item-row flexrow">
+            <div class="item-prop-name">{{item.name}}</div>
+            <div class="item-prop-small">{{item.system.purchasePrice}}</div>
+            <div class='item-prop-small'>{{ localize (concat "DIESELDRACHEN.Ranges." item.system.range)}}</div>
+            <div class='item-prop-small'>{{item.system.damage}}</div>
+            <div class='item-prop-small'>{{{diceIcon item.system.weaponWeight}}}</div>
+            <div class='item-prop-add' data-action="addItem" data-item-id="{{item.id}}" data-item-uuid="{{item.uuid}}">
+                <i class="fas fa-plus"></i>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+    {{/if}}
+
+    {{#if (eq selectedCategory "trick")}}
+    <div class="item-list">
+        <div class="item-row header flexrow">
+            <div class="item-prop-name">Name</div>
+            <div class="item-prop-add"></div>
+        </div>
+        {{#each items as |item id|}}
+        <div class="item-row flexrow">
+            <div class="item-prop-name tooltip-hover" data-tooltip-html="{{{itemTooltipHTML item}}}">{{item.name}}</div>
+            <div class='item-prop-add' data-action="addItem" data-item-id="{{item.id}}" data-item-uuid="{{item.uuid}}">
+                <i class="fas fa-plus"></i>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+    {{/if}}
+
+    {{#if (eq selectedCategory "technicManeuver")}}
+    <div class="item-list">
+        <div class="item-row header flexrow">
+            <div class="item-prop-name">Name</div>
+            <div class="item-prop-small">Würfel</div>
+            <div class="item-prop">Restriktion</div>
+            <div class="item-prop-small">Typ</div>
+            <div class="item-prop-add"></div>
+        </div>
+        {{#each items as |item id|}}
+        <div class="item-row flexrow">
+            <div class="item-prop-name tooltip-hover" data-tooltip-html="{{{itemTooltipHTML item}}}">{{item.name}}</div>
+            <div class='item-prop-small'>{{{diceIcon item.system.dice}}}</div>
+            <div class='item-prop'>{{item.system.restriction}}</div>
+            <div class='item-prop-small'>{{ localize (concat "DIESELDRACHEN.technicManeuvers.types." item.system.type)}}
+            </div>
+            <div class='item-prop-add' data-action="addItem" data-item-id="{{item.id}}" data-item-uuid="{{item.uuid}}">
+                <i class="fas fa-plus"></i>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+    {{/if}}
+
+    {{#if (eq selectedCategory "item")}}
+    <div class="item-list">
+        <div class="item-row header flexrow">
+            <div class="item-prop-name">Name</div>
+            <div class="item-prop-small">Preis</div>
+            <div class="item-prop-add"></div>
+        </div>
+        {{#each items as |item id|}}
+        <div class="item-row flexrow">
+            <div class="item-prop-name tooltip-hover" data-tooltip-html="{{{itemTooltipHTML item}}}">{{item.name}}</div>
+            <div class="item-prop-small">{{item.system.purchasePrice}}</div>
+            <div class='item-prop-add' data-action="addItem" data-item-id="{{item.id}}" data-item-uuid="{{item.uuid}}">
+                <i class="fas fa-plus"></i>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+    {{/if}}
+
+    {{#if (eq selectedCategory "artefact")}}
+    <div class="item-list">
+        <div class="item-row header flexrow">
+            <div class="item-prop-name">Name</div>
+            <div class="item-prop-small">Preis</div>
+            <div class="item-prop-small">Ladungen</div>
+            <div class="item-prop-small">Typ</div>
+            <div class="item-prop-add"></div>
+        </div>
+        {{#each items as |item id|}}
+        <div class="item-row flexrow">
+            <div class="item-prop-name tooltip-hover" data-tooltip-html="{{{itemTooltipHTML item}}}">{{item.name}}</div>
+            <div class="item-prop-small">{{item.system.purchasePrice}}</div>
+            <div class="item-prop-small">{{item.system.charges.max}}</div>
+            <div class="item-prop-small">{{ item.system.magicType}}</div>
+            <div class='item-prop-add' data-action="addItem" data-item-id="{{item.id}}" data-item-uuid="{{item.uuid}}">
+                <i class="fas fa-plus"></i>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+    {{/if}}
+
+    {{#if (eq selectedCategory "spleen")}}
+    <div class="item-list">
+        <div class="item-row header flexrow">
+            <div class="item-prop-name">Name</div>
+            <div class="item-prop-add"></div>
+        </div>
+        {{#each items as |item id|}}
+        <div class="item-row flexrow">
+            <div class="item-prop-name tooltip-hover" data-tooltip-html="{{{itemTooltipHTML item}}}">{{item.name}}</div>
+            <div class='item-prop-add' data-action="addItem" data-item-id="{{item.id}}" data-item-uuid="{{item.uuid}}">
+                <i class="fas fa-plus"></i>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+    {{/if}}
+
+    {{#if (eq selectedCategory "clothing")}}
+    <div class="item-list">
+        <div class="item-row header flexrow">
+            <div class="item-prop-name">Name</div>
+            <div class="item-prop-small">Preis</div>
+            <div class="item-prop-small">Schutz</div>
+            <div class="item-prop-add"></div>
+        </div>
+        {{#each items as |item id|}}
+        <div class="item-row flexrow">
+            <div class="item-prop-name tooltip-hover" data-tooltip-html="{{{itemTooltipHTML item}}}">{{item.name}}</div>
+            <div class="item-prop-small">{{item.system.purchasePrice}}</div>
+            <div class="item-prop-small">{{item.system.armor}}</div>
+            <div class='item-prop-add' data-action="addItem" data-item-id="{{item.id}}" data-item-uuid="{{item.uuid}}">
+                <i class="fas fa-plus"></i>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+    {{/if}}
+
+    {{#if (eq selectedCategory "spell")}}
+    <div class="item-list">
+        <div class="item-row header flexrow">
+            <div class="item-prop-name">Name</div>
+            <div class="item-prop-small">Typ</div>
+            <div class="item-prop-add"></div>
+        </div>
+        {{#each items as |item id|}}
+        <div class="item-row flexrow">
+            <div class="item-prop-name tooltip-hover" data-tooltip-html="{{{itemTooltipHTML item}}}">{{item.name}}</div>
+            <div class="item-prop-small">{{ localize (concat "DIESELDRACHEN.Keys.spellTypes." item.system.spellType)}}
+            </div>
+            <div class='item-prop-add' data-action="addItem" data-item-id="{{item.id}}" data-item-uuid="{{item.uuid}}">
+                <i class="fas fa-plus"></i>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+    {{/if}}
+
+    {{#if (eq selectedCategory "handgrenade")}}
+    <div class="item-list">
+        <div class="item-row header flexrow">
+            <div class="item-prop-name">Name</div>
+            <div class="item-prop-small">Preis</div>
+            <div class="item-prop-small">Handlichkeit</div>
+            <div class="item-prop-small">Schaden</div>
+            <div class="item-prop-add"></div>
+        </div>
+        {{#each items as |item id|}}
+        <div class="item-row flexrow">
+            <div class="item-prop-name tooltip-hover" data-tooltip-html="{{{itemTooltipHTML item}}}">{{item.name}}</div>
+            <div class="item-prop-small">{{item.system.purchasePrice}}</div>
+            <div class='item-prop-small'>{{{diceIcon item.system.handling}}}</div>
+            <div class='item-prop-small'>{{item.system.damage}}</div>
+            <div class='item-prop-add' data-action="addItem" data-item-id="{{item.id}}" data-item-uuid="{{item.uuid}}">
+                <i class="fas fa-plus"></i>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+    {{/if}}
+
+    {{#if (eq selectedCategory "knowledge")}}
+    <div class="item-list">
+        <div class="item-row header flexrow">
+            <div class="item-prop-name">Name</div>
+            <div class="item-prop-small">Sprache</div>
+            <div class="item-prop-small">Stufe</div>
+            <div class="item-prop-add"></div>
+        </div>
+        {{#each items as |item id|}}
+        <div class="item-row flexrow">
+            <div class="item-prop-name tooltip-hover" data-tooltip-html="{{{itemTooltipHTML item}}}">{{item.name}}</div>
+            <div class="item-prop-small">
+                {{#if item.system.isLanguage}}Ja{{else}}Nein{{/if}}
+            </div>
+            <div class='item-prop-small'>{{item.system.level}}</div>
+            <div class='item-prop-add' data-action="addItem" data-item-id="{{item.id}}" data-item-uuid="{{item.uuid}}">
+                <i class="fas fa-plus"></i>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+    {{/if}}
+
+</div>
