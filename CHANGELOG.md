@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 13.2.2
+  - hotfix for some add buttons on the character sheet
+  
 ## 13.2.1
   - added item browser to character sheets (lists offical compendium and manually created items)
   
