@@ -36,7 +36,7 @@
   @import 'components/healthbar';
   @import 'components/vehicles';
   @import 'components/icons';
-  @import 'components/sidebar';
+  @import 'components/itembrowser';
 }
 
 @import 'components/dice';
@@ -44,6 +44,10 @@
 
 .tiny_input {
   width: 25px;
+}
+
+.input_50 {
+  width: 50px;
 }
 
 .ammo_input {

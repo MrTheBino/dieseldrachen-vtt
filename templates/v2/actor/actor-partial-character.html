@@ -71,24 +71,24 @@
   <section class="grid grid-8col resource-group">
     <div class="resource flex-group-center">
       <label for="system.health.value" class="resource-label">Gesundheit</label>
-      <div class="resource-content flexrow flex-center flex-between">
-        <input type="text" name="system.health.max" value="{{system.health.max}}" data-dtype="Number" />
+      <div class="resource-content">
+        <input type="text" name="system.health.max" value="{{system.health.max}}" data-dtype="Number" class="input_50"/>
       </div>
     </div>
 
     <div class="resource flex-group-center">
       <label for="mobilityValue" class="resource-label"
         title="Beweglichkeit = 12 - Schutz - 1 Je Gepäckstück (Auf Würfelstufe abgerundet)">Beweglichkeit</label>
-      <div class="resource-content flexrow flex-center flex-between">
-        <input type="text" id="mobilityValue" value="D{{mobilityDice}} | {{mobilityValue}}" disabled />
+      <div class="resource-content ">
+        <input type="text" id="mobilityValue" class="input_50" value="D{{mobilityDice}} | {{mobilityValue}}" disabled />
       </div>
     </div>
 
     <div class="resource flex-group-center">
       <label for="mobilityValue" class="resource-label"
         title="Aktueller Schutz berchnet durch ausgerüstete Kleidung">Schutz</label>
-      <div class="resource-content flexrow flex-center flex-between">
-        <input type="text" id="mobilityValue" value="{{currentArmor}}" disabled />
+      <div class="resource-content ">
+        <input type="text" id="mobilityValue" value="{{currentArmor}}" disabled class="input_50"/>
       </div>
     </div>
 
@@ -109,7 +109,7 @@
 
     <div class="resource flex-group-center">
       <label for="system.money" class="resource-label">Bargeld</label>
-      <div class="resource-content flexrow flex-center flex-between">
+      <div class="resource-content ">
         <input type="text" name="system.money" value="{{system.money}}" data-dtype="Number" />
       </div>
     </div>
