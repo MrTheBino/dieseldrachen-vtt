@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 13.2.3
+  - styling fixes
+  - changed incomming damage behaviour for actor sheets
+  
 ## 13.2.2
   - hotfix for some add buttons on the character sheet
   

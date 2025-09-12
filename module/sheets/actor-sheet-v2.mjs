@@ -117,12 +117,6 @@ export class DieseldrachenActorSheetV2 extends HandlebarsApplicationMixin(ActorS
             input.addEventListener("change", event => this.handleItemStatChanged(event))
         }
 
-        const healthbarSegments = this.element.querySelectorAll('.healthbar-segment');
-        for (const segment of healthbarSegments) {
-            segment.addEventListener("click", event => this.handleClickHealthbarSegmentNormalDamage(event));
-            segment.addEventListener("contextmenu", event => this.handleClickHealthbarSegmentElementDamage(event));
-        }
-
         const tooltipElements = this.element.querySelectorAll('.tooltip-hover');
         for (const tooltip of tooltipElements) {
             tooltip.addEventListener("mouseenter", event => this.handleTooltipMouseEnter(event));
@@ -157,16 +151,30 @@ export class DieseldrachenActorSheetV2 extends HandlebarsApplicationMixin(ActorS
 
         let result = new Array(numSegments);
 
-        let json_data = JSON.parse(this.document.system.healthbar || "[]");
         for (let i = 0; i < numSegments; i++) {
-            result[i] = { sign: json_data[i], value: i, index: i, css_class: "" };
-
-            if (this.document.system.health.max >= i) {
-                result[i].css_class = 'green';
-            } else {
-                result[i].css_class = 'unused';
+            result[i] = { value: i+1, index: i, css_class: "" };
+            if(i < this.document.system.health.max){
+                result[i].css_class = "green";
             }
         }
+
+        let currentIndex = 0;
+        for(let damage = 0; damage < this.document.system.health.value; damage++){
+            if(currentIndex >= numSegments){
+                continue;
+            }
+            result[currentIndex].css_class = 'red';
+            currentIndex += 1;
+        }
+
+        for(let exhaustion = 0; exhaustion < this.document.system.exhaustion.value; exhaustion++){
+            if(currentIndex >= numSegments){
+                continue;
+            }
+            result[currentIndex].css_class = 'orange';
+            currentIndex += 1;
+        }
+
         return result;
     }
 
@@ -210,30 +218,6 @@ export class DieseldrachenActorSheetV2 extends HandlebarsApplicationMixin(ActorS
             speaker: ChatMessage.getSpeaker({ actor: this.actor }),
             content: msg
         });
-    }
-
-    async handleClickHealthbarSegmentNormalDamage(event) {
-        const segment = event.currentTarget;
-        let json_data = JSON.parse(this.actor.system.healthbar || "[]");
-        if (json_data[segment.dataset.healthvalue] == 'X') {
-            json_data[segment.dataset.healthvalue] = '';
-        } else {
-            json_data[segment.dataset.healthvalue] = 'X';
-        }
-
-        this.actor.update({ ['system.healthbar']: JSON.stringify(json_data) });
-    }
-
-    async handleClickHealthbarSegmentElementDamage(event) {
-        const segment = event.currentTarget;
-        let json_data = JSON.parse(this.actor.system.healthbar || "[]");
-        if (json_data[segment.dataset.healthvalue] == '/') {
-            json_data[segment.dataset.healthvalue] = '';
-        } else {
-            json_data[segment.dataset.healthvalue] = '/';
-        }
-
-        this.actor.update({ ['system.healthbar']: JSON.stringify(json_data) });
     }
 
     async handleItemStatChanged(ev) {
@@ -330,8 +314,9 @@ export class DieseldrachenActorSheetV2 extends HandlebarsApplicationMixin(ActorS
             modal: true
         });
         if (proceed) {
-            let json_data = [];
-            this.actor.update({ ['system.healthbar']: JSON.stringify(json_data) });
+            this.actor.update({ ['system.health.value']: 0 });
+            this.actor.update({ ['system.hexhaustion.value']: 0 });
+            
             ChatMessage.create({
                 user: game.user.id,
                 speaker: ChatMessage.getSpeaker({ actor: this.actor }),

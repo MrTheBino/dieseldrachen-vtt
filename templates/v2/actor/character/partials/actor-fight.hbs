@@ -7,17 +7,26 @@
         </div>
     </div>
     <div class="resource flexrow">
-        <label for="" class="resource-label flex-col-width-03">Verletzungen</label>
-        <div class="grid grid-2col">
-            <div class="flex-col">
+        <div class="grid grid-4col">
+            <div class="flexrow">
+                <span class="icon-damage" title="Schadenspunkte"></span>
+                <input type="text" name="system.health.value" value="{{system.health.value}}" data-dtype="Number"
+                    class="damage_input" />
+            </div>
+            <div class="flexrow">
+                <span class="icon-exhaustion" title="Erschöpfung"></span>
+                <input type="text" name="system.exhaustion.value" value="{{system.exhaustion.value}}" data-dtype="Number"
+                    class="damage_input" />
+            </div>
+            <div class="flexrow">
                 <span class="icon-light-injury" title="Leichte Verletzungen"></span>
                 <input type="text" name="system.lightInjuries" value="{{system.lightInjuries}}" data-dtype="Number"
-                    class="tiny_input" />
+                    class="damage_input" />
             </div>
-            <div class="flex-col">
+            <div class="flexrow">
                 <span class="icon-heavy-injury" title="Schwere Verletzungen"></span>
                 <input type="text" name="system.heavyInjuries" value="{{system.heavyInjuries}}" data-dtype="Number"
-                    class="tiny_input" />
+                    class="damage_input" />
             </div>
         </div>
     </div>

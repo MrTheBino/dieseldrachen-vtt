@@ -1,18 +1,6 @@
 {{#each healthbar_segments}}
-<div class="healthbar-segment {{this.css_class}}" data-healthvalue="{{this.index}}" title="Gesundheit: {{this.index}} - Links Klick: X | Rechts Klick: /">
-
-    {{#if (eq this.sign  '/')}}
-            <div class="exhaustion-marker">
-            </div>
-    {{else}}
-        {{#if (eq this.sign 'X')}}
-            <div class="health-marker">
-            </div>
-        {{else}}
-        <div class="health-counter">{{this.value}}</div>
-        {{/if}}
-    {{/if}}
-
+<div class="healthbar-segment {{this.css_class}}" data-healthvalue="{{this.index}}">
+    <div class="health-counter">{{this.value}}</div>
 </div>
 {{/each}}
 {{#if show_reset_button}}

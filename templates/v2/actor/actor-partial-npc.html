@@ -3,7 +3,8 @@
   {{!-- Sheet Header --}}
   <header class="sheet-header">
     <div class="flexcol">
-      <img class="profile-img" src="{{actor.img}}" data-action="editImage" data-edit="img" title="{{actor.name}}" height="100" width="100" />
+      <img class="profile-img" src="{{actor.img}}" data-action="editImage" data-edit="img" title="{{actor.name}}"
+        height="100" width="100" />
       <img src="systems/dieseldrachen-vtt/assets/images/dieseldrachen_logo_small.webp" height="75px"
         class="dieseldrachen-logo-small">
     </div>
@@ -21,30 +22,26 @@
           <span class="npc-armor icon-armor-bg">{{system.armor}}</span>
         </div>
       </div>
-      {{!-- The grid classes are defined in scss/global/_grid.scss. To use,
-      use both the "grid" and "grid-Ncol" class where "N" can be any number
-      from 1 to 12 and will create that number of columns. --}}
-      <div class="resources grid grid-4col resource-group">
+
+      <div class="resources flexrow resource-group">
 
 
-        <div class="resource flex-group-center">
+        <div class="resource flex-group-center npc-species-container">
           <label for="system.species" class="resource-label">Spezies</label>
           <div class="resource-content flexrow flex-center flex-between">
             <input type="text" name="system.species" value="{{system.species}}" data-dtype="String" />
           </div>
         </div>
 
-        {{!-- "flex-group-center" is also defined in the _grid.scss file
-        and it will add a small amount of padding, a border, and will
-        center all of its child elements content and text. --}}
-        <div class="resource flex-group-center">
+        <div class="resource flex-group-center npc-health-container">
           <label for="system.health.value" class="resource-label">Gesundheit</label>
-          <div class="resource-content flexrow flex-center flex-between">
-            <input type="text" name="system.health.max" value="{{system.health.max}}" data-dtype="Number" />
+          <div class="flexrow">
+            <input type="text" name="system.health.max" title="Maximale Gesundheit" value="{{system.health.max}}"
+              data-dtype="Number" class="damage_input" />
           </div>
         </div>
 
-        <div class="resource flex-group-center">
+        <div class="resource flex-group-center npc-dice-container">
           <label for="system.dice" class="resource-label">Würfel</label>
           <div class="resource-content flexrow flex-center flex-between">
             <select name="system.dice">
@@ -56,7 +53,7 @@
           </div>
         </div>
 
-        <div class="resource flex-group-center">
+        <div class="resource flex-group-center npc-armor-container">
           <label for="system.cr" class="resource-label">Schutz</label>
           <div class="resource-content flexrow flex-center flex-between">
             <input type="text" name="system.armor" value="{{system.armor}}" data-dtype="Number" />
@@ -71,8 +68,21 @@
   <div class="grid grid-2col">
     <div class="resource-group">
       <h5 class="quick-label">Statusleiste</h5>
+      <div class="flexrow mt-bottom-5">
+        <div class="flexrow">
+          <span class="icon-damage" title="Schadenspunkte"></span>
+          <input type="text" name="system.health.value" title="Schadenspunkte" value="{{system.health.value}}"
+            data-dtype="Number" class="damage_input" />
+        </div>
+        <div class="flexrow">
+          <span class="icon-exhaustion" title="Erschöpfung"></span>
+          <input type="text" name="system.exhaustion.value" title="Erschöpfung" value="{{system.exhaustion.value}}"
+            data-dtype="Number" class="damage_input" />
+        </div>
+      </div>
       <div class="healthbar">
-        {{> "systems/dieseldrachen-vtt/templates/shared/healthbar-partial.hbs" health_value=system.health.value show_reset_button=true}}
+        {{> "systems/dieseldrachen-vtt/templates/shared/healthbar-partial.hbs" health_value=system.health.value
+        show_reset_button=true}}
       </div>
     </div>
     <div class="special_dice resource-group">

@@ -18,6 +18,7 @@
 
 .action-button{
     line-height: 1.0;
+    background-color: #f5f5dc;
 }
 
 .icon-dodge{
@@ -38,19 +39,37 @@
     width: 24px;
     height: 24px;
     background-image: url('../assets/icons/icon-rocking-chair.svg');
-    display: inline-block
+    display: inline-block;
 }
 
 .icon-light-injury{
     width: 24px;
     height: 24px;
     background-image: url('../assets/icons/icon-light-injury.svg');
-    display: inline-block
+    display: inline-block;
+    background-repeat: no-repeat;
 }
 
 .icon-heavy-injury{
     width: 24px;
     height: 24px;
     background-image: url('../assets/icons/icon-heavy-injury.svg');
-    display: inline-block
+    display: inline-block;
+    background-repeat: no-repeat;
+}
+
+.icon-damage{
+    width: 24px;
+    height: 24px;
+    background-image: url('../assets/icons/icon-heart-minus.svg');
+    display: inline-block;
+    background-repeat: no-repeat;
+}
+
+.icon-exhaustion{
+    width: 24px;
+    height: 24px;
+    background-image: url('../assets/icons/icon-dazzle.svg');
+    display: inline-block;
+    background-repeat: no-repeat;
 }

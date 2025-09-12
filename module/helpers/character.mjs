@@ -1,59 +1,32 @@
-export async function doCharacterResting(actor,restValue){
-let healthBarJSON = JSON.parse(actor.system.healthbar || "[]");
+export async function doCharacterResting(actor, restValue) {
 
-  let resetValue = restValue;
-  let totalRested = 0;
-  let lastElement = healthBarJSON.findLastIndex((element) => element == "/")
-
-  if (lastElement != -1) { // nur resten wenn auch Erschöpfung da ist
-    for (let x = 0; x < lastElement; x++) {
-      if (resetValue > 0) {
-        let p = lastElement - x;
-        if (p >= 0 && healthBarJSON[p] == "/") {
-          healthBarJSON[p] = ""
-          totalRested++;
-        }
-      }
-      resetValue--;
-    }
-    actor.update({ ['system.healthbar']: JSON.stringify(healthBarJSON) });
+  let exhaustionValue = actor.system.exhaustion.value - restValue;
+  if (exhaustionValue < 0) {
+    exhaustionValue = 0;
   }
+  actor.update({ ['system.exhaustion.value']: exhaustionValue })
 
-  return totalRested;
+  return restValue;
 }
 
-export async function doCharacterHealing(actor){
-let healthBarJSON = JSON.parse(actor.system.healthbar || "[]");
-
+export async function doCharacterHealing(actor) {
   let resetValue = actor.system.abilities.condition;
-  let totalHealed = 0;
-  let lastElement = healthBarJSON.findLastIndex((element) => element == "X")
+  let healedTotal = 0;
 
-  if(actor.system.lightInjuries > 0){
-    resetValue = resetValue / 2;
+  
+  if (actor.system.lightInjuries > 0) {
+    resetValue = parseInt(resetValue / 2);
   }
 
-  if (lastElement != -1) { // nur resten wenn auch Erschöpfung da ist
-    for (let x = 0; x <= lastElement; x++) {
-      if (resetValue > 0) {
-        let p = lastElement - x;
-        if (p >= 0 && healthBarJSON[p] == "X") {
-          healthBarJSON[p] = ""
-          totalHealed++;
-        }
-      }
-      resetValue--;
-    }
-
-    // alle Erschöpfung entfernen
-    for (let x = 0; x < healthBarJSON.length; x++) {
-      if (healthBarJSON[x] == "/") {
-        healthBarJSON[x] = "";
-      }
-    }
-
-    actor.update({ ['system.healthbar']: JSON.stringify(healthBarJSON) });
+  if((actor.system.health.value - resetValue) < 0) {
+    healedTotal = actor.system.health.value;
+    resetValue = 0
+  }else{
+    healedTotal = resetValue;
+    resetValue = actor.system.health.value - resetValue;
   }
 
-  return totalHealed;
+  actor.update({ ['system.health.value']: resetValue })
+
+  return healedTotal;
 }

@@ -200,6 +200,10 @@
   margin-left: 2px;
 }
 
+.mt-bottom-5 {
+  margin-bottom: 5px;
+}
+
 .flex-group-center,
 .flex-group-left,
 .flex-group-right {
@@ -577,6 +581,18 @@ section.journal-page-content h3 {
 .dieseldrachen-vtt .help-text ul {
   list-style-type: none;
 }
+.dieseldrachen-vtt .npc-species-container {
+  flex-grow: 1;
+}
+.dieseldrachen-vtt .npc-dice-container {
+  flex-grow: 0.25;
+}
+.dieseldrachen-vtt .npc-armor-container {
+  flex-grow: 0.25;
+}
+.dieseldrachen-vtt .npc-health-container {
+  flex-grow: 0.25;
+}
 .dieseldrachen-vtt .items-header {
   height: 28px;
   margin: 2px 0;
@@ -775,6 +791,9 @@ section.journal-page-content h3 {
 .dieseldrachen-vtt .red {
   background-color: red;
 }
+.dieseldrachen-vtt .orange {
+  background-color: orange;
+}
 .dieseldrachen-vtt .vehicle_motor_damage {
   font-size: 1.2em;
   padding-top: 5px;
@@ -819,6 +838,7 @@ section.journal-page-content h3 {
 }
 .dieseldrachen-vtt .action-button {
   line-height: 1;
+  background-color: #f5f5dc;
 }
 .dieseldrachen-vtt .icon-dodge {
   width: 24px;
@@ -843,12 +863,28 @@ section.journal-page-content h3 {
   height: 24px;
   background-image: url("../assets/icons/icon-light-injury.svg");
   display: inline-block;
+  background-repeat: no-repeat;
 }
 .dieseldrachen-vtt .icon-heavy-injury {
   width: 24px;
   height: 24px;
   background-image: url("../assets/icons/icon-heavy-injury.svg");
   display: inline-block;
+  background-repeat: no-repeat;
+}
+.dieseldrachen-vtt .icon-damage {
+  width: 24px;
+  height: 24px;
+  background-image: url("../assets/icons/icon-heart-minus.svg");
+  display: inline-block;
+  background-repeat: no-repeat;
+}
+.dieseldrachen-vtt .icon-exhaustion {
+  width: 24px;
+  height: 24px;
+  background-image: url("../assets/icons/icon-dazzle.svg");
+  display: inline-block;
+  background-repeat: no-repeat;
 }
 
 .system-dieseldrachen-vtt .item-form {
@@ -1004,6 +1040,18 @@ section.journal-page-content h3 {
 }
 .system-dieseldrachen-vtt .help-text ul {
   list-style-type: none;
+}
+.system-dieseldrachen-vtt .npc-species-container {
+  flex-grow: 1;
+}
+.system-dieseldrachen-vtt .npc-dice-container {
+  flex-grow: 0.25;
+}
+.system-dieseldrachen-vtt .npc-armor-container {
+  flex-grow: 0.25;
+}
+.system-dieseldrachen-vtt .npc-health-container {
+  flex-grow: 0.25;
 }
 .system-dieseldrachen-vtt .items-header {
   height: 28px;
@@ -1203,6 +1251,9 @@ section.journal-page-content h3 {
 .system-dieseldrachen-vtt .red {
   background-color: red;
 }
+.system-dieseldrachen-vtt .orange {
+  background-color: orange;
+}
 .system-dieseldrachen-vtt .vehicle_motor_damage {
   font-size: 1.2em;
   padding-top: 5px;
@@ -1247,6 +1298,7 @@ section.journal-page-content h3 {
 }
 .system-dieseldrachen-vtt .action-button {
   line-height: 1;
+  background-color: #f5f5dc;
 }
 .system-dieseldrachen-vtt .icon-dodge {
   width: 24px;
@@ -1271,12 +1323,28 @@ section.journal-page-content h3 {
   height: 24px;
   background-image: url("../assets/icons/icon-light-injury.svg");
   display: inline-block;
+  background-repeat: no-repeat;
 }
 .system-dieseldrachen-vtt .icon-heavy-injury {
   width: 24px;
   height: 24px;
   background-image: url("../assets/icons/icon-heavy-injury.svg");
   display: inline-block;
+  background-repeat: no-repeat;
+}
+.system-dieseldrachen-vtt .icon-damage {
+  width: 24px;
+  height: 24px;
+  background-image: url("../assets/icons/icon-heart-minus.svg");
+  display: inline-block;
+  background-repeat: no-repeat;
+}
+.system-dieseldrachen-vtt .icon-exhaustion {
+  width: 24px;
+  height: 24px;
+  background-image: url("../assets/icons/icon-dazzle.svg");
+  display: inline-block;
+  background-repeat: no-repeat;
 }
 .system-dieseldrachen-vtt .application.dieseldrachen.dialog.compendium-browser > .window-content {
   display: flex;
@@ -1477,19 +1545,49 @@ section.journal-page-content h3 {
 
 .tiny_input {
   width: 25px;
+  text-align: center;
+}
+
+.damage_input {
+  width: 50px;
+  text-align: center;
 }
 
 .input_50 {
   width: 50px;
+  text-align: center;
+}
+
+.xp-input{
+  width: 50px;
+  text-align: center;
+}
+
+.money-input{
+  width: 75px;
+  text-align: center;
+}
+
+.input_75 {
+  width: 75px;
+  text-align: center;
 }
 
 .ammo_input {
   width: 35px;
   height: 20px;
+  text-align: center;
+}
+
+.quantity_input {
+  width: 50px;
+  height: 20px;
+  text-align: center;
 }
 
 .medium_input {
   width: 75px;
+  text-align: center;
 }
 
 .ranged-weapon-roll-dialog {

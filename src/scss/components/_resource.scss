@@ -109,3 +109,19 @@
     list-style-type: none;
   }
 }
+
+.npc-species-container{
+  flex-grow: 1
+}
+
+.npc-dice-container{
+  flex-grow: 0.25
+}
+
+.npc-armor-container{
+  flex-grow: 0.25
+}
+
+.npc-health-container{
+  flex-grow: 0.25
+}
