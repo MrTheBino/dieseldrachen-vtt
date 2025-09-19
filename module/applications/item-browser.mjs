@@ -16,8 +16,6 @@ export class DieseldrachenItemBrowser extends HandlebarsApplicationMixin(Applica
         //this.presets = options.presets;
 
         this.compendiumPack = game.packs.get(this.compendiumPackKey);
-
-        console.log(game);
     }
 
     /** @inheritDoc */
@@ -31,8 +29,6 @@ export class DieseldrachenItemBrowser extends HandlebarsApplicationMixin(Applica
             icon: 'fa-solid fa-book-atlas',
             positioned: true,
             resizable: true
-        },
-        actions: {
         },
         position: {
             left: 100,

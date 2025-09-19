@@ -1,6 +1,6 @@
 # Dieseldrachen for FoundryVTT
 
-![Foundry v13](https://img.shields.io/badge/foundry-v13-green)
+![Foundry v13](https://img.shields.io/badge/foundry-v13-green) [![Github All Releases](https://img.shields.io/github/downloads/MrTheBino/dieseldrachen-vtt/total.svg)]()
 
 Official system implementation of the Dieseldrachen TTRPG by [Dragon Pulp Games](https://shop.dragonpulpgames.com/).
 
