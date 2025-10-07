@@ -112,6 +112,16 @@ export class DieseldrachenActorSheetV2 extends HandlebarsApplicationMixin(ActorS
     _onRender(context, options) {
         this.#dragDrop.forEach((d) => d.bind(this.element))
 
+        // Input Event Listener for preventing toggling the enter mode, this is a strange behaviour of foundry, didn't know to handle it otherwise
+        const constAllInputs = this.element.querySelectorAll('input');
+        for (const input of constAllInputs) {
+            input.addEventListener("keydown", event => {
+                if (event.key === "Enter") {
+                    event.preventDefault(); // optional, verhindert Default-Verhalten (z.B. Formular-Submit)
+                }
+            });
+        };
+
         const itemEditableStatsElements = this.element.querySelectorAll('.item-editable-stat')
         for (const input of itemEditableStatsElements) {
             input.addEventListener("change", event => this.handleItemStatChanged(event))
@@ -122,6 +132,39 @@ export class DieseldrachenActorSheetV2 extends HandlebarsApplicationMixin(ActorS
             tooltip.addEventListener("mouseenter", event => this.handleTooltipMouseEnter(event));
             tooltip.addEventListener("mouseleave", event => this.handleTooltipMouseLeave(event));
         }
+    }
+
+    _renderModeToggle() {
+        const header = this.element.querySelector(".window-header");
+
+        let button = header.querySelector(".mode-toggle-button");
+        if (!button) {
+            button = document.createElement("button");
+            button.classList.add("header-control", "fa-solid", "icon", "mode-toggle-button");
+            const h1Element = header.querySelector("h1");
+            header.insertBefore(button, h1Element.nextSibling);
+        }
+
+        button.onclick = ev => this._onToggleEditMode(ev);
+
+
+        if (!this.actor.system.locked) {
+            button.classList.add("fa-lock-open");
+            button.classList.remove("fa-lock");
+            button.title = "Switch to Edit Mode";
+        } else {
+            button.classList.add("fa-lock");
+            button.classList.remove("fa-lock-open");
+            button.title = "Switch to Game Mode";
+
+        }
+        button.onclick = ev => this._onToggleEditMode(ev);
+    }
+
+    async _onToggleEditMode(event) {
+        event.preventDefault();
+        await this.actor.update({ "system.locked": !this.actor.system.locked });
+        this.render(false);
     }
 
     /** @override */

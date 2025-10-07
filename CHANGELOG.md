@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 13.2.4
+ - moved lock icon / button to the header of the character sheet
+ - fixed pressing return to trigger a random event on the character sheet
+
 ## 13.2.3
   - styling fixes
   - changed incomming damage behaviour for actor sheets

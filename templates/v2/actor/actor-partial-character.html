@@ -68,7 +68,7 @@
     </div>
   </header>
 
-  <section class="grid grid-8col resource-group">
+  <section class="grid grid-7col resource-group">
     <div class="resource flex-group-center">
       <label for="system.health.value" class="resource-label">Gesundheit</label>
       <div class="resource-content">
@@ -120,12 +120,6 @@
         <input type="text" name="system.luck" value="{{system.luck}}" data-dtype="Number" />
         <span> / </span>
         <input type="text" value="3" disabled />
-      </div>
-    </div>
-    <div class="resource flex-group-center">
-      <label for="system.luck" class="resource-label">Gesperrt <i class="fa-solid fa-lock"></i></label>
-      <div class="resource-content flex-center">
-        <input type="checkbox" name="system.locked" {{#if system.locked}}checked{{/if}} data-dtype="Boolean" />
       </div>
     </div>
   </section>

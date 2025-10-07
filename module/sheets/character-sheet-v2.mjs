@@ -72,6 +72,12 @@ export class DieselDrachenCharacterActorSheetV2 extends DieseldrachenActorSheetV
         }
     }
 
+    /** @inheritDoc */
+    _onRender(context, options) {
+        super._onRender(context, options);
+        this._renderModeToggle();
+    }
+    
     /** @override */
     async _prepareContext(options) {
         let context = await super._prepareContext(options);
