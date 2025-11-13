@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 13.2.5
+- fixed setting character token images
+  
 ## 13.2.4
  - moved lock icon / button to the header of the character sheet
  - fixed pressing return to trigger a random event on the character sheet

@@ -5,7 +5,8 @@
   "authors": [
     {
       "name": "MrTheBino - Alex B",
-      "discord": "MrTheBino"
+      "discord": "MrTheBino",
+      "flags": {}
     }
   ],
   "url": "https://github.com/MrTheBino/dieseldrachen-vtt",
@@ -17,26 +18,36 @@
     {
       "type": "setup",
       "url": "systems/dieseldrachen-vtt/assets/images/starting_screen.jpg",
-      "thumbnail": "systems/dieseldrachen-vtt/assets/images/starting_screen.jpg"
+      "thumbnail": "systems/dieseldrachen-vtt/assets/images/starting_screen.jpg",
+      "loop": false,
+      "flags": {}
     }
   ],
-  "version": "13.2.4",
+  "version": "13.2.5",
   "compatibility": {
-    "minimum": 13,
+    "minimum": "13",
     "verified": "13"
   },
-  "esmodules": ["module/dieseldrachen-vtt.mjs"],
-  "styles": ["css/dieseldrachen-vtt.css"],
+  "esmodules": [
+    "module/dieseldrachen-vtt.mjs"
+  ],
+  "styles": [
+    {
+      "src": "css/dieseldrachen-vtt.css"
+    }
+  ],
   "languages": [
     {
       "lang": "de",
       "name": "Deutsch",
-      "path": "lang/de.json"
+      "path": "lang/de.json",
+      "flags": {}
     },
     {
       "lang": "en",
       "name": "English",
-      "path": "lang/en.json"
+      "path": "lang/en.json",
+      "flags": {}
     }
   ],
   "packs": [
@@ -89,13 +100,14 @@
       "flags": {}
     }
   ],
-  "packFolders": [],
-  "socket": false,
   "manifest": "https://github.com/MrTheBino/dieseldrachen-vtt/releases/latest/download/system.json",
-    "download": "https://github.com/MrTheBino/dieseldrachen-vtt/releases/latest/download/system.zip",
+  "download": "https://github.com/MrTheBino/dieseldrachen-vtt/releases/download/13.2.4/system.zip",
   "background": "systems/dieseldrachen-vtt/assets/images/starting_screen.jpg",
-  "gridDistance": 5,
-  "gridUnits": "ft",
   "primaryTokenAttribute": "health",
-  "secondaryTokenAttribute": "power"
+  "secondaryTokenAttribute": "power",
+  "grid": {
+    "distance": 5,
+    "units": "ft"
+  },
+  "flags": {}
 }
