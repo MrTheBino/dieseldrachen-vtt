@@ -134,9 +134,11 @@
 
             <div class="attribute-group">
                 <div class="ability flexrow flex-group-center">
+
                     <label for="system.attributes.charisma" class="resource-label align-left attribute-label rollable"
-                        data-roll-type="savingThrow" data-action="skillRoll"
-                        data-roll="1d{{system.attributes.charisma}}" data-label="Charisma">Charisma</label>
+                        data-roll-type="savingThrow" data-roll="1d{{system.attributes.charisma}}"
+                        data-action="savingThrowRoll" data-label="Charisma">
+                        Charisma</label>
                     {{> "systems/dieseldrachen-vtt/templates/shared/actor-dice-select.hbs"
                     group_name="radio_attr_charisma" name="system.attributes.charisma"
                     value=system.attributes.charisma}}
